@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/schema.json",
+  "title": "Main",
+  "description": "The entrypoint of the Rita schema",
+  "type": "object",
+  "properties": {
+    "rules": {
+      "type": "array",
+      "title": "Ruleset",
+      "description": "Array of all rules in this ruleset.",
+      "items": {
+        "$ref": "rule.json"
+      }
+    }
+  },
+  "required": ["rules"]
+}

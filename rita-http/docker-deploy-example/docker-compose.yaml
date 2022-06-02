@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:8.0.28
+    container_name: mysql
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: 1
+      MYSQL_DATABASE: rita
+      MYSQL_USER: rita
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
+  rita-http:
+    depends_on:
+      - mysql
+    build:
+      context: ./..
+      dockerfile: ./Dockerfile
+    image: ghcr.io/educorvi/rita-http:latest
+    container_name: rita-http
+    environment:
+      WAIT_HOSTS: mysql:3306
+      PORT: 3000
+      LOGLEVEL: info
+      DB_TYPE: MYSQL
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USERNAME: rita
+      DB_PASSWORD: ${MYSQL_PASSWORD}
+      DB_DATABASE: rita
+    ports:
+      - "3000:3000"

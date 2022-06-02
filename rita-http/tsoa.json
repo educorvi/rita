@@ -1,0 +1,27 @@
+{
+  "entryFile": "src/index.ts",
+  "noImplicitAdditionalProperties": "throw-on-extras",
+  "controllerPathGlobs": [
+    "src/**/*Controller.ts"
+  ],
+  "spec": {
+    "outputDirectory": "docs",
+    "specVersion": 3,
+    "securityDefinitions": {
+      "api_key": {
+        "type": "apiKey",
+        "name": "X-API-KEY",
+        "in": "header",
+        "scopes": {
+          "view": "View rules",
+          "manage": "Manage rules",
+          "evaluate": "Evaluate data against rules"
+        }
+      }
+    }
+  },
+  "routes": {
+    "routesDir": "generated",
+    "authenticationModule": "./src/helper/authentication.ts"
+  }
+}

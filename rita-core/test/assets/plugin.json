@@ -1,0 +1,16 @@
+{
+  "$schema": "../../src/schema/schema.json",
+  "rules": [
+    {
+      "id": "plugin rule",
+      "rule": {
+        "type": "plugin",
+        "name": "fancy-plugin",
+        "formula": {
+          "type": "atom",
+          "path": "fancy"
+        }
+      }
+    }
+  ]
+}

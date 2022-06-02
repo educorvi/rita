@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json",
+  "title": "Macro",
+  "description": "Describes macros. Available macros are `now` and `length`",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "macro"
+      ]
+    },
+    "macro": {
+      "oneOf": [
+        {
+          "title": "now",
+          "description": "Returns the current time",
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "now"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "title": "length",
+          "description": "Returns the length of an array",
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "length"
+              ]
+            },
+            "array": {
+              "$ref": "atom.json"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "required": [
+    "type",
+    "macro"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "type": "macro",
+      "macro": {
+        "type": "now"
+      }
+    },
+    {
+      "type": "macro",
+      "macro": {
+        "type": "length",
+        "array": {
+          "type": "atom",
+          "path": "customers"
+        }
+      }
+    }
+  ]
+}

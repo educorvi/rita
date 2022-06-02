@@ -1,0 +1,51 @@
+{
+  "$schema": "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/schema.json",
+  "rules": [
+    {
+      "rule": {
+        "type": "and",
+        "arguments": [
+          {
+          "type": "atom",
+            "path": "a1"
+          },
+          {
+            "type": "atom",
+            "path": "a1"
+          }
+        ]
+      },
+      "id": "test"
+    },
+    {
+      "rule": {
+        "type": "and",
+        "arguments": [
+          {
+            "type": "atom",
+            "path": "a1"
+          },
+          {
+            "type": "or",
+            "arguments": [
+              {
+                "type": "atom",
+                "path": "a1"
+              },
+              {
+                "type": "not",
+                "arguments": [
+                  {
+                    "type": "atom",
+                    "path": "a2"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "id": "test2"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "../../src/schema/schema.json",
+  "rules": [
+    {
+      "id": "simple rule",
+      "rule": {
+        "type": "comparison",
+        "operation": "equal",
+        "arguments": [
+          4,
+          4
+        ]
+      }
+    },
+    {
+      "id": "simple rule 2",
+      "rule": {
+        "type": "comparison",
+        "operation": "greaterOrEqual",
+        "arguments": [
+          4,
+          {
+            "type": "calculation",
+            "dateCalculationUnit": "seconds",
+            "dateResultUnit": "seconds",
+            "operation": "subtract",
+            "arguments": [
+              14.99,
+              {
+                "type": "atom",
+                "path": "visit.priceWithoutTax"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

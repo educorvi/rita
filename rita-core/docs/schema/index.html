@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Rita Documentation</title>
+  <link rel="stylesheet" href="https://unpkg.com/docute@4/dist/docute.css">
+</head>
+<body>
+<div id="docute"></div>
+<script src="https://unpkg.com/docute@4/dist/docute.js"></script>
+<script>
+  new Docute({
+    target: '#docute',
+    title: "Rita Schema Documentation",
+    nav: [
+      {
+        title: 'Overview',
+        link: '/'
+      },
+      {
+        title: 'Main',
+        link: '/schema'
+      },
+      {
+        title: 'GitHub',
+        link: 'https://github.com/educorvi/rita'
+      }],
+    highlight: ["json", "javascript", "typescript"]
+  })
+</script>
+</body>
+</html>

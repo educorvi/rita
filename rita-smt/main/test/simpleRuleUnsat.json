@@ -1,0 +1,26 @@
+{
+  "$schema": "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/schema.json",
+  "rules": [
+    {
+      "id": "satisfiable",
+      "rule": {
+        "type": "and",
+        "arguments": [
+          {
+            "type": "atom",
+            "path": "var1"
+          },
+          {
+            "type": "not",
+            "arguments": [
+              {
+                "type": "atom",
+                "path": "var1"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

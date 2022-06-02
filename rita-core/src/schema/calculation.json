@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/calculation.json",
+  "title": "Calculation",
+  "description": "Calculates a result",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "calculation"
+      ]
+    },
+    "operation": {
+      "description": "The mathematical operation to be calculated",
+      "type": "string",
+      "enum": [
+        "add",
+        "subtract",
+        "multiply",
+        "divide",
+        "modulo"
+      ]
+    },
+    "arguments": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "atom.json"
+          },
+          {
+            "$ref": "plugin.json"
+          },
+          {
+            "$ref": "macro.json"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "$ref": "calculation.json"
+          }
+        ]
+      }
+    },
+    "dateResultUnit": {
+      "description": "Which unit is to use when working with dates. For example, if two days are subtracted, should the result be in days, or months? Also usable, when adding days/months/years to a date",
+      "type": "string",
+      "enum": [
+        "seconds",
+        "minutes",
+        "hours",
+        "days",
+        "months",
+        "years"
+      ],
+      "default": "seconds"
+    },
+    "dateCalculationUnit": {
+      "description": "Which unit is to use when adding/subtracting number from/with dates.",
+      "type": "string",
+      "enum": [
+        "seconds",
+        "minutes",
+        "hours",
+        "days",
+        "months",
+        "years"
+      ],
+      "default": "seconds"
+    }
+  },
+  "required": [
+    "operation",
+    "arguments",
+    "type"
+  ],
+  "additionalProperties": false
+}

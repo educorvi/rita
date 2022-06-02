@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="462be744-c1cd-42e7-8617-8938ffab8051" name="Changes" comment="init">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistent-rita/.releaserc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistent-rita/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/persistent-rita/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-core/.releaserc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-core/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-core/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-core/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-core/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-http/.releaserc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-http/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-http/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-http/postInstall.js" beforeDir="false" afterPath="$PROJECT_DIR$/rita-http/postInstall.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/.releaserc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/core/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/core/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/core/.idea/git_toolbox_prj.xml" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/.idea/git_toolbox_prj.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/core/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/core/.idea/rita-smt.iml" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/.idea/rita-smt.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/core/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/core/docs/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/docs/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/core/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/core/src/SmtSolver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/src/SmtSolver.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/core/src/bin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/src/bin.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/core/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/core/src/simplify.ts" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/src/simplify.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/core/test/calculationComplex.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/test/calculationComplex.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/core/test/calculationSimple.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/test/calculationSimple.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/core/test/comparison.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/test/comparison.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/core/test/comparisonDate.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/test/comparisonDate.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/core/test/comparisonString.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/test/comparisonString.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/core/test/comparisonUnsat.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/test/comparisonUnsat.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/core/test/modulo.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/test/modulo.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/core/test/simpleRule.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/test/simpleRule.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/core/test/simpleRuleUnsat.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/test/simpleRuleUnsat.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/core/test/simplify.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/test/simplify.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/core/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/node-smtlib/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/node-smtlib/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rush.json" beforeDir="false" afterPath="$PROJECT_DIR$/rush.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="macros" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1654201854" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="27hRiDqBgKU13NQUupRVY74GE70" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.14.2&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.11.38&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/julian/projects/arbeit/rita/test/implementationTests&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;/home/julian/projects/arbeit/rita/node_modules/jest&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/julian/projects/arbeit/rita/rita-smt/node-smtlib/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test/implementationTests" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Jest.All Tests">
+    <configuration name="Example Ruleset is true" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/test/implementationTests/macro.test.ts" />
+      <test-names>
+        <test-name value="Example Ruleset is true" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Expect 'length' to be correct" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/test/implementationTests/macro.test.ts" />
+      <test-names>
+        <test-name value="Expect 'length' to be correct" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Expect 'now' to be correct" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/test/implementationTests/macro.test.ts" />
+      <test-names>
+        <test-name value="Expect 'now' to be correct" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Validate Rule examples.convert to objects and back to json" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/test/schema.test.ts" />
+      <test-names>
+        <test-name value="Validate Rule examples" />
+        <test-name value="convert to objects and back to json" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="macro.test.ts" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <jest-options value="--maxWorkers=8" />
+      <envs />
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/test/implementationTests/macro.test.ts" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Jest.Validate Rule examples.convert to objects and back to json" />
+        <item itemvalue="Jest.macro.test.ts" />
+        <item itemvalue="Jest.Expect 'now' to be correct" />
+        <item itemvalue="Jest.Expect 'length' to be correct" />
+        <item itemvalue="Jest.Example Ruleset is true" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="462be744-c1cd-42e7-8617-8938ffab8051" name="Changes" comment="" />
+      <created>1649770455505</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1649770455505</updated>
+      <workItem from="1649770456681" duration="4679000" />
+      <workItem from="1650630155414" duration="11440000" />
+      <workItem from="1651163975590" duration="767000" />
+      <workItem from="1654199253290" duration="2151000" />
+      <workItem from="1654203270278" duration="3540000" />
+      <workItem from="1654551317802" duration="41000" />
+    </task>
+    <task id="LOCAL-00001" summary="chore: rename term to rule in quantifier">
+      <created>1649770908004</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1649770908004</updated>
+    </task>
+    <task id="LOCAL-00002" summary="chore: rename term to formula">
+      <created>1649771621657</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1649771621657</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fix: rename parameters to arguments">
+      <created>1649772625240</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1649772625240</updated>
+    </task>
+    <task id="LOCAL-00004" summary="chore: use minified version for main">
+      <created>1649776015667</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1649776015667</updated>
+    </task>
+    <task id="LOCAL-00005" summary="ci: add backmerge&#10;&#10;Fixes #34">
+      <created>1650630950110</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1650630950110</updated>
+    </task>
+    <task id="LOCAL-00006" summary="docs(implementation): fix typo">
+      <created>1650632812057</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1650632812057</updated>
+    </task>
+    <task id="LOCAL-00007" summary="feat: macros">
+      <created>1650632875190</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1650632875190</updated>
+    </task>
+    <task id="LOCAL-00008" summary="test: add tests and fix bugs">
+      <created>1650636579345</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1650636579345</updated>
+    </task>
+    <task id="LOCAL-00009" summary="test: add test and fix bug">
+      <created>1650638663418</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1650638663418</updated>
+    </task>
+    <task id="LOCAL-00010" summary="fix: fix validation">
+      <created>1650639745229</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1650639745229</updated>
+    </task>
+    <task id="LOCAL-00011" summary="chore: validation">
+      <created>1650639898816</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1650639898816</updated>
+    </task>
+    <task id="LOCAL-00012" summary="test: fix for timezones">
+      <created>1650640349914</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1650640349914</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fix: export enums">
+      <created>1651164094113</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1651164094113</updated>
+    </task>
+    <task id="LOCAL-00014" summary="init">
+      <created>1654203396589</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1654203396589</updated>
+    </task>
+    <task id="LOCAL-00015" summary="init">
+      <created>1654203414635</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1654203414635</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/rita-core/src/Assertions.js" />
+        <option value="$PROJECT_DIR$/rita-core/src/Parser.js" />
+        <option value="$PROJECT_DIR$/rita-core/src/Errors.js" />
+        <option value="$PROJECT_DIR$/rita-core/src/index.js" />
+        <option value="$PROJECT_DIR$/rita-core/src/Logger.js" />
+        <option value="$PROJECT_DIR$/rita-core/src/Tools.js" />
+        <option value="$PROJECT_DIR$/rita-core/src/schema/index.js" />
+        <option value="$PROJECT_DIR$/rita-core/src/logicElements/Quantifier.js" />
+        <option value="$PROJECT_DIR$/rita-core/src/logicElements/Formula.js" />
+        <option value="$PROJECT_DIR$/rita-core/src/logicElements/Calculation.js" />
+        <option value="$PROJECT_DIR$/rita-core/src/logicElements/Macro.js" />
+        <option value="$PROJECT_DIR$/rita-core/src/logicElements/Comparison.js" />
+        <option value="$PROJECT_DIR$/rita-core/src/logicElements/index.js" />
+        <option value="$PROJECT_DIR$/rita-core/src/logicElements/Atom.js" />
+        <option value="$PROJECT_DIR$/rita-core/src/logicElements/Operators.js" />
+        <option value="$PROJECT_DIR$/rita-core/src/logicElements/Plugin.js" />
+        <option value="$PROJECT_DIR$/rita-core/src/logicElements/Rule.js" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/persistent-rita" />
+      <path value="$PROJECT_DIR$/rita-core" />
+      <path value="$PROJECT_DIR$/rita-http" />
+      <path value="$PROJECT_DIR$/rita-smt" />
+    </ignored-roots>
+    <MESSAGE value="chore: rename term to rule in quantifier" />
+    <MESSAGE value="fix: rename term to formula" />
+    <MESSAGE value="fix: rename parameters to arguments" />
+    <MESSAGE value="chore: use minified version for main" />
+    <MESSAGE value="ci: add backmerge&#10;&#10;Fixes #34" />
+    <MESSAGE value="docs(implementation): Fix typo" />
+    <MESSAGE value="docs(implementation): fix typo" />
+    <MESSAGE value="feat: macros&#10;&#10;Fixes #13" />
+    <MESSAGE value="test: add tests and fix bugs" />
+    <MESSAGE value="test: add test and fix bug" />
+    <MESSAGE value="fix: fix validation" />
+    <MESSAGE value="chore: validation" />
+    <MESSAGE value="test: fix for timezones" />
+    <MESSAGE value="fix: export enums" />
+    <MESSAGE value="init" />
+    <option name="LAST_COMMIT_MESSAGE" value="init" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/test/schema.test.ts</url>
+          <line>128</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

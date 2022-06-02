@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/plugin.json",
+  "title": "Plugin",
+  "description": "Describes an plugin",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "plugin"
+      ]
+    },
+    "name": {
+      "description": "The plugins name",
+      "type": "string"
+    },
+    "formula": {
+      "$ref": "formula.json"
+    },
+    "options": {
+      "description": "The plugins options",
+      "type": "object"
+    }
+  },
+  "required": [
+    "type",
+    "name",
+    "formula"
+  ],
+  "additionalProperties": false
+}

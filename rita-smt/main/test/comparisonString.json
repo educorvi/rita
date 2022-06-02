@@ -1,0 +1,19 @@
+{
+  "$schema": "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/schema.json",
+  "rules": [
+    {
+      "id": "satisfiable",
+      "rule": {
+        "type": "comparison",
+        "operation": "equal",
+        "arguments": [
+          "testValue",
+          {
+            "type": "atom",
+            "path": "testPath"
+          }
+        ]
+      }
+    }
+  ]
+}
