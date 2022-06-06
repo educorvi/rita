@@ -1,9 +1,11 @@
 import PersistentRita, {PersistentRitaLogger} from "../src";
 import Ruleset from "../src/Ruleset"
 import {Parser} from "@educorvi/rita"
+// @ts-ignore
 import exampleMath from "./assets/exampleMath.json"
 import SQLite from "../src/Database/SQLite";
 import {DatabaseConnectionClosedError} from '../src';
+// @ts-ignore
 import dotenv from "dotenv";
 import MySQL from "../src/Database/MySQL";
 import Postgres from "../src/Database/Postgres";

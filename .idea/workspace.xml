@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="462be744-c1cd-42e7-8617-8938ffab8051" name="Changes" comment="build: move rita-core to webpack">
-      <change afterPath="$PROJECT_DIR$/persistent-rita/webpack.config.js" afterDir="false" />
+    <list default="true" id="462be744-c1cd-42e7-8617-8938ffab8051" name="Changes" comment="build: move persistent-rita to webpack">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/config/rush/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/common/config/rush/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistent-rita/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/persistent-rita/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistent-rita/rollup.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistent-rita/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/persistent-rita/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-core/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-core/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-http/docs/swagger.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-http/docs/swagger.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistent-rita/test/db.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/persistent-rita/test/db.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-http/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-http/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-http/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/rita-http/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +78,7 @@
     "nodejs.jest.jest_package": "/home/julian/projects/arbeit/rita/node_modules/jest",
     "nodejs_package_manager_path": "yarn",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "ts.external.directory.path": "/home/julian/projects/arbeit/rita/rita-http/node_modules/typescript/lib",
+    "ts.external.directory.path": "/home/julian/projects/arbeit/rita/rita-core/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -178,7 +174,7 @@
       <workItem from="1651163975590" duration="767000" />
       <workItem from="1654199253290" duration="2151000" />
       <workItem from="1654203270278" duration="3540000" />
-      <workItem from="1654551317802" duration="3792000" />
+      <workItem from="1654551317802" duration="4869000" />
     </task>
     <task id="LOCAL-00001" summary="chore: rename term to rule in quantifier">
       <created>1649770908004</created>
@@ -306,7 +302,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654553815349</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="build: move persistent-rita to webpack">
+      <created>1654555396664</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1654555396664</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -347,7 +350,8 @@
     <MESSAGE value="init" />
     <MESSAGE value="build: move rita-core to rollup" />
     <MESSAGE value="build: move rita-core to webpack" />
-    <option name="LAST_COMMIT_MESSAGE" value="build: move rita-core to webpack" />
+    <MESSAGE value="build: move persistent-rita to webpack" />
+    <option name="LAST_COMMIT_MESSAGE" value="build: move persistent-rita to webpack" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

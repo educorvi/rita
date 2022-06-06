@@ -8,14 +8,14 @@
     "generate-routes": "npx tsoa routes",
     "test": "LOGLEVEL=error mocha -r mocha-steps -r ts-node/register test/*.ts",
     "test:start-server": "start-server-and-test start http://localhost:3000 test",
-    "build": "yarn run generate-routes && yarn run spec && webpack && yarn run zip",
-    "doc": "yarn run spec",
+    "build": "pnpm run generate-routes && pnpm run spec && webpack && pnpm run zip",
+    "doc": "pnpm run spec",
     "spec": "npx tsoa spec",
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "dev:config": "ts-node-dev --respawn --transpile-only src/index.ts -- --config",
     "start": "node .",
     "semantic-release": "semantic-release",
-    "postversion": "yarn run build",
+    "postversion": "pnpm run build",
     "zip": "cd dist && bestzip dist.zip ./**/* ./*"
   },
   "repository": {
@@ -57,7 +57,8 @@
     "typescript": "^4.6.4",
     "webpack": "^5.72.1",
     "webpack-cli": "^4.9.2",
-    "webpack-node-externals": "^3.0.0"
+    "webpack-node-externals": "^3.0.0",
+    "@types/body-parser": "^1.19.2"
   },
   "dependencies": {
     "@educorvi/persistent-rita": "^3.0.0",
@@ -72,6 +73,7 @@
     "terminal-kit": "^2.4.0",
     "tslog": "^3.3.3",
     "tsoa": "^4.0.0",
-    "typeorm": "^0.3.6"
+    "typeorm": "^0.3.6",
+    "promise.any": "^2.0.4"
   }
 }
