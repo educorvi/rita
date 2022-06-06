@@ -5,42 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="462be744-c1cd-42e7-8617-8938ffab8051" name="Changes" comment="init">
+      <change afterPath="$PROJECT_DIR$/rita-core/webpack.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistent-rita/.releaserc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistent-rita/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/persistent-rita/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-core/.releaserc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/config/rush/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/common/config/rush/pnpm-lock.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rita-core/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-core/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-core/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/rita-core/src/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rita-core/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-core/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-http/.releaserc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-http/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-http/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-http/postInstall.js" beforeDir="false" afterPath="$PROJECT_DIR$/rita-http/postInstall.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/.releaserc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/core/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/core/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/core/.idea/git_toolbox_prj.xml" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/.idea/git_toolbox_prj.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/core/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/core/.idea/rita-smt.iml" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/.idea/rita-smt.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/core/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/core/docs/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/docs/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/core/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/core/src/SmtSolver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/src/SmtSolver.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/core/src/bin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/src/bin.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/core/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/core/src/simplify.ts" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/src/simplify.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/core/test/calculationComplex.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/test/calculationComplex.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/core/test/calculationSimple.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/test/calculationSimple.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/core/test/comparison.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/test/comparison.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/core/test/comparisonDate.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/test/comparisonDate.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/core/test/comparisonString.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/test/comparisonString.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/core/test/comparisonUnsat.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/test/comparisonUnsat.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/core/test/modulo.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/test/modulo.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/core/test/simpleRule.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/test/simpleRule.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/core/test/simpleRuleUnsat.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/test/simpleRuleUnsat.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/core/test/simplify.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/test/simplify.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/core/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/node-smtlib/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/node-smtlib/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rush.json" beforeDir="false" afterPath="$PROJECT_DIR$/rush.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +21,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -94,28 +65,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.14.2&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.11.38&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/julian/projects/arbeit/rita/test/implementationTests&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs.jest.jest_package&quot;: &quot;/home/julian/projects/arbeit/rita/node_modules/jest&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/julian/projects/arbeit/rita/rita-smt/node-smtlib/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "javascript.nodejs.core.library.configured.version": "16.14.2",
+    "javascript.nodejs.core.library.typings.version": "16.11.38",
+    "last_opened_file_path": "/home/julian/projects/arbeit/rita/test/implementationTests",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs.jest.jest_package": "/home/julian/projects/arbeit/rita/node_modules/jest",
+    "nodejs_package_manager_path": "yarn",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "ts.external.directory.path": "/home/julian/projects/arbeit/rita/rita-core/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/test/implementationTests" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/rita-core" />
     </key>
   </component>
   <component name="RunManager" selected="Jest.All Tests">
@@ -206,7 +180,7 @@
       <workItem from="1651163975590" duration="767000" />
       <workItem from="1654199253290" duration="2151000" />
       <workItem from="1654203270278" duration="3540000" />
-      <workItem from="1654551317802" duration="41000" />
+      <workItem from="1654551317802" duration="2379000" />
     </task>
     <task id="LOCAL-00001" summary="chore: rename term to rule in quantifier">
       <created>1649770908004</created>
@@ -313,7 +287,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654203414635</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="init">
+      <created>1654551554063</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1654551554063</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
