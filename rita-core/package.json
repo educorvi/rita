@@ -3,6 +3,7 @@
   "description": "JSON Schema for rule-based evaluation and an Typescript Implementation to evaluate it",
   "version": "3.1.2",
   "license": "MIT",
+  "sideEffects": false,
   "main": "dist/rita-core.js",
   "typings": "dist/index.d.ts",
   "files": [
@@ -19,8 +20,6 @@
     "build": "pnpm run clean && webpack",
     "test": "jest",
     "lint": "prettier -w src",
-    "size": "size-limit",
-    "analyze": "size-limit --why",
     "semantic-release": "semantic-release",
     "doc": "yarn run doc:implementation && doc:schema && git add docs",
     "doc:implementation": "npx typedoc --out docs/implementation src/index.ts",
@@ -40,16 +39,6 @@
     "trailingComma": "es5"
   },
   "author": "Julian Pollinger",
-  "size-limit": [
-    {
-      "path": "dist/rita.cjs.min.js",
-      "limit": "100 KB"
-    },
-    {
-      "path": "dist/rita.esm.min.js",
-      "limit": "100 KB"
-    }
-  ],
   "devDependencies": {
     "@adobe/jsonschema2md": "^7.0.0",
     "@types/deep-equal": "^1.0.1",
@@ -70,7 +59,7 @@
     "webpack": "^5.72.1",
     "webpack-cli": "^4.9.2",
     "ts-loader": "^9.3.0",
-    "terser-webpack-plugin": "~5.3.3",
+    "terser-webpack-plugin": "^5.3.3",
     "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {

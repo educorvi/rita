@@ -6,8 +6,9 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "dist/persistent-rita.cjs.js",
+  "main": "dist/persistent-rita.js",
   "typings": "dist/index.d.ts",
+  "sideEffects": false,
   "files": [
     "dist"
   ],
@@ -17,7 +18,7 @@
   "scripts": {
     "prepack": "yarn build",
     "prebuild": "rimraf dist",
-    "build": "rollup -c",
+    "build": "webpack",
     "test": "jest",
     "lint": "prettier -w src",
     "size": "size-limit",
@@ -37,34 +38,22 @@
     "useTabs": false,
     "trailingComma": "es5"
   },
-  "module": "dist/persistent-rita.esm.min.js",
-  "size-limit": [
-    {
-      "path": "dist/persistent-rita.cjs.min.js",
-      "limit": "300 KB"
-    },
-    {
-      "path": "dist/persistent-rita.esm.min.js",
-      "limit": "300 KB"
-    }
-  ],
   "devDependencies": {
     "@educorvi/rita": "^3.1.1",
-    "@rollup/plugin-commonjs": "^21.1.0",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^13.1.3",
     "@types/jest": "^27.0.3",
     "dotenv": "^16.0.1",
     "jest": "^27.4.5",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
-    "rollup": "^2.70.2",
-    "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-ts": "^2.0.5",
     "ts-jest": "^27.0.7",
     "tslib": "^2.3.1",
     "typedoc": "^0.22.15",
-    "typescript": "^4.6.4"
+    "typescript": "^4.6.4",
+    "webpack-node-externals": "^3.0.0",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "ts-loader": "^9.3.0",
+    "typeorm": "^0.3.6"
   },
   "repository": {
     "type": "git",

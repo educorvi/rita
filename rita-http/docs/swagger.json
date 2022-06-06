@@ -390,7 +390,8 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/ritaBody"
+								"$ref": "#/components/schemas/ritaBody",
+								"description": "The ruleset to save. Must fulfill the RITA Schema."
 							}
 						}
 					}

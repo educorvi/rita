@@ -1,21 +1,10 @@
 {
   // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
   "include": [
-    "src",
-    "types"
+    "src"
   ],
   "compilerOptions": {
-    //    Config for TypeORM
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    //Typescript
-    "module": "esnext",
-    "target": "ES6",
-    "lib": [
-      "dom",
-      "esnext"
-    ],
-    "resolveJsonModule": true,
+    "module": "es6",
     "importHelpers": true,
     // output .d.ts declaration files for consumers
     "declaration": true,
@@ -39,8 +28,12 @@
     "skipLibCheck": true,
     // error out if import and file system have a casing mismatch. Recommended by TS
     "forceConsistentCasingInFileNames": true,
-    // `tsdx build` ignores this option, but it is commonly used when type-checking separately with `tsc`
-    "noEmit": true
+    "resolveJsonModule": true,
+    "target": "ES6",
+    "outDir": "dist",
+
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
   },
   "typedocOptions": {
     "entryPoints": ["src/index.ts"],

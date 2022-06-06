@@ -4,13 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="462be744-c1cd-42e7-8617-8938ffab8051" name="Changes" comment="init">
-      <change afterPath="$PROJECT_DIR$/rita-core/webpack.config.js" afterDir="false" />
+    <list default="true" id="462be744-c1cd-42e7-8617-8938ffab8051" name="Changes" comment="build: move rita-core to webpack">
+      <change afterPath="$PROJECT_DIR$/persistent-rita/webpack.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/config/rush/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/common/config/rush/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistent-rita/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/persistent-rita/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistent-rita/rollup.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistent-rita/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/persistent-rita/tsconfig.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rita-core/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-core/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-core/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/rita-core/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-core/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-core/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-http/docs/swagger.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-http/docs/swagger.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +74,7 @@
     "WebServerToolWindowFactoryState": "false",
     "javascript.nodejs.core.library.configured.version": "16.14.2",
     "javascript.nodejs.core.library.typings.version": "16.11.38",
-    "last_opened_file_path": "/home/julian/projects/arbeit/rita/test/implementationTests",
+    "last_opened_file_path": "/home/julian/projects/arbeit/rita/persistent-rita",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -80,32 +82,20 @@
     "nodejs.jest.jest_package": "/home/julian/projects/arbeit/rita/node_modules/jest",
     "nodejs_package_manager_path": "yarn",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "ts.external.directory.path": "/home/julian/projects/arbeit/rita/rita-core/node_modules/typescript/lib",
+    "ts.external.directory.path": "/home/julian/projects/arbeit/rita/rita-http/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/persistent-rita" />
       <recent name="$PROJECT_DIR$/test/implementationTests" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/rita-core" />
     </key>
   </component>
-  <component name="RunManager" selected="Jest.All Tests">
-    <configuration name="Example Ruleset is true" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/test/implementationTests/macro.test.ts" />
-      <test-names>
-        <test-name value="Example Ruleset is true" />
-      </test-names>
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Docker.test/docker-compose.yaml: Compose Deployment">
     <configuration name="Expect 'length' to be correct" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -157,13 +147,21 @@
       <test-file value="$PROJECT_DIR$/test/implementationTests/macro.test.ts" />
       <method v="2" />
     </configuration>
+    <configuration name="test/docker-compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="persistent-rita/test/docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.test/docker-compose.yaml: Compose Deployment" />
         <item itemvalue="Jest.Validate Rule examples.convert to objects and back to json" />
         <item itemvalue="Jest.macro.test.ts" />
         <item itemvalue="Jest.Expect 'now' to be correct" />
         <item itemvalue="Jest.Expect 'length' to be correct" />
-        <item itemvalue="Jest.Example Ruleset is true" />
       </list>
     </recent_temporary>
   </component>
@@ -180,7 +178,7 @@
       <workItem from="1651163975590" duration="767000" />
       <workItem from="1654199253290" duration="2151000" />
       <workItem from="1654203270278" duration="3540000" />
-      <workItem from="1654551317802" duration="2379000" />
+      <workItem from="1654551317802" duration="3792000" />
     </task>
     <task id="LOCAL-00001" summary="chore: rename term to rule in quantifier">
       <created>1649770908004</created>
@@ -294,32 +292,25 @@
       <option name="project" value="LOCAL" />
       <updated>1654551554063</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="build: move rita-core to rollup">
+      <created>1654553776685</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1654553776685</updated>
+    </task>
+    <task id="LOCAL-00018" summary="build: move rita-core to webpack">
+      <created>1654553815349</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1654553815349</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-    <option name="exactExcludedFiles">
-      <list>
-        <option value="$PROJECT_DIR$/rita-core/src/Assertions.js" />
-        <option value="$PROJECT_DIR$/rita-core/src/Parser.js" />
-        <option value="$PROJECT_DIR$/rita-core/src/Errors.js" />
-        <option value="$PROJECT_DIR$/rita-core/src/index.js" />
-        <option value="$PROJECT_DIR$/rita-core/src/Logger.js" />
-        <option value="$PROJECT_DIR$/rita-core/src/Tools.js" />
-        <option value="$PROJECT_DIR$/rita-core/src/schema/index.js" />
-        <option value="$PROJECT_DIR$/rita-core/src/logicElements/Quantifier.js" />
-        <option value="$PROJECT_DIR$/rita-core/src/logicElements/Formula.js" />
-        <option value="$PROJECT_DIR$/rita-core/src/logicElements/Calculation.js" />
-        <option value="$PROJECT_DIR$/rita-core/src/logicElements/Macro.js" />
-        <option value="$PROJECT_DIR$/rita-core/src/logicElements/Comparison.js" />
-        <option value="$PROJECT_DIR$/rita-core/src/logicElements/index.js" />
-        <option value="$PROJECT_DIR$/rita-core/src/logicElements/Atom.js" />
-        <option value="$PROJECT_DIR$/rita-core/src/logicElements/Operators.js" />
-        <option value="$PROJECT_DIR$/rita-core/src/logicElements/Plugin.js" />
-        <option value="$PROJECT_DIR$/rita-core/src/logicElements/Rule.js" />
-      </list>
-    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -354,7 +345,9 @@
     <MESSAGE value="test: fix for timezones" />
     <MESSAGE value="fix: export enums" />
     <MESSAGE value="init" />
-    <option name="LAST_COMMIT_MESSAGE" value="init" />
+    <MESSAGE value="build: move rita-core to rollup" />
+    <MESSAGE value="build: move rita-core to webpack" />
+    <option name="LAST_COMMIT_MESSAGE" value="build: move rita-core to webpack" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
