@@ -15,11 +15,11 @@ import {SExpr, SNode} from "./smtlib";
 export default class LocalCVC5Solver extends LocalCVCSolver {
 
 
-    constructor(logic: string) {
+    constructor(logic : string) {
         super(logic);
     }
 
-    checkSat(): Promise<SatResult> {
+    checkSat() : Promise<SatResult> {
         return new Promise((callback, errback) => {
             this.add(smt.CheckSat());
 
@@ -30,14 +30,14 @@ export default class LocalCVC5Solver extends LocalCVCSolver {
         });
     }
 
-    simplify(formula: SNode): Promise<string> {
+    simplify(formula : SNode) : Promise<string> {
         this.add(new SExpr('simplify', formula));
 
         const child = this.spawnCVC();
 
         const stdout = this.setupIO(child);
         return new Promise((resolve) => {
-            stdout.on('data', (line: string) => {
+            stdout.on('data', (line : string) => {
                 resolve(line);
             });
         });

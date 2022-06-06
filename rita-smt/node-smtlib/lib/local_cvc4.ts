@@ -19,7 +19,7 @@ export default class LocalCVC4Solver extends LocalCVCSolver {
         this.setOption('strings-guess-model');
     }
 
-    checkSat(): Promise<SatResult> {
+    checkSat() : Promise<SatResult> {
         return new Promise((callback, errback) => {
             this.add(smt.CheckSat());
 

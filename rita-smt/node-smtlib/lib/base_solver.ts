@@ -7,16 +7,16 @@
 import * as smt from './smtlib';
 
 export type SatResult = {
-    satisfieable: boolean,
-    model: Record<string,number|boolean>|undefined
+    satisfieable : boolean,
+    model : Record<string,number|boolean>|undefined
 }
 
 export default class BaseSmtSolver {
     private _statements : smt.SNode[];
     withAssignments : boolean;
     timeLimit : number;
-    placeholders: Array<String> = [];
-    public readonly output: Array<string> = [];
+    placeholders : string[] = [];
+    public readonly output : string[] = [];
 
     constructor(logic = 'QF_ALL_SUPPORTED') {
         this._statements = [
@@ -28,11 +28,11 @@ export default class BaseSmtSolver {
         this.timeLimit = 180000;
     }
 
-    addPlaceholder(s: string) {
+    addPlaceholder(s : string) {
         this.placeholders.push(s);
     }
 
-    isPlaceholder(s: string): boolean {
+    isPlaceholder(s : string) : boolean {
         return this.placeholders.includes(s);
     }
 
@@ -42,7 +42,7 @@ export default class BaseSmtSolver {
         this.add(smt.SetOption('produce-models'));
     }
 
-    dump(f: ((s: string) => void) = console.log) : void {
+    dump(f : ((s : string) => void) = console.log) : void {
         for (const stmt of this._statements)
             f(stmt.toString());
 

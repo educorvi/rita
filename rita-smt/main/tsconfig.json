@@ -1,13 +1,15 @@
 {
   "compilerOptions": {
-    "target": "ES2015",
-    "module": "commonjs",
+    "target": "ES6",
+    "module": "es6",
+    "moduleResolution": "node",
     "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "dist",
     "declaration": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "lib": ["dom", "es6"]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "**/*.test.ts"]

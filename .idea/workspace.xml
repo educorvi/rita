@@ -4,11 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="462be744-c1cd-42e7-8617-8938ffab8051" name="Changes" comment="build: move persistent-rita to webpack">
+    <list default="true" id="462be744-c1cd-42e7-8617-8938ffab8051" name="Changes" comment="build: fix rita-http build">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistent-rita/test/db.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/persistent-rita/test/db.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/config/rush/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/common/config/rush/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistent-rita/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/persistent-rita/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rita-http/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-http/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-http/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/rita-http/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/main/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/main/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/node-smtlib/lib/base_solver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/node-smtlib/lib/base_solver.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/node-smtlib/lib/local_cvc.ts" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/node-smtlib/lib/local_cvc.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/node-smtlib/lib/local_cvc4.ts" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/node-smtlib/lib/local_cvc4.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/node-smtlib/lib/local_cvc5.ts" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/node-smtlib/lib/local_cvc5.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/node-smtlib/lib/smtlib.ts" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/node-smtlib/lib/smtlib.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-smt/node-smtlib/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/node-smtlib/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +182,7 @@
       <workItem from="1651163975590" duration="767000" />
       <workItem from="1654199253290" duration="2151000" />
       <workItem from="1654203270278" duration="3540000" />
-      <workItem from="1654551317802" duration="4869000" />
+      <workItem from="1654551317802" duration="6704000" />
     </task>
     <task id="LOCAL-00001" summary="chore: rename term to rule in quantifier">
       <created>1649770908004</created>
@@ -309,7 +317,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654555396664</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="build: fix rita-http build">
+      <created>1654556469689</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1654556469689</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -351,7 +366,8 @@
     <MESSAGE value="build: move rita-core to rollup" />
     <MESSAGE value="build: move rita-core to webpack" />
     <MESSAGE value="build: move persistent-rita to webpack" />
-    <option name="LAST_COMMIT_MESSAGE" value="build: move persistent-rita to webpack" />
+    <MESSAGE value="build: fix rita-http build" />
+    <option name="LAST_COMMIT_MESSAGE" value="build: fix rita-http build" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

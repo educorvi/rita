@@ -43,7 +43,7 @@ function DeclareFun(name : string, args : SNode[], ret : SNode) : SExpr {
     return new SExpr('declare-fun', name, new SExpr(...args), ret);
 }
 
-function DeclareConst(name: string, ret: SNode): SExpr {
+function DeclareConst(name : string, ret : SNode) : SExpr {
     return new SExpr('declare-const', name, ret);
 }
 function DefineFun(name : string, args : SNode[], ret : SNode, def : SNode) : SExpr {

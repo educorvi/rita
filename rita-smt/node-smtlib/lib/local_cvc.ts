@@ -4,32 +4,32 @@ import byline from "byline";
 import bl from "byline";
 
 export default abstract class LocalCVCSolver extends BaseSolver {
-    protected constructor(logic: string) {
+    protected constructor(logic : string) {
         super(logic);
         this.setOption('strings-exp');
     }
 
-    protected abstract spawnCVC(): ChildProcessWithoutNullStreams;
+    protected abstract spawnCVC() : ChildProcessWithoutNullStreams;
 
-    protected setupIO(child: ChildProcessWithoutNullStreams) {
+    protected setupIO(child : ChildProcessWithoutNullStreams) {
         child.stdin.setDefaultEncoding('utf8');
         this.forEachStatement((stmt) => child.stdin.write(stmt.toString()));
         child.stdin.end();
         child.stderr.setEncoding('utf8');
         const stderr = byline(child.stderr);
-        stderr.on('data', (data: string) => {
+        stderr.on('data', (data : string) => {
             console.error('SMT-ERR:', data);
         });
         child.stdout.setEncoding('utf8');
         return byline(child.stdout);
     }
 
-    protected parseOutput(stdout: bl.LineStream, errback: (reason?: any) => void, callback: (value: (PromiseLike<SatResult> | SatResult)) => void, child: ChildProcessWithoutNullStreams) {
-        let sat: boolean | undefined = undefined;
-        const assignment: Record<string, number | boolean> = {};
+    protected parseOutput(stdout : bl.LineStream, errback : (reason ?: any) => void, callback : (value : (PromiseLike<SatResult> | SatResult)) => void, child : ChildProcessWithoutNullStreams) {
+        let sat : boolean | undefined = undefined;
+        const assignment : Record<string, number | boolean> = {};
         let cidx = 0;
-        const constants: Record<string, number> = {};
-        stdout.on('data', (line: string) => {
+        const constants : Record<string, number> = {};
+        stdout.on('data', (line : string) => {
             this.output.push(line);
             if (line === 'sat') {
                 sat = true;
@@ -101,4 +101,4 @@ export default abstract class LocalCVCSolver extends BaseSolver {
 
         child.stdout.on('error', errback);
     }
-};
+}
