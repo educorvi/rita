@@ -4,19 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="462be744-c1cd-42e7-8617-8938ffab8051" name="Changes" comment="build: fix rita-http build">
+    <list default="true" id="462be744-c1cd-42e7-8617-8938ffab8051" name="Changes" comment="build: use local versions">
+      <change afterPath="$PROJECT_DIR$/persistent-rita/config/rush-project.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rita-core/config/rush-project.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rita-http/config/rush-project.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rita-smt/main/config/rush-project.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rita-smt/node-smtlib/config/rush-project.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/config/rush/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/common/config/rush/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistent-rita/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/persistent-rita/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-http/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-http/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/main/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/main/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/main/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/node-smtlib/lib/base_solver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/node-smtlib/lib/base_solver.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/node-smtlib/lib/local_cvc.ts" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/node-smtlib/lib/local_cvc.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/node-smtlib/lib/local_cvc4.ts" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/node-smtlib/lib/local_cvc4.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/node-smtlib/lib/local_cvc5.ts" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/node-smtlib/lib/local_cvc5.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/node-smtlib/lib/smtlib.ts" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/node-smtlib/lib/smtlib.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rita-smt/node-smtlib/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/rita-smt/node-smtlib/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/config/rush/build-cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/common/config/rush/build-cache.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,25 +72,31 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "javascript.nodejs.core.library.configured.version": "16.14.2",
-    "javascript.nodejs.core.library.typings.version": "16.11.38",
-    "last_opened_file_path": "/home/julian/projects/arbeit/rita/persistent-rita",
+    "javascript.nodejs.core.library.typings.version": "16.11.39",
+    "last_opened_file_path": "/home/julian/projects/arbeit/rita/rita-smt/node-smtlib",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs.jest.jest_package": "/home/julian/projects/arbeit/rita/node_modules/jest",
-    "nodejs_package_manager_path": "yarn",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "ts.external.directory.path": "/home/julian/projects/arbeit/rita/rita-core/node_modules/typescript/lib",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "pnpm",
+    "settings.editor.selected.configurable": "settings.nodejs",
+    "ts.external.directory.path": "/home/julian/projects/arbeit/rita/persistent-rita/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/rita-smt/node-smtlib" />
+      <recent name="$PROJECT_DIR$/rita-smt/main" />
+      <recent name="$PROJECT_DIR$/rita-http" />
       <recent name="$PROJECT_DIR$/persistent-rita" />
       <recent name="$PROJECT_DIR$/test/implementationTests" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/rita-core/config" />
+      <recent name="$PROJECT_DIR$/common/config/rush" />
       <recent name="$PROJECT_DIR$/rita-core" />
     </key>
   </component>
@@ -182,7 +183,8 @@
       <workItem from="1651163975590" duration="767000" />
       <workItem from="1654199253290" duration="2151000" />
       <workItem from="1654203270278" duration="3540000" />
-      <workItem from="1654551317802" duration="6704000" />
+      <workItem from="1654551317802" duration="7138000" />
+      <workItem from="1654788704244" duration="1338000" />
     </task>
     <task id="LOCAL-00001" summary="chore: rename term to rule in quantifier">
       <created>1649770908004</created>
@@ -324,7 +326,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654556469689</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="build: use local versions">
+      <created>1654558283454</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1654558283454</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -367,7 +376,8 @@
     <MESSAGE value="build: move rita-core to webpack" />
     <MESSAGE value="build: move persistent-rita to webpack" />
     <MESSAGE value="build: fix rita-http build" />
-    <option name="LAST_COMMIT_MESSAGE" value="build: fix rita-http build" />
+    <MESSAGE value="build: use local versions" />
+    <option name="LAST_COMMIT_MESSAGE" value="build: use local versions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -379,5 +389,9 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
