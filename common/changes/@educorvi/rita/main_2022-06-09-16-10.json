@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@educorvi/rita",
+      "comment": "Add Plugin and remove XOR",
+      "type": "major"
+    }
+  ],
+  "packageName": "@educorvi/rita"
+}
