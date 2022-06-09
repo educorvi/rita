@@ -1,0 +1,17 @@
+{
+  "name": "@educorvi/rita",
+  "entries": [
+    {
+      "version": "4.0.0",
+      "tag": "@educorvi/rita_v4.0.0",
+      "date": "Thu, 09 Jun 2022 16:12:17 GMT",
+      "comments": {
+        "major": [
+          {
+            "comment": "Add Plugin and remove XOR"
+          }
+        ]
+      }
+    }
+  ]
+}

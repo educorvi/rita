@@ -1,0 +1,20 @@
+{
+  "name": "@educorvi/rita-smt",
+  "entries": [
+    {
+      "version": "1.2.1",
+      "tag": "@educorvi/rita-smt_v1.2.1",
+      "date": "Thu, 09 Jun 2022 16:12:17 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@educorvi/rita\" from `^3.1.1` to `^4.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@educorvi/rita\" from `>=3.1.1 <4` to `4.0.0`"
+          }
+        ]
+      }
+    }
+  ]
+}

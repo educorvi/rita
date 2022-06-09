@@ -1,7 +1,7 @@
 {
   "name": "@educorvi/rita",
   "description": "JSON Schema for rule-based evaluation and an Typescript Implementation to evaluate it",
-  "version": "3.1.2",
+  "version": "4.0.0",
   "license": "MIT",
   "sideEffects": false,
   "main": "dist/rita-core.js",

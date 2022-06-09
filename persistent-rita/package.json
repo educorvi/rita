@@ -1,5 +1,5 @@
 {
-  "version": "3.0.0",
+  "version": "3.0.1",
   "name": "@educorvi/persistent-rita",
   "author": "Julian Pollinger",
   "license": "MIT",
@@ -39,7 +39,7 @@
     "trailingComma": "es5"
   },
   "devDependencies": {
-    "@educorvi/rita": "workspace:^3.1.1",
+    "@educorvi/rita": "workspace:^4.0.0",
     "@types/jest": "^27.0.3",
     "dotenv": "^16.0.1",
     "jest": "^27.4.5",
@@ -63,7 +63,7 @@
     "reflect-metadata": "^0.1.13"
   },
   "peerDependencies": {
-    "@educorvi/rita": "3.x",
+    "@educorvi/rita": "4.0.0",
     "mysql2": "^2.3.3",
     "pg": "^8.7.1",
     "sqlite3": "^5.0.6",
