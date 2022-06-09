@@ -3,7 +3,7 @@ import { Formula } from './Formula';
 import { assertNumberOrDate } from '../Assertions';
 import { DateTime, Duration } from 'luxon';
 import { RulesetError } from '../Errors';
-import { PluginInterface } from './Plugin';
+import { Plugin } from './Plugin';
 
 /**
  * Possible units for time intervals
@@ -55,7 +55,7 @@ export class Calculation extends Formula {
      * The arguments of the calculation
      */
     public arguments: Array<
-        Atom | number | Date | Calculation | PluginInterface
+        Atom | number | Date | Calculation | Plugin
     >;
 
     /**
@@ -82,7 +82,7 @@ export class Calculation extends Formula {
      */
     constructor(
         formulaArguments: Array<
-            Atom | number | Date | Calculation | PluginInterface
+            Atom | number | Date | Calculation | Plugin
         >,
         operation: operations,
         dateResultUnit: timeUnits = timeUnits.seconds,

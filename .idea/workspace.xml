@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="462be744-c1cd-42e7-8617-8938ffab8051" name="Changes" comment="build: use local versions">
-      <change afterPath="$PROJECT_DIR$/persistent-rita/config/rush-project.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rita-core/config/rush-project.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rita-http/config/rush-project.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rita-smt/main/config/rush-project.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rita-smt/node-smtlib/config/rush-project.json" afterDir="false" />
+    <list default="true" id="462be744-c1cd-42e7-8617-8938ffab8051" name="Changes" comment="chore: changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/config/rush/build-cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/common/config/rush/build-cache.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-core/src/Parser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/rita-core/src/Parser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-core/src/logicElements/Calculation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/rita-core/src/logicElements/Calculation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rita-core/src/logicElements/Plugin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/rita-core/src/logicElements/Plugin.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +181,7 @@
       <workItem from="1654199253290" duration="2151000" />
       <workItem from="1654203270278" duration="3540000" />
       <workItem from="1654551317802" duration="7138000" />
-      <workItem from="1654788704244" duration="1338000" />
+      <workItem from="1654788704244" duration="2177000" />
     </task>
     <task id="LOCAL-00001" summary="chore: rename term to rule in quantifier">
       <created>1649770908004</created>
@@ -333,7 +330,21 @@
       <option name="project" value="LOCAL" />
       <updated>1654558283454</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="build: use build cache">
+      <created>1654790130269</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1654790130269</updated>
+    </task>
+    <task id="LOCAL-00023" summary="chore: changes">
+      <created>1654790229514</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1654790229514</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -377,7 +388,9 @@
     <MESSAGE value="build: move persistent-rita to webpack" />
     <MESSAGE value="build: fix rita-http build" />
     <MESSAGE value="build: use local versions" />
-    <option name="LAST_COMMIT_MESSAGE" value="build: use local versions" />
+    <MESSAGE value="build: use build cache" />
+    <MESSAGE value="chore: changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

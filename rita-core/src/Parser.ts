@@ -17,7 +17,7 @@ import schemas, { schema } from './schema';
 import { AnyValidateFunction } from 'ajv/dist/types';
 import addFormats from 'ajv-formats';
 import { InternalError, UnimplementedError, UsageError } from './Errors';
-import { PluginInterface } from './logicElements/Plugin';
+import { Plugin } from './logicElements/Plugin';
 
 const ajv = new Ajv({ schemas: schemas });
 addFormats(ajv);
@@ -41,7 +41,7 @@ interface PluginClass {
         options: Record<any, any>,
         childFormula: Formula,
         name: string
-    ): PluginInterface;
+    ): Plugin;
 }
 
 /**
@@ -205,7 +205,7 @@ export default class Parser {
      */
     private parseCalculationParams(
         formulaArguments: Array<number | string | Record<string, any>>
-    ): Array<Atom | number | Date | Calculation | PluginInterface> {
+    ): Array<Atom | number | Date | Calculation | Plugin> {
         const params = [];
         for (const parameter of formulaArguments) {
             if (typeof parameter === 'number') {
@@ -214,7 +214,7 @@ export default class Parser {
                 params.push(<Date>testForDate(parameter));
             } else {
                 params.push(
-                    <Atom | Calculation | PluginInterface>(
+                    <Atom | Calculation | Plugin>(
                         this.parseFormula(parameter)
                     )
                 );
