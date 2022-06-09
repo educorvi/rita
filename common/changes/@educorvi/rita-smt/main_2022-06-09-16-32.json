@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@educorvi/rita-smt",
+      "comment": "Update Rita to v4",
+      "type": "major"
+    }
+  ],
+  "packageName": "@educorvi/rita-smt"
+}
