@@ -8,6 +8,8 @@ import {version} from "../package.json"
 import commandExists from "command-exists";
 import {simplify} from "./index";
 
+const parser = new Parser();
+
 program
     .version(version);
 program
@@ -26,7 +28,7 @@ program
                 console.error("Can't open file: " + filepath);
                 process.exit(-1)
             }
-            const rp = Parser.parseRuleSet(r);
+            const rp = parser.parseRuleSet(r);
             const s = new SmtSolver(true);
             for (const rule of rp) {
                 s.assertRule(rule);
@@ -64,7 +66,7 @@ program
                 console.error("Can't open file: " + filepath);
                 process.exit(-1)
             }
-            const rp = Parser.parseRuleSet(r);
+            const rp = parser.parseRuleSet(r);
             simplify(rp.map(r => r.rule))
                 .then(console.log)
                 .catch(console.error);
