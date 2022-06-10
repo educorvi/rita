@@ -1,11 +1,11 @@
 import {Body, Controller, Get, Path, Post, Route, SuccessResponse, Delete} from "@tsoa/runtime";
-import {Ruleset} from "@educorvi/persistent-rita";
+import PersistentRita, {Ruleset} from "@educorvi/persistent-rita";
 import {rita} from "../helper/globals";
 import {NotFoundError, UsageError} from "../Errors";
 import {Response, Security} from "tsoa";
 import {errorResponse} from "./responseTypes";
 import {satisfies as satisfiesVersion, major, minor} from "semver"
-import {version as ritaVersion, Parser} from "@educorvi/rita";
+import {version as ritaVersion} from "@educorvi/rita";
 
 /**
  * Controller for everything management related
@@ -73,7 +73,7 @@ export class RulesetManagementController extends Controller {
         const ritaRange = `${major(ritaVersion)}.0.0 - ${major(ritaVersion)}.${minor(ritaVersion)}.*`;
         if (ruleset.version && !satisfiesVersion(ruleset.version, ritaRange)) throw new UsageError(`Invalid version (${ruleset.version}) of rita! Valid versions are: ${ritaRange}`)
 
-        const v = Parser.getParser().validateRuleSetJSON(ruleset);
+        const v = PersistentRita.parser.validateRuleSetJSON(ruleset);
         if (!v.valid) {
             throw new UsageError("Invalid Ruleset: " + JSON.stringify(v.errors));
         }
@@ -84,7 +84,7 @@ export class RulesetManagementController extends Controller {
         let old = (await rita.getRuleset(rulesetID));
         data.name = data.name || old?.name || rulesetID;
         data.description = data.description || old?.description;
-        const r: Ruleset = new Ruleset(rulesetID, data.name, Parser.parseRuleSet(data));
+        const r: Ruleset = new Ruleset(rulesetID, data.name, PersistentRita.parser.parseRuleSet(data));
         await rita.saveRuleset(r);
         this.setStatus(201);
 
