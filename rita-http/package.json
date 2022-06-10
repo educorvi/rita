@@ -28,8 +28,8 @@
         "postinstall": "node postInstall.js",
         "spec": "npx tsoa spec",
         "start": "node .",
-        "test": "LOGLEVEL=error mocha -r mocha-steps -r ts-node/register test/*.ts",
-        "test:start-server": "start-server-and-test start http://localhost:3000 test",
+        "test:no-server": "LOGLEVEL=error mocha -r mocha-steps -r ts-node/register test/*.ts",
+        "test": "start-server-and-test start http://localhost:3000 test:no-server",
         "zip": "cd dist && bestzip dist.zip ./**/* ./*"
     },
     "dependencies": {
@@ -46,7 +46,10 @@
         "terminal-kit": "^2.4.0",
         "tslog": "^3.3.3",
         "tsoa": "^4.0.0",
-        "typeorm": "^0.3.6"
+        "typeorm": "^0.3.6",
+        "sqlite3": "~5.0.8",
+        "pg": "~8.7.3",
+        "mysql2": "~2.3.3"
     },
     "devDependencies": {
         "@commitlint/cli": "^17.0.0",

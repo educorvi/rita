@@ -1,10 +1,10 @@
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
-const webpack = require("webpack");
+const webpack = require('webpack');
 const fs = require('fs');
 
-const pjson = JSON.parse(fs.readFileSync('package.json'))
+const pjson = JSON.parse(fs.readFileSync('package.json'));
 
 module.exports = {
     entry: './src/index.ts',
@@ -15,7 +15,9 @@ module.exports = {
             name: 'rita-core',
             type: 'umd',
         },
+        globalObject: 'this',
     },
+    devtool: 'source-map',
     mode: 'production',
     module: {
         rules: [
@@ -37,7 +39,7 @@ module.exports = {
     externals: [nodeExternals()], // in order to ignore all modules in node_modules folder
     plugins: [
         new webpack.DefinePlugin({
-            'process.env.VERSION': JSON.stringify(pjson.version)
-        })
-    ]
+            'process.env.VERSION': JSON.stringify(pjson.version),
+        }),
+    ],
 };

@@ -11,8 +11,10 @@ module.exports = {
             name: 'persistent-rita',
             type: 'umd',
         },
+        globalObject: 'this',
     },
     mode: 'production',
+    devtool: 'source-map',
     module: {
         rules: [
             {

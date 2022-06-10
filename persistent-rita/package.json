@@ -18,7 +18,7 @@
         "build": "webpack",
         "doc": "npx typedoc",
         "prepack": "yarn build",
-        "test": "jest"
+        "test": "jest 2>&1"
     },
     "dependencies": {
         "reflect-metadata": "^0.1.13"

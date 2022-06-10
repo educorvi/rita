@@ -27,6 +27,13 @@
             "autoinstallerName": "rush-prettier",
 
             "shellCommand": "pretty-quick --staged"
+        },
+        {
+            "name": "test",
+            "commandKind": "bulk",
+            "summary": "Tests all projects",
+            "enableParallelism": true,
+            "allowWarningsInSuccessfulBuild": true
         }
         // {
         //   /**
