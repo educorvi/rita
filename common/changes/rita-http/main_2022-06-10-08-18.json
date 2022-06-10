@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "rita-http",
+      "comment": "Update to rita v4",
+      "type": "major"
+    }
+  ],
+  "packageName": "rita-http"
+}

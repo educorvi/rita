@@ -419,7 +419,8 @@
     {
       "packageName": "rita-http",
       "projectFolder": "rita-http",
-      "shouldPublish": false
+      "shouldPublish": false,
+      "versionPolicyName": "simpleIndividual"
     }
 
     // {
