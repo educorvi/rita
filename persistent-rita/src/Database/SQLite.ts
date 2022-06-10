@@ -17,7 +17,7 @@ export default class SQLite extends TypeORM {
      */
     public static getDB(
         sqlitePath: string = './sqlite.db',
-        logger: PersistentRitaLogger = new DefaultConsoleLogger(),
+        logger: PersistentRitaLogger = new DefaultConsoleLogger()
     ): Promise<SQLite> {
         return new Promise((resolve, reject) => {
             if (SQLite.db) {
@@ -32,7 +32,8 @@ export default class SQLite extends TypeORM {
                     entities: [SQLiteModel],
                     synchronize: true,
                     logger: logger.getTypeORMLogger(),
-                }).initialize()
+                })
+                    .initialize()
                     .then((d) => {
                         SQLite.db = new SQLite(d);
                         logger.log('Database connection established');

@@ -37,7 +37,10 @@ export class Quantifier extends Formula {
     }
 
     evaluate(data: Record<string, any>): boolean {
-        if(!this.validate()) throw new RulesetError('Invalid: ' + JSON.stringify(this.toJsonReady()));
+        if (!this.validate())
+            throw new RulesetError(
+                'Invalid: ' + JSON.stringify(this.toJsonReady())
+            );
 
         //Get the array from the data
         let ar;

@@ -1,42 +1,42 @@
 {
-  "$schema": "https://json-schema.org/draft/2019-09/schema",
-  "$id": "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/rule.json",
-  "title": "Rule",
-  "type": "object",
-  "properties": {
-    "id": {
-      "type": "string"
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/rule.json",
+    "title": "Rule",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string"
+        },
+        "comment": {
+            "type": "string",
+            "description": "A comment about what the rule does"
+        },
+        "rule": {
+            "$ref": "formula.json"
+        }
     },
-    "comment": {
-      "type": "string",
-      "description": "A comment about what the rule does"
-    },
-    "rule": {
-      "$ref": "formula.json"
-    }
-  },
-  "required": ["id", "rule"],
-  "examples": [
-    {
-      "id": "rule1",
-      "rule": {
-        "type": "and",
-        "arguments": [
-          {
-            "type": "atom",
-            "path": "member"
-          },
-          {
-            "type": "not",
-            "arguments": [
-              {
-                "type": "atom",
-                "path": "employee"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  ]
+    "required": ["id", "rule"],
+    "examples": [
+        {
+            "id": "rule1",
+            "rule": {
+                "type": "and",
+                "arguments": [
+                    {
+                        "type": "atom",
+                        "path": "member"
+                    },
+                    {
+                        "type": "not",
+                        "arguments": [
+                            {
+                                "type": "atom",
+                                "path": "employee"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
 }

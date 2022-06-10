@@ -59,8 +59,13 @@ export class Atom extends Formula {
         };
     }
 
-    evaluate(data: Record<string, any>): FormulaResults | Array<FormulaResults> {
-        if(!this.validate()) throw new RulesetError('Invalid: ' + JSON.stringify(this.toJsonReady()));
+    evaluate(
+        data: Record<string, any>
+    ): FormulaResults | Array<FormulaResults> {
+        if (!this.validate())
+            throw new RulesetError(
+                'Invalid: ' + JSON.stringify(this.toJsonReady())
+            );
 
         const val = Atom.getPropertyByString(data, this.path);
 

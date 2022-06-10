@@ -54,9 +54,7 @@ export class Calculation extends Formula {
     /**
      * The arguments of the calculation
      */
-    public arguments: Array<
-        Atom | number | Date | Calculation | Plugin
-    >;
+    public arguments: Array<Atom | number | Date | Calculation | Plugin>;
 
     /**
      * The operation of the calculation
@@ -81,9 +79,7 @@ export class Calculation extends Formula {
      * @param dateCalculationUnit The unit to calculate when calculating with dates and numbers
      */
     constructor(
-        formulaArguments: Array<
-            Atom | number | Date | Calculation | Plugin
-        >,
+        formulaArguments: Array<Atom | number | Date | Calculation | Plugin>,
         operation: operations,
         dateResultUnit: timeUnits = timeUnits.seconds,
         dateCalculationUnit: timeUnits = timeUnits.seconds

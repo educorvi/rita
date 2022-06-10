@@ -214,9 +214,7 @@ export default class Parser {
                 params.push(<Date>testForDate(parameter));
             } else {
                 params.push(
-                    <Atom | Calculation | Plugin>(
-                        this.parseFormula(parameter)
-                    )
+                    <Atom | Calculation | Plugin>this.parseFormula(parameter)
                 );
             }
         }

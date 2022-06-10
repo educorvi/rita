@@ -51,7 +51,10 @@ export class Comparison extends Formula {
     }
 
     evaluate(data: Record<string, any>): boolean {
-        if(!this.validate()) throw new RulesetError('Invalid: ' + JSON.stringify(this.toJsonReady()));
+        if (!this.validate())
+            throw new RulesetError(
+                'Invalid: ' + JSON.stringify(this.toJsonReady())
+            );
 
         //if one of the arguments is either an Atom or a Calculation evaluate it first
         const p1 =
@@ -84,9 +87,11 @@ export class Comparison extends Formula {
     }
 
     validate(): boolean {
-        return this.arguments.length === 2
-            && this.arguments.map((it) =>
-                it instanceof Formula ? it.validate() : !!it)
-                .reduce((p, c) => p && c);
+        return (
+            this.arguments.length === 2 &&
+            this.arguments
+                .map((it) => (it instanceof Formula ? it.validate() : !!it))
+                .reduce((p, c) => p && c)
+        );
     }
 }

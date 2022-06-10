@@ -1,6 +1,6 @@
-import express from "express";
-import {UnauthorizedError} from "../Errors";
-import {configDB} from "./globals";
+import express from 'express';
+import { UnauthorizedError } from '../Errors';
+import { configDB } from './globals';
 
 /**
  * Function to check users permissions
@@ -14,26 +14,27 @@ export function expressAuthentication(
     scopes?: string[]
 ): Promise<any> {
     return new Promise(async (resolve, reject) => {
-        if (securityName === "api_key") {
-            let key = await configDB.getApiKey(request.header("X-API-KEY") || "*");
+        if (securityName === 'api_key') {
+            let key = await configDB.getApiKey(
+                request.header('X-API-KEY') || '*'
+            );
             if (!key) {
-                key = await configDB.getApiKey("*");
+                key = await configDB.getApiKey('*');
             }
             for (const scope of scopes) {
                 switch (scope) {
-                    case "view":
+                    case 'view':
                         if (!key.view) reject(new UnauthorizedError());
                         break;
-                    case "manage":
+                    case 'manage':
                         if (!key.manage) reject(new UnauthorizedError());
                         break;
-                    case "evaluate":
+                    case 'evaluate':
                         if (!key.evaluate) reject(new UnauthorizedError());
                         break;
                 }
             }
         }
-
 
         resolve(null);
     });

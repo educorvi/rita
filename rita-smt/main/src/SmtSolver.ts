@@ -14,20 +14,28 @@ import {
     Or,
     SExpr,
     SNode,
-    Sub
-} from "@educorvi/smtlib";
-import {Atom, Calculation, Comparison, comparisons, Formula, operations, Operator, Rule} from "@educorvi/rita";
+    Sub,
+} from '@educorvi/smtlib';
+import {
+    Atom,
+    Calculation,
+    Comparison,
+    comparisons,
+    Formula,
+    operations,
+    Operator,
+    Rule,
+} from '@educorvi/rita';
 
 enum types {
-    boolean = "Bool",
-    number = "Real",
-    string = "String"
+    boolean = 'Bool',
+    number = 'Real',
+    string = 'String',
 }
 
 export default class SmtSolver {
-    public readonly solver: LocalCVC5Solver = new LocalCVC5Solver("ALL");
+    public readonly solver: LocalCVC5Solver = new LocalCVC5Solver('ALL');
     private declaredConsts: Array<string> = [];
-
 
     constructor(produceModel = false) {
         if (produceModel) {
@@ -42,17 +50,19 @@ export default class SmtSolver {
         }
     }
 
-    parseFormula(rule: Formula | string | number | Date, type: types = types.boolean): SNode {
-        if (typeof rule === "string") {
+    parseFormula(
+        rule: Formula | string | number | Date,
+        type: types = types.boolean
+    ): SNode {
+        if (typeof rule === 'string') {
             return `"${rule}"`;
         }
-        if (typeof rule === "number") {
+        if (typeof rule === 'number') {
             return rule.toString();
         }
         if (rule instanceof Date) {
             return rule.getTime().toString();
         }
-
 
         if (rule instanceof Operator) {
             return this.parseOperator(rule);
@@ -63,12 +73,12 @@ export default class SmtSolver {
         } else if (rule instanceof Calculation) {
             return this.parseCalculation(rule);
         } else {
-            throw new Error("unknown:\n" + JSON.stringify(rule.toJsonReady()));
+            throw new Error('unknown:\n' + JSON.stringify(rule.toJsonReady()));
         }
     }
 
-    private parseModulo(arg1: SNode | string, arg2: SNode | string):SNode {
-        return Sub(arg1, Mult(new SExpr("to_int", Div(arg1, arg2)), arg2))
+    private parseModulo(arg1: SNode | string, arg2: SNode | string): SNode {
+        return Sub(arg1, Mult(new SExpr('to_int', Div(arg1, arg2)), arg2));
     }
 
     private parseCalculation(rule: Calculation): SNode {
@@ -86,10 +96,15 @@ export default class SmtSolver {
             case operations.divide:
                 return Div(...funcArgs);
             case operations.modulo:
-                if(funcArgs.length>2) throw new Error("For modulo only two arguments are supported");
+                if (funcArgs.length > 2)
+                    throw new Error(
+                        'For modulo only two arguments are supported'
+                    );
                 return this.parseModulo(funcArgs[0], funcArgs[1]);
             default:
-                throw new Error("unknown:\n" + JSON.stringify(rule.toJsonReady()));
+                throw new Error(
+                    'unknown:\n' + JSON.stringify(rule.toJsonReady())
+                );
         }
     }
 
@@ -112,31 +127,38 @@ export default class SmtSolver {
                 func = GEq;
                 break;
             default:
-                throw new Error("unknown:\n" + JSON.stringify(rule.toJsonReady()));
+                throw new Error(
+                    'unknown:\n' + JSON.stringify(rule.toJsonReady())
+                );
         }
         let type = types.number;
         for (const argument of rule.arguments) {
-            if (typeof argument === "string") {
+            if (typeof argument === 'string') {
                 type = types.string;
             }
         }
-        return func(this.parseFormula(rule.arguments[0], type), this.parseFormula(rule.arguments[1], type))
+        return func(
+            this.parseFormula(rule.arguments[0], type),
+            this.parseFormula(rule.arguments[1], type)
+        );
     }
 
     private parseOperator(rule: Operator): SNode {
         let func: (...args: SNode[]) => SNode;
         switch (rule.toJsonReady().type) {
-            case "and":
+            case 'and':
                 func = And;
                 break;
-            case "or":
+            case 'or':
                 func = Or;
                 break;
-            case "not":
+            case 'not':
                 func = Not;
                 break;
             default:
-                throw new Error("unknown:\n" + JSON.stringify(rule.toJsonReady()));
+                throw new Error(
+                    'unknown:\n' + JSON.stringify(rule.toJsonReady())
+                );
         }
         const funcArgs: Array<SNode | string> = [];
         for (const argument of rule.arguments) {
@@ -150,7 +172,7 @@ export default class SmtSolver {
     }
 
     private parseAtom(rule: Atom, type: types): string {
-        this.declareConstIfNotExists(rule.path, type)
+        this.declareConstIfNotExists(rule.path, type);
         return rule.path;
     }
 }

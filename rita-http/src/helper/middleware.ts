@@ -1,14 +1,17 @@
-import express, {ErrorRequestHandler, NextFunction, Request, Response} from "express";
-import {logger} from "./globals";
-import bodyParser from "body-parser";
-import {NotFoundError, UnauthorizedError} from "../Errors";
-import {ValidateError} from "@tsoa/runtime";
-
+import express, {
+    ErrorRequestHandler,
+    NextFunction,
+    Request,
+    Response,
+} from 'express';
+import { logger } from './globals';
+import bodyParser from 'body-parser';
+import { NotFoundError, UnauthorizedError } from '../Errors';
+import { ValidateError } from '@tsoa/runtime';
 
 /**
  * All the middleware for the express server
  */
-
 
 /**
  * Log requests.
@@ -17,7 +20,7 @@ import {ValidateError} from "@tsoa/runtime";
  * @param next
  */
 function accessLogger(req: Request, res: Response, next: NextFunction) {
-    logger.debug(req.method + ": " + req.originalUrl);
+    logger.debug(req.method + ': ' + req.originalUrl);
     next();
 }
 
@@ -25,12 +28,11 @@ function accessLogger(req: Request, res: Response, next: NextFunction) {
  * Export of every middleware
  */
 export const middleware = [
-    bodyParser.urlencoded({extended: true}),
+    bodyParser.urlencoded({ extended: true }),
     bodyParser.json(),
-    express.static("docs"),
+    express.static('docs'),
     accessLogger,
 ];
-
 
 /**
  * Handle errors.
@@ -39,11 +41,16 @@ export const middleware = [
  * @param res
  * @param next
  */
-export const errorHandler: ErrorRequestHandler = (err: any, req: Request, res: Response, next: NextFunction) => {
+export const errorHandler: ErrorRequestHandler = (
+    err: any,
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
     // 404 - Not Found
     if (err instanceof NotFoundError) {
-        logger.debug("404 on " + req.url);
-        return res.status(404).json({message: err.message});
+        logger.debug('404 on ' + req.url);
+        return res.status(404).json({ message: err.message });
     }
 
     // 422 - Validation failed
@@ -51,7 +58,7 @@ export const errorHandler: ErrorRequestHandler = (err: any, req: Request, res: R
         logger.debug(`Caught Validation Error for ${req.path}:`);
         logger.debug(err.fields);
         return res.status(422).json({
-            message: "Validation Failed",
+            message: 'Validation Failed',
             details: err?.fields,
         });
     }
@@ -60,15 +67,15 @@ export const errorHandler: ErrorRequestHandler = (err: any, req: Request, res: R
     if (err instanceof UnauthorizedError) {
         logger.debug(err);
         return res.status(401).json({
-            message: "Unauthorized"
-        })
+            message: 'Unauthorized',
+        });
     }
 
     // Variable 4xx Errors
     if (err?.statusCode >= 400 && err?.statusCode < 500) {
         logger.debug(err);
         return res.status(err.statusCode).json({
-            message: err.message
+            message: err.message,
         });
     }
 
@@ -76,9 +83,9 @@ export const errorHandler: ErrorRequestHandler = (err: any, req: Request, res: R
     if (err instanceof Error) {
         logger.error(err);
         return res.status(500).json({
-            message: "Internal Server Error",
+            message: 'Internal Server Error',
         });
     }
 
     next();
-}
+};

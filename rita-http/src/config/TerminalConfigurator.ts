@@ -1,7 +1,7 @@
-import {version} from "../../package.json"
-import {configDB} from "../helper/globals";
-import {ApiKey} from "./Database";
-import {logger} from "../CustomLogger";
+import { version } from '../../package.json';
+import { configDB } from '../helper/globals';
+import { ApiKey } from './Database';
+import { logger } from '../CustomLogger';
 
 const termkit = require('terminal-kit');
 const term = termkit.terminal;
@@ -10,13 +10,16 @@ const term = termkit.terminal;
  * Helper functions
  */
 
-
 /**
  * Clears the terminal and sets the heading
  * @param additionalText Text to append to the heading
  */
 function clearAndHeading(additionalText?: string) {
-    term.clear().bold.underline.cyan(`RITA HTTP v${version + (!!additionalText ? ' - ' + additionalText : '')}\n`);
+    term.clear().bold.underline.cyan(
+        `RITA HTTP v${
+            version + (!!additionalText ? ' - ' + additionalText : '')
+        }\n`
+    );
 }
 
 /**
@@ -28,7 +31,7 @@ function pressKeyToContinue(next: () => void) {
     term.cyan('Press any key to continue...\n');
     term.once('key', () => {
         term.grabInput(false);
-        next()
+        next();
     });
 }
 
@@ -49,8 +52,8 @@ function pressCTRLCToCancel() {
  * @param next Function to continue with
  */
 function catchError(e: Error, next: () => void) {
-    term.clear().bold.underline.red("Error\n");
-    term.red(e.message + "\n\n");
+    term.clear().bold.underline.red('Error\n');
+    term.red(e.message + '\n\n');
     pressKeyToContinue(next);
 }
 
@@ -60,55 +63,57 @@ function catchError(e: Error, next: () => void) {
  */
 function boolToString(bool: boolean): string {
     if (bool) {
-        return "^Gtrue";
+        return '^Gtrue';
     } else {
-        return "^Rfalse";
+        return '^Rfalse';
     }
 }
 
 /**
  * Data needed to generate an API Key
  */
-type APIKeyData={
-    name: string,
-    view: boolean,
-    manage: boolean,
-    evaluate: boolean
-}
+type APIKeyData = {
+    name: string;
+    view: boolean;
+    manage: boolean;
+    evaluate: boolean;
+};
 
 /**
  * Get data to generate an API Key from the user
  * @param defaultName Optional default name
  */
-async function getAPIKeyData(defaultName?: string):Promise<APIKeyData> {
+async function getAPIKeyData(defaultName?: string): Promise<APIKeyData> {
     function printGranted(bool: boolean) {
         if (bool) {
-            term.bold.green(" Granted\n");
+            term.bold.green(' Granted\n');
         } else {
-            term.bold.red(" Denied\n");
+            term.bold.red(' Denied\n');
         }
     }
 
-    term("\n");
+    term('\n');
 
     term('Please enter a name: ');
-    const name = await term.inputField({default: defaultName}).promise
+    const name = await term.inputField({ default: defaultName }).promise;
 
-    term("\n")
+    term('\n');
 
     term('View Permission? [Y|n]');
-    const view = await term.yesOrNo({yes: ['y', 'ENTER'], no: ['n']}).promise;
+    const view = await term.yesOrNo({ yes: ['y', 'ENTER'], no: ['n'] }).promise;
     printGranted(view);
 
     term('Manage Permission? [Y|n]');
-    const manage = await term.yesOrNo({yes: ['y', 'ENTER'], no: ['n']}).promise;
+    const manage = await term.yesOrNo({ yes: ['y', 'ENTER'], no: ['n'] })
+        .promise;
     printGranted(manage);
 
     term('Evaluate Permission? [Y|n]');
-    const evaluate = await term.yesOrNo({yes: ['y', 'ENTER'], no: ['n']}).promise;
+    const evaluate = await term.yesOrNo({ yes: ['y', 'ENTER'], no: ['n'] })
+        .promise;
     printGranted(evaluate);
 
-    return {name, view, manage, evaluate}
+    return { name, view, manage, evaluate };
 }
 
 /**
@@ -117,8 +122,8 @@ async function getAPIKeyData(defaultName?: string):Promise<APIKeyData> {
 async function selectKey(): Promise<ApiKey> {
     const keys = await configDB.getAllApiKeys();
 
-    const options = keys.map(item => `${item.name} (${item.api_key})`);
-    options.push("Cancel");
+    const options = keys.map((item) => `${item.name} (${item.api_key})`);
+    options.push('Cancel');
     const selected = await term.singleColumnMenu(options).promise;
 
     if (selected.selectedIndex === keys.length) {
@@ -128,87 +133,98 @@ async function selectKey(): Promise<ApiKey> {
     return keys[selected.selectedIndex];
 }
 
-
 /**
  * Menu functions
  */
-
 
 /**
  * Show all API Keys
  */
 async function viewAPIKeys() {
-    clearAndHeading("API Keys")
-    const table = [
-        ["Name", "Key", "View", "Manage", "Evaluate", "Created"]
-    ]
+    clearAndHeading('API Keys');
+    const table = [['Name', 'Key', 'View', 'Manage', 'Evaluate', 'Created']];
 
-    const keys = await configDB.getAllApiKeys()
+    const keys = await configDB.getAllApiKeys();
     for (const key of keys) {
-        table.push([key.name, key.api_key, boolToString(key.view), boolToString(key.manage), boolToString(key.evaluate), key.created.toISOString()])
+        table.push([
+            key.name,
+            key.api_key,
+            boolToString(key.view),
+            boolToString(key.manage),
+            boolToString(key.evaluate),
+            key.created.toISOString(),
+        ]);
     }
     term.table(table, {
         hasBorder: true,
-        firstRowTextAttr: {bgColor: 'blue'},
+        firstRowTextAttr: { bgColor: 'blue' },
         borderChars: 'lightRounded',
         fit: true,
-        contentHasMarkup: true
-    })
+        contentHasMarkup: true,
+    });
 
     pressKeyToContinue(apiMenu);
-
 }
-
-
 
 /**
  * Add an API Key
  */
 async function addApiKey() {
-    clearAndHeading("Add API Key");
+    clearAndHeading('Add API Key');
 
-    const {name, view, manage, evaluate} = await getAPIKeyData();
+    const { name, view, manage, evaluate } = await getAPIKeyData();
 
-    const key: ApiKey = await ApiKey.generateApiKey(name, view, manage, evaluate, configDB);
-    configDB.setApiKey(key).then(() => {
-        term.cyan.bold(`\nYour API Key: ${key.api_key}\n\n`);
-        pressKeyToContinue(apiMenu);
-    }).catch(e => {
-        catchError(e, apiMenu)
-    });
+    const key: ApiKey = await ApiKey.generateApiKey(
+        name,
+        view,
+        manage,
+        evaluate,
+        configDB
+    );
+    configDB
+        .setApiKey(key)
+        .then(() => {
+            term.cyan.bold(`\nYour API Key: ${key.api_key}\n\n`);
+            pressKeyToContinue(apiMenu);
+        })
+        .catch((e) => {
+            catchError(e, apiMenu);
+        });
 }
-
 
 /**
  * Edit a Key
  */
 async function editKey() {
-    clearAndHeading("Edit API Key");
+    clearAndHeading('Edit API Key');
     const key = await selectKey();
     if (!key) {
         await apiMenu();
         return;
     }
 
-    const {name, view, manage, evaluate} = await getAPIKeyData(key.name);
+    const { name, view, manage, evaluate } = await getAPIKeyData(key.name);
     key.name = name;
     key.view = view;
     key.manage = manage;
     key.evaluate = evaluate;
 
-    configDB.setApiKey(key).then(() => {
-        term.cyan.bold(`\nChanges saved\n\n`);
-        pressKeyToContinue(apiMenu);
-    }).catch(e => {
-        catchError(e, apiMenu)
-    });
+    configDB
+        .setApiKey(key)
+        .then(() => {
+            term.cyan.bold(`\nChanges saved\n\n`);
+            pressKeyToContinue(apiMenu);
+        })
+        .catch((e) => {
+            catchError(e, apiMenu);
+        });
 }
 
 /**
  * Delete a key
  */
 async function deleteKey() {
-    clearAndHeading("Delete API Key");
+    clearAndHeading('Delete API Key');
 
     const key = await selectKey();
     if (!key) {
@@ -216,17 +232,22 @@ async function deleteKey() {
         return;
     }
 
-    if (key.api_key === "*") {
-        term.bold.red("\nCan not delete public access key. You can instead set all its permissions to false.\n\n");
+    if (key.api_key === '*') {
+        term.bold.red(
+            '\nCan not delete public access key. You can instead set all its permissions to false.\n\n'
+        );
         pressKeyToContinue(apiMenu);
         return;
     }
-    configDB.deleteApiKey(key).then(() => {
-        term.cyan.red(`\nDeleted\n\n`);
-        pressKeyToContinue(apiMenu);
-    }).catch(e => {
-        catchError(e, apiMenu)
-    });
+    configDB
+        .deleteApiKey(key)
+        .then(() => {
+            term.cyan.red(`\nDeleted\n\n`);
+            pressKeyToContinue(apiMenu);
+        })
+        .catch((e) => {
+            catchError(e, apiMenu);
+        });
 }
 
 /**
@@ -235,14 +256,8 @@ async function deleteKey() {
 async function apiMenu() {
     clearAndHeading('API Key Management');
 
-    const mainMenuItems = [
-        "View",
-        "Add",
-        "Edit",
-        "Delete",
-        "Back"
-    ]
-    const selected = await term.singleColumnMenu(mainMenuItems).promise
+    const mainMenuItems = ['View', 'Add', 'Edit', 'Delete', 'Back'];
+    const selected = await term.singleColumnMenu(mainMenuItems).promise;
     switch (selected.selectedIndex) {
         case 0:
             await viewAPIKeys();
@@ -267,11 +282,8 @@ async function apiMenu() {
 async function mainMenu() {
     clearAndHeading();
 
-    const mainMenuItems = [
-        "API Key Management",
-        "Quit"
-    ]
-    const selected = await term.singleColumnMenu(mainMenuItems).promise
+    const mainMenuItems = ['API Key Management', 'Quit'];
+    const selected = await term.singleColumnMenu(mainMenuItems).promise;
     switch (selected.selectedIndex) {
         case 0:
             await apiMenu();
@@ -290,4 +302,3 @@ export async function startConfigurator() {
     await mainMenu();
     return;
 }
-

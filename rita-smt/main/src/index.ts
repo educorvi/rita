@@ -1,4 +1,4 @@
-import SmtSolver from "./SmtSolver";
-import simplify from "./simplify";
+import SmtSolver from './SmtSolver';
+import simplify from './simplify';
 
-export {SmtSolver as default, simplify};
+export { SmtSolver as default, simplify };

@@ -1,67 +1,59 @@
 {
-  "$schema": "https://json-schema.org/draft/2019-09/schema",
-  "$id": "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/quantifier.json",
-  "title": "Quantifier",
-  "type": "object",
-  "description": "Quantifiers that can be used to evaluate rules on arrays in Data",
-  "properties": {
-    "type": {
-      "type": "string",
-      "enum": [
-        "forall",
-        "exists"
-      ]
-    },
-    "array": {
-      "title": "Data array",
-      "description": "This can either be an Atom that references an array in the data, or an array of rules",
-      "oneOf": [
-        {
-          "type": "array",
-          "items": {
-            "$ref": "formula.json"
-          }
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/quantifier.json",
+    "title": "Quantifier",
+    "type": "object",
+    "description": "Quantifiers that can be used to evaluate rules on arrays in Data",
+    "properties": {
+        "type": {
+            "type": "string",
+            "enum": ["forall", "exists"]
         },
-        {
-          "$ref": "atom.json"
+        "array": {
+            "title": "Data array",
+            "description": "This can either be an Atom that references an array in the data, or an array of rules",
+            "oneOf": [
+                {
+                    "type": "array",
+                    "items": {
+                        "$ref": "formula.json"
+                    }
+                },
+                {
+                    "$ref": "atom.json"
+                }
+            ]
+        },
+        "placeholder": {
+            "description": "This is a placeholder name for the current array object. This is the property name with wich you can reference the current value in the subsequent rule",
+            "type": "string",
+            "minLength": 1
+        },
+        "rule": {
+            "$ref": "formula.json"
         }
-      ]
     },
-    "placeholder": {
-      "description": "This is a placeholder name for the current array object. This is the property name with wich you can reference the current value in the subsequent rule",
-      "type": "string",
-      "minLength": 1
-    },
-    "rule": {
-      "$ref": "formula.json"
-    }
-  },
-  "additionalProperties": false,
-  "required": [
-    "type",
-    "array",
-    "placeholder",
-    "rule"
-  ],
-  "examples": [
-    {
-      "type": "forall",
-      "array": {
-        "type": "atom",
-        "path": "arrayOfIntValues"
-      },
-      "placeholder": "forallItem",
-      "rule": {
-        "type": "comparison",
-        "operation": "greater",
-        "arguments": [
-          5,
-          {
-            "type": "atom",
-            "path": "forallItem"
-          }
-        ]
-      }
-    }
-  ]
+    "additionalProperties": false,
+    "required": ["type", "array", "placeholder", "rule"],
+    "examples": [
+        {
+            "type": "forall",
+            "array": {
+                "type": "atom",
+                "path": "arrayOfIntValues"
+            },
+            "placeholder": "forallItem",
+            "rule": {
+                "type": "comparison",
+                "operation": "greater",
+                "arguments": [
+                    5,
+                    {
+                        "type": "atom",
+                        "path": "forallItem"
+                    }
+                ]
+            }
+        }
+    ]
 }

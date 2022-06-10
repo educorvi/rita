@@ -16,7 +16,7 @@ export default class MySQL extends TypeORM {
      */
     public static getDB(
         config: DatabaseConfig,
-        logger: PersistentRitaLogger = new DefaultConsoleLogger(),
+        logger: PersistentRitaLogger = new DefaultConsoleLogger()
     ): Promise<MySQL> {
         return new Promise((resolve, reject) => {
             if (MySQL.db) {
@@ -24,24 +24,22 @@ export default class MySQL extends TypeORM {
                 resolve(MySQL.db);
             } else {
                 logger.debug('Start new database connection...');
-                new DataSource(
-                    {
-                        name: 'mysql_connection',
-                        type: 'mysql',
-                        port: 3306,
-                        ...config,
-                        entities: [MySQLModel],
-                        synchronize: true,
-                        logger: logger.getTypeORMLogger(),
-                    },
-                ).initialize()
+                new DataSource({
+                    name: 'mysql_connection',
+                    type: 'mysql',
+                    port: 3306,
+                    ...config,
+                    entities: [MySQLModel],
+                    synchronize: true,
+                    logger: logger.getTypeORMLogger(),
+                })
+                    .initialize()
                     .then((d) => {
                         MySQL.db = new MySQL(d);
                         logger.log('Database connection established');
                         resolve(MySQL.db);
                     })
                     .catch(reject);
-
             }
         });
     }

@@ -4,13 +4,11 @@ import { assertArray } from '../Assertions';
 import { RulesetError } from '../Errors';
 
 export class Macro extends Formula {
-
     /** Indicates the type of this atom **/
     private readonly macro: 'now' | 'length';
 
     /** If the type of the macro is 'length', this is the Atom that contains the array **/
     private readonly array?: Atom;
-
 
     constructor(macro: 'now' | 'length', array?: Atom) {
         super();
@@ -19,7 +17,10 @@ export class Macro extends Formula {
     }
 
     evaluate(data: Record<string, any>): FormulaResults {
-        if (!this.validate()) throw new RulesetError('Invalid: ' + JSON.stringify(this.toJsonReady()));
+        if (!this.validate())
+            throw new RulesetError(
+                'Invalid: ' + JSON.stringify(this.toJsonReady())
+            );
 
         switch (this.macro) {
             case 'now':
@@ -44,5 +45,4 @@ export class Macro extends Formula {
     validate(): boolean {
         return !(this.macro === 'length' && !this.array);
     }
-
 }

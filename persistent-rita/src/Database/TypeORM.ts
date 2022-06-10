@@ -58,8 +58,8 @@ export default abstract class TypeORM implements DatabaseInterface {
             this.repository
                 .findOne({
                     where: {
-                        id: id
-                    }
+                        id: id,
+                    },
                 })
                 .then((res) => resolve(res?.toRita()))
                 .catch(reject);
@@ -140,7 +140,9 @@ export abstract class SQLModel {
         return new Ruleset(
             this.id,
             this.name,
-            PersistentRita.parser.parseRuleSet({ rules: JSON.parse(this.rules) }),
+            PersistentRita.parser.parseRuleSet({
+                rules: JSON.parse(this.rules),
+            }),
             this.description
         );
     }

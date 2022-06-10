@@ -1,83 +1,71 @@
 {
-  "$schema": "https://json-schema.org/draft/2019-09/schema",
-  "$id": "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/comparison.json",
-  "description": "Compare strings, dates or numbers with each other",
-  "title": "Comparison",
-  "type": "object",
-  "properties": {
-    "type": {
-      "type": "string",
-      "enum": [
-        "comparison"
-      ]
-    },
-    "operation": {
-      "description": "Selects how the arguments should be compared",
-      "type": "string",
-      "enum": [
-        "greater",
-        "smaller",
-        "greaterOrEqual",
-        "smallerOrEqual",
-        "equal"
-      ]
-    },
-    "arguments": {
-      "type": "array",
-      "minItems": 2,
-      "maxItems": 2,
-      "items": {
-        "oneOf": [
-          {
-            "$ref": "atom.json"
-          },
-          {
-            "$ref": "plugin.json"
-          },
-          {
-            "$ref": "macro.json"
-          },
-          {
-            "type": "number"
-          },
-          {
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/comparison.json",
+    "description": "Compare strings, dates or numbers with each other",
+    "title": "Comparison",
+    "type": "object",
+    "properties": {
+        "type": {
             "type": "string",
-            "format": "date-time"
-          },
-          {
-            "type": "string"
-          },
-          {
-            "$ref": "calculation.json"
-          }
-        ]
-      }
-    }
-  },
-  "required": [
-    "type",
-    "operation",
-    "arguments"
-  ],
-  "additionalProperties": false,
-  "examples": [
-    {
-      "comment": "This evaluates to \"5>2\"",
-      "type": "comparison",
-      "operation": "greater",
-      "arguments": [
-        5,
-        2
-      ]
+            "enum": ["comparison"]
+        },
+        "operation": {
+            "description": "Selects how the arguments should be compared",
+            "type": "string",
+            "enum": [
+                "greater",
+                "smaller",
+                "greaterOrEqual",
+                "smallerOrEqual",
+                "equal"
+            ]
+        },
+        "arguments": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+                "oneOf": [
+                    {
+                        "$ref": "atom.json"
+                    },
+                    {
+                        "$ref": "plugin.json"
+                    },
+                    {
+                        "$ref": "macro.json"
+                    },
+                    {
+                        "type": "number"
+                    },
+                    {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    {
+                        "type": "string"
+                    },
+                    {
+                        "$ref": "calculation.json"
+                    }
+                ]
+            }
+        }
     },
-    {
-      "comment": "Check two Strings for equality",
-      "type": "comparison",
-      "operation": "equal",
-      "arguments": [
-        "test",
-        "test1"
-      ]
-    }
-  ]
+    "required": ["type", "operation", "arguments"],
+    "additionalProperties": false,
+    "examples": [
+        {
+            "comment": "This evaluates to \"5>2\"",
+            "type": "comparison",
+            "operation": "greater",
+            "arguments": [5, 2]
+        },
+        {
+            "comment": "Check two Strings for equality",
+            "type": "comparison",
+            "operation": "equal",
+            "arguments": ["test", "test1"]
+        }
+    ]
 }

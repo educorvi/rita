@@ -16,7 +16,7 @@ export default class Postgres extends TypeORM {
      */
     public static getDB(
         config: DatabaseConfig,
-        logger: PersistentRitaLogger = new DefaultConsoleLogger(),
+        logger: PersistentRitaLogger = new DefaultConsoleLogger()
     ): Promise<Postgres> {
         return new Promise((resolve, reject) => {
             if (Postgres.db) {
@@ -32,7 +32,8 @@ export default class Postgres extends TypeORM {
                     entities: [PostgresModel],
                     synchronize: true,
                     logger: logger.getTypeORMLogger(),
-                }).initialize()
+                })
+                    .initialize()
                     .then((d) => {
                         Postgres.db = new Postgres(d);
                         logger.log('Database connection established');
