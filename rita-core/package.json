@@ -20,13 +20,12 @@
         "src/schema"
     ],
     "scripts": {
-        "build": "pnpm run clean && webpack",
+        "build": "npm run clean && webpack",
         "clean": "rimraf dist dist_zip",
-        "doc": "yarn run doc:implementation && doc:schema && git add docs",
+        "doc": "npm run doc:implementation && npm run doc:schema && git add docs",
         "doc:implementation": "npx typedoc --out docs/implementation src/index.ts",
         "doc:schema": "jsonschema2md -d src/schema -o docs/schema -e json -x -",
-        "prepack": "pnpm build",
-        "semantic-release": "semantic-release",
+        "prepack": "npm run build",
         "test": "jest 2>&1"
     },
     "dependencies": {

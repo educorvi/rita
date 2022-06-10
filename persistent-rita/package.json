@@ -17,7 +17,7 @@
         "prebuild": "rimraf dist",
         "build": "webpack",
         "doc": "npx typedoc",
-        "prepack": "yarn build",
+        "prepack": "npm build",
         "test": "jest 2>&1"
     },
     "dependencies": {

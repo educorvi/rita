@@ -8,8 +8,6 @@ RUN chmod +x /wait
 WORKDIR /app
 
 COPY package.json .
-COPY yarn.lock .
-COPY postInstall.js .
 RUN yarn install
 
 COPY src src
