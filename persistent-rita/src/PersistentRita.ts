@@ -3,13 +3,22 @@ import {
     PersistentRitaLogger,
 } from './Helper/PersistentRitaLogger';
 import DatabaseInterface from './DatabaseInterface';
-import { setLogger } from '@educorvi/rita';
+import { Parser, PluginClass, setLogger } from '@educorvi/rita';
 import Ruleset from './Ruleset';
 
 /**
  * Persistent Rita
  */
 export class PersistentRita {
+
+    private static plugins: Map<string, PluginClass> = new Map<string, PluginClass>();
+    public static parser: Parser = new Parser();
+
+    public static setPlugins(plugins: Map<string, PluginClass>) {
+        this.plugins = plugins;
+        this.parser = new Parser(this.plugins);
+    }
+
     getLogger(): PersistentRitaLogger {
         return this.logger;
     }

@@ -36,7 +36,7 @@ interface validationResult {
     errors: Array<any>;
 }
 
-interface PluginClass {
+export interface PluginClass {
     new (
         options: Record<any, any>,
         childFormula: Formula,

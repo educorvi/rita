@@ -2,7 +2,7 @@ import { Column, DataSource, PrimaryColumn, Repository } from 'typeorm';
 import { DatabaseConnectionClosedError } from '../Helper/Errors';
 import Ruleset from '../Ruleset';
 import DatabaseInterface from '../DatabaseInterface';
-import { Parser } from '@educorvi/rita';
+import { PersistentRita } from '../PersistentRita';
 
 export type DatabaseConfig = {
     database: string;
@@ -140,7 +140,7 @@ export abstract class SQLModel {
         return new Ruleset(
             this.id,
             this.name,
-            Parser.parseRuleSet({ rules: JSON.parse(this.rules) }),
+            PersistentRita.parser.parseRuleSet({ rules: JSON.parse(this.rules) }),
             this.description
         );
     }
