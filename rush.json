@@ -272,6 +272,9 @@
      * in the commit message, and then customize Rush's message to contain that string.
      */
     // "changeLogUpdateCommitMessage": "Update changelogs [skip ci]"
+
+    "versionBumpCommitMessage": "chore: Bump versions [skip ci]",
+    "changeLogUpdateCommitMessage": "chore: Update changelogs [skip ci]"
   },
 
   "repository": {
