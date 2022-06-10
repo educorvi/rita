@@ -4,34 +4,31 @@
 name: Build & Test
 
 on:
-  push:
-    branches: [ "main", "develop" ]
-  pull_request:
-    branches: [ "main", "develop" ]
+    push:
+        branches: ['main', 'develop']
+    pull_request:
+        branches: ['main', 'develop']
 
 jobs:
-  build:
+    build:
+        runs-on: ubuntu-latest
 
-    runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [14.x, 16.x]
+                # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
-    steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'pnpm'
-        cache-dependency-path: 'common/config/rush/pnpm-lock.yaml'
-    - name: Install
-      run: node common/scripts/install-run-rush.js install --no-link
-    - name: Link
-      run: node common/scripts/install-run-rush.js link
-    - name: Build
-      run: node common/scripts/install-run-rush.js rebuild
-    - name: Test
-      run: node common/scripts/install-run-rush.js test
+        steps:
+            - uses: actions/checkout@v3
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v3
+              with:
+                  node-version: ${{ matrix.node-version }}
+            - name: Install
+              run: node common/scripts/install-run-rush.js install --no-link
+            - name: Link
+              run: node common/scripts/install-run-rush.js link
+            - name: Build
+              run: node common/scripts/install-run-rush.js rebuild
+            - name: Test
+              run: node common/scripts/install-run-rush.js test
