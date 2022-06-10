@@ -25,9 +25,7 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
             - name: Install
-              run: node common/scripts/install-run-rush.js install --no-link
-            - name: Link
-              run: node common/scripts/install-run-rush.js link
+              run: node common/scripts/install-run-rush.js install
             - name: Build
               run: node common/scripts/install-run-rush.js rebuild
             - name: Test
