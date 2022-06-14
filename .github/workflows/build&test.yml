@@ -57,7 +57,7 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
             - name: Copy http .env
-              run: cp rita-http/test/.env rita-http/.env
+              run: cp rita-http/test/test.env rita-http/.env
             - name: Install
               run: node common/scripts/install-run-rush.js install
             - name: Build
