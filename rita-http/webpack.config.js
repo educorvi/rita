@@ -3,8 +3,8 @@ const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
     entry: './src/index.ts',
-    target: "node",
-    mode: "production",
+    target: 'node',
+    mode: 'production',
     module: {
         rules: [
             {
@@ -15,12 +15,13 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.js']
+        extensions: ['.tsx', '.ts', '.js'],
     },
     output: {
         filename: 'ritaAPI.js',
         path: path.resolve(__dirname, 'dist'),
         clean: true,
+        globalObject: 'this',
     },
     externalsPresets: { node: true },
     externals: [nodeExternals()],
