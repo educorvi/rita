@@ -12,6 +12,8 @@
         "dist"
     ],
     "scripts": {
+        "_phase:build": "rushx build",
+        "_phase:test": "rushx test",
         "build": "tsc",
         "prepack": "npm run build",
         "runbin": "ts-node src/bin.ts",

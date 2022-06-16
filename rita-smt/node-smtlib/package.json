@@ -12,6 +12,8 @@
         "lib"
     ],
     "scripts": {
+        "_phase:build": "rushx build",
+        "_phase:test": "rushx test",
         "build": "tsc --build tsconfig.json",
         "coverage": "nyc report --reporter=text-lcov | coveralls",
         "lint": "eslint --ext .js,.jsx,.ts,.tsx ./lib ./test",

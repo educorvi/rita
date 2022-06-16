@@ -19,6 +19,7 @@ jobs:
                 # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
         env:
+            # Persistent Rita
             MYSQL_DATABASE: prita
             MYSQL_HOST: localhost
             MYSQL_USER: root
@@ -27,7 +28,16 @@ jobs:
             PSQL_HOST: localhost
             PSQL_USER: postgres
             PSQL_PASSWORD: postgres
-            # Service containers to run with `container-job`
+            # Rita Http
+            PORT: 3000
+            LOGLEVEL: info
+            DB_TYPE: POSTGRES
+            DB_HOST: localhost
+            DB_PORT: 5432
+            DB_USERNAME: postgres
+            DB_PASSWORD: postgres
+            DB_DATABASE: postgres
+        # Service containers to run with `container-job`
         services:
             # Label used to access the service container
             postgres:
@@ -56,11 +66,7 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node-version }}
-            - name: Copy http .env
-              run: cp rita-http/test/test.env rita-http/.env
             - name: Install
               run: node common/scripts/install-run-rush.js install
-            - name: Build
-              run: node common/scripts/install-run-rush.js rebuild
-            - name: Test
-              run: node common/scripts/install-run-rush.js test --verbose
+            - name: Build and test
+              run: node common/scripts/install-run-rush.js build-and-test

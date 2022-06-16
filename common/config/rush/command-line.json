@@ -29,6 +29,21 @@
             "shellCommand": "pretty-quick --staged"
         },
         {
+            "commandKind": "phased",
+            "name": "build",
+            "phases": ["_phase:build"],
+            "enableParallelism": true,
+            "incremental": true
+        },
+        {
+            "commandKind": "phased",
+            "name": "build-and-test",
+            "summary": "Build and test all projects.",
+            "phases": ["_phase:build", "_phase:test"],
+            "enableParallelism": true,
+            "incremental": true
+        },
+        {
             "name": "test",
             "commandKind": "bulk",
             "summary": "Tests all projects",
@@ -323,5 +338,23 @@
         //     }
         //   ]
         // }
+    ],
+    "phases": [
+        {
+            "name": "_phase:build",
+            "dependencies": {
+                "upstream": ["_phase:build"]
+            },
+            "ignoreMissingScript": true,
+            "allowWarningsOnSuccess": true
+        },
+        {
+            "name": "_phase:test",
+            "dependencies": {
+                "self": ["_phase:build"]
+            },
+            "ignoreMissingScript": true,
+            "allowWarningsOnSuccess": true
+        }
     ]
 }

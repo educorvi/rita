@@ -20,6 +20,8 @@
     "author": "Julian Pollinger",
     "main": "dist/ritaAPI.js",
     "scripts": {
+        "_phase:build": "rushx build",
+        "_phase:test": "rushx test",
         "build": "npm run generate-routes && npm run spec && webpack && npm run zip",
         "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
         "dev:config": "ts-node-dev --respawn --transpile-only src/index.ts -- --config",
