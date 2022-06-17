@@ -8,32 +8,54 @@ Describes macros. Available macros are `now` and `length`
 
 | Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
 | :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Allowed               | none                | [macro.json](../../src/schema/macro.json "open original schema") |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [macro.json](../../src/schema/macro.json 'open original schema') |
 
 ## Macro Type
 
 `object` ([Macro](macro.md))
 
+## Macro Examples
+
+```json
+{
+    "type": "macro",
+    "macro": {
+        "type": "now"
+    }
+}
+```
+
+```json
+{
+    "type": "macro",
+    "macro": {
+        "type": "length",
+        "array": {
+            "type": "atom",
+            "path": "customers"
+        }
+    }
+}
+```
+
 # Macro Properties
 
 | Property        | Type     | Required | Nullable       | Defined by                                                                                                                        |
 | :-------------- | :------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------- |
-| [type](#type)   | `string` | Required | cannot be null | [Macro](macro-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json#/properties/type")   |
-| [macro](#macro) | Merged   | Required | cannot be null | [Macro](macro-properties-macro.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json#/properties/macro") |
+| [type](#type)   | `string` | Required | cannot be null | [Macro](macro-properties-type.md 'https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json#/properties/type')   |
+| [macro](#macro) | Merged   | Required | cannot be null | [Macro](macro-properties-macro.md 'https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json#/properties/macro') |
 
 ## type
 
-
-
 `type`
 
-*   is required
+-   is required
 
-*   Type: `string`
+-   Type: `string`
 
-*   cannot be null
+-   cannot be null
 
-*   defined in: [Macro](macro-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json#/properties/type")
+-   defined in: [Macro](macro-properties-type.md 'https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json#/properties/type')
 
 ### type Type
 
@@ -49,17 +71,15 @@ Describes macros. Available macros are `now` and `length`
 
 ## macro
 
-
-
 `macro`
 
-*   is required
+-   is required
 
-*   Type: merged type ([Details](macro-properties-macro.md))
+-   Type: merged type ([Details](macro-properties-macro.md))
 
-*   cannot be null
+-   cannot be null
 
-*   defined in: [Macro](macro-properties-macro.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json#/properties/macro")
+-   defined in: [Macro](macro-properties-macro.md 'https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json#/properties/macro')
 
 ### macro Type
 
@@ -67,6 +87,6 @@ merged type ([Details](macro-properties-macro.md))
 
 one (and only one) of
 
-*   [now](macro-properties-macro-oneof-now.md "check type definition")
+-   [now](macro-properties-macro-oneof-now.md 'check type definition')
 
-*   [length](macro-properties-macro-oneof-length.md "check type definition")
+-   [length](macro-properties-macro-oneof-length.md 'check type definition')

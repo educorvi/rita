@@ -8,7 +8,7 @@ Returns the length of an array
 
 | Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                         |
 | :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :----------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Allowed               | none                | [macro.json\*](../../src/schema/macro.json "open original schema") |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [macro.json\*](../../src/schema/macro.json 'open original schema') |
 
 ## 1 Type
 
@@ -18,22 +18,20 @@ Returns the length of an array
 
 | Property        | Type     | Required | Nullable       | Defined by                                                                                                                                                                             |
 | :-------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [type](#type)   | `string` | Optional | cannot be null | [Macro](macro-properties-macro-oneof-length-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json#/properties/macro/oneOf/1/properties/type") |
-| [array](#array) | `object` | Optional | cannot be null | [Macro](atom.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/atom.json#/properties/macro/oneOf/1/properties/array")                                                |
+| [type](#type)   | `string` | Optional | cannot be null | [Macro](macro-properties-macro-oneof-length-properties-type.md 'https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json#/properties/macro/oneOf/1/properties/type') |
+| [array](#array) | `object` | Optional | cannot be null | [Macro](atom.md 'https://raw.githubusercontent.com/educorvi/rita/main/src/schema/atom.json#/properties/macro/oneOf/1/properties/array')                                                |
 
 ## type
 
-
-
 `type`
 
-*   is optional
+-   is optional
 
-*   Type: `string`
+-   Type: `string`
 
-*   cannot be null
+-   cannot be null
 
-*   defined in: [Macro](macro-properties-macro-oneof-length-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json#/properties/macro/oneOf/1/properties/type")
+-   defined in: [Macro](macro-properties-macro-oneof-length-properties-type.md 'https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json#/properties/macro/oneOf/1/properties/type')
 
 ### type Type
 
@@ -53,13 +51,13 @@ Describes an atom. Those can be used to read Data
 
 `array`
 
-*   is optional
+-   is optional
 
-*   Type: `object` ([Atom](atom.md))
+-   Type: `object` ([Atom](atom.md))
 
-*   cannot be null
+-   cannot be null
 
-*   defined in: [Macro](atom.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/atom.json#/properties/macro/oneOf/1/properties/array")
+-   defined in: [Macro](atom.md 'https://raw.githubusercontent.com/educorvi/rita/main/src/schema/atom.json#/properties/macro/oneOf/1/properties/array')
 
 ### array Type
 

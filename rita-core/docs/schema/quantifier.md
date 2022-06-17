@@ -8,33 +8,33 @@ Quantifiers that can be used to evaluate rules on arrays in Data
 
 | Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                 |
 | :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :------------------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [quantifier.json](../../src/schema/quantifier.json "open original schema") |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [quantifier.json](../../src/schema/quantifier.json 'open original schema') |
 
 ## Quantifier Type
 
-unknown ([Quantifier](quantifier.md))
+`object` ([Quantifier](quantifier.md))
 
 ## Quantifier Examples
 
 ```json
 {
-  "type": "forall",
-  "array": {
-    "type": "atom",
-    "path": "arrayOfIntValues"
-  },
-  "placeholder": "forallItem",
-  "rule": {
-    "type": "comparison",
-    "operation": "greater",
-    "arguments": [
-      5,
-      {
+    "type": "forall",
+    "array": {
         "type": "atom",
-        "path": "forallItem"
-      }
-    ]
-  }
+        "path": "arrayOfIntValues"
+    },
+    "placeholder": "forallItem",
+    "rule": {
+        "type": "comparison",
+        "operation": "greater",
+        "arguments": [
+            5,
+            {
+                "type": "atom",
+                "path": "forallItem"
+            }
+        ]
+    }
 }
 ```
 
@@ -42,24 +42,22 @@ unknown ([Quantifier](quantifier.md))
 
 | Property                    | Type     | Required | Nullable       | Defined by                                                                                                                                                   |
 | :-------------------------- | :------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [type](#type)               | `string` | Required | cannot be null | [Quantifier](quantifier-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/quantifier.json#/properties/type")               |
-| [array](#array)             | Merged   | Required | cannot be null | [Quantifier](quantifier-properties-data-array.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/quantifier.json#/properties/array")        |
-| [placeholder](#placeholder) | `string` | Required | cannot be null | [Quantifier](quantifier-properties-placeholder.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/quantifier.json#/properties/placeholder") |
-| [rule](#rule)               | Merged   | Required | cannot be null | [Quantifier](formula.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/formula.json#/properties/rule")                                     |
+| [type](#type)               | `string` | Required | cannot be null | [Quantifier](quantifier-properties-type.md 'https://raw.githubusercontent.com/educorvi/rita/main/src/schema/quantifier.json#/properties/type')               |
+| [array](#array)             | Merged   | Required | cannot be null | [Quantifier](quantifier-properties-data-array.md 'https://raw.githubusercontent.com/educorvi/rita/main/src/schema/quantifier.json#/properties/array')        |
+| [placeholder](#placeholder) | `string` | Required | cannot be null | [Quantifier](quantifier-properties-placeholder.md 'https://raw.githubusercontent.com/educorvi/rita/main/src/schema/quantifier.json#/properties/placeholder') |
+| [rule](#rule)               | Merged   | Required | cannot be null | [Quantifier](formula.md 'https://raw.githubusercontent.com/educorvi/rita/main/src/schema/formula.json#/properties/rule')                                     |
 
 ## type
 
-
-
 `type`
 
-*   is required
+-   is required
 
-*   Type: `string`
+-   Type: `string`
 
-*   cannot be null
+-   cannot be null
 
-*   defined in: [Quantifier](quantifier-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/quantifier.json#/properties/type")
+-   defined in: [Quantifier](quantifier-properties-type.md 'https://raw.githubusercontent.com/educorvi/rita/main/src/schema/quantifier.json#/properties/type')
 
 ### type Type
 
@@ -80,13 +78,13 @@ This can either be an Atom that references an array in the data, or an array of 
 
 `array`
 
-*   is required
+-   is required
 
-*   Type: merged type ([Data array](quantifier-properties-data-array.md))
+-   Type: merged type ([Data array](quantifier-properties-data-array.md))
 
-*   cannot be null
+-   cannot be null
 
-*   defined in: [Quantifier](quantifier-properties-data-array.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/quantifier.json#/properties/array")
+-   defined in: [Quantifier](quantifier-properties-data-array.md 'https://raw.githubusercontent.com/educorvi/rita/main/src/schema/quantifier.json#/properties/array')
 
 ### array Type
 
@@ -94,9 +92,9 @@ merged type ([Data array](quantifier-properties-data-array.md))
 
 one (and only one) of
 
-*   [Untitled array in Quantifier](quantifier-properties-data-array-oneof-0.md "check type definition")
+-   [Untitled array in Quantifier](quantifier-properties-data-array-oneof-0.md 'check type definition')
 
-*   [Atom](atom.md "check type definition")
+-   [Atom](atom.md 'check type definition')
 
 ## placeholder
 
@@ -104,13 +102,13 @@ This is a placeholder name for the current array object. This is the property na
 
 `placeholder`
 
-*   is required
+-   is required
 
-*   Type: `string`
+-   Type: `string`
 
-*   cannot be null
+-   cannot be null
 
-*   defined in: [Quantifier](quantifier-properties-placeholder.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/quantifier.json#/properties/placeholder")
+-   defined in: [Quantifier](quantifier-properties-placeholder.md 'https://raw.githubusercontent.com/educorvi/rita/main/src/schema/quantifier.json#/properties/placeholder')
 
 ### placeholder Type
 
@@ -122,17 +120,15 @@ This is a placeholder name for the current array object. This is the property na
 
 ## rule
 
-
-
 `rule`
 
-*   is required
+-   is required
 
-*   Type: merged type ([Formula](formula.md))
+-   Type: merged type ([Formula](formula.md))
 
-*   cannot be null
+-   cannot be null
 
-*   defined in: [Quantifier](formula.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/formula.json#/properties/rule")
+-   defined in: [Quantifier](formula.md 'https://raw.githubusercontent.com/educorvi/rita/main/src/schema/formula.json#/properties/rule')
 
 ### rule Type
 
@@ -140,14 +136,16 @@ merged type ([Formula](formula.md))
 
 one (and only one) of
 
-*   one (and only one) of
+-   one (and only one) of
 
-    *   [Non-Unary operator](operator-oneof-non-unary-operator.md "check type definition")
+    -   [Non-Unary operator](operator-oneof-non-unary-operator.md 'check type definition')
 
-    *   [Unary operator](operator-oneof-unary-operator.md "check type definition")
+    -   [Unary operator](operator-oneof-unary-operator.md 'check type definition')
 
-*   [Atom](atom.md "check type definition")
+-   [Atom](atom.md 'check type definition')
 
-*   [Comparison](comparison.md "check type definition")
+-   [Plugin](plugin.md 'check type definition')
 
-*   [Quantifier](quantifier.md "check type definition")
+-   [Comparison](comparison.md 'check type definition')
+
+-   [Quantifier](quantifier.md 'check type definition')

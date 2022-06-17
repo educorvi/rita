@@ -8,7 +8,7 @@ Requires at least two arguments
 
 | Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                               |
 | :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :----------------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [operator.json\*](../../src/schema/operator.json "open original schema") |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [operator.json\*](../../src/schema/operator.json 'open original schema') |
 
 ## 0 Type
 
@@ -18,22 +18,20 @@ Requires at least two arguments
 
 | Property                | Type     | Required | Nullable       | Defined by                                                                                                                                                                                   |
 | :---------------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [type](#type)           | `string` | Required | cannot be null | [Operator](operator-oneof-non-unary-operator-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/type")                    |
-| [arguments](#arguments) | `array`  | Required | cannot be null | [Operator](operator-oneof-non-unary-operator-properties-multiple-arguments.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/arguments") |
+| [type](#type)           | `string` | Required | cannot be null | [Operator](operator-oneof-non-unary-operator-properties-type.md 'https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/type')                    |
+| [arguments](#arguments) | `array`  | Required | cannot be null | [Operator](operator-oneof-non-unary-operator-properties-multiple-arguments.md 'https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/arguments') |
 
 ## type
 
-
-
 `type`
 
-*   is required
+-   is required
 
-*   Type: `string`
+-   Type: `string`
 
-*   cannot be null
+-   cannot be null
 
-*   defined in: [Operator](operator-oneof-non-unary-operator-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/type")
+-   defined in: [Operator](operator-oneof-non-unary-operator-properties-type.md 'https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/type')
 
 ### type Type
 
@@ -47,21 +45,18 @@ Requires at least two arguments
 | :------ | :---------- |
 | `"and"` |             |
 | `"or"`  |             |
-| `"xor"` |             |
 
 ## arguments
 
-
-
 `arguments`
 
-*   is required
+-   is required
 
-*   Type: an array of merged types ([Formula](formula.md))
+-   Type: an array of merged types ([Formula](formula.md))
 
-*   cannot be null
+-   cannot be null
 
-*   defined in: [Operator](operator-oneof-non-unary-operator-properties-multiple-arguments.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/arguments")
+-   defined in: [Operator](operator-oneof-non-unary-operator-properties-multiple-arguments.md 'https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/arguments')
 
 ### arguments Type
 

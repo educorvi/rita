@@ -8,7 +8,7 @@ Returns the current time
 
 | Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                         |
 | :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :----------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Allowed               | none                | [macro.json\*](../../src/schema/macro.json "open original schema") |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [macro.json\*](../../src/schema/macro.json 'open original schema') |
 
 ## 0 Type
 
@@ -18,21 +18,19 @@ Returns the current time
 
 | Property      | Type     | Required | Nullable       | Defined by                                                                                                                                                                          |
 | :------------ | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [type](#type) | `string` | Optional | cannot be null | [Macro](macro-properties-macro-oneof-now-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json#/properties/macro/oneOf/0/properties/type") |
+| [type](#type) | `string` | Optional | cannot be null | [Macro](macro-properties-macro-oneof-now-properties-type.md 'https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json#/properties/macro/oneOf/0/properties/type') |
 
 ## type
 
-
-
 `type`
 
-*   is optional
+-   is optional
 
-*   Type: `string`
+-   Type: `string`
 
-*   cannot be null
+-   cannot be null
 
-*   defined in: [Macro](macro-properties-macro-oneof-now-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json#/properties/macro/oneOf/0/properties/type")
+-   defined in: [Macro](macro-properties-macro-oneof-now-properties-type.md 'https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json#/properties/macro/oneOf/0/properties/type')
 
 ### type Type
 

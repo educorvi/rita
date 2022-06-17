@@ -4,11 +4,9 @@
 https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/type
 ```
 
-
-
 | Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                               |
 | :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :----------------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [operator.json\*](../../src/schema/operator.json "open original schema") |
+| Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [operator.json\*](../../src/schema/operator.json 'open original schema') |
 
 ## type Type
 
@@ -22,4 +20,3 @@ https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/o
 | :------ | :---------- |
 | `"and"` |             |
 | `"or"`  |             |
-| `"xor"` |             |

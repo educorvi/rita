@@ -29,6 +29,14 @@
             "shellCommand": "pretty-quick --staged"
         },
         {
+            "commandKind": "bulk",
+            "name": "doc",
+            "summary": "Generate documentation",
+            "enableParallelism": true,
+            "incremental": false,
+            "ignoreMissingScript": true
+        },
+        {
             "commandKind": "phased",
             "name": "build",
             "phases": ["_phase:build"],
@@ -48,7 +56,8 @@
             "commandKind": "bulk",
             "summary": "Tests all projects",
             "enableParallelism": true,
-            "allowWarningsInSuccessfulBuild": true
+            "allowWarningsInSuccessfulBuild": true,
+            "incremental": false
         }
         // {
         //   /**

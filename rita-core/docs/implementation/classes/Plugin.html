@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="IE=edge" />
-        <title>Comparison | @educorvi/rita</title>
+        <title>Plugin | @educorvi/rita</title>
         <meta name="description" content="Documentation for @educorvi/rita" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="../assets/style.css" />
@@ -102,9 +102,12 @@
                 <div class="container">
                     <ul class="tsd-breadcrumb">
                         <li><a href="../modules.html">@educorvi/rita</a></li>
-                        <li><a href="Comparison.html">Comparison</a></li>
+                        <li><a href="Plugin.html">Plugin</a></li>
                     </ul>
-                    <h1>Class Comparison</h1>
+                    <h1>
+                        Class Plugin
+                        <span class="tsd-flag ts-flagAbstract">Abstract</span>
+                    </h1>
                 </div>
             </div>
         </header>
@@ -114,7 +117,16 @@
                     <section class="tsd-panel tsd-comment">
                         <div class="tsd-comment tsd-typography">
                             <div class="lead">
-                                <p>Parent class for all Comparisons</p>
+                                <p>
+                                    When a rule is evaluated, the
+                                    <code>enrichData</code> function is called
+                                    and the data to evaluate against is passed
+                                    to this plugin. The plugin is supposed to
+                                    create its own data (or enrich the data
+                                    object that is passed to it) and return it.
+                                    This new object will then be used to
+                                    evaluate the formula inside the plugin
+                                </p>
                             </div>
                         </div>
                     </section>
@@ -129,9 +141,7 @@
                                     >Formula</a
                                 >
                                 <ul class="tsd-hierarchy">
-                                    <li>
-                                        <span class="target">Comparison</span>
-                                    </li>
+                                    <li><span class="target">Plugin</span></li>
                                 </ul>
                             </li>
                         </ul>
@@ -140,14 +150,16 @@
                         <h2>Index</h2>
                         <section class="tsd-panel tsd-index-panel">
                             <div class="tsd-index-content">
-                                <section class="tsd-index-section">
+                                <section
+                                    class="tsd-index-section tsd-is-private-protected"
+                                >
                                     <h3>Constructors</h3>
                                     <ul class="tsd-index-list">
                                         <li
-                                            class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"
+                                            class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite tsd-is-protected"
                                         >
                                             <a
-                                                href="Comparison.html#constructor"
+                                                href="Plugin.html#constructor"
                                                 class="tsd-kind-icon"
                                                 >constructor</a
                                             >
@@ -161,18 +173,27 @@
                                             class="tsd-kind-property tsd-parent-kind-class"
                                         >
                                             <a
-                                                href="Comparison.html#arguments"
+                                                href="Plugin.html#formula"
                                                 class="tsd-kind-icon"
-                                                >arguments</a
+                                                >formula</a
                                             >
                                         </li>
                                         <li
                                             class="tsd-kind-property tsd-parent-kind-class"
                                         >
                                             <a
-                                                href="Comparison.html#operation"
+                                                href="Plugin.html#name"
                                                 class="tsd-kind-icon"
-                                                >operation</a
+                                                >name</a
+                                            >
+                                        </li>
+                                        <li
+                                            class="tsd-kind-property tsd-parent-kind-class"
+                                        >
+                                            <a
+                                                href="Plugin.html#options"
+                                                class="tsd-kind-icon"
+                                                >options</a
                                             >
                                         </li>
                                     </ul>
@@ -181,10 +202,19 @@
                                     <h3>Methods</h3>
                                     <ul class="tsd-index-list">
                                         <li
+                                            class="tsd-kind-method tsd-parent-kind-class"
+                                        >
+                                            <a
+                                                href="Plugin.html#enrichData"
+                                                class="tsd-kind-icon"
+                                                >enrich<wbr />Data</a
+                                            >
+                                        </li>
+                                        <li
                                             class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"
                                         >
                                             <a
-                                                href="Comparison.html#evaluate"
+                                                href="Plugin.html#evaluate"
                                                 class="tsd-kind-icon"
                                                 >evaluate</a
                                             >
@@ -193,7 +223,7 @@
                                             class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"
                                         >
                                             <a
-                                                href="Comparison.html#toJsonReady"
+                                                href="Plugin.html#toJsonReady"
                                                 class="tsd-kind-icon"
                                                 >to<wbr />Json<wbr />Ready</a
                                             >
@@ -202,7 +232,7 @@
                                             class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"
                                         >
                                             <a
-                                                href="Comparison.html#validate"
+                                                href="Plugin.html#validate"
                                                 class="tsd-kind-icon"
                                                 >validate</a
                                             >
@@ -212,13 +242,18 @@
                             </div>
                         </section>
                     </section>
-                    <section class="tsd-panel-group tsd-member-group">
+                    <section
+                        class="tsd-panel-group tsd-member-group tsd-is-private-protected"
+                    >
                         <h2>Constructors</h2>
                         <section
-                            class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"
+                            class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite tsd-is-protected"
                         >
                             <a id="constructor" class="tsd-anchor"></a>
                             <h3 class="tsd-anchor-link">
+                                <span class="tsd-flag ts-flagProtected"
+                                    >Protected</span
+                                >
                                 constructor<a
                                     href="#constructor"
                                     aria-label="Permalink"
@@ -247,56 +282,42 @@
                                 ></a>
                             </h3>
                             <ul
-                                class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"
+                                class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite tsd-is-protected"
                             >
                                 <li class="tsd-signature tsd-kind-icon">
-                                    new <wbr />Comparison<span
+                                    new <wbr />Plugin<span
                                         class="tsd-signature-symbol"
                                         >(</span
-                                    >formulaArguments<span
+                                    >options<span class="tsd-signature-symbol"
+                                        >: </span
+                                    ><span class="tsd-signature-type"
+                                        >Record</span
+                                    ><span class="tsd-signature-symbol"
+                                        >&lt;</span
+                                    ><span class="tsd-signature-type">any</span
+                                    ><span class="tsd-signature-symbol">, </span
+                                    ><span class="tsd-signature-type">any</span
+                                    ><span class="tsd-signature-symbol"
+                                        >&gt;</span
+                                    >, childFormula<span
                                         class="tsd-signature-symbol"
                                         >: </span
-                                    ><span class="tsd-signature-symbol">(</span
+                                    ><a
+                                        href="Formula.html"
+                                        class="tsd-signature-type"
+                                        data-tsd-kind="Class"
+                                        >Formula</a
+                                    >, name<span class="tsd-signature-symbol"
+                                        >: </span
                                     ><span class="tsd-signature-type"
                                         >string</span
-                                    ><span class="tsd-signature-symbol">
-                                        | </span
-                                    ><span class="tsd-signature-type"
-                                        >number</span
-                                    ><span class="tsd-signature-symbol">
-                                        | </span
-                                    ><span class="tsd-signature-type">Date</span
-                                    ><span class="tsd-signature-symbol">
-                                        | </span
-                                    ><a
-                                        href="Atom.html"
-                                        class="tsd-signature-type"
-                                        data-tsd-kind="Class"
-                                        >Atom</a
-                                    ><span class="tsd-signature-symbol">
-                                        | </span
-                                    ><a
-                                        href="Calculation.html"
-                                        class="tsd-signature-type"
-                                        data-tsd-kind="Class"
-                                        >Calculation</a
-                                    ><span class="tsd-signature-symbol">)</span
-                                    ><span class="tsd-signature-symbol">[]</span
-                                    >, operation<span
-                                        class="tsd-signature-symbol"
-                                        >: </span
-                                    ><a
-                                        href="../enums/comparisons.html"
-                                        class="tsd-signature-type"
-                                        data-tsd-kind="Enumeration"
-                                        >comparisons</a
                                     ><span class="tsd-signature-symbol">)</span
                                     ><span class="tsd-signature-symbol">: </span
                                     ><a
-                                        href="Comparison.html"
+                                        href="Plugin.html"
                                         class="tsd-signature-type"
                                         data-tsd-kind="Class"
-                                        >Comparison</a
+                                        >Plugin</a
                                     >
                                 </li>
                             </ul>
@@ -314,8 +335,8 @@
                                             <li>
                                                 Defined in
                                                 <a
-                                                    href="https://github.com/educorvi/rita/blob/7441d6e/rita-core/src/logicElements/Comparison.ts#L36"
-                                                    >rita-core/src/logicElements/Comparison.ts:36</a
+                                                    href="https://github.com/educorvi/rita/blob/7441d6e/rita-core/src/logicElements/Plugin.ts#L24"
+                                                    >rita-core/src/logicElements/Plugin.ts:24</a
                                                 >
                                             </li>
                                         </ul>
@@ -326,89 +347,54 @@
                                     <ul class="tsd-parameters">
                                         <li>
                                             <h5>
-                                                formulaArguments:
-                                                <span
+                                                options:
+                                                <span class="tsd-signature-type"
+                                                    >Record</span
+                                                ><span
                                                     class="tsd-signature-symbol"
-                                                    >(</span
+                                                    >&lt;</span
                                                 ><span
                                                     class="tsd-signature-type"
-                                                    >string</span
+                                                    >any</span
                                                 ><span
                                                     class="tsd-signature-symbol"
-                                                >
-                                                    | </span
+                                                    >, </span
                                                 ><span
                                                     class="tsd-signature-type"
-                                                    >number</span
+                                                    >any</span
                                                 ><span
                                                     class="tsd-signature-symbol"
-                                                >
-                                                    | </span
-                                                ><span
-                                                    class="tsd-signature-type"
-                                                    >Date</span
-                                                ><span
-                                                    class="tsd-signature-symbol"
-                                                >
-                                                    | </span
-                                                ><a
-                                                    href="Atom.html"
-                                                    class="tsd-signature-type"
-                                                    data-tsd-kind="Class"
-                                                    >Atom</a
-                                                ><span
-                                                    class="tsd-signature-symbol"
-                                                >
-                                                    | </span
-                                                ><a
-                                                    href="Calculation.html"
-                                                    class="tsd-signature-type"
-                                                    data-tsd-kind="Class"
-                                                    >Calculation</a
-                                                ><span
-                                                    class="tsd-signature-symbol"
-                                                    >)</span
-                                                ><span
-                                                    class="tsd-signature-symbol"
-                                                    >[]</span
+                                                    >&gt;</span
                                                 >
                                             </h5>
-                                            <div
-                                                class="tsd-comment tsd-typography"
-                                            >
-                                                <div class="lead">
-                                                    <p>The arguments</p>
-                                                </div>
-                                            </div>
                                         </li>
                                         <li>
                                             <h5>
-                                                operation:
+                                                childFormula:
                                                 <a
-                                                    href="../enums/comparisons.html"
+                                                    href="Formula.html"
                                                     class="tsd-signature-type"
-                                                    data-tsd-kind="Enumeration"
-                                                    >comparisons</a
+                                                    data-tsd-kind="Class"
+                                                    >Formula</a
                                                 >
                                             </h5>
-                                            <div
-                                                class="tsd-comment tsd-typography"
-                                            >
-                                                <div class="lead">
-                                                    <p>
-                                                        Type of the comparison
-                                                    </p>
-                                                </div>
-                                            </div>
+                                        </li>
+                                        <li>
+                                            <h5>
+                                                name:
+                                                <span class="tsd-signature-type"
+                                                    >string</span
+                                                >
+                                            </h5>
                                         </li>
                                     </ul>
                                     <h4 class="tsd-returns-title">
                                         Returns
                                         <a
-                                            href="Comparison.html"
+                                            href="Plugin.html"
                                             class="tsd-signature-type"
                                             data-tsd-kind="Class"
-                                            >Comparison</a
+                                            >Plugin</a
                                         >
                                     </h4>
                                 </li>
@@ -420,10 +406,10 @@
                         <section
                             class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"
                         >
-                            <a id="arguments" class="tsd-anchor"></a>
+                            <a id="formula" class="tsd-anchor"></a>
                             <h3 class="tsd-anchor-link">
-                                arguments<a
-                                    href="#arguments"
+                                formula<a
+                                    href="#formula"
                                     aria-label="Permalink"
                                     class="tsd-anchor-icon"
                                     ><svg
@@ -450,54 +436,46 @@
                                 ></a>
                             </h3>
                             <div class="tsd-signature tsd-kind-icon">
-                                arguments<span class="tsd-signature-symbol"
+                                formula<span class="tsd-signature-symbol"
                                     >:</span
                                 >
-                                <span class="tsd-signature-symbol">(</span
-                                ><span class="tsd-signature-type">string</span
-                                ><span class="tsd-signature-symbol"> | </span
-                                ><span class="tsd-signature-type">number</span
-                                ><span class="tsd-signature-symbol"> | </span
-                                ><span class="tsd-signature-type">Date</span
-                                ><span class="tsd-signature-symbol"> | </span
-                                ><a
-                                    href="Atom.html"
+                                <a
+                                    href="Formula.html"
                                     class="tsd-signature-type"
                                     data-tsd-kind="Class"
-                                    >Atom</a
-                                ><span class="tsd-signature-symbol"> | </span
-                                ><a
-                                    href="Calculation.html"
-                                    class="tsd-signature-type"
-                                    data-tsd-kind="Class"
-                                    >Calculation</a
-                                ><span class="tsd-signature-symbol">)</span
-                                ><span class="tsd-signature-symbol">[]</span>
+                                    >Formula</a
+                                >
                             </div>
                             <aside class="tsd-sources">
                                 <ul>
                                     <li>
                                         Defined in
                                         <a
-                                            href="https://github.com/educorvi/rita/blob/7441d6e/rita-core/src/logicElements/Comparison.ts#L24"
-                                            >rita-core/src/logicElements/Comparison.ts:24</a
+                                            href="https://github.com/educorvi/rita/blob/7441d6e/rita-core/src/logicElements/Plugin.ts#L17"
+                                            >rita-core/src/logicElements/Plugin.ts:17</a
                                         >
                                     </li>
                                 </ul>
                             </aside>
                             <div class="tsd-comment tsd-typography">
                                 <div class="lead">
-                                    <p>The arguments of the comparison</p>
+                                    <p>
+                                        The formula that will be evaluated with
+                                        the enriched data
+                                    </p>
                                 </div>
                             </div>
                         </section>
                         <section
                             class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"
                         >
-                            <a id="operation" class="tsd-anchor"></a>
+                            <a id="name" class="tsd-anchor"></a>
                             <h3 class="tsd-anchor-link">
-                                operation<a
-                                    href="#operation"
+                                <span class="tsd-flag ts-flagReadonly"
+                                    >Readonly</span
+                                >
+                                name<a
+                                    href="#name"
                                     aria-label="Permalink"
                                     class="tsd-anchor-icon"
                                     ><svg
@@ -524,36 +502,242 @@
                                 ></a>
                             </h3>
                             <div class="tsd-signature tsd-kind-icon">
-                                operation<span class="tsd-signature-symbol"
-                                    >:</span
-                                >
-                                <a
-                                    href="../enums/comparisons.html"
-                                    class="tsd-signature-type"
-                                    data-tsd-kind="Enumeration"
-                                    >comparisons</a
-                                >
+                                name<span class="tsd-signature-symbol">:</span>
+                                <span class="tsd-signature-type">string</span>
                             </div>
                             <aside class="tsd-sources">
                                 <ul>
                                     <li>
                                         Defined in
                                         <a
-                                            href="https://github.com/educorvi/rita/blob/7441d6e/rita-core/src/logicElements/Comparison.ts#L29"
-                                            >rita-core/src/logicElements/Comparison.ts:29</a
+                                            href="https://github.com/educorvi/rita/blob/7441d6e/rita-core/src/logicElements/Plugin.ts#L22"
+                                            >rita-core/src/logicElements/Plugin.ts:22</a
                                         >
                                     </li>
                                 </ul>
                             </aside>
                             <div class="tsd-comment tsd-typography">
                                 <div class="lead">
-                                    <p>Type of the comparison</p>
+                                    <p>The name of the plugin</p>
+                                </div>
+                            </div>
+                        </section>
+                        <section
+                            class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"
+                        >
+                            <a id="options" class="tsd-anchor"></a>
+                            <h3 class="tsd-anchor-link">
+                                options<a
+                                    href="#options"
+                                    aria-label="Permalink"
+                                    class="tsd-anchor-icon"
+                                    ><svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-link"
+                                        viewBox="0 0 24 24"
+                                        stroke-width="2"
+                                        stroke="currentColor"
+                                        fill="none"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
+                                        <path
+                                            stroke="none"
+                                            d="M0 0h24v24H0z"
+                                            fill="none"
+                                        ></path>
+                                        <path
+                                            d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"
+                                        ></path>
+                                        <path
+                                            d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"
+                                        ></path></svg
+                                ></a>
+                            </h3>
+                            <div class="tsd-signature tsd-kind-icon">
+                                options<span class="tsd-signature-symbol"
+                                    >:</span
+                                >
+                                <span class="tsd-signature-type">Record</span
+                                ><span class="tsd-signature-symbol">&lt;</span
+                                ><span class="tsd-signature-type">any</span
+                                ><span class="tsd-signature-symbol">, </span
+                                ><span class="tsd-signature-type">any</span
+                                ><span class="tsd-signature-symbol">&gt;</span>
+                            </div>
+                            <aside class="tsd-sources">
+                                <ul>
+                                    <li>
+                                        Defined in
+                                        <a
+                                            href="https://github.com/educorvi/rita/blob/7441d6e/rita-core/src/logicElements/Plugin.ts#L12"
+                                            >rita-core/src/logicElements/Plugin.ts:12</a
+                                        >
+                                    </li>
+                                </ul>
+                            </aside>
+                            <div class="tsd-comment tsd-typography">
+                                <div class="lead">
+                                    <p>The options given to this plugin</p>
                                 </div>
                             </div>
                         </section>
                     </section>
                     <section class="tsd-panel-group tsd-member-group">
                         <h2>Methods</h2>
+                        <section
+                            class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"
+                        >
+                            <a id="enrichData" class="tsd-anchor"></a>
+                            <h3 class="tsd-anchor-link">
+                                <span class="tsd-flag ts-flagAbstract"
+                                    >Abstract</span
+                                >
+                                enrich<wbr />Data<a
+                                    href="#enrichData"
+                                    aria-label="Permalink"
+                                    class="tsd-anchor-icon"
+                                    ><svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-link"
+                                        viewBox="0 0 24 24"
+                                        stroke-width="2"
+                                        stroke="currentColor"
+                                        fill="none"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
+                                        <path
+                                            stroke="none"
+                                            d="M0 0h24v24H0z"
+                                            fill="none"
+                                        ></path>
+                                        <path
+                                            d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"
+                                        ></path>
+                                        <path
+                                            d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"
+                                        ></path></svg
+                                ></a>
+                            </h3>
+                            <ul
+                                class="tsd-signatures tsd-kind-method tsd-parent-kind-class"
+                            >
+                                <li class="tsd-signature tsd-kind-icon">
+                                    enrich<wbr />Data<span
+                                        class="tsd-signature-symbol"
+                                        >(</span
+                                    >data<span class="tsd-signature-symbol"
+                                        >: </span
+                                    ><span class="tsd-signature-type"
+                                        >Record</span
+                                    ><span class="tsd-signature-symbol"
+                                        >&lt;</span
+                                    ><span class="tsd-signature-type"
+                                        >string</span
+                                    ><span class="tsd-signature-symbol">, </span
+                                    ><span class="tsd-signature-type">any</span
+                                    ><span class="tsd-signature-symbol"
+                                        >&gt;</span
+                                    ><span class="tsd-signature-symbol">)</span
+                                    ><span class="tsd-signature-symbol">: </span
+                                    ><span class="tsd-signature-type"
+                                        >Record</span
+                                    ><span class="tsd-signature-symbol"
+                                        >&lt;</span
+                                    ><span class="tsd-signature-type"
+                                        >string</span
+                                    ><span class="tsd-signature-symbol">, </span
+                                    ><span class="tsd-signature-type">any</span
+                                    ><span class="tsd-signature-symbol"
+                                        >&gt;</span
+                                    >
+                                </li>
+                            </ul>
+                            <ul class="tsd-descriptions">
+                                <li class="tsd-description">
+                                    <aside class="tsd-sources">
+                                        <ul>
+                                            <li>
+                                                Defined in
+                                                <a
+                                                    href="https://github.com/educorvi/rita/blob/7441d6e/rita-core/src/logicElements/Plugin.ts#L59"
+                                                    >rita-core/src/logicElements/Plugin.ts:59</a
+                                                >
+                                            </li>
+                                        </ul>
+                                    </aside>
+                                    <div class="tsd-comment tsd-typography">
+                                        <div class="lead">
+                                            <p>
+                                                Enriches the data for the child
+                                                formula
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <h4 class="tsd-parameters-title">
+                                        Parameters
+                                    </h4>
+                                    <ul class="tsd-parameters">
+                                        <li>
+                                            <h5>
+                                                data:
+                                                <span class="tsd-signature-type"
+                                                    >Record</span
+                                                ><span
+                                                    class="tsd-signature-symbol"
+                                                    >&lt;</span
+                                                ><span
+                                                    class="tsd-signature-type"
+                                                    >string</span
+                                                ><span
+                                                    class="tsd-signature-symbol"
+                                                    >, </span
+                                                ><span
+                                                    class="tsd-signature-type"
+                                                    >any</span
+                                                ><span
+                                                    class="tsd-signature-symbol"
+                                                    >&gt;</span
+                                                >
+                                            </h5>
+                                            <div
+                                                class="tsd-comment tsd-typography"
+                                            >
+                                                <div class="lead">
+                                                    <p>
+                                                        The original data for
+                                                        evaluation
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <h4 class="tsd-returns-title">
+                                        Returns
+                                        <span class="tsd-signature-type"
+                                            >Record</span
+                                        ><span class="tsd-signature-symbol"
+                                            >&lt;</span
+                                        ><span class="tsd-signature-type"
+                                            >string</span
+                                        ><span class="tsd-signature-symbol"
+                                            >, </span
+                                        ><span class="tsd-signature-type"
+                                            >any</span
+                                        ><span class="tsd-signature-symbol"
+                                            >&gt;</span
+                                        >
+                                    </h4>
+                                    <div>
+                                        <p>
+                                            The enriched data that is then used
+                                            to evaluate the child formula
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </section>
                         <section
                             class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"
                         >
@@ -606,8 +790,20 @@
                                         >&gt;</span
                                     ><span class="tsd-signature-symbol">)</span
                                     ><span class="tsd-signature-symbol">: </span
-                                    ><span class="tsd-signature-type"
-                                        >boolean</span
+                                    ><a
+                                        href="../modules.html#FormulaResults"
+                                        class="tsd-signature-type"
+                                        data-tsd-kind="Type alias"
+                                        >FormulaResults</a
+                                    ><span class="tsd-signature-symbol">
+                                        | </span
+                                    ><a
+                                        href="../modules.html#FormulaResults"
+                                        class="tsd-signature-type"
+                                        data-tsd-kind="Type alias"
+                                        >FormulaResults</a
+                                    ><span class="tsd-signature-symbol"
+                                        >[]</span
                                     >
                                 </li>
                             </ul>
@@ -625,8 +821,8 @@
                                             <li>
                                                 Defined in
                                                 <a
-                                                    href="https://github.com/educorvi/rita/blob/7441d6e/rita-core/src/logicElements/Comparison.ts#L53"
-                                                    >rita-core/src/logicElements/Comparison.ts:53</a
+                                                    href="https://github.com/educorvi/rita/blob/7441d6e/rita-core/src/logicElements/Plugin.ts#L35"
+                                                    >rita-core/src/logicElements/Plugin.ts:35</a
                                                 >
                                             </li>
                                         </ul>
@@ -669,8 +865,20 @@
                                     </ul>
                                     <h4 class="tsd-returns-title">
                                         Returns
-                                        <span class="tsd-signature-type"
-                                            >boolean</span
+                                        <a
+                                            href="../modules.html#FormulaResults"
+                                            class="tsd-signature-type"
+                                            data-tsd-kind="Type alias"
+                                            >FormulaResults</a
+                                        ><span class="tsd-signature-symbol">
+                                            | </span
+                                        ><a
+                                            href="../modules.html#FormulaResults"
+                                            class="tsd-signature-type"
+                                            data-tsd-kind="Type alias"
+                                            >FormulaResults</a
+                                        ><span class="tsd-signature-symbol"
+                                            >[]</span
                                         >
                                     </h4>
                                 </li>
@@ -744,8 +952,8 @@
                                             <li>
                                                 Defined in
                                                 <a
-                                                    href="https://github.com/educorvi/rita/blob/7441d6e/rita-core/src/logicElements/Comparison.ts#L45"
-                                                    >rita-core/src/logicElements/Comparison.ts:45</a
+                                                    href="https://github.com/educorvi/rita/blob/7441d6e/rita-core/src/logicElements/Plugin.ts#L45"
+                                                    >rita-core/src/logicElements/Plugin.ts:45</a
                                                 >
                                             </li>
                                         </ul>
@@ -836,8 +1044,8 @@
                                             <li>
                                                 Defined in
                                                 <a
-                                                    href="https://github.com/educorvi/rita/blob/7441d6e/rita-core/src/logicElements/Comparison.ts#L89"
-                                                    >rita-core/src/logicElements/Comparison.ts:89</a
+                                                    href="https://github.com/educorvi/rita/blob/7441d6e/rita-core/src/logicElements/Plugin.ts#L41"
+                                                    >rita-core/src/logicElements/Plugin.ts:41</a
                                                 >
                                             </li>
                                         </ul>
@@ -869,15 +1077,15 @@
                     <nav class="tsd-navigation secondary menu-sticky">
                         <ul>
                             <li class="current tsd-kind-class">
-                                <a href="Comparison.html" class="tsd-kind-icon"
-                                    >Comparison</a
+                                <a href="Plugin.html" class="tsd-kind-icon"
+                                    >Plugin</a
                                 >
                                 <ul>
                                     <li
-                                        class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"
+                                        class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite tsd-is-protected"
                                     >
                                         <a
-                                            href="Comparison.html#constructor"
+                                            href="Plugin.html#constructor"
                                             class="tsd-kind-icon"
                                             >constructor</a
                                         >
@@ -886,25 +1094,43 @@
                                         class="tsd-kind-property tsd-parent-kind-class"
                                     >
                                         <a
-                                            href="Comparison.html#arguments"
+                                            href="Plugin.html#formula"
                                             class="tsd-kind-icon"
-                                            >arguments</a
+                                            >formula</a
                                         >
                                     </li>
                                     <li
                                         class="tsd-kind-property tsd-parent-kind-class"
                                     >
                                         <a
-                                            href="Comparison.html#operation"
+                                            href="Plugin.html#name"
                                             class="tsd-kind-icon"
-                                            >operation</a
+                                            >name</a
+                                        >
+                                    </li>
+                                    <li
+                                        class="tsd-kind-property tsd-parent-kind-class"
+                                    >
+                                        <a
+                                            href="Plugin.html#options"
+                                            class="tsd-kind-icon"
+                                            >options</a
+                                        >
+                                    </li>
+                                    <li
+                                        class="tsd-kind-method tsd-parent-kind-class"
+                                    >
+                                        <a
+                                            href="Plugin.html#enrichData"
+                                            class="tsd-kind-icon"
+                                            >enrich<wbr />Data</a
                                         >
                                     </li>
                                     <li
                                         class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"
                                     >
                                         <a
-                                            href="Comparison.html#evaluate"
+                                            href="Plugin.html#evaluate"
                                             class="tsd-kind-icon"
                                             >evaluate</a
                                         >
@@ -913,7 +1139,7 @@
                                         class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"
                                     >
                                         <a
-                                            href="Comparison.html#toJsonReady"
+                                            href="Plugin.html#toJsonReady"
                                             class="tsd-kind-icon"
                                             >to<wbr />Json<wbr />Ready</a
                                         >
@@ -922,7 +1148,7 @@
                                         class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"
                                     >
                                         <a
-                                            href="Comparison.html#validate"
+                                            href="Plugin.html#validate"
                                             class="tsd-kind-icon"
                                             >validate</a
                                         >
