@@ -59,9 +59,9 @@ export class Atom extends Formula {
         };
     }
 
-    evaluate(
+    async evaluate(
         data: Record<string, any>
-    ): FormulaResults | Array<FormulaResults> {
+    ): Promise<FormulaResults | Array<FormulaResults>> {
         if (!this.validate())
             throw new RulesetError(
                 'Invalid: ' + JSON.stringify(this.toJsonReady())
@@ -70,7 +70,7 @@ export class Atom extends Formula {
         const val = Atom.getPropertyByString(data, this.path);
 
         if (typeof val === 'string') {
-            return testForDate(val);
+            return new Promise((resolve) => resolve(testForDate(val)));
         }
         return val;
     }

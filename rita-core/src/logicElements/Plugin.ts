@@ -32,10 +32,10 @@ export abstract class Plugin extends Formula {
         this.name = name;
     }
 
-    evaluate(
+    async evaluate(
         data: Record<string, any>
-    ): FormulaResults | Array<FormulaResults> {
-        return this.formula.evaluate(this.enrichData(data));
+    ): Promise<FormulaResults | Array<FormulaResults>> {
+        return this.formula.evaluate(await this.enrichData(data));
     }
 
     validate(): boolean {
@@ -56,5 +56,7 @@ export abstract class Plugin extends Formula {
      * @param data The original data for evaluation
      * @return The enriched data that is then used to evaluate the child formula
      */
-    abstract enrichData(data: Record<string, any>): Record<string, any>;
+    abstract enrichData(
+        data: Record<string, any>
+    ): Promise<Record<string, any>>;
 }

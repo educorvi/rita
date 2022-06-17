@@ -16,7 +16,7 @@ export class Macro extends Formula {
         this.array = array;
     }
 
-    evaluate(data: Record<string, any>): FormulaResults {
+    async evaluate(data: Record<string, any>): Promise<FormulaResults> {
         if (!this.validate())
             throw new RulesetError(
                 'Invalid: ' + JSON.stringify(this.toJsonReady())
@@ -26,7 +26,7 @@ export class Macro extends Formula {
             case 'now':
                 return new Date();
             case 'length':
-                const ar = this.array?.evaluate(data);
+                const ar = await this.array?.evaluate(data);
                 assertArray(ar);
                 return ar.length;
         }

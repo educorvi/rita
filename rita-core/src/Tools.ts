@@ -36,10 +36,10 @@ type EvaluationResult = {
  * @param rules
  * @param data
  */
-export function evaluateAll(
+export async function evaluateAll(
     rules: Array<Rule>,
     data: Record<string, any>
-): EvaluationResult {
+): Promise<EvaluationResult> {
     const ret: EvaluationResult = {
         result: true,
         details: [],
@@ -49,7 +49,7 @@ export function evaluateAll(
         },
     };
     for (const rule of rules) {
-        let evaluated = rule.evaluate(data);
+        let evaluated = await rule.evaluate(data);
         if (evaluated) ret.counts.true++;
         else ret.counts.false++;
         ret.result = ret.result && evaluated;

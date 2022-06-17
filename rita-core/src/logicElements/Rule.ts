@@ -25,8 +25,8 @@ export class Rule {
         this.comment = comment;
     }
 
-    public evaluate(data: Record<string, any>): boolean {
-        return <boolean>this.rule.evaluate(data);
+    public async evaluate(data: Record<string, any>): Promise<boolean> {
+        return <boolean>await this.rule.evaluate(data);
     }
 
     public toJsonReady(): Record<string, any> {

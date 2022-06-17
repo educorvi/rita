@@ -14,7 +14,7 @@ it('equals', () => {
             arguments: [4, 4],
         },
     });
-    expect(rule.evaluate({})).toBe(true);
+    expect(rule.evaluate({})).resolves.toBe(true);
 });
 
 it('name equals Julian', () => {
@@ -32,7 +32,7 @@ it('name equals Julian', () => {
             ],
         },
     });
-    expect(rule.evaluate(exampleData)).toBe(true);
+    expect(rule.evaluate(exampleData)).resolves.toBe(true);
 });
 
 it('birthday before 27.02.2002', () => {
@@ -50,7 +50,7 @@ it('birthday before 27.02.2002', () => {
             ],
         },
     });
-    expect(rule.evaluate(exampleData)).toBe(true);
+    expect(rule.evaluate(exampleData)).resolves.toBe(true);
 });
 
 it('-3 < -1', () => {
@@ -62,7 +62,7 @@ it('-3 < -1', () => {
             arguments: [-3, -1],
         },
     });
-    expect(rule.evaluate(exampleData)).toBe(true);
+    expect(rule.evaluate(exampleData)).resolves.toBe(true);
 });
 
 it('-3 < 1', () => {
@@ -74,7 +74,7 @@ it('-3 < 1', () => {
             arguments: [-3, 1],
         },
     });
-    expect(rule.evaluate(exampleData)).toBe(true);
+    expect(rule.evaluate(exampleData)).resolves.toBe(true);
 });
 
 it('-3 < 4', () => {
@@ -86,7 +86,7 @@ it('-3 < 4', () => {
             arguments: [-3, 4],
         },
     });
-    expect(rule.evaluate(exampleData)).toBe(true);
+    expect(rule.evaluate(exampleData)).resolves.toBe(true);
 });
 
 it('birthday before 27.02.2002, but other birthday', () => {
@@ -98,10 +98,10 @@ it('birthday before 27.02.2002, but other birthday', () => {
             arguments: ['2003-02-28', '2002-02-27'],
         },
     });
-    expect(rule.evaluate(exampleData)).toBe(false);
+    expect(rule.evaluate(exampleData)).resolves.toBe(false);
 });
 
-it('run math example', () => {
+it('run math example', async () => {
     const ruleset = p.parseRuleSet(mathExample);
-    expect(evaluateAll(ruleset, exampleData).result).toBe(true);
+    expect((await evaluateAll(ruleset, exampleData)).result).toBe(true);
 });

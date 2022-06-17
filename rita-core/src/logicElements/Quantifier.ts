@@ -36,7 +36,7 @@ export class Quantifier extends Formula {
         this.formula = formula;
     }
 
-    evaluate(data: Record<string, any>): boolean {
+    async evaluate(data: Record<string, any>): Promise<boolean> {
         if (!this.validate())
             throw new RulesetError(
                 'Invalid: ' + JSON.stringify(this.toJsonReady())
@@ -45,9 +45,11 @@ export class Quantifier extends Formula {
         //Get the array from the data
         let ar;
         if (Array.isArray(this.array)) {
-            ar = this.array.map((item) => item.evaluate(data));
+            ar = await Promise.all(
+                this.array.map((item) => item.evaluate(data))
+            );
         } else {
-            ar = this.array.evaluate(data);
+            ar = await this.array.evaluate(data);
         }
         //Check that it is indeed an array
         if (!Array.isArray(ar)) {
@@ -59,7 +61,7 @@ export class Quantifier extends Formula {
         //Execute forall respectively exists
         for (const arrayElement of ar) {
             data[this.placeholder] = arrayElement;
-            const res = this.formula.evaluate(data);
+            const res = await this.formula.evaluate(data);
             if (this.quantifier === 'forall' && !res) {
                 return false;
             }

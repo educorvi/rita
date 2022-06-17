@@ -142,7 +142,7 @@ export class Calculation extends Formula {
         };
     }
 
-    evaluate(data: Record<string, any>): Date | number {
+    async evaluate(data: Record<string, any>): Promise<Date | number> {
         if (!this.validate())
             throw new RulesetError(
                 'Invalid: ' + JSON.stringify(this.toJsonReady())
@@ -169,8 +169,10 @@ export class Calculation extends Formula {
         }
 
         //Now evaluate all arguments if they can be evaluated
-        let results = this.arguments.map((item) =>
-            item instanceof Formula ? item.evaluate(data) : item
+        let results = await Promise.all(
+            this.arguments.map(async (item) =>
+                item instanceof Formula ? await item.evaluate(data) : item
+            )
         );
 
         //Check if dates are involved in th calculation
