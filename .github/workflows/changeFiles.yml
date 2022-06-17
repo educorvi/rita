@@ -5,7 +5,7 @@ name: Verify change files
 
 on:
     pull_request:
-        branches: ['main', 'develop']
+        branches: ['main']
 
 jobs:
     build:
