@@ -7,7 +7,7 @@ export abstract class Formula {
      */
     abstract evaluate(
         data: Record<string, any>
-    ): FormulaResults | Array<FormulaResults>;
+    ): Promise<FormulaResults | Array<FormulaResults>>;
 
     /**
      * Check if the formula is valid

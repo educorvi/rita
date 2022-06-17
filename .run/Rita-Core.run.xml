@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Rita-Core" type="JavaScriptTestRunnerJest">
+    <config-file value="$PROJECT_DIR$/rita-core/jest.config.js" />
+    <node-interpreter value="project" />
+    <node-options value="" />
+    <jest-package value="$PROJECT_DIR$/persistent-rita/node_modules/jest" />
+    <working-dir value="$PROJECT_DIR$/../rita-core" />
+    <envs />
+    <scope-kind value="ALL" />
+    <method v="2" />
+  </configuration>
+</component>

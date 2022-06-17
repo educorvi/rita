@@ -13,9 +13,11 @@ jobs:
 
         steps:
             - uses: actions/checkout@v3
+              with:
+                  fetch-depth: 0
             - name: Use Node.js 16.x
               uses: actions/setup-node@v3
               with:
                   node-version: 16.x
             - name: Check for changes files
-              run: node common/scripts/install-run-rush.js change -v
+              run: node common/scripts/install-run-rush.js change -v --no-fetch -b origin/$GITHUB_BASE_REF

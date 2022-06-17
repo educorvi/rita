@@ -17,7 +17,7 @@ it('!member', () => {
             ],
         },
     });
-    expect(rule.evaluate(exampleData)).toBe(false);
+    expect(rule.evaluate(exampleData)).resolves.toBe(false);
 });
 it('member  employee', () => {
     const rule = p.parseRule({
@@ -36,5 +36,5 @@ it('member  employee', () => {
             ],
         },
     });
-    expect(() => rule.evaluate(exampleData)).toThrow();
+    expect(() => rule.evaluate(exampleData)).rejects.toThrow();
 });

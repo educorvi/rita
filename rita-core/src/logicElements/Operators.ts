@@ -19,7 +19,7 @@ export abstract class Operator extends Formula {
         this.arguments = formulaArguments;
     }
 
-    abstract evaluate(data: Record<string, any>): boolean;
+    abstract evaluate(data: Record<string, any>): Promise<boolean>;
 
     validate(): boolean {
         return this.arguments
@@ -30,11 +30,14 @@ export abstract class Operator extends Formula {
     evaluateReduce(
         data: Record<string, any>,
         func: (x1: boolean, x2: boolean) => boolean,
-        defaultValue = false
-    ) {
-        return this.arguments.reduce((acc: boolean, curr: Formula): boolean => {
-            return func(acc, <boolean>curr.evaluate(data));
-        }, defaultValue);
+        defaultValue = Promise.resolve(false)
+    ): Promise<boolean> {
+        return this.arguments.reduce(
+            async (acc: Promise<boolean>, curr: Formula): Promise<boolean> => {
+                return func(await acc, <boolean>await curr.evaluate(data));
+            },
+            defaultValue
+        );
     }
 
     toJsonReady(): Record<string, any> {
@@ -49,13 +52,17 @@ export abstract class Operator extends Formula {
  * Behaves like "&&" in JavaScript when evaluated
  */
 export class And extends Operator {
-    evaluate(data: Record<string, any>): boolean {
+    evaluate(data: Record<string, any>): Promise<boolean> {
         if (!this.validate())
             throw new RulesetError(
                 'Invalid: ' + JSON.stringify(this.toJsonReady())
             );
 
-        return this.evaluateReduce(data, (x1, x2) => x1 && x2, true);
+        return this.evaluateReduce(
+            data,
+            (x1, x2) => x1 && x2,
+            Promise.resolve(true)
+        );
     }
 
     validate(): boolean {
@@ -75,13 +82,13 @@ export class And extends Operator {
  * Behaves like "!" in JavaScript when evaluated
  */
 export class Not extends Operator {
-    evaluate(data: Record<string, any>): boolean {
+    async evaluate(data: Record<string, any>): Promise<boolean> {
         if (!this.validate())
             throw new RulesetError(
                 'Invalid: ' + JSON.stringify(this.toJsonReady())
             );
 
-        return !this.arguments[0].evaluate(data);
+        return Promise.resolve(!(await this.arguments[0].evaluate(data)));
     }
 
     validate(): boolean {
@@ -101,7 +108,7 @@ export class Not extends Operator {
  * Behaves like || in JavaScript when evaluated
  */
 export class Or extends Operator {
-    evaluate(data: Record<string, any>): boolean {
+    evaluate(data: Record<string, any>): Promise<boolean> {
         if (!this.validate())
             throw new RulesetError(
                 'Invalid: ' + JSON.stringify(this.toJsonReady())

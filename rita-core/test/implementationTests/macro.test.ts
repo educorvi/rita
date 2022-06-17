@@ -16,7 +16,7 @@ it("Expect 'now' to be correct", async () => {
     });
     await new Promise((r) => setTimeout(r, 1000));
     const currDate = new Date().getTime();
-    const evaluated = <Date>m.evaluate({});
+    const evaluated = <Date>await m.evaluate({});
     expect(evaluated.getTime()).toBeWithin(currDate, currDate + 100);
 });
 
@@ -36,10 +36,10 @@ it("Expect 'length' to be correct", () => {
         m.evaluate({
             data: Array.from(Array(l).keys()),
         })
-    ).toEqual(l);
+    ).resolves.toEqual(l);
 });
 
-it('Example Ruleset is true', () => {
+it('Example Ruleset is true', async () => {
     const rs = p.parseRuleSet(macroRuleset);
-    expect(evaluateAll(rs, exampleData).result).toBe(true);
+    expect((await evaluateAll(rs, exampleData)).result).toBe(true);
 });

@@ -2,7 +2,7 @@
     "changes": [
         {
             "packageName": "@educorvi/rita",
-            "comment": "Add Plugin and remove XOR",
+            "comment": "Make evaluation async",
             "type": "major"
         }
     ],

@@ -50,7 +50,7 @@ export class Comparison extends Formula {
         };
     }
 
-    evaluate(data: Record<string, any>): boolean {
+    async evaluate(data: Record<string, any>): Promise<boolean> {
         if (!this.validate())
             throw new RulesetError(
                 'Invalid: ' + JSON.stringify(this.toJsonReady())
@@ -59,11 +59,11 @@ export class Comparison extends Formula {
         //if one of the arguments is either an Atom or a Calculation evaluate it first
         const p1 =
             this.arguments[0] instanceof Formula
-                ? this.arguments[0].evaluate(data)
+                ? await this.arguments[0].evaluate(data)
                 : this.arguments[0];
         const p2 =
             this.arguments[1] instanceof Formula
-                ? this.arguments[1].evaluate(data)
+                ? await this.arguments[1].evaluate(data)
                 : this.arguments[1];
 
         if (p1 === undefined || p2 === undefined) return false;

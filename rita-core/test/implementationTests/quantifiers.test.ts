@@ -1,6 +1,8 @@
 import { Parser } from '../../src';
 
+// @ts-ignore
 import rule_qfa from '../assets/quantifiers_fa.json';
+// @ts-ignore
 import rule_qex from '../assets/quantifiers_ex.json';
 import { evaluateAll } from '../../src';
 import { UsageError } from '../../src';
@@ -14,13 +16,13 @@ describe('forall', () => {
             evaluateAll(ruleset, {
                 arraydata: [true, true, true, true],
             })
-        ).toThrow(UsageError);
+        ).rejects.toThrow(UsageError);
     });
-    it('all true', () => {
+    it('all true', async () => {
         const val1 = true;
         const val2 = true;
         const val3 = true;
-        const res = evaluateAll(ruleset, {
+        const res = await evaluateAll(ruleset, {
             val1,
             val2,
             val3,
@@ -28,11 +30,11 @@ describe('forall', () => {
         });
         res.details.forEach((it) => expect(it.result).toBe(true));
     });
-    it('one false', () => {
+    it('one false', async () => {
         const val1 = true;
         const val2 = false;
         const val3 = true;
-        const res = evaluateAll(ruleset, {
+        const res = await evaluateAll(ruleset, {
             val1,
             val2,
             val3,
@@ -40,11 +42,11 @@ describe('forall', () => {
         });
         res.details.forEach((it) => expect(it.result).toBe(false));
     });
-    it('all false', () => {
+    it('all false', async () => {
         const val1 = false;
         const val2 = false;
         const val3 = false;
-        const res = evaluateAll(ruleset, {
+        const res = await evaluateAll(ruleset, {
             val1,
             val2,
             val3,
@@ -60,13 +62,13 @@ describe('exists', () => {
             evaluateAll(ruleset, {
                 arraydata: [true, true, true, true],
             })
-        ).toThrow(UsageError);
+        ).rejects.toThrow(UsageError);
     });
-    it('all true', () => {
+    it('all true', async () => {
         const val1 = true;
         const val2 = true;
         const val3 = true;
-        const res = evaluateAll(ruleset, {
+        const res = await evaluateAll(ruleset, {
             val1,
             val2,
             val3,
@@ -74,11 +76,11 @@ describe('exists', () => {
         });
         res.details.forEach((it) => expect(it.result).toBe(true));
     });
-    it('two false', () => {
+    it('two false', async () => {
         const val1 = false;
         const val2 = false;
         const val3 = true;
-        const res = evaluateAll(ruleset, {
+        const res = await evaluateAll(ruleset, {
             val1,
             val2,
             val3,
@@ -86,11 +88,11 @@ describe('exists', () => {
         });
         res.details.forEach((it) => expect(it.result).toBe(true));
     });
-    it('all false', () => {
+    it('all false', async () => {
         const val1 = false;
         const val2 = false;
         const val3 = false;
-        const res = evaluateAll(ruleset, {
+        const res = await evaluateAll(ruleset, {
             val1,
             val2,
             val3,

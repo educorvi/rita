@@ -12,7 +12,7 @@ it('isMember', () => {
             path: 'member',
         },
     });
-    expect(rule.evaluate(exampleData)).toBe(true);
+    expect(rule.evaluate(exampleData)).resolves.toBe(true);
 });
 it('isNotEmployee', () => {
     const rule = p.parseRule({
@@ -22,7 +22,7 @@ it('isNotEmployee', () => {
             path: 'employee',
         },
     });
-    expect(rule.evaluate(exampleData)).toBe(false);
+    expect(rule.evaluate(exampleData)).resolves.toBe(false);
 });
 it('nestedAtom', () => {
     const rule = p.parseRule({
@@ -32,7 +32,7 @@ it('nestedAtom', () => {
             path: 'visit.paymentDetails.payed',
         },
     });
-    expect(rule.evaluate(exampleData)).toBe(true);
+    expect(rule.evaluate(exampleData)).resolves.toBe(true);
 });
 it('second customer rated', () => {
     const rule = p.parseRule({
@@ -42,5 +42,5 @@ it('second customer rated', () => {
             path: 'customers[1].rated',
         },
     });
-    expect(rule.evaluate(exampleData)).toBe(true);
+    expect(rule.evaluate(exampleData)).resolves.toBe(true);
 });

@@ -17,7 +17,7 @@ it('member', () => {
             ],
         },
     });
-    expect(() => rule.evaluate(exampleData)).toThrow();
+    expect(() => rule.evaluate(exampleData)).rejects.toThrow();
 });
 it('member || employee', () => {
     const rule = p.parseRule({
@@ -36,7 +36,7 @@ it('member || employee', () => {
             ],
         },
     });
-    expect(rule.evaluate(exampleData)).toBe(true);
+    expect(rule.evaluate(exampleData)).resolves.toBe(true);
 });
 it('customers[0].rated || employee', () => {
     const rule = p.parseRule({
@@ -55,7 +55,7 @@ it('customers[0].rated || employee', () => {
             ],
         },
     });
-    expect(rule.evaluate(exampleData)).toBe(false);
+    expect(rule.evaluate(exampleData)).resolves.toBe(false);
 });
 it('member || visit.paymentDetails.payed', () => {
     const rule = p.parseRule({
@@ -74,7 +74,7 @@ it('member || visit.paymentDetails.payed', () => {
             ],
         },
     });
-    expect(rule.evaluate(exampleData)).toBe(true);
+    expect(rule.evaluate(exampleData)).resolves.toBe(true);
 });
 it('member || member || visit.paymentDetails.payed', () => {
     const rule = p.parseRule({
@@ -97,5 +97,5 @@ it('member || member || visit.paymentDetails.payed', () => {
             ],
         },
     });
-    expect(rule.evaluate(exampleData)).toBe(true);
+    expect(rule.evaluate(exampleData)).resolves.toBe(true);
 });

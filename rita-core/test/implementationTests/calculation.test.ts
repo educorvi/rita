@@ -13,7 +13,7 @@ describe('Numbers', () => {
             arguments: [2, 6],
         });
 
-        expect(calc.evaluate({})).toBe(8);
+        expect(calc.evaluate({})).resolves.toBe(8);
     });
     it('subtract', () => {
         const calc = p.parseCalculation({
@@ -22,7 +22,7 @@ describe('Numbers', () => {
             arguments: [2, 6],
         });
 
-        expect(calc.evaluate({})).toBe(-4);
+        expect(calc.evaluate({})).resolves.toBe(-4);
     });
     it('subtract with three arguments', () => {
         const calc = p.parseCalculation({
@@ -31,7 +31,7 @@ describe('Numbers', () => {
             arguments: [6, 2, 2],
         });
 
-        expect(calc.evaluate({})).toBe(2);
+        expect(calc.evaluate({})).resolves.toBe(2);
     });
     it('multiply', () => {
         const calc = p.parseCalculation({
@@ -40,7 +40,7 @@ describe('Numbers', () => {
             arguments: [2, 6],
         });
 
-        expect(calc.evaluate({})).toBe(12);
+        expect(calc.evaluate({})).resolves.toBe(12);
     });
     it('divide', () => {
         const calc = p.parseCalculation({
@@ -49,7 +49,7 @@ describe('Numbers', () => {
             arguments: [6, 2],
         });
 
-        expect(calc.evaluate({})).toBe(3);
+        expect(calc.evaluate({})).resolves.toBe(3);
     });
     it('modulo', () => {
         const calc = p.parseCalculation({
@@ -58,7 +58,7 @@ describe('Numbers', () => {
             arguments: [7, 2],
         });
 
-        expect(calc.evaluate({})).toBe(1);
+        expect(calc.evaluate({})).resolves.toBe(1);
     });
 
     it('atom sub', () => {
@@ -74,7 +74,7 @@ describe('Numbers', () => {
             ],
         });
 
-        expect(calc.evaluate(exampleData)).toBe(8.99);
+        expect(calc.evaluate(exampleData)).resolves.toBe(8.99);
     });
 });
 
@@ -90,9 +90,9 @@ describe('Dates', () => {
             dateResultUnit: 'days',
             arguments: ['2020-12-24', '2020-12-20'],
         });
-        expect(calc.evaluate(exampleData)).toBe(4);
+        expect(calc.evaluate(exampleData)).resolves.toBe(4);
     });
-    it('how many full years from date of birth to 12.11.2021', () => {
+    it('how many full years from date of birth to 12.11.2021', async () => {
         const calc = p.parseCalculation({
             type: 'calculation',
             operation: 'subtract',
@@ -105,27 +105,27 @@ describe('Dates', () => {
                 },
             ],
         });
-        expect(Math.floor(<number>calc.evaluate(exampleData))).toBe(21);
+        expect(Math.floor(<number>await calc.evaluate(exampleData))).toBe(21);
     });
-    it('two days ago from 12.11.2021', () => {
+    it('two days ago from 12.11.2021', async () => {
         const calc = p.parseCalculation({
             type: 'calculation',
             operation: 'subtract',
             dateCalculationUnit: 'days',
             arguments: ['2021-11-12', 2],
         });
-        expect(formatDate(<Date>calc.evaluate(exampleData))).toEqual(
+        expect(formatDate(<Date>await calc.evaluate(exampleData))).toEqual(
             formatDate(new Date('2021-11-10'))
         );
     });
-    it('two days ago from 12.11.2021 in different order', () => {
+    it('two days ago from 12.11.2021 in different order', async () => {
         const calc = p.parseCalculation({
             type: 'calculation',
             operation: 'subtract',
             dateCalculationUnit: 'days',
             arguments: [2, '2021-11-12'],
         });
-        expect(formatDate(<Date>calc.evaluate(exampleData))).toEqual(
+        expect(formatDate(<Date>await calc.evaluate(exampleData))).toEqual(
             formatDate(new Date('2021-11-10'))
         );
     });
@@ -136,27 +136,27 @@ describe('Dates', () => {
             dateCalculationUnit: 'days',
             arguments: [2, '2021-11-12'],
         });
-        expect(calc.evaluate).toThrow(Error);
+        expect(calc.evaluate).rejects.toThrow(Error);
     });
-    it('2+2 days from 12.11.2021', () => {
+    it('2+2 days from 12.11.2021', async () => {
         const calc = p.parseCalculation({
             type: 'calculation',
             operation: 'add',
             dateCalculationUnit: 'days',
             arguments: [2, 2, '2021-11-12'],
         });
-        expect(formatDate(<Date>calc.evaluate(exampleData))).toEqual(
+        expect(formatDate(<Date>await calc.evaluate(exampleData))).toEqual(
             formatDate(new Date('2021-11-16'))
         );
     });
-    it('two years in the future from 12.11.2021', () => {
+    it('two years in the future from 12.11.2021', async () => {
         const calc = p.parseCalculation({
             type: 'calculation',
             operation: 'add',
             dateCalculationUnit: 'years',
             arguments: ['2021-11-12', 2],
         });
-        expect(formatDate(<Date>calc.evaluate(exampleData))).toEqual(
+        expect(formatDate(<Date>await calc.evaluate(exampleData))).toEqual(
             formatDate(new Date('2023-11-12'))
         );
     });
@@ -167,6 +167,6 @@ describe('Dates', () => {
             dateResultUnit: 'minutes',
             arguments: ['2021-11-12T09:29', '2021-11-12T09:27:30'],
         });
-        expect(calc.evaluate({})).toBeLessThan(2);
+        expect(calc.evaluate({})).resolves.toBeLessThan(2);
     });
 });
