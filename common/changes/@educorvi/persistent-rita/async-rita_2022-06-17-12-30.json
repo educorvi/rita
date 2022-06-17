@@ -1,0 +1,10 @@
+{
+    "changes": [
+        {
+            "packageName": "@educorvi/persistent-rita",
+            "comment": "Use async rita. Exposed evaluateAll is now async",
+            "type": "major"
+        }
+    ],
+    "packageName": "@educorvi/persistent-rita"
+}

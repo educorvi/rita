@@ -1,0 +1,10 @@
+{
+    "changes": [
+        {
+            "packageName": "@educorvi/rita",
+            "comment": "Make evaluation async",
+            "type": "major"
+        }
+    ],
+    "packageName": "@educorvi/rita"
+}
