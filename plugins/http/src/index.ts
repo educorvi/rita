@@ -1,13 +1,13 @@
-import { Plugin } from '@educorvi/rita';
+// import { Plugin } from '@educorvi/rita';
 
 const version = process.env.VERSION;
 
 export { version };
 
-export default class HTTP_Plugin extends Plugin {
-    enrichData(data: Record<string, any>): Record<string, any> {
-        return {
-            ...data,
-        };
-    }
-}
+// export default class HTTP_Plugin extends Plugin {
+//     async enrichData(data: Record<string, any>): Promise<Record<string, any>> {
+//         return {
+//             ...data,
+//         };
+//     }
+// }

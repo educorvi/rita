@@ -1,4 +1,4 @@
-import { evaluateAll, Rule } from '@educorvi/rita';
+import { evaluateAll, Rule, EvaluationResult } from '@educorvi/rita';
 import { RuleNotFoundError } from './Helper/Errors';
 
 export default class Ruleset {
@@ -49,7 +49,7 @@ export default class Ruleset {
      * Evaluates the ruleset.
      * @param data The data to evaluate against
      */
-    evaluate(data: Record<string, any>) {
+    evaluate(data: Record<string, any>): Promise<EvaluationResult> {
         return evaluateAll(this.rules, data);
     }
 }

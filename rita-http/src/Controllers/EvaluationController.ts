@@ -43,7 +43,7 @@ export class EvaluationController extends Controller {
         '422',
         'Validation Error: An invalid object has been passed'
     )
-    public async saveRuleset(
+    public async evaluateRuleset(
         @Path() rulesetID: string,
         @Body() data: evaluationData
     ): Promise<evaluationResult> {
@@ -51,6 +51,6 @@ export class EvaluationController extends Controller {
         if (!ruleset) {
             throw new NotFoundError();
         }
-        return ruleset.evaluate(data);
+        return await ruleset.evaluate(data);
     }
 }

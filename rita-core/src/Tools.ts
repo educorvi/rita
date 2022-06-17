@@ -1,6 +1,6 @@
 import { Rule } from './logicElements';
 
-type EvaluationDetails = {
+export type EvaluationDetails = {
     /**
      * The ID of the rule
      */
@@ -11,7 +11,7 @@ type EvaluationDetails = {
      */
     result: boolean;
 };
-type EvaluationResult = {
+export type EvaluationResult = {
     /**
      * The result of all rules combined (combined by logical "and")
      */
