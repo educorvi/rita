@@ -27,3 +27,10 @@ node .
 ```
 
 The update process is identical, just replace `git clone` with `git pull`
+
+## Development
+
+```bash
+# Generate documentation
+rush generate-documentation
+```

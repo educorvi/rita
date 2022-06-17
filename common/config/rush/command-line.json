@@ -29,12 +29,20 @@
             "shellCommand": "pretty-quick --staged"
         },
         {
+            "commandKind": "global",
+            "name": "generate-documentation",
+            "summary": "Generate documentation",
+            "safeForSimultaneousRushProcesses": true,
+            "shellCommand": "rush doc && cp -r rita-core/docs docs/rita-core && cp -r persistent-rita/docs docs/persistent-rita && cp -r rita-http/docs docs/rita-http"
+        },
+        {
             "commandKind": "bulk",
             "name": "doc",
             "summary": "Generate documentation",
             "enableParallelism": true,
             "incremental": false,
-            "ignoreMissingScript": true
+            "ignoreMissingScript": true,
+            "allowWarningsInSuccessfulBuild": true
         },
         {
             "commandKind": "phased",

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html class="default">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="IE=edge" />
+        <title>@educorvi/rita</title>
+        <meta name="description" content="Documentation for @educorvi/rita" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="assets/style.css" />
+        <link rel="stylesheet" href="assets/highlight.css" />
+        <script async src="assets/search.js" id="search-script"></script>
+    </head>
+    <body>
+        <script>
+            document.body.classList.add(
+                localStorage.getItem('tsd-theme') || 'os'
+            );
+        </script>
+        <header>
+            <div class="tsd-page-toolbar">
+                <div class="container">
+                    <div class="table-wrap">
+                        <div class="table-cell" id="tsd-search" data-base=".">
+                            <div class="field">
+                                <label
+                                    for="tsd-search-field"
+                                    class="tsd-widget search no-caption"
+                                    >Search</label
+                                ><input type="text" id="tsd-search-field" />
+                            </div>
+                            <ul class="results">
+                                <li class="state loading">
+                                    Preparing search index...
+                                </li>
+                                <li class="state failure">
+                                    The search index is not available
+                                </li>
+                            </ul>
+                            <a href="index.html" class="title"
+                                >@educorvi/rita</a
+                            >
+                        </div>
+                        <div class="table-cell" id="tsd-widgets">
+                            <div id="tsd-filter">
+                                <a
+                                    href="#"
+                                    class="tsd-widget options no-caption"
+                                    data-toggle="options"
+                                    >Options</a
+                                >
+                                <div class="tsd-filter-group">
+                                    <div
+                                        class="tsd-select"
+                                        id="tsd-filter-visibility"
+                                    >
+                                        <span class="tsd-select-label"
+                                            >All</span
+                                        >
+                                        <ul class="tsd-select-list">
+                                            <li data-value="public">Public</li>
+                                            <li data-value="protected">
+                                                Public/Protected
+                                            </li>
+                                            <li
+                                                data-value="private"
+                                                class="selected"
+                                            >
+                                                All
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <input
+                                        type="checkbox"
+                                        id="tsd-filter-inherited"
+                                        checked
+                                    /><label
+                                        class="tsd-widget"
+                                        for="tsd-filter-inherited"
+                                        >Inherited</label
+                                    ><input
+                                        type="checkbox"
+                                        id="tsd-filter-externals"
+                                        checked
+                                    /><label
+                                        class="tsd-widget"
+                                        for="tsd-filter-externals"
+                                        >Externals</label
+                                    >
+                                </div>
+                            </div>
+                            <a
+                                href="#"
+                                class="tsd-widget menu no-caption"
+                                data-toggle="menu"
+                                >Menu</a
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tsd-page-title">
+                <div class="container"><h1>@educorvi/rita</h1></div>
+            </div>
+        </header>
+        <div class="container container-main">
+            <div class="row">
+                <div class="col-8 col-content">
+                    <div class="tsd-panel tsd-typography">
+                        <a
+                            href="#rule-it-all-rita"
+                            id="rule-it-all-rita"
+                            style="color: inherit; text-decoration: none"
+                        >
+                            <h1>Rule It All <em>(Rita)</em></h1>
+                        </a>
+                        <p>
+                            JSON Schema for rule-based evaluation and an
+                            Typescript Implementation to evaluate it
+                        </p>
+
+                        <a
+                            href="#schema"
+                            id="schema"
+                            style="color: inherit; text-decoration: none"
+                        >
+                            <h2>Schema</h2>
+                        </a>
+                        <p>
+                            The Schema is available in the schema-folder and has
+                            the id
+                            <code
+                                >https://raw.githubusercontent.com/educorvi/rita/main/schema/schema.json</code
+                            >. Documentation on the schema can be found
+                            <a href="https://educorvi.github.io/rita/schema/#/"
+                                >here</a
+                            >.
+                        </p>
+
+                        <a
+                            href="#implementation"
+                            id="implementation"
+                            style="color: inherit; text-decoration: none"
+                        >
+                            <h2>Implementation</h2>
+                        </a>
+                        <p>Data can be evaluated against rules. Example:</p>
+                        <pre><code class="language-typescript"><span class="hl-5">/** Rules */</span><br/><span class="hl-6">import</span><span class="hl-0"> </span><span class="hl-3">exampleRule</span><span class="hl-0"> </span><span class="hl-6">from</span><span class="hl-0"> </span><span class="hl-7">&#39;../assets/example1.json&#39;</span><span class="hl-0">;</span><br/><span class="hl-5">/** Data */</span><br/><span class="hl-6">import</span><span class="hl-0"> { </span><span class="hl-3">exampleData</span><span class="hl-0"> } </span><span class="hl-6">from</span><span class="hl-0"> </span><span class="hl-7">&#39;../assets/exampleData&#39;</span><span class="hl-0">;</span><br/><br/><span class="hl-5">/** The Parser class is used to parse a JSON Ruleset and use it for evaluation */</span><br/><span class="hl-6">import</span><span class="hl-0"> { </span><span class="hl-3">Parser</span><span class="hl-0"> } </span><span class="hl-6">from</span><span class="hl-0"> </span><span class="hl-7">&#39;@educorvi/rita&#39;</span><span class="hl-0">;</span><br/><br/><span class="hl-5">/** Parse ruleset */</span><br/><span class="hl-1">const</span><span class="hl-0"> </span><span class="hl-2">ruleSet</span><span class="hl-0">: </span><span class="hl-8">Array</span><span class="hl-0">&lt;</span><span class="hl-8">Rule</span><span class="hl-0">&gt; = </span><span class="hl-3">Parser</span><span class="hl-0">.</span><span class="hl-4">parseRuleSet</span><span class="hl-0">(</span><span class="hl-3">exampleRule</span><span class="hl-0">);</span><br/><br/><span class="hl-5">/** Check wether data fulfilles the first rule in the ruleSet */</span><br/><span class="hl-1">const</span><span class="hl-0"> </span><span class="hl-2">result</span><span class="hl-0">: </span><span class="hl-8">boolean</span><span class="hl-0"> = </span><span class="hl-3">ruleSet</span><span class="hl-0">[</span><span class="hl-9">0</span><span class="hl-0">].</span><span class="hl-4">evaluate</span><span class="hl-0">(</span><span class="hl-3">exampleData</span><span class="hl-0">);</span>
+</code></pre>
+
+                        <a
+                            href="#documentation"
+                            id="documentation"
+                            style="color: inherit; text-decoration: none"
+                        >
+                            <h2>Documentation</h2>
+                        </a>
+                        <p>
+                            The documentation of the schema and the
+                            implementation can be found here:
+                            <a href="https://educorvi.github.io/rita"
+                                >https://educorvi.github.io/rita</a
+                            >
+                        </p>
+                    </div>
+                </div>
+                <div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+                    <nav class="tsd-navigation primary">
+                        <ul>
+                            <li class="current">
+                                <a href="modules.html">Exports</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <nav class="tsd-navigation secondary menu-sticky">
+                        <ul>
+                            <li class="tsd-kind-enum">
+                                <a
+                                    href="enums/comparisons.html"
+                                    class="tsd-kind-icon"
+                                    >comparisons</a
+                                >
+                            </li>
+                            <li class="tsd-kind-enum">
+                                <a
+                                    href="enums/operations.html"
+                                    class="tsd-kind-icon"
+                                    >operations</a
+                                >
+                            </li>
+                            <li class="tsd-kind-class">
+                                <a href="classes/And.html" class="tsd-kind-icon"
+                                    >And</a
+                                >
+                            </li>
+                            <li class="tsd-kind-class">
+                                <a
+                                    href="classes/Atom.html"
+                                    class="tsd-kind-icon"
+                                    >Atom</a
+                                >
+                            </li>
+                            <li class="tsd-kind-class">
+                                <a
+                                    href="classes/Calculation.html"
+                                    class="tsd-kind-icon"
+                                    >Calculation</a
+                                >
+                            </li>
+                            <li class="tsd-kind-class">
+                                <a
+                                    href="classes/Comparison.html"
+                                    class="tsd-kind-icon"
+                                    >Comparison</a
+                                >
+                            </li>
+                            <li class="tsd-kind-class">
+                                <a
+                                    href="classes/DefaultConsoleLogger.html"
+                                    class="tsd-kind-icon"
+                                    >Default<wbr />Console<wbr />Logger</a
+                                >
+                            </li>
+                            <li class="tsd-kind-class">
+                                <a
+                                    href="classes/Formula.html"
+                                    class="tsd-kind-icon"
+                                    >Formula</a
+                                >
+                            </li>
+                            <li class="tsd-kind-class">
+                                <a
+                                    href="classes/InternalError.html"
+                                    class="tsd-kind-icon"
+                                    >Internal<wbr />Error</a
+                                >
+                            </li>
+                            <li class="tsd-kind-class">
+                                <a
+                                    href="classes/Macro.html"
+                                    class="tsd-kind-icon"
+                                    >Macro</a
+                                >
+                            </li>
+                            <li class="tsd-kind-class">
+                                <a href="classes/Not.html" class="tsd-kind-icon"
+                                    >Not</a
+                                >
+                            </li>
+                            <li class="tsd-kind-class">
+                                <a
+                                    href="classes/Operator.html"
+                                    class="tsd-kind-icon"
+                                    >Operator</a
+                                >
+                            </li>
+                            <li class="tsd-kind-class">
+                                <a href="classes/Or.html" class="tsd-kind-icon"
+                                    >Or</a
+                                >
+                            </li>
+                            <li class="tsd-kind-class">
+                                <a
+                                    href="classes/Parser.html"
+                                    class="tsd-kind-icon"
+                                    >Parser</a
+                                >
+                            </li>
+                            <li class="tsd-kind-class">
+                                <a
+                                    href="classes/Plugin.html"
+                                    class="tsd-kind-icon"
+                                    >Plugin</a
+                                >
+                            </li>
+                            <li class="tsd-kind-class">
+                                <a
+                                    href="classes/Quantifier.html"
+                                    class="tsd-kind-icon"
+                                    >Quantifier</a
+                                >
+                            </li>
+                            <li class="tsd-kind-class">
+                                <a
+                                    href="classes/Rule.html"
+                                    class="tsd-kind-icon"
+                                    >Rule</a
+                                >
+                            </li>
+                            <li class="tsd-kind-class">
+                                <a
+                                    href="classes/RulesetError.html"
+                                    class="tsd-kind-icon"
+                                    >Ruleset<wbr />Error</a
+                                >
+                            </li>
+                            <li class="tsd-kind-class">
+                                <a
+                                    href="classes/UndefinedPathError.html"
+                                    class="tsd-kind-icon"
+                                    >Undefined<wbr />Path<wbr />Error</a
+                                >
+                            </li>
+                            <li class="tsd-kind-class">
+                                <a
+                                    href="classes/UnimplementedError.html"
+                                    class="tsd-kind-icon"
+                                    >Unimplemented<wbr />Error</a
+                                >
+                            </li>
+                            <li class="tsd-kind-class">
+                                <a
+                                    href="classes/UsageError.html"
+                                    class="tsd-kind-icon"
+                                    >Usage<wbr />Error</a
+                                >
+                            </li>
+                            <li class="tsd-kind-interface">
+                                <a
+                                    href="interfaces/Logger.html"
+                                    class="tsd-kind-icon"
+                                    >Logger</a
+                                >
+                            </li>
+                            <li class="tsd-kind-interface">
+                                <a
+                                    href="interfaces/PluginClass.html"
+                                    class="tsd-kind-icon"
+                                    >Plugin<wbr />Class</a
+                                >
+                            </li>
+                            <li class="tsd-kind-type-alias">
+                                <a
+                                    href="modules.html#FormulaResults"
+                                    class="tsd-kind-icon"
+                                    >Formula<wbr />Results</a
+                                >
+                            </li>
+                            <li class="tsd-kind-variable">
+                                <a
+                                    href="modules.html#logger"
+                                    class="tsd-kind-icon"
+                                    >logger</a
+                                >
+                            </li>
+                            <li class="tsd-kind-variable">
+                                <a
+                                    href="modules.html#version"
+                                    class="tsd-kind-icon"
+                                    >version</a
+                                >
+                            </li>
+                            <li class="tsd-kind-function">
+                                <a
+                                    href="modules.html#evaluateAll"
+                                    class="tsd-kind-icon"
+                                    >evaluate<wbr />All</a
+                                >
+                            </li>
+                            <li class="tsd-kind-function">
+                                <a
+                                    href="modules.html#mapArgumentsToJSONReady"
+                                    class="tsd-kind-icon"
+                                    >map<wbr />Arguments<wbr />ToJSONReady</a
+                                >
+                            </li>
+                            <li class="tsd-kind-function">
+                                <a
+                                    href="modules.html#setLogger"
+                                    class="tsd-kind-icon"
+                                    >set<wbr />Logger</a
+                                >
+                            </li>
+                            <li class="tsd-kind-function">
+                                <a
+                                    href="modules.html#testForDate"
+                                    class="tsd-kind-icon"
+                                    >test<wbr />For<wbr />Date</a
+                                >
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <footer class="with-border-bottom">
+            <div class="container">
+                <h2>Legend</h2>
+                <div class="tsd-legend-group">
+                    <ul class="tsd-legend">
+                        <li class="tsd-kind-constructor tsd-parent-kind-class">
+                            <span class="tsd-kind-icon">Constructor</span>
+                        </li>
+                        <li class="tsd-kind-property tsd-parent-kind-class">
+                            <span class="tsd-kind-icon">Property</span>
+                        </li>
+                        <li class="tsd-kind-method tsd-parent-kind-class">
+                            <span class="tsd-kind-icon">Method</span>
+                        </li>
+                    </ul>
+                    <ul class="tsd-legend">
+                        <li
+                            class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"
+                        >
+                            <span class="tsd-kind-icon"
+                                >Inherited constructor</span
+                            >
+                        </li>
+                        <li
+                            class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"
+                        >
+                            <span class="tsd-kind-icon"
+                                >Inherited property</span
+                            >
+                        </li>
+                        <li
+                            class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"
+                        >
+                            <span class="tsd-kind-icon">Inherited method</span>
+                        </li>
+                    </ul>
+                    <ul class="tsd-legend">
+                        <li
+                            class="tsd-kind-constructor tsd-parent-kind-interface"
+                        >
+                            <span class="tsd-kind-icon">Constructor</span>
+                        </li>
+                        <li class="tsd-kind-method tsd-parent-kind-interface">
+                            <span class="tsd-kind-icon">Method</span>
+                        </li>
+                    </ul>
+                    <ul class="tsd-legend">
+                        <li
+                            class="tsd-kind-property tsd-parent-kind-class tsd-is-private"
+                        >
+                            <span class="tsd-kind-icon">Private property</span>
+                        </li>
+                        <li
+                            class="tsd-kind-method tsd-parent-kind-class tsd-is-private"
+                        >
+                            <span class="tsd-kind-icon">Private method</span>
+                        </li>
+                    </ul>
+                    <ul class="tsd-legend">
+                        <li
+                            class="tsd-kind-method tsd-parent-kind-class tsd-is-static"
+                        >
+                            <span class="tsd-kind-icon">Static method</span>
+                        </li>
+                    </ul>
+                </div>
+                <h2>Settings</h2>
+                <p>
+                    Theme
+                    <select id="theme">
+                        <option value="os">OS</option>
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                    </select>
+                </p>
+            </div>
+        </footer>
+        <div class="container tsd-generator">
+            <p>
+                Generated using
+                <a href="https://typedoc.org/" target="_blank">TypeDoc</a>
+            </p>
+        </div>
+        <div class="overlay"></div>
+        <script src="assets/main.js"></script>
+    </body>
+</html>
