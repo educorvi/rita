@@ -18,4 +18,4 @@ jobs:
               with:
                   node-version: 16.x
             - name: Check for changes files
-              run: node common/scripts/install-run-rush.js change -v -b $GITHUB_BASE_REF
+              run: node common/scripts/install-run-rush.js change -v -b origin/$GITHUB_BASE_REF
