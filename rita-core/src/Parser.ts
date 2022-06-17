@@ -37,11 +37,7 @@ interface validationResult {
 }
 
 export interface PluginClass {
-    new (
-        options: Record<any, any>,
-        childFormula: Formula,
-        name: string
-    ): Plugin;
+    new (options: Record<any, any>, childFormula: Formula | undefined): Plugin;
 }
 
 /**
@@ -54,17 +50,20 @@ export default class Parser {
      */
     private readonly validate: AnyValidateFunction<unknown> | undefined;
 
-    private readonly plugins: Map<string, PluginClass>;
+    private readonly plugins: Map<string, PluginClass> = new Map<
+        string,
+        PluginClass
+    >();
 
-    constructor(plugins?: Map<string, PluginClass>) {
+    constructor(plugins?: Array<PluginClass>) {
         this.validate = ajv.getSchema(
             'https://raw.githubusercontent.com/educorvi/rita/main/src/schema/schema.json'
         );
 
         if (plugins) {
-            this.plugins = plugins;
-        } else {
-            this.plugins = new Map<string, PluginClass>();
+            for (const plugin of plugins) {
+                this.plugins.set(new plugin({}, undefined).getName(), plugin);
+            }
         }
     }
 
@@ -265,8 +264,7 @@ export default class Parser {
         }
         return new Plugin(
             jsonRuleset['options'],
-            this.parseFormula(jsonRuleset['formula']),
-            name
+            this.parseFormula(jsonRuleset['formula'])
         );
     }
 

@@ -4,7 +4,7 @@ const nodeExternals = require('webpack-node-externals');
 const webpack = require('webpack');
 const fs = require('fs');
 
-const pjson = JSON.parse(fs.readFileSync('package.json'));
+const pjson = JSON.parse(fs.readFileSync('package.json').toString());
 
 module.exports = {
     entry: './src/index.ts',
