@@ -1,0 +1,10 @@
+{
+    "changes": [
+        {
+            "packageName": "@educorvi/persistent-rita",
+            "comment": "Add support for plugins",
+            "type": "minor"
+        }
+    ],
+    "packageName": "@educorvi/persistent-rita"
+}
