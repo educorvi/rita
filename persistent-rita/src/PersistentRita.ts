@@ -10,13 +10,10 @@ import Ruleset from './Ruleset';
  * Persistent Rita
  */
 export class PersistentRita {
-    private static plugins: Map<string, PluginClass> = new Map<
-        string,
-        PluginClass
-    >();
+    private static plugins: Array<PluginClass> = [];
     public static parser: Parser = new Parser();
 
-    public static setPlugins(plugins: Map<string, PluginClass>) {
+    public static setPlugins(plugins: Array<PluginClass>) {
         this.plugins = plugins;
         this.parser = new Parser(this.plugins);
     }

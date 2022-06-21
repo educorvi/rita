@@ -4,10 +4,13 @@
     "description": "A plugin to use http requests in rita",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
     "scripts": {
         "_phase:build": "rushx build",
         "_phase:test": "rushx test",
-        "test": ">&2 echo \"No tests defined yet!\"",
+        "test": "jest 2>&1",
         "build": "webpack"
     },
     "repository": {
@@ -28,9 +31,16 @@
         "webpack-node-externals": "^3.0.0",
         "webpack": "^5.72.1",
         "ts-loader": "^9.3.0",
-        "terser-webpack-plugin": "^5.3.3"
+        "terser-webpack-plugin": "^5.3.3",
+        "tslib": "^2.3.1",
+        "@types/jest": "^27.0.3",
+        "jest": "^27.4.5",
+        "express": "^4.18.1"
     },
     "peerDependencies": {
         "@educorvi/rita": "^3.0.0"
+    },
+    "dependencies": {
+        "axios": "^0.27.2"
     }
 }

@@ -17,7 +17,7 @@ import schemas, { schema } from './schema';
 import { AnyValidateFunction } from 'ajv/dist/types';
 import addFormats from 'ajv-formats';
 import { InternalError, UnimplementedError, UsageError } from './Errors';
-import { Plugin } from './logicElements/Plugin';
+import { Plugin, PluginClass } from './logicElements/Plugin';
 
 const ajv = new Ajv({ schemas: schemas });
 addFormats(ajv);
@@ -36,14 +36,6 @@ interface validationResult {
     errors: Array<any>;
 }
 
-export interface PluginClass {
-    new (
-        options: Record<any, any>,
-        childFormula: Formula,
-        name: string
-    ): Plugin;
-}
-
 /**
  * Class for all actions related to parsing
  */
@@ -54,17 +46,20 @@ export default class Parser {
      */
     private readonly validate: AnyValidateFunction<unknown> | undefined;
 
-    private readonly plugins: Map<string, PluginClass>;
+    private readonly plugins: Map<string, PluginClass> = new Map<
+        string,
+        PluginClass
+    >();
 
-    constructor(plugins?: Map<string, PluginClass>) {
+    constructor(plugins?: Array<PluginClass>) {
         this.validate = ajv.getSchema(
             'https://raw.githubusercontent.com/educorvi/rita/main/src/schema/schema.json'
         );
 
         if (plugins) {
-            this.plugins = plugins;
-        } else {
-            this.plugins = new Map<string, PluginClass>();
+            for (const plugin of plugins) {
+                this.plugins.set(new plugin({}, undefined).getName(), plugin);
+            }
         }
     }
 
@@ -265,8 +260,7 @@ export default class Parser {
         }
         return new Plugin(
             jsonRuleset['options'],
-            this.parseFormula(jsonRuleset['formula']),
-            name
+            this.parseFormula(jsonRuleset['formula'])
         );
     }
 
