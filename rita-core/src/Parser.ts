@@ -17,7 +17,7 @@ import schemas, { schema } from './schema';
 import { AnyValidateFunction } from 'ajv/dist/types';
 import addFormats from 'ajv-formats';
 import { InternalError, UnimplementedError, UsageError } from './Errors';
-import { Plugin } from './logicElements/Plugin';
+import { Plugin, PluginClass } from './logicElements/Plugin';
 
 const ajv = new Ajv({ schemas: schemas });
 addFormats(ajv);
@@ -34,10 +34,6 @@ interface validationResult {
      * Array of errors
      */
     errors: Array<any>;
-}
-
-export interface PluginClass {
-    new (options: Record<any, any>, childFormula: Formula | undefined): Plugin;
 }
 
 /**

@@ -1,6 +1,10 @@
 import { Formula, FormulaResults } from './Formula';
 import { UsageError } from '../Errors';
 
+export type PluginClass = {
+    new (options: Record<any, any>, childFormula: Formula | undefined): Plugin;
+};
+
 /**
  * When a rule is evaluated, the `enrichData` function is called and the data to evaluate against is passed to this plugin.
  * The plugin is supposed to create its own data (or enrich the data object that is passed to it) and return it.
@@ -17,10 +21,7 @@ export abstract class Plugin extends Formula {
      */
     formula: Formula | undefined;
 
-    protected constructor(
-        options: Record<any, any>,
-        childFormula: Formula | undefined
-    ) {
+    constructor(options: Record<any, any>, childFormula: Formula | undefined) {
         super();
         this.options = options;
         this.formula = childFormula;
@@ -57,5 +58,6 @@ export abstract class Plugin extends Formula {
     ): Promise<Record<string, any>>;
 
     abstract getName(): string;
+
     abstract getVersion(): string;
 }
