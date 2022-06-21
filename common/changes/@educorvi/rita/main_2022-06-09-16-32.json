@@ -2,7 +2,7 @@
     "changes": [
         {
             "packageName": "@educorvi/rita",
-            "comment": "Add Plugin and remove XOR",
+            "comment": "Add support for plugins and remove XOR",
             "type": "major"
         }
     ],

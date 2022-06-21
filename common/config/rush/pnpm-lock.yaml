@@ -125,6 +125,7 @@ importers:
             '@commitlint/config-conventional': ^17.0.0
             '@educorvi/persistent-rita': workspace:^3.0.1
             '@educorvi/rita': workspace:^3.0.0
+            '@educorvi/rita-plugin-http': workspace:*
             '@tsoa/runtime': ^4.0.0
             '@types/body-parser': ^1.19.2
             '@types/chai': ^4.3.1
@@ -164,6 +165,7 @@ importers:
         dependencies:
             '@educorvi/persistent-rita': link:../persistent-rita
             '@educorvi/rita': link:../rita-core
+            '@educorvi/rita-plugin-http': link:../plugins/http
             '@tsoa/runtime': 4.1.0
             body-parser: 1.20.0
             dotenv: 16.0.1

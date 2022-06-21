@@ -7,6 +7,8 @@ import PersistentRita, {
 } from '@educorvi/persistent-rita';
 import { logger as globalLogger } from '../CustomLogger';
 import Database, { ApiKey } from '../config/Database';
+import { PluginClass } from '@educorvi/rita';
+import HTTP_Plugin from '@educorvi/rita-plugin-http';
 
 export const DEVELOPMENT = process.env.NODE_ENV !== 'production';
 
@@ -14,6 +16,7 @@ export const logger = globalLogger;
 
 export let rita: PersistentRita;
 export let configDB: Database;
+export const plugins: Array<PluginClass> = [HTTP_Plugin];
 
 function dbConnectionError(type: string) {
     return function (e: Error) {
