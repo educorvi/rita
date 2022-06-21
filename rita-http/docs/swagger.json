@@ -105,8 +105,19 @@
                 "type": "object",
                 "description": "Type for the body of a request, that edits rita"
             },
+            "Record_string.string_": {
+                "properties": {},
+                "type": "object",
+                "description": "Construct a type with a set of properties K of type T"
+            },
             "welcomeMessage": {
                 "properties": {
+                    "plugins": {
+                        "items": {
+                            "$ref": "#/components/schemas/Record_string.string_"
+                        },
+                        "type": "array"
+                    },
                     "ritaVersion": {
                         "type": "string"
                     },
@@ -117,7 +128,7 @@
                         "type": "string"
                     }
                 },
-                "required": ["ritaVersion", "message", "version"],
+                "required": ["plugins", "ritaVersion", "message", "version"],
                 "type": "object",
                 "description": "Root controller"
             }
@@ -419,7 +430,8 @@
                                         "value": {
                                             "version": "3.0.0",
                                             "message": "Welcome to the RITA API.",
-                                            "ritaVersion": "3.0.1"
+                                            "ritaVersion": "3.0.1",
+                                            "plugins": []
                                         }
                                     }
                                 }
