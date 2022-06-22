@@ -21,8 +21,14 @@ cd rita
 # Install dependencies and build project
 ./setup.sh
 
-# Open rita-http folder and run the server
+# Open rita-http folder
 cd rita-http
+
+# Set environment variables
+cp .env.template .env
+vim .env
+
+# Start server
 node .
 ```
 
