@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 if ! command -v node &> /dev/null
 then
     echo "node could not be found, please install it"

@@ -19,10 +19,14 @@
     "license": "MIT",
     "author": "Julian Pollinger",
     "main": "dist/ritaAPI.js",
+    "files": [
+        "dist"
+    ],
     "scripts": {
         "_phase:build": "rushx build",
         "_phase:test": "rushx test",
-        "build": "npm run generate-routes && npm run spec && webpack && npm run zip",
+        "prepack": "npm run build",
+        "build": "npm run generate-routes && npm run spec && webpack",
         "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
         "dev:config": "ts-node-dev --respawn --transpile-only src/index.ts -- --config",
         "doc": "npm run spec",
@@ -30,8 +34,7 @@
         "spec": "npx tsoa spec",
         "start": "node .",
         "test:no-server": "LOGLEVEL=error mocha -r mocha-steps -r ts-node/register test/*.ts",
-        "test": "start-server-and-test start http://localhost:3000 test:no-server",
-        "zip": "cd dist && bestzip dist.zip ./**/* ./*"
+        "test": "start-server-and-test start http://localhost:3000 test:no-server"
     },
     "dependencies": {
         "@educorvi/persistent-rita": "workspace:^3.0.1",
