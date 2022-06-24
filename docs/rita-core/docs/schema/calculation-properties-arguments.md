@@ -4,9 +4,11 @@
 https://raw.githubusercontent.com/educorvi/rita/main/src/schema/calculation.json#/properties/arguments
 ```
 
+
+
 | Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                     |
 | :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :----------------------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [calculation.json\*](../../src/schema/calculation.json 'open original schema') |
+| Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [calculation.json\*](../../src/schema/calculation.json "open original schema") |
 
 ## arguments Type
 
