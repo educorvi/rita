@@ -4,16 +4,16 @@ Fetches an URL and expects an JSON object as response. This JSON object will the
 
 ## Usage
 
-```json5
+```json
 {
-    type: 'plugin',
-    name: 'http',
-    options: {
-        url: 'https://example.com/api',
+    "type": "plugin",
+    "name": "http",
+    "options": {
+        "url": "https://example.com/api"
     },
-    formula: {
-        type: 'atom',
-        path: 'keyInResponse',
-    },
+    "formula": {
+        "type": "atom",
+        "path": "keyInResponse"
+    }
 }
 ```

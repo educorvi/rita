@@ -14,6 +14,22 @@ Describes an plugin
 
 `object` ([Plugin](plugin.md))
 
+## Plugin Examples
+
+```json
+{
+    "type": "plugin",
+    "name": "http",
+    "options": {
+        "url": "https://example.com/api"
+    },
+    "formula": {
+        "type": "atom",
+        "path": "keyInResponse"
+    }
+}
+```
+
 # Plugin Properties
 
 | Property            | Type     | Required | Nullable       | Defined by                                                                                                                               |

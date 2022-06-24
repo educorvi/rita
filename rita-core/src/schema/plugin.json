@@ -22,5 +22,18 @@
         }
     },
     "required": ["type", "name", "formula"],
-    "additionalProperties": false
+    "additionalProperties": false,
+    "examples": [
+        {
+            "type": "plugin",
+            "name": "http",
+            "options": {
+                "url": "https://example.com/api"
+            },
+            "formula": {
+                "type": "atom",
+                "path": "keyInResponse"
+            }
+        }
+    ]
 }
