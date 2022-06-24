@@ -90,17 +90,16 @@ jobs:
               run: node common/scripts/install-run-rush.js version --bump
             - name: Generate documentation
               run: node common/scripts/install-run-rush.js generate-documentation
-            - run: git add .
-            - name: Commit changes
-              run: |
-                  git commit -a -m 'chore: bump version and generate documentation' || echo "No changes to commit"
-                  git push
             - name: Publish to NPM
               run: node common/scripts/install-run-rush.js publish -p -b main --include-all --set-access-level=public
               env:
                   NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+            - run: git add .
+            - name: Commit changes
+              run: |
+                  git commit -a -m 'chore: bump version and generate documentation' || echo "No changes to commit"
+                  git push --follow-tags
             - name: Publish to Github Packages
               run: node common/scripts/install-run-rush.js publish -p -b main --include-all --set-access-level=public --registry "https://npm.pkg.github.com/"
               env:
                   NPM_AUTH_TOKEN: ${{ secrets.PUBLISH_GITHUB_PACKAGE_TOKEN }}
-            - run: git push
