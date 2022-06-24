@@ -1,0 +1,20 @@
+{
+    "name": "@educorvi/rita-plugin-http",
+    "entries": [
+        {
+            "version": "1.0.1",
+            "tag": "@educorvi/rita-plugin-http_v1.0.1",
+            "date": "Fri, 24 Jun 2022 12:22:43 GMT",
+            "comments": {
+                "dependency": [
+                    {
+                        "comment": "Updating dependency \"@educorvi/rita\" from `^3.0.0` to `^4.0.0`"
+                    },
+                    {
+                        "comment": "Updating dependency \"@educorvi/rita\" from `^3.0.0` to `^4.0.0`"
+                    }
+                ]
+            }
+        }
+    ]
+}
