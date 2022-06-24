@@ -402,27 +402,32 @@
         {
             "packageName": "@educorvi/rita",
             "projectFolder": "rita-core",
-            "shouldPublish": true
+            "shouldPublish": true,
+            "versionPolicyName": "rita-publish"
         },
         {
             "packageName": "@educorvi/persistent-rita",
             "projectFolder": "persistent-rita",
-            "shouldPublish": true
+            "shouldPublish": true,
+            "versionPolicyName": "rita-publish"
         },
         {
             "packageName": "@educorvi/smtlib",
             "projectFolder": "rita-smt/node-smtlib",
-            "shouldPublish": true
+            "shouldPublish": true,
+            "versionPolicyName": "rita-publish"
         },
         {
             "packageName": "@educorvi/rita-smt",
             "projectFolder": "rita-smt/main",
-            "shouldPublish": true
+            "shouldPublish": true,
+            "versionPolicyName": "rita-publish"
         },
         {
             "packageName": "@educorvi/rita-plugin-http",
             "projectFolder": "plugins/http",
-            "shouldPublish": true
+            "shouldPublish": true,
+            "versionPolicyName": "rita-publish"
         },
         {
             "packageName": "rita-http",
