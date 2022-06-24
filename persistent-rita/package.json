@@ -1,6 +1,6 @@
 {
     "name": "@educorvi/persistent-rita",
-    "version": "3.0.1",
+    "version": "4.0.0",
     "repository": {
         "type": "git",
         "url": "https://github.com/educorvi/persistent-rita"
@@ -26,7 +26,7 @@
         "reflect-metadata": "^0.1.13"
     },
     "devDependencies": {
-        "@educorvi/rita": "workspace:^3.0.0",
+        "@educorvi/rita": "workspace:^4.0.0",
         "@types/jest": "^27.0.3",
         "dotenv": "^16.0.1",
         "jest": "^27.4.5",
@@ -42,7 +42,7 @@
         "webpack-node-externals": "^3.0.0"
     },
     "peerDependencies": {
-        "@educorvi/rita": "^3.1.2",
+        "@educorvi/rita": "^4.0.0",
         "mysql2": "^2.3.3",
         "pg": "^8.7.1",
         "sqlite3": "^5.0.6",

@@ -1,0 +1,33 @@
+{
+    "name": "rita-http",
+    "entries": [
+        {
+            "version": "3.1.0",
+            "tag": "rita-http_v3.1.0",
+            "date": "Fri, 24 Jun 2022 12:22:43 GMT",
+            "comments": {
+                "patch": [
+                    {
+                        "comment": "Use async rita"
+                    }
+                ],
+                "minor": [
+                    {
+                        "comment": "Add http plugin"
+                    }
+                ],
+                "dependency": [
+                    {
+                        "comment": "Updating dependency \"@educorvi/persistent-rita\" from `^3.0.1` to `^4.0.0`"
+                    },
+                    {
+                        "comment": "Updating dependency \"@educorvi/rita\" from `^3.0.0` to `^4.0.0`"
+                    },
+                    {
+                        "comment": "Updating dependency \"@educorvi/rita-plugin-http\" to `1.0.1`"
+                    }
+                ]
+            }
+        }
+    ]
+}

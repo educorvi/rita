@@ -1,0 +1,20 @@
+{
+    "name": "@educorvi/rita",
+    "entries": [
+        {
+            "version": "4.0.0",
+            "tag": "@educorvi/rita_v4.0.0",
+            "date": "Fri, 24 Jun 2022 12:22:43 GMT",
+            "comments": {
+                "major": [
+                    {
+                        "comment": "Make evaluation async"
+                    },
+                    {
+                        "comment": "Add support for plugins and remove XOR"
+                    }
+                ]
+            }
+        }
+    ]
+}

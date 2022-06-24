@@ -1,15 +1,15 @@
-# Change Log - @educorvi/rita-smt
+# Change Log - rita-http
 
 This log was last generated on Fri, 24 Jun 2022 12:22:43 GMT and should not be manually modified.
 
-## 1.2.2
+## 3.1.0
 
 Fri, 24 Jun 2022 12:22:43 GMT
 
-_Version update only_
+### Minor changes
 
-## 1.2.1
+-   Add http plugin
 
-Thu, 09 Jun 2022 16:12:17 GMT
+### Patches
 
-_Initial release_
+-   Use async rita
