@@ -100,6 +100,7 @@ jobs:
               env:
                   NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
             - name: Publish to Github Packages
-              run: node common/scripts/install-run-rush.js publish -p -b main --include-all --set-access-level=public --registry "https://npm.pkg.github.com/:_authToken=${NPM_AUTH_TOKEN}"
+              run: node common/scripts/install-run-rush.js publish -p -b main --include-all --set-access-level=public --registry "https://npm.pkg.github.com/"
               env:
                   NPM_AUTH_TOKEN: ${{ secrets.PUBLISH_GITHUB_PACKAGE_TOKEN }}
+            - run: git push
