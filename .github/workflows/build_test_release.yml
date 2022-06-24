@@ -78,14 +78,19 @@ jobs:
         steps:
             - uses: actions/checkout@v3
             - uses: actions/setup-node@v3
+            - name: Setup git
+              run: |
+                  git config user.name github-actions
+                  git config user.email github-actions@github.com
             - name: Bump version
               run: node common/scripts/install-run-rush.js version --bump
             - name: Generate documentation
               run: node common/scripts/install-run-rush.js generate-documentation
             - run: git add .
-            - uses: stefanzweifel/git-auto-commit-action@v4
-              with:
-                  commit_message: 'chore: bumped version and generated documentation'
+            - name: Commit changes
+              run: |
+                  git commit -a -m 'chore: bump version and generate documentation' || echo "No changes to commit"
+                  git push
             - name: Publish to NPM
               run: node common/scripts/install-run-rush.js publish -p -b main --include-all --set-access-level=public
               env:
