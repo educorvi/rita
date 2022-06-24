@@ -84,6 +84,8 @@ jobs:
                   git config user.email github-actions@github.com
             - name: Install
               run: node common/scripts/install-run-rush.js install
+            - name: Build
+              run: node common/scripts/install-run-rush.js build
             - name: Bump version
               run: node common/scripts/install-run-rush.js version --bump
             - name: Generate documentation
