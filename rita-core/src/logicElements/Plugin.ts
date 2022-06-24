@@ -1,6 +1,10 @@
 import { Formula, FormulaResults } from './Formula';
 import { UsageError } from '../Errors';
+import { Logger } from '../Logger';
 
+/**
+ * Type of class that extends Plugin
+ */
 export type PluginClass = {
     new (options: Record<any, any>, childFormula: Formula | undefined): Plugin;
 };
@@ -21,6 +25,7 @@ export abstract class Plugin extends Formula {
      */
     formula: Formula | undefined;
 
+    // noinspection TypeScriptAbstractClassConstructorCanBeMadeProtected -> can't be made protected because it's needed for PluginClass type
     constructor(options: Record<any, any>, childFormula: Formula | undefined) {
         super();
         this.options = options;
@@ -51,13 +56,21 @@ export abstract class Plugin extends Formula {
     /**
      * Enriches the data for the child formula
      * @param data The original data for evaluation
+     * @param logger Optionally pass a logger
      * @return The enriched data that is then used to evaluate the child formula
      */
     abstract enrichData(
-        data: Record<string, any>
+        data: Record<string, any>,
+        logger?: Logger
     ): Promise<Record<string, any>>;
 
+    /**
+     * Get the name of the plugin
+     */
     abstract getName(): string;
 
+    /**
+     * Get the version of the plugin
+     */
     abstract getVersion(): string;
 }
