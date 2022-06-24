@@ -39,22 +39,22 @@
     "dependencies": {
         "@educorvi/persistent-rita": "workspace:^4.0.0",
         "@educorvi/rita": "workspace:^4.0.0",
+        "@educorvi/rita-plugin-http": "workspace:*",
         "@tsoa/runtime": "^4.0.0",
         "body-parser": "^1.20.0",
         "dotenv": "^16.0.1",
         "express": "^4.18.1",
+        "mysql2": "~2.3.3",
+        "pg": "~8.7.3",
         "promise.any": "^2.0.4",
         "reflect-metadata": "^0.1.13",
         "semver": "^7.3.7",
+        "sqlite3": "~5.0.8",
         "swagger-ui-express": "^4.4.0",
         "terminal-kit": "^2.4.0",
         "tslog": "^3.3.3",
         "tsoa": "^4.0.0",
-        "typeorm": "^0.3.6",
-        "sqlite3": "~5.0.8",
-        "pg": "~8.7.3",
-        "mysql2": "~2.3.3",
-        "@educorvi/rita-plugin-http": "workspace:*"
+        "typeorm": "^0.3.6"
     },
     "devDependencies": {
         "@commitlint/cli": "^17.0.0",
