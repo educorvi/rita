@@ -1,6 +1,6 @@
 # Rule It All _(Rita)_
 
-[![Build & Test](https://github.com/educorvi/rita/actions/workflows/build&test.yml/badge.svg)](https://github.com/educorvi/rita/actions/workflows/build&test.yml)
+[![Build, Test & Release](https://github.com/educorvi/rita/actions/workflows/build_test_release.yml/badge.svg)](https://github.com/educorvi/rita/actions/workflows/build_test_release.yml)
 [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-%230074c1.svg)](http://www.typescriptlang.org/)
 
 Rita is a project to enable rule based processing of data.
@@ -10,6 +10,10 @@ It consists of:
 -   [`persistent-rita`](https://github.com/educorvi/rita/tree/main/persistent-rita), used to persist rules
 -   [`rita-http`](https://github.com/educorvi/rita/tree/main/rita-http), a REST-API to evaluate rules
 -   _[`rita-smt`](https://github.com/educorvi/rita/tree/main/rita-smt), Rita and SMT_ (EXPERIMENTAL)
+
+## Documentation
+
+https://educorvi.github.io/rita/
 
 ## Setup
 
