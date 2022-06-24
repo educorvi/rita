@@ -4,9 +4,11 @@
 https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json#/properties/macro/oneOf/0/properties/type
 ```
 
+
+
 | Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                         |
 | :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :----------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [macro.json\*](../../src/schema/macro.json 'open original schema') |
+| Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [macro.json\*](../../src/schema/macro.json "open original schema") |
 
 ## type Type
 

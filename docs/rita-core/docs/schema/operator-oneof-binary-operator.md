@@ -4,9 +4,11 @@
 https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0
 ```
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                               |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :----------------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [operator.json\*](../../src/schema/operator.json 'open original schema') |
+
+
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                              |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [operator.json*](../../src/schema/operator.json "open original schema") |
 
 ## 0 Type
 
@@ -16,20 +18,22 @@ https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/o
 
 | Property                  | Type     | Required | Nullable       | Defined by                                                                                                                                                                         |
 | :------------------------ | :------- | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [type](#type)             | `string` | Required | cannot be null | [Operator](operator-oneof-binary-operator-properties-type.md 'https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/type')             |
-| [parameters](#parameters) | `array`  | Required | cannot be null | [Operator](operator-oneof-binary-operator-properties-parameters.md 'https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/parameters') |
+| [type](#type)             | `string` | Required | cannot be null | [Operator](operator-oneof-binary-operator-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/type")             |
+| [parameters](#parameters) | `array`  | Required | cannot be null | [Operator](operator-oneof-binary-operator-properties-parameters.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/parameters") |
 
 ## type
 
+
+
 `type`
 
--   is required
+*   is required
 
--   Type: `string`
+*   Type: `string`
 
--   cannot be null
+*   cannot be null
 
--   defined in: [Operator](operator-oneof-binary-operator-properties-type.md 'https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/type')
+*   defined in: [Operator](operator-oneof-binary-operator-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/type")
 
 ### type Type
 
@@ -47,15 +51,17 @@ https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/o
 
 ## parameters
 
+
+
 `parameters`
 
--   is required
+*   is required
 
--   Type: an array of merged types ([Formula](term.md))
+*   Type: an array of merged types ([Formula](term.md))
 
--   cannot be null
+*   cannot be null
 
--   defined in: [Operator](operator-oneof-binary-operator-properties-parameters.md 'https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/parameters')
+*   defined in: [Operator](operator-oneof-binary-operator-properties-parameters.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/parameters")
 
 ### parameters Type
 
