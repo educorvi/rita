@@ -1,6 +1,6 @@
 # Rule It All _(Rita)_
 
-[![Build, Test & Release](https://github.com/educorvi/rita/actions/workflows/build_test_release.yml/badge.svg)](https://github.com/educorvi/rita/actions/workflows/build_test_release.yml)
+[![Build, Test & Release](https://github.com/educorvi/rita/actions/workflows/build_test_release.yml/badge.svg?branch=main)](https://github.com/educorvi/rita/actions/workflows/build_test_release.yml)
 [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-%230074c1.svg)](http://www.typescriptlang.org/)
 
 Rita is a project to enable rule based processing of data.
