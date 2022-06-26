@@ -1,3 +1,15 @@
 **/node_modules
 **/temp
 Dockerfile
+docs
+.github
+.run
+.git
+.gitattributes
+.gitignore
+.prettierignore
+.prettierrc.json
+commitlint.config.js
+.dockerignore
+Dockerfile
+README.md
