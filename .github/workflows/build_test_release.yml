@@ -90,6 +90,8 @@ jobs:
         needs: [buildAndTest, licenses]
         steps:
             - uses: actions/checkout@v3
+              with:
+                fetch-depth: 0
             - uses: actions/setup-node@v3
             - name: Setup git
               run: |
@@ -111,6 +113,7 @@ jobs:
             - name: Commit changes
               run: |
                   git commit -a -m 'chore: bump version and generate documentation' || echo "No changes to commit"
+                  git rebase main develop
                   git push --follow-tags
 
 #            - name: Publish to Github Packages
