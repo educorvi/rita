@@ -1,5 +1,11 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+
 const app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 app.get('/', (req, res) => {
     res.send({
         member: true,
@@ -21,6 +27,12 @@ app.get('/', (req, res) => {
         ],
         dateOfBirth: '2000-01-01T00:00:00+00:00',
         name: 'Julian',
+    });
+});
+
+app.post('/', (req, res) => {
+    res.send({
+        response: req.body,
     });
 });
 
