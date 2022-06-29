@@ -119,6 +119,7 @@ jobs:
               run: |
                   git branch
                   git checkout develop
+                  git pull
                   git rebase main
                   git push
 
