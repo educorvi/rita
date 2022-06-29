@@ -2,6 +2,18 @@
     "name": "@educorvi/rita-plugin-http",
     "entries": [
         {
+            "version": "1.1.0",
+            "tag": "@educorvi/rita-plugin-http_v1.1.0",
+            "date": "Wed, 29 Jun 2022 12:53:14 GMT",
+            "comments": {
+                "minor": [
+                    {
+                        "comment": "Add support for post requests"
+                    }
+                ]
+            }
+        },
+        {
             "version": "1.0.1",
             "tag": "@educorvi/rita-plugin-http_v1.0.1",
             "date": "Fri, 24 Jun 2022 12:22:43 GMT",
