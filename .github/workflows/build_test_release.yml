@@ -71,10 +71,23 @@ jobs:
             - name: Build and test
               run: node common/scripts/install-run-rush.js build-and-test
 
-    Release:
+    licenses:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+            - name: Install dependencies
+              run: node common/scripts/install-run-rush.js install
+            - name: Install fossa
+              run: "curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossas/fossa-cli/master/install-latest.sh | bash"
+            - run: fossa analyze
+              env:
+                  FOSSA_API_KEY: ${{secrets.FOSSA_API_TOKEN}}
+
+    release:
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         runs-on: ubuntu-latest
-        needs: buildAndTest
+        needs: [buildAndTest, licenses]
         steps:
             - uses: actions/checkout@v3
             - uses: actions/setup-node@v3
