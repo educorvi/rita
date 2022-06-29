@@ -114,8 +114,13 @@ jobs:
             - name: Commit changes
               run: |
                   git commit -a -m 'chore: bump version and generate documentation' || echo "No changes to commit"
-                  git rebase main develop
                   git push --follow-tags
+            - name: Rebase
+              run: |
+                  git branch
+                  git checkout develop
+                  git rebase main
+                  git push
 
 #            - name: Publish to Github Packages
 #              run: node common/scripts/install-run-rush.js publish -p -b main --include-all --version-policy "rita-publish" --set-access-level=public --registry "https://npm.pkg.github.com/"
