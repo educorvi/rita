@@ -36,6 +36,6 @@ jobs:
                   push: true
                   tags: |
                       ghcr.io/educorvi/rita-http:latest
-                      ghcr.io/educorvi/rita-http:${{RITA_HTTP_VERSION}}
-                      ghcr.io/educorvi/rita-http:${{RITA_HTTP_VERSION_MINOR}}
-                      ghcr.io/educorvi/rita-http:${{RITA_HTTP_VERSION_MAJOR}}
+                      ghcr.io/educorvi/rita-http:${{env.RITA_HTTP_VERSION}}
+                      ghcr.io/educorvi/rita-http:${{env.RITA_HTTP_VERSION_MINOR}}
+                      ghcr.io/educorvi/rita-http:${{env.RITA_HTTP_VERSION_MAJOR}}
