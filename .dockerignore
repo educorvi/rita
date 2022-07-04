@@ -11,5 +11,4 @@ docs
 .prettierrc.json
 commitlint.config.js
 .dockerignore
-Dockerfile
 README.md
