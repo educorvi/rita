@@ -1,0 +1,41 @@
+name: Build Docker
+
+on:
+    workflow_dispatch:
+#  schedule:
+#    - cron: '12 4,22 * * 1,2,3,4'
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+              with:
+                  ref: 'main'
+                  fetch-depth: 0
+            - name: Get Versions
+              run: '.github/exportRitaHttpVersions.sh rita-http/package.json'
+            - name: Set up QEMU
+              uses: docker/setup-qemu-action@v2
+
+            - name: Set up Docker Buildx
+              uses: docker/setup-buildx-action@v2
+
+            - name: Login to GitHub Container Registry
+              uses: docker/login-action@v2
+              with:
+                  registry: ghcr.io
+                  username: ${{ github.repository_owner }}
+                  password: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Build and push
+              uses: docker/build-push-action@v3
+              with:
+                  context: .
+                  platforms: linux/amd64,linux/arm64
+                  push: true
+                  tags: |
+                      ghcr.io/educorvi/rita-http:latest
+                      ghcr.io/educorvi/rita-http:${{RITA_HTTP_VERSION}}
+                      ghcr.io/educorvi/rita-http:${{RITA_HTTP_VERSION_MINOR}}
+                      ghcr.io/educorvi/rita-http:${{RITA_HTTP_VERSION_MAJOR}}
