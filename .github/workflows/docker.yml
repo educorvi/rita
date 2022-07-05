@@ -5,6 +5,10 @@ on:
 #  schedule:
 #    - cron: '12 4,22 * * 1,2,3,4'
 
+env:
+    REGISTRY: ghcr.io
+    IMAGE_NAME: rita-http
+
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -24,18 +28,27 @@ jobs:
             - name: Login to GitHub Container Registry
               uses: docker/login-action@v2
               with:
-                  registry: ghcr.io
-                  username: ${{ github.repository_owner }}
+                  registry: ${{ env.REGISTRY }}
+                  username: ${{ github.actor }}
                   password: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Docker meta
+              id: meta
+              uses: docker/metadata-action@v4
+              with:
+                  images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+                  tags: |
+                      type=semver,pattern={{version}},value=${{env.RITA_HTTP_VERSION}}
+                      type=semver,pattern={{major}}.{{minor}},value=${{env.RITA_HTTP_VERSION}}
+                      type=semver,pattern={{major}},value=${{env.RITA_HTTP_VERSION}}
+                      type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', 'main') }}
+                      type=raw,value=nightly,enable={{is_default_branch}}
 
             - name: Build and push
               uses: docker/build-push-action@v3
               with:
                   context: .
-                  platforms: linux/amd64,linux/arm64
+                  #          platforms: linux/amd64,linux/arm64
                   push: true
-                  tags: |
-                      ghcr.io/educorvi/rita-http:latest
-                      ghcr.io/educorvi/rita-http:${{env.RITA_HTTP_VERSION}}
-                      ghcr.io/educorvi/rita-http:${{env.RITA_HTTP_VERSION_MINOR}}
-                      ghcr.io/educorvi/rita-http:${{env.RITA_HTTP_VERSION_MAJOR}}
+                  tags: ${{ steps.meta.outputs.tags }}
+                  labels: ${{ steps.meta.outputs.labels }}
