@@ -122,7 +122,12 @@ jobs:
                   git pull
                   git rebase main
                   git push
-
+    buildDocker:
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        runs-on: ubuntu-latest
+        needs: [release]
+        steps:
+            - uses: ./.github/workflows/docker.yml
 #            - name: Publish to Github Packages
 #              run: node common/scripts/install-run-rush.js publish -p -b main --include-all --version-policy "rita-publish" --set-access-level=public --registry "https://npm.pkg.github.com/"
 #              env:

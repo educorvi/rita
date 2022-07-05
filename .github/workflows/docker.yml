@@ -2,8 +2,9 @@ name: Build Docker
 
 on:
     workflow_dispatch:
-#  schedule:
-#    - cron: '12 4,22 * * 1,2,3,4'
+    workflow_call:
+    schedule:
+        - cron: '12 22 * * 1,2,3,4'
 
 env:
     REGISTRY: ghcr.io
@@ -37,12 +38,14 @@ jobs:
               uses: docker/metadata-action@v4
               with:
                   images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+                  flavor: |
+                      latest=false
                   tags: |
-                      type=semver,pattern={{version}},value=${{env.RITA_HTTP_VERSION}}
-                      type=semver,pattern={{major}}.{{minor}},value=${{env.RITA_HTTP_VERSION}}
-                      type=semver,pattern={{major}},value=${{env.RITA_HTTP_VERSION}}
+                      type=semver,pattern={{version}},value=${{env.RITA_HTTP_VERSION}},enable=${{ github.ref == format('refs/heads/{0}', 'main') }}
+                      type=semver,pattern={{major}}.{{minor}},value=${{env.RITA_HTTP_VERSION}},enable=${{ github.ref == format('refs/heads/{0}', 'main') }}
+                      type=semver,pattern={{major}}-latest,value=${{env.RITA_HTTP_VERSION}},enable=${{ github.ref == format('refs/heads/{0}', 'main') }}
                       type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', 'main') }}
-                      type=raw,value=nightly,enable={{is_default_branch}}
+                      type=schedule,pattern=nightly
 
             - name: Build and push
               uses: docker/build-push-action@v3
