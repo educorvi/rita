@@ -4,7 +4,7 @@ on:
     workflow_dispatch:
     workflow_call:
     schedule:
-        - cron: '12 22 * * 1,2,3,4'
+        - cron: '12 22 * * 1,2,3,4,5'
 
 env:
     REGISTRY: ghcr.io
