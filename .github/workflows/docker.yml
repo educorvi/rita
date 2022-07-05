@@ -9,6 +9,9 @@ env:
     REGISTRY: ghcr.io
     IMAGE_NAME: educorvi/rita-http
 
+permissions:
+    packages: write
+
 jobs:
     build:
         runs-on: ubuntu-latest
