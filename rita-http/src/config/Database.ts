@@ -6,6 +6,8 @@ import { MysqlConnectionOptions } from 'typeorm/driver/mysql/MysqlConnectionOpti
 import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
 import { SqliteConnectionOptions } from 'typeorm/driver/sqlite/SqliteConnectionOptions';
 
+export type supportedDBTypes = 'mysql' | 'sqlite' | 'postgres';
+
 /**
  * DB Adapter for storage of API Keys and boolean settings
  * Uses singleton pattern
