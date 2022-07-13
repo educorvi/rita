@@ -121,7 +121,7 @@ jobs:
                   git checkout develop
                   git pull
                   git rebase main
-                  git push
+                  git push --follow-tags
     buildDocker:
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         needs: [release]
