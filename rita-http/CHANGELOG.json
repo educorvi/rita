@@ -2,6 +2,18 @@
     "name": "rita-http",
     "entries": [
         {
+            "version": "3.1.2",
+            "tag": "rita-http_v3.1.2",
+            "date": "Wed, 13 Jul 2022 08:41:05 GMT",
+            "comments": {
+                "patch": [
+                    {
+                        "comment": "Check environment variables before starting server"
+                    }
+                ]
+            }
+        },
+        {
             "version": "3.1.1",
             "tag": "rita-http_v3.1.1",
             "date": "Wed, 29 Jun 2022 12:53:14 GMT",
