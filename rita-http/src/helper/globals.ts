@@ -6,7 +6,7 @@ import PersistentRita, {
     DatabaseConfig,
 } from '@educorvi/persistent-rita';
 import { logger as globalLogger } from '../CustomLogger';
-import Database, { ApiKey } from '../config/Database';
+import Database, { ApiKey, supportedDBTypes } from '../config/Database';
 import { PluginClass } from '@educorvi/rita';
 import HTTP_Plugin from '@educorvi/rita-plugin-http';
 
@@ -26,6 +26,8 @@ function dbConnectionError(type: string) {
 }
 
 const {
+    PORT,
+    LOGLEVEL,
     DB_HOST,
     DB_PORT,
     DB_USERNAME,
@@ -34,6 +36,8 @@ const {
     DB_TYPE,
     DB_SQLITE_PATH,
 } = process.env;
+
+const type = DB_TYPE.toLowerCase();
 /**
  * Options for database connection read from environment
  */
@@ -79,18 +83,22 @@ async function initRita() {
     rita = new PersistentRita(db, logger);
 }
 
+function checkDBType(type: string): asserts type is supportedDBTypes {
+    if (!(type === 'mysql' || type === 'sqlite' || type === 'postgres')) {
+        dbConnectionError('config')(
+            new Error('Unknown DB type: ' + type.toUpperCase())
+        );
+    }
+}
+
 /**
  * Function to initialize connection to config db
  */
 async function initConfigDB() {
-    const type = DB_TYPE.toLowerCase();
-    if (!(type === 'mysql' || type === 'sqlite' || type === 'postgres')) {
-        dbConnectionError('config')(new Error('Unknown DB type: ' + DB_TYPE));
-        return;
-    }
     if (type === 'sqlite') {
         db_options.database = DB_SQLITE_PATH;
     }
+    checkDBType(type);
     try {
         // noinspection TypeScriptValidateTypes
         configDB = await Database.getDB({
@@ -123,10 +131,35 @@ async function initConfigDB() {
     }
 }
 
+function fatalConfigError(message: string) {
+    logger.fatal(message);
+    process.exit(-2);
+}
+
+function checkEnvironmentVariables() {
+    if (!PORT) logger.warn('No port in .env specified. Defaulting to 3000');
+    if (!LOGLEVEL)
+        logger.warn('No log level in .env specified. Defaulting to "info"');
+    if (!DB_TYPE) fatalConfigError('No database type in .env specified');
+
+    if (DB_TYPE === 'SQLITE' && !DB_SQLITE_PATH)
+        fatalConfigError('No path for SQLite DB in .env specified');
+    if (DB_TYPE === 'MYSQL' || DB_TYPE === 'POSTGRES') {
+        if (!DB_HOST) fatalConfigError('No database host in .env specified');
+        if (!DB_PORT) fatalConfigError('No database port in .env specified');
+        if (!DB_USERNAME)
+            fatalConfigError('No database username in .env specified');
+        if (!DB_PASSWORD)
+            fatalConfigError('No database password in .env specified');
+        if (!DB_DATABASE) fatalConfigError('No database in .env specified');
+    }
+}
+
 /**
  * Initialize both databases
  */
 export async function init() {
+    checkEnvironmentVariables();
     await initConfigDB();
     await initRita();
 }

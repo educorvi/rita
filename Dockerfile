@@ -4,7 +4,7 @@ WORKDIR /app
 RUN corepack enable
 COPY . .
 RUN node common/scripts/install-run-rush.js install
-RUN node common/scripts/install-run-rush.js build
+RUN node common/scripts/install-run-rush.js build --to-except rita-http
 WORKDIR /app/rita-http
 RUN pnpm pack
 RUN tar zxvf rita-http-*.tgz
@@ -23,5 +23,6 @@ COPY --from=build /app/rita-http/package/package.json .
 RUN npm install --omit=dev
 
 COPY --from=build /app/rita-http/package/dist dist
+COPY --from=build /app/rita-http/docs docs
 
 CMD /wait && node .

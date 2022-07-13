@@ -11,14 +11,19 @@ import { RegisterRoutes } from '../generated/routes';
 import { logger, init, DEVELOPMENT, rita, configDB } from './helper/globals';
 import { errorHandler, middleware } from './helper/middleware';
 import { startConfigurator } from './config/TerminalConfigurator';
+import { Server } from 'http';
 
-let { API_PORT } = process.env;
-const port = API_PORT || '3000';
+let { PORT } = process.env;
+const port = PORT || '3000';
+
+let app: Server;
 
 process.on('SIGINT', function () {
     logger.log('Shutting down...');
 
     new Promise<void>(async (resolve) => {
+        if (app) await app.close();
+        logger.log('Closed http server');
         await rita.closeDBConnection();
         logger.log('Closed connection to rita db');
         await configDB.close();
@@ -51,7 +56,7 @@ function startWebserver() {
 
     httpServer.use(errorHandler);
 
-    httpServer.listen(port, () => {
+    app = httpServer.listen(port, () => {
         logger.log('Webserver started on port ' + port);
         if (DEVELOPMENT) logger.log(`Access on http://localhost:${port}`);
     });
@@ -65,10 +70,7 @@ function startWebserver() {
     if (process.argv[2] === '--config') {
         await startConfigurator();
     } else {
-        if (DEVELOPMENT)
-            logger.warn(
-                'Running in development mode. Set NODE_ENV Environment Variable to "production" when running in production.'
-            );
+        if (DEVELOPMENT) logger.warn('Running in development mode');
         startWebserver();
     }
 })();

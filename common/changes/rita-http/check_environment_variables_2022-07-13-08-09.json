@@ -1,0 +1,10 @@
+{
+    "changes": [
+        {
+            "packageName": "rita-http",
+            "comment": "Check environment variables before starting server",
+            "type": "patch"
+        }
+    ],
+    "packageName": "rita-http"
+}
