@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2019-09/schema",
-    "$id": "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/atom.json",
+    "$id": "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/atom.json",
     "title": "Atom",
     "description": "Describes an atom. Those can be used to read Data",
     "type": "object",

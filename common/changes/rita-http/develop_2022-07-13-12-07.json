@@ -1,0 +1,10 @@
+{
+    "changes": [
+        {
+            "packageName": "rita-http",
+            "comment": "Fix server not stopping when docker container is stopped",
+            "type": "patch"
+        }
+    ],
+    "packageName": "rita-http"
+}

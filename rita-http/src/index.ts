@@ -18,7 +18,7 @@ const port = PORT || '3000';
 
 let app: Server;
 
-process.on('SIGINT', function () {
+function shutDown() {
     logger.log('Shutting down...');
 
     new Promise<void>(async (resolve) => {
@@ -32,6 +32,13 @@ process.on('SIGINT', function () {
     }).then(() => {
         process.exit(1);
     });
+}
+
+process.on('SIGINT', function () {
+    shutDown();
+});
+process.on('SIGTERM', function () {
+    shutDown();
 });
 
 /**

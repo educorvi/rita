@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2019-09/schema",
-    "$id": "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/comparison.json",
+    "$id": "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json",
     "description": "Compare strings, dates or numbers with each other",
     "title": "Comparison",
     "type": "object",
