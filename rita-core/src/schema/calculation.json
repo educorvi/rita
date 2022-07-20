@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2019-09/schema",
-    "$id": "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/calculation.json",
+    "$id": "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json",
     "title": "Calculation",
     "description": "Calculates a result",
     "type": "object",

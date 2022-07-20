@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2019-09/schema",
-    "$id": "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/quantifier.json",
+    "$id": "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/quantifier.json",
     "title": "Quantifier",
     "type": "object",
     "description": "Quantifiers that can be used to evaluate rules on arrays in Data",
