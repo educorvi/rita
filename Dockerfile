@@ -3,7 +3,7 @@ FROM node:lts-alpine as build
 WORKDIR /app
 RUN corepack enable
 COPY . .
-RUN node common/scripts/install-run-rush.js update
+RUN node common/scripts/install-run-rush.js install
 RUN node common/scripts/install-run-rush.js build --to-except rita-http
 WORKDIR /app/rita-http
 RUN pnpm pack
