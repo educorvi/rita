@@ -53,7 +53,7 @@ export default class Parser {
 
     constructor(plugins?: Array<PluginClass>) {
         this.validate = ajv.getSchema(
-            'https://raw.githubusercontent.com/educorvi/rita/main/src/schema/schema.json'
+            'https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/schema.json'
         );
 
         if (plugins) {
