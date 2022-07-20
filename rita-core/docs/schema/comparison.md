@@ -1,7 +1,7 @@
 # Comparison Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/comparison.json
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json
 ```
 
 Compare strings, dates or numbers with each other
@@ -42,11 +42,11 @@ Compare strings, dates or numbers with each other
 
 # Comparison Properties
 
-| Property                | Type     | Required | Nullable       | Defined by                                                                                                                                               |
-| :---------------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [type](#type)           | `string` | Required | cannot be null | [Comparison](comparison-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/comparison.json#/properties/type")           |
-| [operation](#operation) | `string` | Required | cannot be null | [Comparison](comparison-properties-operation.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/comparison.json#/properties/operation") |
-| [arguments](#arguments) | `array`  | Required | cannot be null | [Comparison](comparison-properties-arguments.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/comparison.json#/properties/arguments") |
+| Property                | Type     | Required | Nullable       | Defined by                                                                                                                                                         |
+| :---------------------- | :------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [type](#type)           | `string` | Required | cannot be null | [Comparison](comparison-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/type")           |
+| [operation](#operation) | `string` | Required | cannot be null | [Comparison](comparison-properties-operation.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/operation") |
+| [arguments](#arguments) | `array`  | Required | cannot be null | [Comparison](comparison-properties-arguments.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/arguments") |
 
 ## type
 
@@ -60,7 +60,7 @@ Compare strings, dates or numbers with each other
 
 *   cannot be null
 
-*   defined in: [Comparison](comparison-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/comparison.json#/properties/type")
+*   defined in: [Comparison](comparison-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/type")
 
 ### type Type
 
@@ -86,7 +86,7 @@ Selects how the arguments should be compared
 
 *   cannot be null
 
-*   defined in: [Comparison](comparison-properties-operation.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/comparison.json#/properties/operation")
+*   defined in: [Comparison](comparison-properties-operation.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/operation")
 
 ### operation Type
 
@@ -116,7 +116,7 @@ Selects how the arguments should be compared
 
 *   cannot be null
 
-*   defined in: [Comparison](comparison-properties-arguments.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/comparison.json#/properties/arguments")
+*   defined in: [Comparison](comparison-properties-arguments.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/arguments")
 
 ### arguments Type
 

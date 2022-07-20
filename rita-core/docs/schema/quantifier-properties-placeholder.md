@@ -1,7 +1,7 @@
 # Untitled string in Quantifier Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/quantifier.json#/properties/placeholder
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/quantifier.json#/properties/placeholder
 ```
 
 This is a placeholder name for the current array object. This is the property name with wich you can reference the current value in the subsequent rule

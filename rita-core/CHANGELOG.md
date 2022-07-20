@@ -1,6 +1,14 @@
 # Change Log - @educorvi/rita
 
-This log was last generated on Fri, 24 Jun 2022 12:22:43 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Jul 2022 08:46:27 GMT and should not be manually modified.
+
+## 4.0.1
+
+Wed, 20 Jul 2022 08:46:27 GMT
+
+### Patches
+
+-   Fix IDs in schema
 
 ## 4.0.0
 

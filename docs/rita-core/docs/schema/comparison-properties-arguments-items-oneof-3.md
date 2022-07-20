@@ -1,7 +1,7 @@
 # Untitled number in Comparison Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/comparison.json#/properties/arguments/items/oneOf/3
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/arguments/items/oneOf/3
 ```
 
 

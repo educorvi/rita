@@ -1,7 +1,7 @@
 # Untitled array in Quantifier Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/quantifier.json#/properties/array/oneOf/0
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/quantifier.json#/properties/array/oneOf/0
 ```
 
 

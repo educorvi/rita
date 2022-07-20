@@ -1,7 +1,7 @@
 # Main Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/schema.json
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/schema.json
 ```
 
 The entrypoint of the Rita schema
@@ -16,9 +16,9 @@ The entrypoint of the Rita schema
 
 # Main Properties
 
-| Property        | Type    | Required | Nullable       | Defined by                                                                                                                           |
-| :-------------- | :------ | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------- |
-| [rules](#rules) | `array` | Required | cannot be null | [Main](schema-properties-ruleset.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/schema.json#/properties/rules") |
+| Property        | Type    | Required | Nullable       | Defined by                                                                                                                                     |
+| :-------------- | :------ | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------- |
+| [rules](#rules) | `array` | Required | cannot be null | [Main](schema-properties-ruleset.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/schema.json#/properties/rules") |
 
 ## rules
 
@@ -32,7 +32,7 @@ Array of all rules in this ruleset.
 
 *   cannot be null
 
-*   defined in: [Main](schema-properties-ruleset.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/schema.json#/properties/rules")
+*   defined in: [Main](schema-properties-ruleset.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/schema.json#/properties/rules")
 
 ### rules Type
 

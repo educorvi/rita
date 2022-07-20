@@ -1,7 +1,7 @@
 # Atom Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/atom.json
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/atom.json
 ```
 
 Describes an atom. Those can be used to read Data
@@ -16,10 +16,10 @@ Describes an atom. Those can be used to read Data
 
 # Atom Properties
 
-| Property      | Type     | Required | Nullable       | Defined by                                                                                                                   |
-| :------------ | :------- | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------- |
-| [type](#type) | `string` | Required | cannot be null | [Atom](atom-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/atom.json#/properties/type") |
-| [path](#path) | `string` | Required | cannot be null | [Atom](atom-properties-path.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/atom.json#/properties/path") |
+| Property      | Type     | Required | Nullable       | Defined by                                                                                                                             |
+| :------------ | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------- |
+| [type](#type) | `string` | Required | cannot be null | [Atom](atom-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/atom.json#/properties/type") |
+| [path](#path) | `string` | Required | cannot be null | [Atom](atom-properties-path.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/atom.json#/properties/path") |
 
 ## type
 
@@ -33,7 +33,7 @@ Describes an atom. Those can be used to read Data
 
 *   cannot be null
 
-*   defined in: [Atom](atom-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/atom.json#/properties/type")
+*   defined in: [Atom](atom-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/atom.json#/properties/type")
 
 ### type Type
 
@@ -59,7 +59,7 @@ The path to the atom in the data
 
 *   cannot be null
 
-*   defined in: [Atom](atom-properties-path.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/atom.json#/properties/path")
+*   defined in: [Atom](atom-properties-path.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/atom.json#/properties/path")
 
 ### path Type
 

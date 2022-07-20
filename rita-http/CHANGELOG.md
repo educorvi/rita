@@ -1,6 +1,14 @@
 # Change Log - rita-http
 
-This log was last generated on Wed, 13 Jul 2022 08:41:05 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Jul 2022 08:46:27 GMT and should not be manually modified.
+
+## 3.1.3
+
+Wed, 20 Jul 2022 08:46:27 GMT
+
+### Patches
+
+-   Fix server not stopping when docker container is stopped
 
 ## 3.1.2
 

@@ -1,7 +1,7 @@
 # Quantifier Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/quantifier.json
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/quantifier.json
 ```
 
 Quantifiers that can be used to evaluate rules on arrays in Data
@@ -40,12 +40,12 @@ Quantifiers that can be used to evaluate rules on arrays in Data
 
 # Quantifier Properties
 
-| Property                    | Type     | Required | Nullable       | Defined by                                                                                                                                                   |
-| :-------------------------- | :------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [type](#type)               | `string` | Required | cannot be null | [Quantifier](quantifier-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/quantifier.json#/properties/type")               |
-| [array](#array)             | Merged   | Required | cannot be null | [Quantifier](quantifier-properties-data-array.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/quantifier.json#/properties/array")        |
-| [placeholder](#placeholder) | `string` | Required | cannot be null | [Quantifier](quantifier-properties-placeholder.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/quantifier.json#/properties/placeholder") |
-| [rule](#rule)               | Merged   | Required | cannot be null | [Quantifier](formula.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/formula.json#/properties/rule")                                     |
+| Property                    | Type     | Required | Nullable       | Defined by                                                                                                                                                             |
+| :-------------------------- | :------- | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [type](#type)               | `string` | Required | cannot be null | [Quantifier](quantifier-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/quantifier.json#/properties/type")               |
+| [array](#array)             | Merged   | Required | cannot be null | [Quantifier](quantifier-properties-data-array.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/quantifier.json#/properties/array")        |
+| [placeholder](#placeholder) | `string` | Required | cannot be null | [Quantifier](quantifier-properties-placeholder.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/quantifier.json#/properties/placeholder") |
+| [rule](#rule)               | Merged   | Required | cannot be null | [Quantifier](formula.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/formula.json#/properties/rule")                                     |
 
 ## type
 
@@ -59,7 +59,7 @@ Quantifiers that can be used to evaluate rules on arrays in Data
 
 *   cannot be null
 
-*   defined in: [Quantifier](quantifier-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/quantifier.json#/properties/type")
+*   defined in: [Quantifier](quantifier-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/quantifier.json#/properties/type")
 
 ### type Type
 
@@ -86,7 +86,7 @@ This can either be an Atom that references an array in the data, or an array of 
 
 *   cannot be null
 
-*   defined in: [Quantifier](quantifier-properties-data-array.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/quantifier.json#/properties/array")
+*   defined in: [Quantifier](quantifier-properties-data-array.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/quantifier.json#/properties/array")
 
 ### array Type
 
@@ -110,7 +110,7 @@ This is a placeholder name for the current array object. This is the property na
 
 *   cannot be null
 
-*   defined in: [Quantifier](quantifier-properties-placeholder.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/quantifier.json#/properties/placeholder")
+*   defined in: [Quantifier](quantifier-properties-placeholder.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/quantifier.json#/properties/placeholder")
 
 ### placeholder Type
 
@@ -132,7 +132,7 @@ This is a placeholder name for the current array object. This is the property na
 
 *   cannot be null
 
-*   defined in: [Quantifier](formula.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/formula.json#/properties/rule")
+*   defined in: [Quantifier](formula.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/formula.json#/properties/rule")
 
 ### rule Type
 

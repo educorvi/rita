@@ -1,7 +1,7 @@
 # Untitled string in Operator Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/1/properties/type
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/operator.json#/oneOf/1/properties/type
 ```
 
 

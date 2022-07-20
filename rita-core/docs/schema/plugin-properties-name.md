@@ -1,7 +1,7 @@
 # Untitled string in Plugin Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/plugin.json#/properties/name
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/plugin.json#/properties/name
 ```
 
 The plugins name

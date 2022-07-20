@@ -1,7 +1,7 @@
 # Data array Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/quantifier.json#/properties/array
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/quantifier.json#/properties/array
 ```
 
 This can either be an Atom that references an array in the data, or an array of rules

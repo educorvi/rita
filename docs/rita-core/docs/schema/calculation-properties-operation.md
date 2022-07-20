@@ -1,7 +1,7 @@
 # Untitled string in Calculation Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/calculation.json#/properties/operation
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/operation
 ```
 
 The mathematical operation to be calculated

@@ -1,7 +1,7 @@
 # Untitled array in Calculation Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/calculation.json#/properties/arguments
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/arguments
 ```
 
 

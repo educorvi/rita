@@ -1,7 +1,7 @@
 # Ruleset Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/schema.json#/properties/rules
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/schema.json#/properties/rules
 ```
 
 Array of all rules in this ruleset.

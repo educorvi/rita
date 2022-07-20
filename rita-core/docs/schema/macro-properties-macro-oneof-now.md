@@ -1,7 +1,7 @@
 # now Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json#/properties/macro/oneOf/0
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/macro.json#/properties/macro/oneOf/0
 ```
 
 Returns the current time
@@ -16,9 +16,9 @@ Returns the current time
 
 # 0 Properties
 
-| Property      | Type     | Required | Nullable       | Defined by                                                                                                                                                                          |
-| :------------ | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [type](#type) | `string` | Optional | cannot be null | [Macro](macro-properties-macro-oneof-now-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json#/properties/macro/oneOf/0/properties/type") |
+| Property      | Type     | Required | Nullable       | Defined by                                                                                                                                                                                    |
+| :------------ | :------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [type](#type) | `string` | Optional | cannot be null | [Macro](macro-properties-macro-oneof-now-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/macro.json#/properties/macro/oneOf/0/properties/type") |
 
 ## type
 
@@ -32,7 +32,7 @@ Returns the current time
 
 *   cannot be null
 
-*   defined in: [Macro](macro-properties-macro-oneof-now-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json#/properties/macro/oneOf/0/properties/type")
+*   defined in: [Macro](macro-properties-macro-oneof-now-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/macro.json#/properties/macro/oneOf/0/properties/type")
 
 ### type Type
 

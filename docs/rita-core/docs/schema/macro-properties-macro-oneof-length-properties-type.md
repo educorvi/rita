@@ -1,7 +1,7 @@
 # Untitled string in Macro Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json#/properties/macro/oneOf/1/properties/type
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/macro.json#/properties/macro/oneOf/1/properties/type
 ```
 
 

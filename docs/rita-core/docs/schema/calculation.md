@@ -1,7 +1,7 @@
 # Calculation Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/calculation.json
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json
 ```
 
 Calculates a result
@@ -16,13 +16,13 @@ Calculates a result
 
 # Calculation Properties
 
-| Property                                    | Type     | Required | Nullable       | Defined by                                                                                                                                                                      |
-| :------------------------------------------ | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [type](#type)                               | `string` | Required | cannot be null | [Calculation](calculation-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/calculation.json#/properties/type")                               |
-| [operation](#operation)                     | `string` | Required | cannot be null | [Calculation](calculation-properties-operation.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/calculation.json#/properties/operation")                     |
-| [arguments](#arguments)                     | `array`  | Required | cannot be null | [Calculation](calculation-properties-arguments.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/calculation.json#/properties/arguments")                     |
-| [dateResultUnit](#dateresultunit)           | `string` | Optional | cannot be null | [Calculation](calculation-properties-dateresultunit.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/calculation.json#/properties/dateResultUnit")           |
-| [dateCalculationUnit](#datecalculationunit) | `string` | Optional | cannot be null | [Calculation](calculation-properties-datecalculationunit.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/calculation.json#/properties/dateCalculationUnit") |
+| Property                                    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                |
+| :------------------------------------------ | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [type](#type)                               | `string` | Required | cannot be null | [Calculation](calculation-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/type")                               |
+| [operation](#operation)                     | `string` | Required | cannot be null | [Calculation](calculation-properties-operation.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/operation")                     |
+| [arguments](#arguments)                     | `array`  | Required | cannot be null | [Calculation](calculation-properties-arguments.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/arguments")                     |
+| [dateResultUnit](#dateresultunit)           | `string` | Optional | cannot be null | [Calculation](calculation-properties-dateresultunit.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/dateResultUnit")           |
+| [dateCalculationUnit](#datecalculationunit) | `string` | Optional | cannot be null | [Calculation](calculation-properties-datecalculationunit.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/dateCalculationUnit") |
 
 ## type
 
@@ -36,7 +36,7 @@ Calculates a result
 
 *   cannot be null
 
-*   defined in: [Calculation](calculation-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/calculation.json#/properties/type")
+*   defined in: [Calculation](calculation-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/type")
 
 ### type Type
 
@@ -62,7 +62,7 @@ The mathematical operation to be calculated
 
 *   cannot be null
 
-*   defined in: [Calculation](calculation-properties-operation.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/calculation.json#/properties/operation")
+*   defined in: [Calculation](calculation-properties-operation.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/operation")
 
 ### operation Type
 
@@ -92,7 +92,7 @@ The mathematical operation to be calculated
 
 *   cannot be null
 
-*   defined in: [Calculation](calculation-properties-arguments.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/calculation.json#/properties/arguments")
+*   defined in: [Calculation](calculation-properties-arguments.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/arguments")
 
 ### arguments Type
 
@@ -114,7 +114,7 @@ Which unit is to use when working with dates. For example, if two days are subtr
 
 *   cannot be null
 
-*   defined in: [Calculation](calculation-properties-dateresultunit.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/calculation.json#/properties/dateResultUnit")
+*   defined in: [Calculation](calculation-properties-dateresultunit.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/dateResultUnit")
 
 ### dateResultUnit Type
 
@@ -153,7 +153,7 @@ Which unit is to use when adding/subtracting number from/with dates.
 
 *   cannot be null
 
-*   defined in: [Calculation](calculation-properties-datecalculationunit.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/calculation.json#/properties/dateCalculationUnit")
+*   defined in: [Calculation](calculation-properties-datecalculationunit.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/dateCalculationUnit")
 
 ### dateCalculationUnit Type
 

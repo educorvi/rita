@@ -1,7 +1,7 @@
 # Untitled undefined type in Calculation Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/calculation.json#/properties/arguments/items
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/arguments/items
 ```
 
 

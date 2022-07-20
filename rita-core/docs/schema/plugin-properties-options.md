@@ -1,7 +1,7 @@
 # Untitled object in Plugin Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/plugin.json#/properties/options
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/plugin.json#/properties/options
 ```
 
 The plugins options

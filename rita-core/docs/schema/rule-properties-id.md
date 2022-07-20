@@ -1,7 +1,7 @@
 # Untitled string in Rule Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/rule.json#/properties/id
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/rule.json#/properties/id
 ```
 
 

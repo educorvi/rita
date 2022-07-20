@@ -1,7 +1,7 @@
 # Untitled string in Comparison Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/comparison.json#/properties/operation
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/operation
 ```
 
 Selects how the arguments should be compared

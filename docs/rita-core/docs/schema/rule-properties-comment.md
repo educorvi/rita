@@ -1,7 +1,7 @@
 # Untitled string in Rule Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/rule.json#/properties/comment
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/rule.json#/properties/comment
 ```
 
 A comment about what the rule does

@@ -2,6 +2,18 @@
     "name": "@educorvi/rita",
     "entries": [
         {
+            "version": "4.0.1",
+            "tag": "@educorvi/rita_v4.0.1",
+            "date": "Wed, 20 Jul 2022 08:46:27 GMT",
+            "comments": {
+                "patch": [
+                    {
+                        "comment": "Fix IDs in schema"
+                    }
+                ]
+            }
+        },
+        {
             "version": "4.0.0",
             "tag": "@educorvi/rita_v4.0.0",
             "date": "Fri, 24 Jun 2022 12:22:43 GMT",

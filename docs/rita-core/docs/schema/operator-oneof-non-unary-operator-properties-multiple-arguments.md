@@ -1,7 +1,7 @@
 # Multiple arguments Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/arguments
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/operator.json#/oneOf/0/properties/arguments
 ```
 
 

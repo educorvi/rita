@@ -1,7 +1,7 @@
 # Rule Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/rule.json
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/rule.json
 ```
 
 
@@ -42,11 +42,11 @@ https://raw.githubusercontent.com/educorvi/rita/main/src/schema/rule.json
 
 # Rule Properties
 
-| Property            | Type     | Required | Nullable       | Defined by                                                                                                                         |
-| :------------------ | :------- | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)           | `string` | Required | cannot be null | [Rule](rule-properties-id.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/rule.json#/properties/id")           |
-| [comment](#comment) | `string` | Optional | cannot be null | [Rule](rule-properties-comment.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/rule.json#/properties/comment") |
-| [rule](#rule)       | Merged   | Required | cannot be null | [Rule](formula.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/formula.json#/properties/rule")                 |
+| Property            | Type     | Required | Nullable       | Defined by                                                                                                                                   |
+| :------------------ | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------- |
+| [id](#id)           | `string` | Required | cannot be null | [Rule](rule-properties-id.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/rule.json#/properties/id")           |
+| [comment](#comment) | `string` | Optional | cannot be null | [Rule](rule-properties-comment.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/rule.json#/properties/comment") |
+| [rule](#rule)       | Merged   | Required | cannot be null | [Rule](formula.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/formula.json#/properties/rule")                 |
 
 ## id
 
@@ -60,7 +60,7 @@ https://raw.githubusercontent.com/educorvi/rita/main/src/schema/rule.json
 
 *   cannot be null
 
-*   defined in: [Rule](rule-properties-id.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/rule.json#/properties/id")
+*   defined in: [Rule](rule-properties-id.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/rule.json#/properties/id")
 
 ### id Type
 
@@ -78,7 +78,7 @@ A comment about what the rule does
 
 *   cannot be null
 
-*   defined in: [Rule](rule-properties-comment.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/rule.json#/properties/comment")
+*   defined in: [Rule](rule-properties-comment.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/rule.json#/properties/comment")
 
 ### comment Type
 
@@ -96,7 +96,7 @@ A comment about what the rule does
 
 *   cannot be null
 
-*   defined in: [Rule](formula.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/formula.json#/properties/rule")
+*   defined in: [Rule](formula.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/formula.json#/properties/rule")
 
 ### rule Type
 

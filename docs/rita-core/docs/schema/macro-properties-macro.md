@@ -1,7 +1,7 @@
 # Untitled undefined type in Macro Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json#/properties/macro
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/macro.json#/properties/macro
 ```
 
 

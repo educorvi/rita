@@ -1,7 +1,7 @@
 # Untitled string in Atom Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/atom.json#/properties/path
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/atom.json#/properties/path
 ```
 
 The path to the atom in the data

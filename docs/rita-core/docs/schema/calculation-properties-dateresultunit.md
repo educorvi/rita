@@ -1,7 +1,7 @@
 # Untitled string in Calculation Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/calculation.json#/properties/dateResultUnit
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/dateResultUnit
 ```
 
 Which unit is to use when working with dates. For example, if two days are subtracted, should the result be in days, or months? Also usable, when adding days/months/years to a date

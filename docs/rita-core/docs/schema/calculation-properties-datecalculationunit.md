@@ -1,7 +1,7 @@
 # Untitled string in Calculation Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/calculation.json#/properties/dateCalculationUnit
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/dateCalculationUnit
 ```
 
 Which unit is to use when adding/subtracting number from/with dates.

@@ -1,7 +1,7 @@
 # Non-Unary operator Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/operator.json#/oneOf/0
 ```
 
 Requires at least two arguments
@@ -16,10 +16,10 @@ Requires at least two arguments
 
 # 0 Properties
 
-| Property                | Type     | Required | Nullable       | Defined by                                                                                                                                                                                   |
-| :---------------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [type](#type)           | `string` | Required | cannot be null | [Operator](operator-oneof-non-unary-operator-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/type")                    |
-| [arguments](#arguments) | `array`  | Required | cannot be null | [Operator](operator-oneof-non-unary-operator-properties-multiple-arguments.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/arguments") |
+| Property                | Type     | Required | Nullable       | Defined by                                                                                                                                                                                             |
+| :---------------------- | :------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [type](#type)           | `string` | Required | cannot be null | [Operator](operator-oneof-non-unary-operator-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/operator.json#/oneOf/0/properties/type")                    |
+| [arguments](#arguments) | `array`  | Required | cannot be null | [Operator](operator-oneof-non-unary-operator-properties-multiple-arguments.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/operator.json#/oneOf/0/properties/arguments") |
 
 ## type
 
@@ -33,7 +33,7 @@ Requires at least two arguments
 
 *   cannot be null
 
-*   defined in: [Operator](operator-oneof-non-unary-operator-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/type")
+*   defined in: [Operator](operator-oneof-non-unary-operator-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/operator.json#/oneOf/0/properties/type")
 
 ### type Type
 
@@ -60,7 +60,7 @@ Requires at least two arguments
 
 *   cannot be null
 
-*   defined in: [Operator](operator-oneof-non-unary-operator-properties-multiple-arguments.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/arguments")
+*   defined in: [Operator](operator-oneof-non-unary-operator-properties-multiple-arguments.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/operator.json#/oneOf/0/properties/arguments")
 
 ### arguments Type
 

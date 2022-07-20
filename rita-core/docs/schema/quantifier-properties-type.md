@@ -1,7 +1,7 @@
 # Untitled string in Quantifier Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/quantifier.json#/properties/type
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/quantifier.json#/properties/type
 ```
 
 

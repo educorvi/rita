@@ -1,7 +1,7 @@
 # Operator Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/operator.json
 ```
 
 

@@ -1,7 +1,7 @@
 # Untitled undefined type in Comparison Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/comparison.json#/properties/arguments/items
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/arguments/items
 ```
 
 

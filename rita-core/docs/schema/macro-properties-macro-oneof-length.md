@@ -1,7 +1,7 @@
 # length Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json#/properties/macro/oneOf/1
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/macro.json#/properties/macro/oneOf/1
 ```
 
 Returns the length of an array
@@ -16,10 +16,10 @@ Returns the length of an array
 
 # 1 Properties
 
-| Property        | Type     | Required | Nullable       | Defined by                                                                                                                                                                             |
-| :-------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [type](#type)   | `string` | Optional | cannot be null | [Macro](macro-properties-macro-oneof-length-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json#/properties/macro/oneOf/1/properties/type") |
-| [array](#array) | `object` | Optional | cannot be null | [Macro](atom.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/atom.json#/properties/macro/oneOf/1/properties/array")                                                |
+| Property        | Type     | Required | Nullable       | Defined by                                                                                                                                                                                       |
+| :-------------- | :------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [type](#type)   | `string` | Optional | cannot be null | [Macro](macro-properties-macro-oneof-length-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/macro.json#/properties/macro/oneOf/1/properties/type") |
+| [array](#array) | `object` | Optional | cannot be null | [Macro](atom.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/atom.json#/properties/macro/oneOf/1/properties/array")                                                |
 
 ## type
 
@@ -33,7 +33,7 @@ Returns the length of an array
 
 *   cannot be null
 
-*   defined in: [Macro](macro-properties-macro-oneof-length-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json#/properties/macro/oneOf/1/properties/type")
+*   defined in: [Macro](macro-properties-macro-oneof-length-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/macro.json#/properties/macro/oneOf/1/properties/type")
 
 ### type Type
 
@@ -59,7 +59,7 @@ Describes an atom. Those can be used to read Data
 
 *   cannot be null
 
-*   defined in: [Macro](atom.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/atom.json#/properties/macro/oneOf/1/properties/array")
+*   defined in: [Macro](atom.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/atom.json#/properties/macro/oneOf/1/properties/array")
 
 ### array Type
 

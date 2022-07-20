@@ -1,7 +1,7 @@
 # Macro Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/macro.json
 ```
 
 Describes macros. Available macros are `now` and `length`
@@ -40,10 +40,10 @@ Describes macros. Available macros are `now` and `length`
 
 # Macro Properties
 
-| Property        | Type     | Required | Nullable       | Defined by                                                                                                                        |
-| :-------------- | :------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------- |
-| [type](#type)   | `string` | Required | cannot be null | [Macro](macro-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json#/properties/type")   |
-| [macro](#macro) | Merged   | Required | cannot be null | [Macro](macro-properties-macro.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json#/properties/macro") |
+| Property        | Type     | Required | Nullable       | Defined by                                                                                                                                  |
+| :-------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------ |
+| [type](#type)   | `string` | Required | cannot be null | [Macro](macro-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/macro.json#/properties/type")   |
+| [macro](#macro) | Merged   | Required | cannot be null | [Macro](macro-properties-macro.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/macro.json#/properties/macro") |
 
 ## type
 
@@ -57,7 +57,7 @@ Describes macros. Available macros are `now` and `length`
 
 *   cannot be null
 
-*   defined in: [Macro](macro-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json#/properties/type")
+*   defined in: [Macro](macro-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/macro.json#/properties/type")
 
 ### type Type
 
@@ -83,7 +83,7 @@ Describes macros. Available macros are `now` and `length`
 
 *   cannot be null
 
-*   defined in: [Macro](macro-properties-macro.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/macro.json#/properties/macro")
+*   defined in: [Macro](macro-properties-macro.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/macro.json#/properties/macro")
 
 ### macro Type
 

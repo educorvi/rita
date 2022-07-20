@@ -1,7 +1,7 @@
 # Plugin Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/plugin.json
+https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/plugin.json
 ```
 
 Describes an plugin
@@ -32,12 +32,12 @@ Describes an plugin
 
 # Plugin Properties
 
-| Property            | Type     | Required | Nullable       | Defined by                                                                                                                               |
-| :------------------ | :------- | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
-| [type](#type)       | `string` | Required | cannot be null | [Plugin](plugin-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/plugin.json#/properties/type")       |
-| [name](#name)       | `string` | Required | cannot be null | [Plugin](plugin-properties-name.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/plugin.json#/properties/name")       |
-| [formula](#formula) | Merged   | Required | cannot be null | [Plugin](formula.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/formula.json#/properties/formula")                  |
-| [options](#options) | `object` | Optional | cannot be null | [Plugin](plugin-properties-options.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/plugin.json#/properties/options") |
+| Property            | Type     | Required | Nullable       | Defined by                                                                                                                                         |
+| :------------------ | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [type](#type)       | `string` | Required | cannot be null | [Plugin](plugin-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/plugin.json#/properties/type")       |
+| [name](#name)       | `string` | Required | cannot be null | [Plugin](plugin-properties-name.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/plugin.json#/properties/name")       |
+| [formula](#formula) | Merged   | Required | cannot be null | [Plugin](formula.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/formula.json#/properties/formula")                  |
+| [options](#options) | `object` | Optional | cannot be null | [Plugin](plugin-properties-options.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/plugin.json#/properties/options") |
 
 ## type
 
@@ -51,7 +51,7 @@ Describes an plugin
 
 *   cannot be null
 
-*   defined in: [Plugin](plugin-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/plugin.json#/properties/type")
+*   defined in: [Plugin](plugin-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/plugin.json#/properties/type")
 
 ### type Type
 
@@ -77,7 +77,7 @@ The plugins name
 
 *   cannot be null
 
-*   defined in: [Plugin](plugin-properties-name.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/plugin.json#/properties/name")
+*   defined in: [Plugin](plugin-properties-name.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/plugin.json#/properties/name")
 
 ### name Type
 
@@ -95,7 +95,7 @@ The plugins name
 
 *   cannot be null
 
-*   defined in: [Plugin](formula.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/formula.json#/properties/formula")
+*   defined in: [Plugin](formula.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/formula.json#/properties/formula")
 
 ### formula Type
 
@@ -129,7 +129,7 @@ The plugins options
 
 *   cannot be null
 
-*   defined in: [Plugin](plugin-properties-options.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/plugin.json#/properties/options")
+*   defined in: [Plugin](plugin-properties-options.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/plugin.json#/properties/options")
 
 ### options Type
 
