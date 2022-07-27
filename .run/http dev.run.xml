@@ -7,7 +7,7 @@
     </scripts>
     <node-interpreter value="project" />
     <envs>
-      <env name="LOGLEVEL" value="info" />
+      <env name="LOGLEVEL" value="debug" />
       <env name="DB_TYPE" value="SQLITE" />
       <env name="DB_SQLITE_PATH" value="sqlite.db" />
     </envs>
