@@ -2,6 +2,18 @@
     "name": "rita-http",
     "entries": [
         {
+            "version": "3.1.4",
+            "tag": "rita-http_v3.1.4",
+            "date": "Fri, 05 Aug 2022 20:57:08 GMT",
+            "comments": {
+                "patch": [
+                    {
+                        "comment": "fix http status code on usage error"
+                    }
+                ]
+            }
+        },
+        {
             "version": "3.1.3",
             "tag": "rita-http_v3.1.3",
             "date": "Wed, 20 Jul 2022 08:46:27 GMT",

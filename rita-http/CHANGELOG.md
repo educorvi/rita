@@ -1,6 +1,14 @@
 # Change Log - rita-http
 
-This log was last generated on Wed, 20 Jul 2022 08:46:27 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Aug 2022 20:57:08 GMT and should not be manually modified.
+
+## 3.1.4
+
+Fri, 05 Aug 2022 20:57:08 GMT
+
+### Patches
+
+-   fix http status code on usage error
 
 ## 3.1.3
 
