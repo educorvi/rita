@@ -129,6 +129,7 @@ jobs:
         uses: ./.github/workflows/docker.yml
     deploy:
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        environment: Deploy to Rita Server
         needs: [release]
         uses: ./.github/workflows/deploy.yml
 #            - name: Publish to Github Packages
