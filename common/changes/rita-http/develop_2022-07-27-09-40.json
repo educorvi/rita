@@ -1,0 +1,10 @@
+{
+    "changes": [
+        {
+            "packageName": "rita-http",
+            "comment": "fix http status code on usage error",
+            "type": "patch"
+        }
+    ],
+    "packageName": "rita-http"
+}

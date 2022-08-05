@@ -1,0 +1,25 @@
+name: Deploy to Server
+
+on:
+    workflow_dispatch:
+    workflow_call:
+
+jobs:
+    deploy:
+        name: Deploy
+        environment: Deploy to Rita Server
+        runs-on: ubuntu-latest
+        steps:
+            - name: deploy to server
+              uses: appleboy/ssh-action@master
+              with:
+                  host: ${{ secrets.HOST }}
+                  username: ${{ secrets.USERNAME }}
+                  password: ${{ secrets.PASSWORD }}
+                  port: ${{ secrets.PORT }}
+                  script: |
+                      cd ~/rita
+                      git pull
+                      node common/scripts/install-run-rush.js install
+                      node common/scripts/install-run-rush.js build -t rita-http
+                      pm2 restart rita-http

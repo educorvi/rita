@@ -8,6 +8,7 @@ import { logger } from './globals';
 import bodyParser from 'body-parser';
 import { NotFoundError, UnauthorizedError } from '../Errors';
 import { ValidateError } from '@tsoa/runtime';
+import { UsageError } from '@educorvi/rita';
 
 /**
  * All the middleware for the express server
@@ -79,6 +80,11 @@ export const errorHandler: ErrorRequestHandler = (
         });
     }
 
+    if (err instanceof UsageError) {
+        return res.status(400).json({
+            message: err.message,
+        });
+    }
     // 500 - Internal Error
     if (err instanceof Error) {
         logger.error(err);
