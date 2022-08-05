@@ -5,8 +5,9 @@ on:
     workflow_call:
 
 jobs:
-    build:
-        name: Build
+    deploy:
+        name: Deploy
+        environment: Deploy to Rita Server
         runs-on: ubuntu-latest
         steps:
             - name: deploy to server
@@ -15,7 +16,7 @@ jobs:
                   host: ${{ secrets.HOST }}
                   username: ${{ secrets.USERNAME }}
                   password: ${{ secrets.PASSWORD }}
-                  port: 22
+                  port: ${{ secrets.PORT }}
                   script: |
                       cd ~/rita
                       git pull
