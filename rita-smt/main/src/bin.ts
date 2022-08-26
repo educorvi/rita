@@ -4,13 +4,12 @@ import SmtSolver from './SmtSolver';
 import * as fs from 'fs';
 import { Parser } from '@educorvi/rita';
 import { program } from 'commander';
-import { version } from '../package.json';
 import commandExists from 'command-exists';
 import { simplify } from './index';
 
 const parser = new Parser();
 
-program.version(version);
+program.version(process.env.VERSION || '0.0.0');
 program
     .argument('filepath', 'path to the file that contains the Rita ruleset')
     .option(
