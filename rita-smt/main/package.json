@@ -2,7 +2,7 @@
     "name": "@educorvi/rita-smt",
     "version": "1.2.2",
     "description": "A module to test satisfiability of Rita rule sets.",
-    "repository": "https://github.com/educorvi/rita-smt",
+    "repository": "https://github.com/educorvi/rita",
     "license": "MIT",
     "author": "Julian Pollinger",
     "main": "dist/src/index.js",

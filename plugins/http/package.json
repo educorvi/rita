@@ -23,7 +23,7 @@
     "bugs": {
         "url": "https://github.com/educorvi/rita/issues"
     },
-    "homepage": "https://github.com/educorvi/rita#readme",
+    "homepage": "https://github.com/educorvi/rita/tree/develop/plugins/http#readme",
     "devDependencies": {
         "@educorvi/rita": "workspace:^4.0.1",
         "@types/jest": "^27.0.3",
