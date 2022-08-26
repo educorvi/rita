@@ -8,13 +8,13 @@
         "typescript",
         "api"
     ],
-    "homepage": "https://github.com/educorvi/rita-http#readme",
+    "homepage": "https://github.com/educorvi/rita/tree/develop/rita-http#readme",
     "bugs": {
-        "url": "https://github.com/educorvi/rita-http/issues"
+        "url": "https://github.com/educorvi/rita/tree/develop/rita-http/issues"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/educorvi/rita-http.git"
+        "url": "https://github.com/educorvi/rita.git"
     },
     "license": "MIT",
     "author": "Julian Pollinger",
