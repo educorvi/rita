@@ -34,14 +34,51 @@ enum types {
     string = 'String',
 }
 
+type RitaSatResult = {
+    satisfieable: boolean;
+    model: Record<string, any> | undefined;
+};
+
 export default class SmtSolver {
-    public readonly solver: LocalCVC5Solver = new LocalCVC5Solver('ALL');
+    private readonly solver: LocalCVC5Solver = new LocalCVC5Solver('ALL');
     private declaredConsts: Array<string> = [];
 
     constructor(produceModel = false) {
         if (produceModel) {
             this.solver.enableAssignments();
         }
+    }
+
+    public dump() {
+        this.solver.dump();
+    }
+
+    public simplify(formula: SNode) {
+        return this.solver.simplify(formula);
+    }
+
+    public readonly output = this.solver.output;
+
+    private static getModel(
+        satResult: SatResult
+    ): Record<string, any> | undefined {
+        if (!satResult.model) {
+            return undefined;
+        }
+        const o = {};
+        for (const key of Object.keys(satResult.model)) {
+            this.setPropertyByString(o, key, satResult.model[key]);
+        }
+
+        return o;
+    }
+
+    public async checkSat(): Promise<RitaSatResult> {
+        const satRet = await this.solver.checkSat();
+        return {
+            satisfieable: satRet.satisfieable,
+            model: SmtSolver.getModel(satRet),
+        };
     }
 
     private declareConstIfNotExists(name: string, type: string) {
@@ -177,7 +214,7 @@ export default class SmtSolver {
         return rule.path;
     }
 
-    private setPropertyByString(o: any, s: string, v: any): void {
+    private static setPropertyByString(o: any, s: string, v: any): void {
         s = s.replace(/\[(\w+)]/g, '.$1'); // convert indexes to properties
         s = s.replace(/^\./, ''); // strip a leading dot
         const a = s.split('.');
@@ -189,17 +226,5 @@ export default class SmtSolver {
             o = o[k];
         }
         o[a[a.length - 1]] = v;
-    }
-
-    getModel(satResult: SatResult): Record<string, any> | undefined {
-        if (!satResult.model) {
-            return undefined;
-        }
-        const o = {};
-        for (const key of Object.keys(satResult.model)) {
-            this.setPropertyByString(o, key, satResult.model[key]);
-        }
-
-        return o;
     }
 }

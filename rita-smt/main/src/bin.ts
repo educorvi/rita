@@ -37,21 +37,22 @@ program
                 }
                 if (program.opts().verbose) {
                     console.log('Generated SMT:');
-                    s.solver.dump();
+                    s.dump();
                     console.log('\n');
                 }
 
-                s.solver.checkSat().then((res) => {
+                s.checkSat().then((res) => {
                     if (program.opts().verbose) {
                         console.log('Output of CVC5:');
-                        s.solver.output.forEach((value) => console.log(value));
+                        s.output.forEach((value) => console.log(value));
                         console.log('\n');
                     }
 
                     console.log('Result:', res);
                 });
             })
-            .catch(() => {
+            .catch((e) => {
+                if (program.opts().verbose) console.error(e);
                 console.error('You need to have cvc5 installed');
                 process.exit(-1);
             });

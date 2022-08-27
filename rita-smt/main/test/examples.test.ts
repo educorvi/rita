@@ -39,13 +39,15 @@ function testExamples(examples: Record<string, any>, awaited_result: boolean) {
             smts.assertRule(rule);
         }
         it(`${key}: satisfieability`, async function () {
-            let sat = await smts.solver.checkSat();
+            let sat = await smts.checkSat();
             expect(sat.satisfieable).toBe(awaited_result);
             if (sat.satisfieable) {
                 expect(sat.model).toBeDefined();
-                const model = <Record<string, any>>smts.getModel(sat);
                 // console.log(model);
-                const ev = await evaluateAll(ruleset, model);
+                const ev = await evaluateAll(
+                    ruleset,
+                    <Record<string, any>>sat.model
+                );
                 expect(ev.result).toBe(true);
             }
         });

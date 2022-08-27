@@ -4,7 +4,7 @@ import { And, SNode } from '@educorvi/smtlib';
 
 export default async function simplify(formulas: Array<Formula>) {
     const smt = new SmtSolver();
-    const simplifiedSMT = await smt.solver.simplify(
+    const simplifiedSMT = await smt.simplify(
         formulas.reduce((previousValue: SNode, currentValue: Formula) => {
             return And(previousValue, smt.parseFormula(currentValue));
         }, 'true')
