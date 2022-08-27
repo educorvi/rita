@@ -1,13 +1,23 @@
+// @ts-ignore
 import einfuehrung from './einfuehrung.json';
+// @ts-ignore
 import calculationComplex from './calculationComplex.json';
+// @ts-ignore
 import calculationSimple from './calculationSimple.json';
+// @ts-ignore
 import comparison from './comparison.json';
+// @ts-ignore
 import comparisonDate from './comparisonDate.json';
+// @ts-ignore
 import comparisonString from './comparisonString.json';
+// @ts-ignore
 import modulo from './modulo.json';
+// @ts-ignore
 import simpleRule from './simpleRule.json';
 
+// @ts-ignore
 import simpleRuleUnsat from './simpleRuleUnsat.json';
+// @ts-ignore
 import comparisonUnsat from './comparisonUnsat.json';
 import SmtSolver from '../src';
 import { evaluateAll, Parser } from '@educorvi/rita';
