@@ -12,6 +12,7 @@ import {
     Mult,
     Not,
     Or,
+    SatResult,
     SExpr,
     SNode,
     Sub,
@@ -174,5 +175,31 @@ export default class SmtSolver {
     private parseAtom(rule: Atom, type: types): string {
         this.declareConstIfNotExists(rule.path, type);
         return rule.path;
+    }
+
+    private setPropertyByString(o: any, s: string, v: any): void {
+        s = s.replace(/\[(\w+)]/g, '.$1'); // convert indexes to properties
+        s = s.replace(/^\./, ''); // strip a leading dot
+        const a = s.split('.');
+        for (let i = 0, n = a.length; i < n - 1; ++i) {
+            const k = a[i];
+            if (!(k in o)) {
+                o[k] = {};
+            }
+            o = o[k];
+        }
+        o[a[a.length - 1]] = v;
+    }
+
+    getModel(satResult: SatResult): Record<string, any> | undefined {
+        if (!satResult.model) {
+            return undefined;
+        }
+        const o = {};
+        for (const key of Object.keys(satResult.model)) {
+            this.setPropertyByString(o, key, satResult.model[key]);
+        }
+
+        return o;
     }
 }

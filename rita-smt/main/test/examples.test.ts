@@ -44,7 +44,7 @@ function testExamples(examples: Record<string, any>, awaited_result: boolean) {
             if (sat.satisfieable) {
                 expect(sat.model).toBeDefined();
                 const model = <Record<string, any>>smts.getModel(sat);
-                console.log(model);
+                // console.log(model);
                 const ev = await evaluateAll(ruleset, model);
                 expect(ev.result).toBe(true);
             }

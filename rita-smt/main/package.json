@@ -17,7 +17,7 @@
         "build": "webpack",
         "prepack": "npm run build",
         "runbin": "ts-node src/bin.ts",
-        "test": ">&2 echo \"No tests defined yet!\""
+        "test": "jest"
     },
     "dependencies": {
         "@educorvi/smtlib": "workspace:^1.1.1",
@@ -40,7 +40,10 @@
         "webpack": "^5.72.1",
         "webpack-node-externals": "^3.0.0",
         "terser-webpack-plugin": "^5.3.3",
-        "ts-loader": "^9.3.0"
+        "ts-loader": "^9.3.0",
+        "ts-jest": "^27.0.7",
+        "jest": "^27.4.5",
+        "@types/jest": "^27.0.3"
     },
     "peerDependencies": {
         "@educorvi/rita": "^4.0.1"
