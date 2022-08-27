@@ -1,7 +1,9 @@
-import { Parser } from '../../src';
+import { evaluateAll, Parser } from '../../src';
 // @ts-ignore
 import { exampleData, ruleTemplate } from '../assets/exampleData';
 import { DateTime } from 'luxon';
+// @ts-ignore
+import modulo from '../assets/modulo.json';
 
 const p = new Parser();
 
@@ -59,6 +61,12 @@ describe('Numbers', () => {
         });
 
         expect(calc.evaluate({})).resolves.toBe(1);
+    });
+
+    it('modulo example', async function () {
+        const m = p.parseRuleSet(modulo);
+        const ret = await evaluateAll(m, { numberFromData: 2.2 });
+        expect(ret.result).toBe(true);
     });
 
     it('atom sub', () => {

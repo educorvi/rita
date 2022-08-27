@@ -149,24 +149,28 @@ export class Calculation extends Formula {
             );
 
         //Get the function matching our operation
-        let func: (x1: any, x2: any) => number;
+        let tempFunc: (x1: any, x2: any) => number;
         switch (this.operation) {
             case operations.add:
-                func = (x1, x2) => x1 + x2;
+                tempFunc = (x1, x2) => x1 + x2;
                 break;
             case operations.subtract:
-                func = (x1, x2) => x1 - x2;
+                tempFunc = (x1, x2) => x1 - x2;
                 break;
             case operations.multiply:
-                func = (x1, x2) => x1 * x2;
+                tempFunc = (x1, x2) => x1 * x2;
                 break;
             case operations.divide:
-                func = (x1, x2) => x1 / x2;
+                tempFunc = (x1, x2) => x1 / x2;
                 break;
             case operations.modulo:
-                func = (x1, x2) => x1 % x2;
+                tempFunc = (x1, x2) => x1 % x2;
                 break;
         }
+
+        // Round to 12 decimals to circumvent javascript weirdness
+        const func = (x1: any, x2: any) =>
+            Math.round(tempFunc(x1, x2) * 10e12) / 10e12;
 
         //Now evaluate all arguments if they can be evaluated
         let results = await Promise.all(
