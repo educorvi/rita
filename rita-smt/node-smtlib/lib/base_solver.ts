@@ -5,6 +5,7 @@
 // See LICENSE for details
 
 import * as smt from './smtlib';
+import { SNode } from './smtlib';
 
 export type Model = Record<string, number | boolean | string>;
 
@@ -67,5 +68,9 @@ export default class BaseSmtSolver {
 
     declareFun(name: string, args: smt.SNode[], type: smt.SNode): void {
         this.add(smt.DeclareFun(name, args, type));
+    }
+
+    defineFun(name: string, args: SNode[], ret: SNode, def: SNode): void {
+        this.add(smt.DefineFun(name, args, ret, def));
     }
 }
