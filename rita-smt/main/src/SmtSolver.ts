@@ -47,6 +47,17 @@ export default class SmtSolver {
         if (produceModel) {
             this.solver.enableAssignments();
         }
+        this.defineCustomFunctions();
+    }
+
+    private defineCustomFunctions() {
+        //Modulo
+        this.solver.defineFun(
+            '%',
+            [new SExpr('a Real'), new SExpr('b Real')],
+            'Real',
+            Sub('a', Mult(new SExpr('to_int', Div('a', 'b')), 'b'))
+        );
     }
 
     public dump() {
@@ -116,7 +127,11 @@ export default class SmtSolver {
     }
 
     private parseModulo(arg1: SNode | string, arg2: SNode | string): SNode {
-        return Sub(arg1, Mult(new SExpr('to_int', Div(arg1, arg2)), arg2));
+        return new SExpr(
+            '%',
+            new SExpr('to_real', arg1),
+            new SExpr('to_real', arg2)
+        );
     }
 
     private parseCalculation(rule: Calculation): SNode {
