@@ -1,0 +1,10 @@
+{
+    "changes": [
+        {
+            "packageName": "@educorvi/smtlib",
+            "comment": "add commenting function for generated smt",
+            "type": "minor"
+        }
+    ],
+    "packageName": "@educorvi/smtlib"
+}
