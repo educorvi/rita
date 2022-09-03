@@ -27,6 +27,7 @@ import {
     Operator,
     Rule,
 } from '@educorvi/rita';
+import { GEqS, GTS, LEqS, LTS, Mod } from './customSMTFunctions';
 
 enum types {
     boolean = 'Bool',
@@ -51,6 +52,8 @@ export default class SmtSolver {
     }
 
     private defineCustomFunctions() {
+        this.solver.comment('-----Custom Functions-----');
+
         //Modulo
         this.solver.defineFun(
             '%',
@@ -58,6 +61,40 @@ export default class SmtSolver {
             'Real',
             Sub('a', Mult(new SExpr('to_int', Div('a', 'b')), 'b'))
         );
+
+        //<= String
+        this.solver.defineFun(
+            '<=s',
+            [new SExpr('a String'), new SExpr('b String')],
+            'Bool',
+            new SExpr('str.<=', 'a', 'b')
+        );
+
+        //< String
+        this.solver.defineFun(
+            '<s',
+            [new SExpr('a String'), new SExpr('b String')],
+            'Bool',
+            And(new SExpr('str.<=', 'a', 'b'), Not(Eq('a', 'b')))
+        );
+
+        //> String
+        this.solver.defineFun(
+            '>s',
+            [new SExpr('a String'), new SExpr('b String')],
+            'Bool',
+            Not(And(new SExpr('str.<=', 'a', 'b'), Not(Eq('a', 'b'))))
+        );
+
+        //>= String
+        this.solver.defineFun(
+            '>=s',
+            [new SExpr('a String'), new SExpr('b String')],
+            'Bool',
+            Or(new SExpr('>s', 'a', 'b'), Eq('a', 'b'))
+        );
+
+        this.solver.comment('--------------------------');
     }
 
     public dump() {
@@ -126,14 +163,6 @@ export default class SmtSolver {
         }
     }
 
-    private parseModulo(arg1: SNode | string, arg2: SNode | string): SNode {
-        return new SExpr(
-            '%',
-            new SExpr('to_real', arg1),
-            new SExpr('to_real', arg2)
-        );
-    }
-
     private parseCalculation(rule: Calculation): SNode {
         const funcArgs: Array<SNode | string> = [];
         for (const argument of rule.arguments) {
@@ -149,11 +178,11 @@ export default class SmtSolver {
             case operations.divide:
                 return Div(...funcArgs);
             case operations.modulo:
-                if (funcArgs.length > 2)
+                if (funcArgs.length !== 2)
                     throw new Error(
                         'For modulo only two arguments are supported'
                     );
-                return this.parseModulo(funcArgs[0], funcArgs[1]);
+                return Mod(funcArgs[0], funcArgs[1]);
             default:
                 throw new Error(
                     'unknown:\n' + JSON.stringify(rule.toJsonReady())
@@ -163,21 +192,41 @@ export default class SmtSolver {
 
     private parseComparison(rule: Comparison): SNode {
         let func: (l: SNode, r: SNode) => SNode;
+
+        const stringsInvolved =
+            typeof rule.arguments[0] === 'string' ||
+            typeof rule.arguments[1] === 'string';
         switch (rule.operation) {
             case comparisons.equal:
                 func = Eq;
                 break;
             case comparisons.smaller:
-                func = LT;
+                if (stringsInvolved) {
+                    func = LTS;
+                } else {
+                    func = LT;
+                }
                 break;
             case comparisons.smallerOrEqual:
-                func = LEq;
+                if (stringsInvolved) {
+                    func = LEqS;
+                } else {
+                    func = LEq;
+                }
                 break;
             case comparisons.greater:
-                func = GT;
+                if (stringsInvolved) {
+                    func = GTS;
+                } else {
+                    func = GT;
+                }
                 break;
             case comparisons.greaterOrEqual:
-                func = GEq;
+                if (stringsInvolved) {
+                    func = GEqS;
+                } else {
+                    func = GEq;
+                }
                 break;
             default:
                 throw new Error(
