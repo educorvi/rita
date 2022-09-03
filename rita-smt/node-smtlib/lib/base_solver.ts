@@ -73,4 +73,8 @@ export default class BaseSmtSolver {
     defineFun(name: string, args: SNode[], ret: SNode, def: SNode): void {
         this.add(smt.DefineFun(name, args, ret, def));
     }
+
+    comment(comment: string): void {
+        this.add(smt.Comment(comment));
+    }
 }
