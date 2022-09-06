@@ -2,8 +2,8 @@
     "changes": [
         {
             "packageName": "@educorvi/smtlib",
-            "comment": "add commenting function for generated smt",
-            "type": "minor"
+            "comment": "",
+            "type": "none"
         }
     ],
     "packageName": "@educorvi/smtlib"
