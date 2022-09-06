@@ -52,8 +52,6 @@ export default class SmtSolver {
     }
 
     private defineCustomFunctions() {
-        this.solver.comment('-----Custom Functions-----');
-
         //Modulo
         this.solver.defineFun(
             '%',
@@ -93,8 +91,6 @@ export default class SmtSolver {
             'Bool',
             Or(new SExpr('>s', 'a', 'b'), Eq('a', 'b'))
         );
-
-        this.solver.comment('--------------------------');
     }
 
     public dump() {

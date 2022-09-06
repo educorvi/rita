@@ -24,10 +24,6 @@ class SExpr {
     }
 }
 
-function Comment(comment: string): string {
-    return '; ' + comment;
-}
-
 function SetLogic(logic: string): SExpr {
     return new SExpr('set-logic', logic);
 }
@@ -131,7 +127,6 @@ function CheckSat(): SExpr {
 
 export {
     SExpr,
-    Comment,
     SetLogic,
     SetOption,
     DeclareSort,
