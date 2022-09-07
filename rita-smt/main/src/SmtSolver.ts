@@ -109,7 +109,6 @@ export default class SmtSolver {
         if (!satResult.model) {
             return undefined;
         }
-        console.log(satResult.model);
         const o = {};
         for (const key of Object.keys(satResult.model)) {
             this.setPropertyByString(o, key, satResult.model[key]);
