@@ -99,7 +99,7 @@ export default abstract class LocalCVCSolver extends BaseSolver {
             }
 
             const ASSIGN_STRING_REGEX =
-                /\(define-fun ([A-Za-z0-9_.]+) \(\) String "(.+)"\)$/;
+                /\(define-fun ([A-Za-z0-9_.]+) \(\) String "(.*)"\)$/;
             match = ASSIGN_STRING_REGEX.exec(line);
             if (match !== null) {
                 if (this.isPlaceholder(match[1])) return;

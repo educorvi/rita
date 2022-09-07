@@ -48,7 +48,9 @@ function testExamples(examples: Record<string, any>, awaited_result: boolean) {
         for (const rule of ruleset) {
             smts.assertRule(rule);
         }
-        it(`${key}: satisfieability`, async function () {
+        it(`${key} should be ${
+            awaited_result ? 'satisfiable' : 'unsatisfiable'
+        }`, async function () {
             let sat = await smts.checkSat();
             expect(sat.satisfieable).toBe(awaited_result);
             if (sat.satisfieable) {
