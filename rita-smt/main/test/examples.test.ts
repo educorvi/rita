@@ -52,8 +52,8 @@ function testExamples(examples: Record<string, any>, awaited_result: boolean) {
             awaited_result ? 'satisfiable' : 'unsatisfiable'
         }`, async function () {
             let sat = await smts.checkSat();
-            expect(sat.satisfieable).toBe(awaited_result);
-            if (sat.satisfieable) {
+            expect(sat.satisfiable).toBe(awaited_result);
+            if (sat.satisfiable) {
                 expect(sat.model).toBeDefined();
                 // console.log(model);
                 const ev = await evaluateAll(

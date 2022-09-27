@@ -36,7 +36,7 @@ enum types {
 }
 
 type RitaSatResult = {
-    satisfieable: boolean;
+    satisfiable: boolean;
     model: Record<string, any> | undefined;
 };
 
@@ -120,7 +120,7 @@ export default class SmtSolver {
     public async checkSat(): Promise<RitaSatResult> {
         const satRet = await this.solver.checkSat();
         return {
-            satisfieable: satRet.satisfieable,
+            satisfiable: satRet.satisfiable,
             model: SmtSolver.getModel(satRet),
         };
     }
