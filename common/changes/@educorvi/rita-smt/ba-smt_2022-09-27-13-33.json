@@ -1,0 +1,10 @@
+{
+    "changes": [
+        {
+            "packageName": "@educorvi/rita-smt",
+            "comment": "fix typo: rename satisfieable to satisifiable",
+            "type": "patch"
+        }
+    ],
+    "packageName": "@educorvi/rita-smt"
+}
