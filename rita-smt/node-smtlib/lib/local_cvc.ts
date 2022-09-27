@@ -110,8 +110,8 @@ export default abstract class LocalCVCSolver extends BaseSolver {
         });
         stdout.on('end', () => {
             // console.log('SMT elapsed time: ' + ((new Date).getTime() - now.getTime()));
-            if (sat) callback({ satisfieable: true, model: assignment });
-            else callback({ satisfieable: false, model: undefined });
+            if (sat) callback({ satisfiable: true, model: assignment });
+            else callback({ satisfiable: false, model: undefined });
         });
 
         child.stdout.on('error', errback);

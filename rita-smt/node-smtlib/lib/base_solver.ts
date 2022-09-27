@@ -10,7 +10,7 @@ import { SNode } from './smtlib';
 export type Model = Record<string, number | boolean | string>;
 
 export type SatResult = {
-    satisfieable: boolean;
+    satisfiable: boolean;
     model: Model | undefined;
 };
 
