@@ -1,10 +1,10 @@
 {
     "changes": [
         {
-            "packageName": "rita-http",
+            "packageName": "@educorvi/rita-smt",
             "comment": "Update Rita Version to v5",
             "type": "major"
         }
     ],
-    "packageName": "rita-http"
+    "packageName": "@educorvi/rita-smt"
 }

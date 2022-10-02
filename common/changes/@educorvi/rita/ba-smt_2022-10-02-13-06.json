@@ -1,0 +1,10 @@
+{
+    "changes": [
+        {
+            "packageName": "@educorvi/rita",
+            "comment": "refactor dateCalculation in extra type independent from calculation",
+            "type": "major"
+        }
+    ],
+    "packageName": "@educorvi/rita"
+}

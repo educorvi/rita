@@ -2,8 +2,8 @@
     "changes": [
         {
             "packageName": "@educorvi/persistent-rita",
-            "comment": "",
-            "type": "none"
+            "comment": "Update Rita Version to v5",
+            "type": "major"
         }
     ],
     "packageName": "@educorvi/persistent-rita"
