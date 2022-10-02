@@ -44,6 +44,11 @@ const schemas = [
         schema: () => import('../src/schema/calculation.json'),
     },
     {
+        name: 'DateCalculation',
+        // @ts-ignore
+        schema: () => import('../src/schema/dateCalculation.json'),
+    },
+    {
         name: 'Term',
         // @ts-ignore
         schema: () => import('../src/schema/formula.json'),

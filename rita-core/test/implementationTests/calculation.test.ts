@@ -92,8 +92,8 @@ function formatDate(d: Date): string {
 
 describe('Dates', () => {
     it('days from 20.12.2020 to 24.12.2020', () => {
-        const calc = p.parseCalculation({
-            type: 'calculation',
+        const calc = p.parseFormula({
+            type: 'dateCalculation',
             operation: 'subtract',
             dateResultUnit: 'days',
             arguments: ['2020-12-24', '2020-12-20'],
@@ -101,8 +101,8 @@ describe('Dates', () => {
         expect(calc.evaluate(exampleData)).resolves.toBe(4);
     });
     it('how many full years from date of birth to 12.11.2021', async () => {
-        const calc = p.parseCalculation({
-            type: 'calculation',
+        const calc = p.parseFormula({
+            type: 'dateCalculation',
             operation: 'subtract',
             dateResultUnit: 'years',
             arguments: [
@@ -116,8 +116,8 @@ describe('Dates', () => {
         expect(Math.floor(<number>await calc.evaluate(exampleData))).toBe(21);
     });
     it('two days ago from 12.11.2021', async () => {
-        const calc = p.parseCalculation({
-            type: 'calculation',
+        const calc = p.parseFormula({
+            type: 'dateCalculation',
             operation: 'subtract',
             dateCalculationUnit: 'days',
             arguments: ['2021-11-12', 2],
@@ -127,8 +127,8 @@ describe('Dates', () => {
         );
     });
     it('two days ago from 12.11.2021 in different order', async () => {
-        const calc = p.parseCalculation({
-            type: 'calculation',
+        const calc = p.parseFormula({
+            type: 'dateCalculation',
             operation: 'subtract',
             dateCalculationUnit: 'days',
             arguments: [2, '2021-11-12'],
@@ -138,8 +138,8 @@ describe('Dates', () => {
         );
     });
     it("can't divide dates", () => {
-        const calc = p.parseCalculation({
-            type: 'calculation',
+        const calc = p.parseFormula({
+            type: 'dateCalculation',
             operation: 'divide',
             dateCalculationUnit: 'days',
             arguments: [2, '2021-11-12'],
@@ -147,8 +147,8 @@ describe('Dates', () => {
         expect(calc.evaluate).rejects.toThrow(Error);
     });
     it('2+2 days from 12.11.2021', async () => {
-        const calc = p.parseCalculation({
-            type: 'calculation',
+        const calc = p.parseFormula({
+            type: 'dateCalculation',
             operation: 'add',
             dateCalculationUnit: 'days',
             arguments: [2, 2, '2021-11-12'],
@@ -158,8 +158,8 @@ describe('Dates', () => {
         );
     });
     it('two years in the future from 12.11.2021', async () => {
-        const calc = p.parseCalculation({
-            type: 'calculation',
+        const calc = p.parseFormula({
+            type: 'dateCalculation',
             operation: 'add',
             dateCalculationUnit: 'years',
             arguments: ['2021-11-12', 2],
@@ -169,8 +169,8 @@ describe('Dates', () => {
         );
     });
     it('time difference less then 2 minutes', () => {
-        const calc = p.parseCalculation({
-            type: 'calculation',
+        const calc = p.parseFormula({
+            type: 'dateCalculation',
             operation: 'subtract',
             dateResultUnit: 'minutes',
             arguments: ['2021-11-12T09:29', '2021-11-12T09:27:30'],

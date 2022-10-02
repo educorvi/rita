@@ -1,5 +1,5 @@
 {
-    "$schema": "https://raw.githubusercontent.com/educorvi/rita/develop/rita-core/src/schema/schema.json",
+    "$schema": "../../../rita-core/src/schema/schema.json",
     "rules": [
         {
             "id": "satisfiable",

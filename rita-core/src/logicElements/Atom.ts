@@ -11,7 +11,7 @@ export function testForDate(val: string): string | Date {
 }
 
 /**
- * A atom that gets it value from the data
+ * An atom that gets it value from the data
  */
 export class Atom extends Formula {
     /**

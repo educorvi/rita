@@ -17,7 +17,8 @@ import schemas, { schema } from './schema';
 import { AnyValidateFunction } from 'ajv/dist/types';
 import addFormats from 'ajv-formats';
 import { InternalError, UnimplementedError, UsageError } from './Errors';
-import { Plugin, PluginClass } from './logicElements/Plugin';
+import { PluginClass } from './logicElements/Plugin';
+import { DateCalculation } from './logicElements/DateCalculation';
 
 const ajv = new Ajv({ schemas: schemas });
 addFormats(ajv);
@@ -82,7 +83,7 @@ export default class Parser {
     }
 
     /**
-     * Create a Array of Rule objects from a json ruleset
+     * Create an Array of Rule objects from a json ruleset
      * @param jsonRuleset the ruleset
      */
     public parseRuleSet(jsonRuleset: Record<string, any>): Array<Rule> {
@@ -115,6 +116,8 @@ export default class Parser {
                 return this.parseComparison(jsonRuleset);
             case 'calculation':
                 return this.parseCalculation(jsonRuleset);
+            case 'dateCalculation':
+                return this.parseDateCalculation(jsonRuleset);
             case 'forall':
             case 'exists':
                 return this.parseQuantifier(jsonRuleset);
@@ -199,8 +202,27 @@ export default class Parser {
      * @private
      */
     private parseCalculationParams(
+        formulaArguments: Array<number | Record<string, any>>
+    ): Array<Atom | number | Calculation> {
+        const params = [];
+        for (const parameter of formulaArguments) {
+            if (typeof parameter === 'number') {
+                params.push(parameter);
+            } else {
+                params.push(<Atom | Calculation>this.parseFormula(parameter));
+            }
+        }
+        return params;
+    }
+
+    /**
+     * Parse the arguments of a calculation
+     * @param formulaArguments the arguments
+     * @private
+     */
+    private parseDateCalculationParams(
         formulaArguments: Array<number | string | Record<string, any>>
-    ): Array<Atom | number | Date | Calculation | Plugin> {
+    ): Array<Atom | number | Date | Calculation> {
         const params = [];
         for (const parameter of formulaArguments) {
             if (typeof parameter === 'number') {
@@ -208,9 +230,7 @@ export default class Parser {
             } else if (typeof parameter === 'string') {
                 params.push(<Date>testForDate(parameter));
             } else {
-                params.push(
-                    <Atom | Calculation | Plugin>this.parseFormula(parameter)
-                );
+                params.push(<Atom | Calculation>this.parseFormula(parameter));
             }
         }
         return params;
@@ -223,6 +243,19 @@ export default class Parser {
     public parseCalculation(jsonRuleset: Record<string, any>): Calculation {
         return new Calculation(
             this.parseCalculationParams(jsonRuleset['arguments']),
+            jsonRuleset['operation']
+        );
+    }
+
+    /**
+     * Parse a DateCalculation
+     * @param jsonRuleset
+     */
+    public parseDateCalculation(
+        jsonRuleset: Record<string, any>
+    ): DateCalculation {
+        return new DateCalculation(
+            this.parseDateCalculationParams(jsonRuleset['arguments']),
             jsonRuleset['operation'],
             jsonRuleset['dateResultUnit'],
             jsonRuleset['dateCalculationUnit']

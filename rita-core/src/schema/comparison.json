@@ -30,9 +30,6 @@
                         "$ref": "atom.json"
                     },
                     {
-                        "$ref": "plugin.json"
-                    },
-                    {
                         "$ref": "macro.json"
                     },
                     {
@@ -47,6 +44,9 @@
                     },
                     {
                         "$ref": "calculation.json"
+                    },
+                    {
+                        "$ref": "dateCalculation.json"
                     }
                 ]
             }

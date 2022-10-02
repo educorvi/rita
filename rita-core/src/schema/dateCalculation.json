@@ -1,0 +1,75 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/dateCalculation.json",
+    "title": "Date Calculation",
+    "description": "Calculations involving dates",
+    "type": "object",
+    "properties": {
+        "type": {
+            "type": "string",
+            "enum": ["dateCalculation"]
+        },
+        "operation": {
+            "description": "Add/subtract a time interval to/from a date or subtract two dates to get the interval between them",
+            "type": "string",
+            "enum": ["add", "subtract"]
+        },
+        "arguments": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+                "oneOf": [
+                    {
+                        "$ref": "atom.json"
+                    },
+                    {
+                        "$ref": "macro.json"
+                    },
+                    {
+                        "type": "number"
+                    },
+                    {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    {
+                        "$ref": "calculation.json"
+                    },
+                    {
+                        "$ref": "dateCalculation.json"
+                    }
+                ]
+            }
+        },
+        "dateCalculationUnit": {
+            "description": "What unit time intervals given as arguments will be in.",
+            "type": "string",
+            "enum": [
+                "milliseconds",
+                "seconds",
+                "minutes",
+                "hours",
+                "days",
+                "months",
+                "years"
+            ],
+            "default": "milliseconds"
+        },
+        "dateResultUnit": {
+            "description": "What unit time intervals representing the result will be in.",
+            "type": "string",
+            "enum": [
+                "milliseconds",
+                "seconds",
+                "minutes",
+                "hours",
+                "days",
+                "months",
+                "years"
+            ],
+            "default": "milliseconds"
+        }
+    },
+    "required": ["operation", "arguments", "type"],
+    "additionalProperties": false
+}
