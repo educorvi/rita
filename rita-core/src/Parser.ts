@@ -10,7 +10,8 @@ import {
     Or,
     Quantifier,
     Rule,
-    testForDate,
+    parseDate,
+    parseDateOrReturnString,
 } from './logicElements';
 import Ajv from 'ajv/dist/2019';
 import schemas, { schema } from './schema';
@@ -161,7 +162,7 @@ export default class Parser {
      * @param jsonRuleset the atom
      */
     public parseAtom(jsonRuleset: Record<string, any>): Atom {
-        return new Atom(jsonRuleset['path']);
+        return new Atom(jsonRuleset['path'], !!jsonRuleset['isDate']);
     }
 
     /**
@@ -177,7 +178,7 @@ export default class Parser {
             if (typeof parameter === 'number') {
                 params.push(parameter);
             } else if (typeof parameter === 'string') {
-                params.push(testForDate(parameter));
+                params.push(parseDateOrReturnString(parameter));
             } else {
                 params.push(<Atom | Calculation>this.parseFormula(parameter));
             }
@@ -228,7 +229,7 @@ export default class Parser {
             if (typeof parameter === 'number') {
                 params.push(parameter);
             } else if (typeof parameter === 'string') {
-                params.push(<Date>testForDate(parameter));
+                params.push(parseDate(parameter));
             } else {
                 params.push(<Atom | Calculation>this.parseFormula(parameter));
             }

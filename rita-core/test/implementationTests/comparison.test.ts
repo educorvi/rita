@@ -1,3 +1,4 @@
+// @ts-ignore
 import { evaluateAll, Parser } from '../../src';
 // @ts-ignore
 import { exampleData, ruleTemplate } from '../assets/exampleData';
@@ -45,6 +46,7 @@ it('birthday before 27.02.2002', () => {
                 {
                     type: 'atom',
                     path: 'dateOfBirth',
+                    isDate: true,
                 },
                 '2002-02-27',
             ],

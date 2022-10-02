@@ -28,7 +28,7 @@
         "doc:implementation": "npx typedoc --out docs/implementation src/index.ts",
         "doc:schema": "jsonschema2md -d src/schema -o docs/schema -e json -x -",
         "prepack": "npm run build",
-        "test": "jest 2>&1"
+        "test": "jest"
     },
     "dependencies": {
         "ajv": "^8.11.0",

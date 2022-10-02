@@ -20,7 +20,8 @@
                                     "2021-07-21T02:00:00.000+02:00",
                                     {
                                         "type": "atom",
-                                        "path": "dateOfBirth"
+                                        "path": "dateOfBirth",
+                                        "isDate": true
                                     }
                                 ]
                             },
@@ -33,10 +34,8 @@
                         "arguments": [
                             20,
                             {
-                                "type": "dateCalculation",
+                                "type": "calculation",
                                 "operation": "add",
-                                "dateCalculationUnit": "seconds",
-                                "dateResultUnit": "seconds",
                                 "arguments": [
                                     {
                                         "type": "atom",

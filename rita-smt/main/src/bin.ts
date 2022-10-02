@@ -30,11 +30,29 @@ program
                     console.error("Can't open file: " + filepath);
                     process.exit(-1);
                 }
-                const rp = parser.parseRuleSet(r);
-                const s = new SmtSolver(true);
-                for (const rule of rp) {
-                    s.assertRule(rule);
+
+                let rp;
+                try {
+                    rp = parser.parseRuleSet(r);
+                } catch (e) {
+                    console.error('Error while parsing:', e);
+                    process.exit(-1);
                 }
+
+                let s: SmtSolver;
+                try {
+                    s = new SmtSolver(true);
+                    for (const rule of rp) {
+                        s.assertRule(rule);
+                    }
+                } catch (e) {
+                    console.error(
+                        'There was an error while converting to SMT:',
+                        e
+                    );
+                    process.exit(-1);
+                }
+
                 if (program.opts().verbose) {
                     console.log('Generated SMT:');
                     s.dump();

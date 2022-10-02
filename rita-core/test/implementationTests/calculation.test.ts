@@ -110,6 +110,7 @@ describe('Dates', () => {
                 {
                     type: 'atom',
                     path: 'dateOfBirth',
+                    isDate: true,
                 },
             ],
         });

@@ -8,7 +8,7 @@ import { RulesetError } from '../Errors';
 import { assertNumberOrDate } from '../Assertions';
 import { DateTime, Duration } from 'luxon';
 
-export enum operations {
+export enum dateOperations {
     add = 'add',
     subtract = 'subtract',
 }
@@ -37,7 +37,7 @@ export class DateCalculation extends Formula {
     /**
      * The operation of the calculation
      */
-    public operation: operations;
+    public operation: dateOperations;
 
     /**
      * The unit of the result of the calculation when calculating with dates and result is a number
@@ -60,7 +60,7 @@ export class DateCalculation extends Formula {
         formulaArguments: Array<
             Atom | number | Date | Calculation | DateCalculation
         >,
-        operation: operations,
+        operation: dateOperations,
         dateResultUnit: timeUnits = timeUnits.milliseconds,
         dateCalculationUnit: timeUnits = timeUnits.milliseconds
     ) {
@@ -112,9 +112,9 @@ export class DateCalculation extends Formula {
             //Add or subtract the duration to/from the date
             const lDate: DateTime = DateTime.fromJSDate(date);
             switch (operation) {
-                case operations.add:
+                case dateOperations.add:
                     return lDate.plus(duration).toJSDate();
-                case operations.subtract:
+                case dateOperations.subtract:
                     return lDate.minus(duration).toJSDate();
                 default:
                     throw new RulesetError('Invalid Operation for Dates');
@@ -133,10 +133,10 @@ export class DateCalculation extends Formula {
         //Get the function matching our operation
         let tempFunc: (x1: any, x2: any) => number;
         switch (this.operation) {
-            case operations.add:
+            case dateOperations.add:
                 tempFunc = (x1, x2) => x1 + x2;
                 break;
-            case operations.subtract:
+            case dateOperations.subtract:
                 tempFunc = (x1, x2) => x1 - x2;
                 break;
         }

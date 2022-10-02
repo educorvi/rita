@@ -12,6 +12,11 @@
         "path": {
             "description": "The path to the atom in the data",
             "type": "string"
+        },
+        "isDate": {
+            "type": "boolean",
+            "default": false,
+            "description": "Must be set to true if the atom should be parsed as a date"
         }
     },
     "required": ["type", "path"],

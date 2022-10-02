@@ -22,12 +22,14 @@ import {
     Calculation,
     Comparison,
     comparisons,
+    dateOperations,
     Formula,
     operations,
     Operator,
     Rule,
 } from '@educorvi/rita';
 import { GEqS, GTS, LEqS, LTS, Mod } from './customSMTFunctions';
+import { DateCalculation } from '@educorvi/rita/dist/logicElements/DateCalculation';
 
 enum types {
     boolean = 'Bool',
@@ -154,8 +156,12 @@ export default class SmtSolver {
             return this.parseComparison(rule);
         } else if (rule instanceof Calculation) {
             return this.parseCalculation(rule);
+        } else if (rule instanceof DateCalculation) {
+            return this.parseDateCalculation(rule);
         } else {
-            throw new Error('unknown:\n' + JSON.stringify(rule.toJsonReady()));
+            throw new Error(
+                'unknown type:\n' + JSON.stringify(rule.toJsonReady())
+            );
         }
     }
 
@@ -183,6 +189,19 @@ export default class SmtSolver {
                 throw new Error(
                     'unknown:\n' + JSON.stringify(rule.toJsonReady())
                 );
+        }
+    }
+
+    private parseDateCalculation(rule: DateCalculation): SNode {
+        const funcArgs: Array<SNode | string> = [];
+        for (const argument of rule.arguments) {
+            funcArgs.push(this.parseFormula(argument, types.number));
+        }
+        switch (rule.operation) {
+            case dateOperations.add:
+                return Add(...funcArgs);
+            case dateOperations.subtract:
+                return Sub(...funcArgs);
         }
     }
 
