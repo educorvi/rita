@@ -44,30 +44,14 @@
         "dateCalculationUnit": {
             "description": "What unit time intervals given as arguments will be in.",
             "type": "string",
-            "enum": [
-                "milliseconds",
-                "seconds",
-                "minutes",
-                "hours",
-                "days",
-                "months",
-                "years"
-            ],
-            "default": "milliseconds"
+            "enum": ["seconds", "minutes", "hours", "days", "months", "years"],
+            "default": "seconds"
         },
         "dateResultUnit": {
             "description": "What unit time intervals representing the result will be in.",
             "type": "string",
-            "enum": [
-                "milliseconds",
-                "seconds",
-                "minutes",
-                "hours",
-                "days",
-                "months",
-                "years"
-            ],
-            "default": "milliseconds"
+            "enum": ["seconds", "minutes", "hours", "days", "months", "years"],
+            "default": "seconds"
         }
     },
     "required": ["operation", "arguments", "type"],

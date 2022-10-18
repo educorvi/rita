@@ -27,9 +27,10 @@ import {
     operations,
     Operator,
     Rule,
+    DateCalculation,
 } from '@educorvi/rita';
 import { GEqS, GTS, LEqS, LTS, Mod } from './customSMTFunctions';
-import { DateCalculation } from '@educorvi/rita/dist/logicElements/DateCalculation';
+import { casualMatrix } from './conversionMatrices';
 
 enum types {
     boolean = 'Bool',
@@ -193,7 +194,18 @@ export default class SmtSolver {
     }
 
     private parseDateCalculation(rule: DateCalculation): SNode {
-        const funcArgs: Array<SNode | string> = [];
+        const funcArgs: Array<SNode | string> = rule.arguments.map((v) => {
+            if (v instanceof Date || (v instanceof Atom && v.isDate)) {
+                return this.parseFormula(v, types.number);
+            } else {
+                return Mult(
+                    this.parseFormula(v),
+                    casualMatrix[rule.dateCalculationUnit][
+                        'milliseconds'
+                    ].toString()
+                );
+            }
+        });
         for (const argument of rule.arguments) {
             funcArgs.push(this.parseFormula(argument, types.number));
         }

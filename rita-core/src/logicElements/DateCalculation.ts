@@ -17,7 +17,6 @@ export enum dateOperations {
  * Possible units for time intervals
  */
 enum timeUnits {
-    milliseconds = 'milliseconds',
     seconds = 'seconds',
     minutes = 'minutes',
     hours = 'hours',
@@ -61,8 +60,8 @@ export class DateCalculation extends Formula {
             Atom | number | Date | Calculation | DateCalculation
         >,
         operation: dateOperations,
-        dateResultUnit: timeUnits = timeUnits.milliseconds,
-        dateCalculationUnit: timeUnits = timeUnits.milliseconds
+        dateResultUnit: timeUnits = timeUnits.seconds,
+        dateCalculationUnit: timeUnits = timeUnits.seconds
     ) {
         super();
         this.arguments = formulaArguments;
