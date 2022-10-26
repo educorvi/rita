@@ -90,6 +90,17 @@ export default abstract class LocalCVCSolver extends BaseSolver {
                 return;
             }
 
+            const ASSIGN_NEGATIVE_FLOAT_REGEX =
+                /\(define-fun ([A-Za-z0-9_.]+) \(\) Real \(\/ \(- (\d+)\) (\d+)\)\)$/;
+            match = ASSIGN_NEGATIVE_FLOAT_REGEX.exec(line);
+            if (match !== null) {
+                if (this.isPlaceholder(match[1])) return;
+                assignment[match[1]] =
+                    (Number.parseFloat(match[2]) * -1) /
+                    Number.parseFloat(match[3]);
+                return;
+            }
+
             const ASSIGN_BOOL_REGEX =
                 /\(define-fun ([A-Za-z0-9_.]+) \(\) Bool (true|false)\)$/;
             match = ASSIGN_BOOL_REGEX.exec(line);
