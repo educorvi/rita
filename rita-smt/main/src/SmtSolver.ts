@@ -46,6 +46,7 @@ type RitaSatResult = {
 export default class SmtSolver {
     private readonly solver: LocalCVC5Solver = new LocalCVC5Solver('ALL');
     private declaredConsts: Array<string> = [];
+    private atoms: Array<Atom> = [];
 
     constructor(produceModel = false) {
         if (produceModel) {
@@ -106,15 +107,19 @@ export default class SmtSolver {
 
     public readonly output = this.solver.output;
 
-    private static getModel(
-        satResult: SatResult
-    ): Record<string, any> | undefined {
+    private getModel(satResult: SatResult): Record<string, any> | undefined {
         if (!satResult.model) {
             return undefined;
         }
         const o = {};
         for (const key of Object.keys(satResult.model)) {
-            this.setPropertyByString(o, key, satResult.model[key]);
+            let val: any = satResult.model[key];
+            if (this.atoms.filter((at) => at.path === key)) {
+                val = new Date(
+                    Number.parseInt(satResult.model[key].toString())
+                );
+            }
+            SmtSolver.setPropertyByString(o, key, val);
         }
 
         return o;
@@ -124,7 +129,7 @@ export default class SmtSolver {
         const satRet = await this.solver.checkSat();
         return {
             satisfiable: satRet.satisfiable,
-            model: SmtSolver.getModel(satRet),
+            model: this.getModel(satRet),
         };
     }
 
@@ -206,14 +211,37 @@ export default class SmtSolver {
                 );
             }
         });
+        // for (const argument of rule.arguments) {
+        //     funcArgs.push(this.parseFormula(argument, types.number));
+        // }
+
+        let wrapOperation: (result: SNode) => SNode;
+        let containsIntervals = false;
+        let containsDates = false;
         for (const argument of rule.arguments) {
-            funcArgs.push(this.parseFormula(argument, types.number));
+            if (
+                (argument instanceof Atom && argument.isDate) ||
+                argument instanceof Date
+            )
+                containsDates = true;
+            if (typeof argument === 'number') containsIntervals = true;
+        }
+        if (containsDates !== containsIntervals) {
+            wrapOperation = (res) =>
+                Div(
+                    res,
+                    casualMatrix[rule.dateCalculationUnit][
+                        'milliseconds'
+                    ].toString()
+                );
+        } else {
+            wrapOperation = (res) => res;
         }
         switch (rule.operation) {
             case dateOperations.add:
-                return Add(...funcArgs);
+                return wrapOperation(Add(...funcArgs));
             case dateOperations.subtract:
-                return Sub(...funcArgs);
+                return wrapOperation(Sub(...funcArgs));
         }
     }
 
@@ -302,6 +330,7 @@ export default class SmtSolver {
 
     private parseAtom(rule: Atom, type: types): string {
         this.declareConstIfNotExists(rule.path, type);
+        this.atoms.push(rule);
         return rule.path;
     }
 
