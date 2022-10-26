@@ -5,6 +5,7 @@
     <node-options value="" />
     <jest-package value="$PROJECT_DIR$/persistent-rita/node_modules/jest" />
     <working-dir value="$PROJECT_DIR$/rita-core" />
+    <jest-options value="--maxWorkers=8" />
     <envs />
     <scope-kind value="ALL" />
     <method v="2" />

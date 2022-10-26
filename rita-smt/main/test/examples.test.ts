@@ -14,6 +14,8 @@ import comparisonString from './comparisonString.json';
 import modulo from './modulo.json';
 // @ts-ignore
 import simpleRule from './simpleRule.json';
+// @ts-ignore
+import dateCalculation from './dateCalculation.json';
 
 // @ts-ignore
 import simpleRuleUnsat from './simpleRuleUnsat.json';
@@ -31,6 +33,7 @@ const examples_satisfiable = {
     comparisonString,
     modulo,
     simpleRule,
+    dateCalculation,
 };
 
 const examples_unsatisfiable = {

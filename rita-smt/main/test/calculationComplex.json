@@ -5,7 +5,7 @@
             "id": "rule1",
             "comment": "The time between the date of birth and the 21st of July 2021 must be at least 18 years or 20 must be more than the price plus tax.",
             "rule": {
-                "type": "or",
+                "type": "and",
                 "arguments": [
                     {
                         "type": "comparison",
@@ -20,7 +20,8 @@
                                     "2021-07-21T02:00:00.000+02:00",
                                     {
                                         "type": "atom",
-                                        "path": "dateOfBirth"
+                                        "path": "dateOfBirth",
+                                        "isDate": true
                                     }
                                 ]
                             },
@@ -29,14 +30,12 @@
                     },
                     {
                         "type": "comparison",
-                        "operation": "greater",
+                        "operation": "smaller",
                         "arguments": [
                             20,
                             {
-                                "type": "dateCalculation",
-                                "operation": "add",
-                                "dateCalculationUnit": "seconds",
-                                "dateResultUnit": "seconds",
+                                "type": "calculation",
+                                "operation": "multiply",
                                 "arguments": [
                                     {
                                         "type": "atom",
@@ -48,6 +47,28 @@
                                     }
                                 ]
                             }
+                        ]
+                    },
+                    {
+                        "type": "comparison",
+                        "operation": "greaterOrEqual",
+                        "arguments": [
+                            {
+                                "type": "atom",
+                                "path": "visit.priceWithoutTax"
+                            },
+                            0
+                        ]
+                    },
+                    {
+                        "type": "comparison",
+                        "operation": "smaller",
+                        "arguments": [
+                            {
+                                "type": "atom",
+                                "path": "visit.tax"
+                            },
+                            2
                         ]
                     }
                 ]

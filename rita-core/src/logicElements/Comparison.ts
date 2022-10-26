@@ -1,7 +1,7 @@
 import { Formula } from './Formula';
 import { Atom } from './Atom';
 import { Calculation, mapArgumentsToJSONReady } from './Calculation';
-import { RulesetError, UnimplementedError } from '../Errors';
+import { UnimplementedError } from '../Errors';
 
 /**
  * Types of comparisons
@@ -51,11 +51,6 @@ export class Comparison extends Formula {
     }
 
     async evaluate(data: Record<string, any>): Promise<boolean> {
-        if (!this.validate())
-            throw new RulesetError(
-                'Invalid: ' + JSON.stringify(this.toJsonReady())
-            );
-
         //if one of the arguments is either an Atom or a Calculation evaluate it first
         const p1 =
             this.arguments[0] instanceof Formula

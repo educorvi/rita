@@ -114,7 +114,9 @@ export default class SmtSolver {
         const o = {};
         for (const key of Object.keys(satResult.model)) {
             let val: any = satResult.model[key];
-            if (this.atoms.filter((at) => at.path === key)) {
+            if (
+                this.atoms.filter((at) => at.path === key && at.isDate).length
+            ) {
                 val = new Date(
                     Number.parseInt(satResult.model[key].toString())
                 );
@@ -198,14 +200,28 @@ export default class SmtSolver {
         }
     }
 
+    private returnsDate(calc: DateCalculation): boolean {
+        const isDate: (
+            arg: number | Atom | Date | Calculation | DateCalculation
+        ) => boolean = (arg) =>
+            arg instanceof Date ||
+            (arg instanceof Atom && arg.isDate) ||
+            (arg instanceof DateCalculation && this.returnsDate(arg));
+        return isDate(calc.arguments[0]) !== isDate(calc.arguments[1]);
+    }
+
     private parseDateCalculation(rule: DateCalculation): SNode {
         const funcArgs: Array<SNode | string> = rule.arguments.map((v) => {
-            if (v instanceof Date || (v instanceof Atom && v.isDate)) {
+            if (
+                v instanceof Date ||
+                (v instanceof Atom && v.isDate) ||
+                (v instanceof DateCalculation && this.returnsDate(v))
+            ) {
                 return this.parseFormula(v, types.number);
             } else {
                 return Mult(
-                    this.parseFormula(v),
-                    casualMatrix[rule.dateCalculationUnit][
+                    this.parseFormula(v, types.number),
+                    casualMatrix[rule.dateCalculationUnit || 'seconds'][
                         'milliseconds'
                     ].toString()
                 );
@@ -230,7 +246,7 @@ export default class SmtSolver {
             wrapOperation = (res) =>
                 Div(
                     res,
-                    casualMatrix[rule.dateCalculationUnit][
+                    casualMatrix[rule.dateResultUnit || 'seconds'][
                         'milliseconds'
                     ].toString()
                 );

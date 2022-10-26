@@ -1,7 +1,7 @@
 import { Atom } from './Atom';
 import { Formula } from './Formula';
 import { DateTime } from 'luxon';
-import { RulesetError, UsageError } from '../Errors';
+import { UsageError } from '../Errors';
 import { DateCalculation } from './DateCalculation';
 
 /**
@@ -65,11 +65,6 @@ export class Calculation extends Formula {
     }
 
     async evaluate(data: Record<string, any>): Promise<Date | number> {
-        if (!this.validate())
-            throw new RulesetError(
-                'Invalid: ' + JSON.stringify(this.toJsonReady())
-            );
-
         //Get the function matching our operation
         let tempFunc: (x1: any, x2: any) => number;
         switch (this.operation) {

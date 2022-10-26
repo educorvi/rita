@@ -1,5 +1,4 @@
 import { Formula } from './Formula';
-import { RulesetError } from '../Errors';
 
 /**
  * Parent class for all operators
@@ -53,11 +52,6 @@ export abstract class Operator extends Formula {
  */
 export class And extends Operator {
     evaluate(data: Record<string, any>): Promise<boolean> {
-        if (!this.validate())
-            throw new RulesetError(
-                'Invalid: ' + JSON.stringify(this.toJsonReady())
-            );
-
         return this.evaluateReduce(
             data,
             (x1, x2) => x1 && x2,
@@ -83,11 +77,6 @@ export class And extends Operator {
  */
 export class Not extends Operator {
     async evaluate(data: Record<string, any>): Promise<boolean> {
-        if (!this.validate())
-            throw new RulesetError(
-                'Invalid: ' + JSON.stringify(this.toJsonReady())
-            );
-
         return Promise.resolve(!(await this.arguments[0].evaluate(data)));
     }
 
@@ -109,11 +98,6 @@ export class Not extends Operator {
  */
 export class Or extends Operator {
     evaluate(data: Record<string, any>): Promise<boolean> {
-        if (!this.validate())
-            throw new RulesetError(
-                'Invalid: ' + JSON.stringify(this.toJsonReady())
-            );
-
         return this.evaluateReduce(data, (x1, x2) => x1 || x2);
     }
 

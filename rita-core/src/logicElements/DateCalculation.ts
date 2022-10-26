@@ -124,11 +124,6 @@ export class DateCalculation extends Formula {
     async evaluate(
         data: Record<string, any>
     ): Promise<FormulaResults | Array<FormulaResults>> {
-        if (!this.validate())
-            throw new RulesetError(
-                'Invalid: ' + JSON.stringify(this.toJsonReady())
-            );
-
         //Get the function matching our operation
         let tempFunc: (x1: any, x2: any) => number;
         switch (this.operation) {

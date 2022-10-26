@@ -1,6 +1,6 @@
 import { Formula, FormulaResults } from './Formula';
 import { DateTime } from 'luxon';
-import { RulesetError, UndefinedPathError, UsageError } from '../Errors';
+import { UndefinedPathError, UsageError } from '../Errors';
 
 /**
  * Parses the date in the argument string. Throws an exception if date can not be parsed
@@ -84,11 +84,6 @@ export class Atom extends Formula {
     async evaluate(
         data: Record<string, any>
     ): Promise<FormulaResults | Array<FormulaResults>> {
-        if (!this.validate())
-            throw new RulesetError(
-                'Invalid: ' + JSON.stringify(this.toJsonReady())
-            );
-
         const val = Atom.getPropertyByString(data, this.path);
 
         if (typeof val === 'string' && this.isDate) {
