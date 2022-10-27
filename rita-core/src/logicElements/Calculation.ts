@@ -78,10 +78,18 @@ export class Calculation extends Formula {
                 tempFunc = (x1, x2) => x1 * x2;
                 break;
             case operations.divide:
-                tempFunc = (x1, x2) => x1 / x2;
+                tempFunc = (x1, x2) => {
+                    if (x2 === 0)
+                        throw new UsageError('Division by zero is not allowed');
+                    return x1 / x2;
+                };
                 break;
             case operations.modulo:
-                tempFunc = (x1, x2) => x1 % x2;
+                tempFunc = (x1, x2) => {
+                    if (x2 === 0)
+                        throw new UsageError('Division by zero is not allowed');
+                    return x1 % x2;
+                };
                 break;
         }
 

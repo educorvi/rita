@@ -138,15 +138,6 @@ describe('Dates', () => {
             formatDate(new Date('2021-11-10'))
         );
     });
-    it("can't divide dates", () => {
-        const calc = p.parseFormula({
-            type: 'dateCalculation',
-            operation: 'divide',
-            dateCalculationUnit: 'days',
-            arguments: [2, '2021-11-12'],
-        });
-        expect(calc.evaluate).rejects.toThrow(Error);
-    });
     it('2+2 days from 12.11.2021', async () => {
         const calc = p.parseFormula({
             type: 'dateCalculation',

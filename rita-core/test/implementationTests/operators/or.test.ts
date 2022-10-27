@@ -4,21 +4,6 @@ import { exampleData, ruleTemplate } from '../../assets/exampleData';
 
 const p = new Parser();
 
-it('member', () => {
-    const rule = p.parseRule({
-        ...ruleTemplate,
-        rule: {
-            type: 'or',
-            arguments: [
-                {
-                    type: 'atom',
-                    path: 'member',
-                },
-            ],
-        },
-    });
-    expect(() => rule.evaluate(exampleData)).rejects.toThrow();
-});
 it('member || employee', () => {
     const rule = p.parseRule({
         ...ruleTemplate,
