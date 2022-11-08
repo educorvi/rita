@@ -42,6 +42,7 @@ it('birthday before 27.02.2002', () => {
         rule: {
             type: 'comparison',
             operation: 'smaller',
+            dates: true,
             arguments: [
                 {
                     type: 'atom',
@@ -97,6 +98,7 @@ it('birthday before 27.02.2002, but other birthday', () => {
         rule: {
             type: 'comparison',
             operation: 'smaller',
+            dates: true,
             arguments: ['2003-02-28', '2002-02-27'],
         },
     });

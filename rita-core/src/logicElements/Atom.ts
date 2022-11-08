@@ -16,19 +16,6 @@ export function parseDate(val: string): Date {
 }
 
 /**
- * Parses the date in the argument string or returns the string if the argument can not be parsed
- * @param val the string to be parsed
- */
-export function parseDateOrReturnString(val: string): Date | string {
-    const testDate = DateTime.fromISO(val).toJSDate();
-    if (!isNaN(testDate.getTime())) {
-        return testDate;
-    } else {
-        return val;
-    }
-}
-
-/**
  * An atom that gets it value from the data
  */
 export class Atom extends Formula {

@@ -1,0 +1,48 @@
+{
+    "$schema": "../../../rita-core/src/schema/schema.json",
+    "rules": [
+        {
+            "id": "rule3",
+            "rule": {
+                "type": "comparison",
+                "operation": "equal",
+                "dates": true,
+                "arguments": [
+                    "2022-10-29T02:00:00.000+02:00",
+                    {
+                        "type": "dateCalculation",
+                        "operation": "add",
+                        "dateCalculationUnit": "days",
+                        "arguments": [
+                            "2022-10-25T02:00:00.000+02:00",
+                            {
+                                "type": "calculation",
+                                "operation": "modulo",
+                                "arguments": [
+                                    {
+                                        "type": "dateCalculation",
+                                        "operation": "subtract",
+                                        "dateResultUnit": "seconds",
+                                        "arguments": [
+                                            "2022-10-25T02:00:00.000+02:00",
+                                            {
+                                                "type": "atom",
+                                                "path": "randomVal",
+                                                "isDate": true
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "calculation",
+                                        "operation": "divide",
+                                        "arguments": [10, 1]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}

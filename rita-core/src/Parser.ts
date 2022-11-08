@@ -11,7 +11,6 @@ import {
     Quantifier,
     Rule,
     parseDate,
-    parseDateOrReturnString,
 } from './logicElements';
 import Ajv from 'ajv/dist/2019';
 import schemas, { schema } from './schema';
@@ -168,19 +167,30 @@ export default class Parser {
     /**
      * Parse the arguments of a comparison
      * @param formulaArguments the arguments
+     * @param dates Indicates if dates are compared
      * @private
      */
     private parseComparisonParams(
-        formulaArguments: Array<number | string | Record<string, any>>
+        formulaArguments: Array<number | string | Record<string, any>>,
+        dates: boolean
     ): Array<Atom | number | Date | string | Calculation> {
         const params = [];
         for (const parameter of formulaArguments) {
-            if (typeof parameter === 'number') {
-                params.push(parameter);
-            } else if (typeof parameter === 'string') {
-                params.push(parseDateOrReturnString(parameter));
-            } else {
+            if (typeof parameter === 'object') {
                 params.push(<Atom | Calculation>this.parseFormula(parameter));
+            } else if (dates) {
+                const d = new Date(parameter);
+                if (!isNaN(d.getTime())) {
+                    params.push(d);
+                } else {
+                    throw new UsageError('Invalid Date: ' + parameter);
+                }
+            } else {
+                if (typeof parameter === 'number') {
+                    params.push(parameter);
+                } else {
+                    params.push(parameter);
+                }
             }
         }
         return params;
@@ -192,8 +202,12 @@ export default class Parser {
      */
     public parseComparison(jsonRuleset: Record<string, any>): Comparison {
         return new Comparison(
-            this.parseComparisonParams(jsonRuleset['arguments']),
-            jsonRuleset['operation']
+            this.parseComparisonParams(
+                jsonRuleset['arguments'],
+                jsonRuleset['dates']
+            ),
+            jsonRuleset['operation'],
+            jsonRuleset['dates']
         );
     }
 
