@@ -15,7 +15,11 @@ import modulo from './modulo.json';
 // @ts-ignore
 import simpleRule from './simpleRule.json';
 // @ts-ignore
-import dateCalculation from './dateCalculation.json';
+import dateCalculation from './dateCalculation1.json';
+// @ts-ignore
+import dateCalculation2 from './dateCalculation2.json';
+// @ts-ignore
+import dateCalculation3 from './dateCalculation3.json';
 
 // @ts-ignore
 import simpleRuleUnsat from './simpleRuleUnsat.json';
@@ -34,6 +38,8 @@ const examples_satisfiable = {
     modulo,
     simpleRule,
     dateCalculation,
+    dateCalculation2,
+    dateCalculation3,
 };
 
 const examples_unsatisfiable = {
@@ -51,14 +57,19 @@ function testExamples(examples: Record<string, any>, awaited_result: boolean) {
         for (const rule of ruleset) {
             smts.assertRule(rule);
         }
-        it(`${key} should be ${
-            awaited_result ? 'satisfiable' : 'unsatisfiable'
-        }`, async function () {
-            let sat = await smts.checkSat();
+        let unResolvedSat = smts.checkSat();
+        it(key, async function () {
+            const sat = await unResolvedSat;
             expect(sat.satisfiable).toBe(awaited_result);
             if (sat.satisfiable) {
                 expect(sat.model).toBeDefined();
-                // console.log(model);
+            }
+        });
+        it(key + ' inverse', async function () {
+            const sat = await unResolvedSat;
+            if (sat.satisfiable) {
+                expect(sat.model).toBeDefined();
+                // console.log(sat.model);
                 const ev = await evaluateAll(
                     ruleset,
                     <Record<string, any>>sat.model

@@ -1,0 +1,47 @@
+{
+    "$schema": "../../../rita-core/src/schema/schema.json",
+    "rules": [
+        {
+            "id": "moreDateMath",
+            "rule": {
+                "type": "comparison",
+                "operation": "equal",
+                "arguments": [
+                    {
+                        "type": "calculation",
+                        "operation": "divide",
+                        "arguments": [
+                            {
+                                "type": "dateCalculation",
+                                "operation": "subtract",
+                                "dateResultUnit": "seconds",
+                                "arguments": [
+                                    "2022-10-29T02:00:00.000+02:00",
+                                    {
+                                        "type": "atom",
+                                        "path": "anotherDate",
+                                        "isDate": true
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "dateCalculation",
+                                "operation": "subtract",
+                                "dateResultUnit": "minutes",
+                                "arguments": [
+                                    "2022-10-29T02:00:00.000+02:00",
+                                    {
+                                        "type": "atom",
+                                        "path": "anotherDate",
+                                        "isDate": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    60
+                ]
+            }
+        }
+    ]
+}

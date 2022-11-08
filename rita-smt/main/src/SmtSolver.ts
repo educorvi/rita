@@ -10,6 +10,7 @@ import {
     LocalCVC5Solver,
     LT,
     Mult,
+    NEq,
     Not,
     Or,
     SatResult,
@@ -22,12 +23,12 @@ import {
     Calculation,
     Comparison,
     comparisons,
+    DateCalculation,
     dateOperations,
     Formula,
     operations,
     Operator,
     Rule,
-    DateCalculation,
 } from '@educorvi/rita';
 import { GEqS, GTS, LEqS, LTS, Mod } from './customSMTFunctions';
 import { casualMatrix } from './conversionMatrices';
@@ -178,6 +179,12 @@ export default class SmtSolver {
         for (const argument of rule.arguments) {
             funcArgs.push(this.parseFormula(argument, types.number));
         }
+        if (rule.operation === operations.divide) {
+            for (let i = 1; i < funcArgs.length; i++) {
+                const funcArg = funcArgs[i];
+                this.solver.assert(NEq(funcArg, '0'));
+            }
+        }
         switch (rule.operation) {
             case operations.add:
                 return Add(...funcArgs);
@@ -188,10 +195,11 @@ export default class SmtSolver {
             case operations.divide:
                 return Div(...funcArgs);
             case operations.modulo:
-                if (funcArgs.length !== 2)
+                if (funcArgs.length !== 2) {
                     throw new Error(
                         'For modulo only two arguments are supported'
                     );
+                }
                 return Mod(funcArgs[0], funcArgs[1]);
             default:
                 throw new Error(
@@ -200,23 +208,23 @@ export default class SmtSolver {
         }
     }
 
-    private returnsDate(calc: DateCalculation): boolean {
-        const isDate: (
-            arg: number | Atom | Date | Calculation | DateCalculation
-        ) => boolean = (arg) =>
+    private isDate(arg: number | Atom | Date | Calculation | DateCalculation) {
+        return (
             arg instanceof Date ||
             (arg instanceof Atom && arg.isDate) ||
-            (arg instanceof DateCalculation && this.returnsDate(arg));
-        return isDate(calc.arguments[0]) !== isDate(calc.arguments[1]);
+            (arg instanceof DateCalculation && this.returnsDate(arg))
+        );
+    }
+
+    private returnsDate(calc: DateCalculation): boolean {
+        return (
+            this.isDate(calc.arguments[0]) !== this.isDate(calc.arguments[1])
+        );
     }
 
     private parseDateCalculation(rule: DateCalculation): SNode {
         const funcArgs: Array<SNode | string> = rule.arguments.map((v) => {
-            if (
-                v instanceof Date ||
-                (v instanceof Atom && v.isDate) ||
-                (v instanceof DateCalculation && this.returnsDate(v))
-            ) {
+            if (this.isDate(v)) {
                 return this.parseFormula(v, types.number);
             } else {
                 return Mult(
@@ -232,17 +240,7 @@ export default class SmtSolver {
         // }
 
         let wrapOperation: (result: SNode) => SNode;
-        let containsIntervals = false;
-        let containsDates = false;
-        for (const argument of rule.arguments) {
-            if (
-                (argument instanceof Atom && argument.isDate) ||
-                argument instanceof Date
-            )
-                containsDates = true;
-            if (typeof argument === 'number') containsIntervals = true;
-        }
-        if (containsDates !== containsIntervals) {
+        if (!this.returnsDate(rule)) {
             wrapOperation = (res) =>
                 Div(
                     res,
