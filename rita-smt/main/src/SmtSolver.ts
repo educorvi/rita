@@ -45,7 +45,7 @@ type RitaSatResult = {
 };
 
 export default class SmtSolver {
-    private readonly solver: LocalCVC5Solver = new LocalCVC5Solver('ALL');
+    private readonly solver: LocalCVC5Solver = new LocalCVC5Solver('QF_SNIRA');
     private declaredConsts: Array<string> = [];
     private atoms: Array<Atom> = [];
 
