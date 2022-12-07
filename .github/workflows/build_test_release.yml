@@ -15,7 +15,7 @@ jobs:
 
         strategy:
             matrix:
-                node-version: [14.x, 16.x]
+                node-version: [14.x, 16.x, 18.x]
                 # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
         env:
@@ -65,6 +65,8 @@ jobs:
             - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v3
               with:
+                  cache: 'pnpm'
+                  cache-dependency-path: '**/pnpm-lock.yaml'
                   node-version: ${{ matrix.node-version }}
             - name: Install
               run: node common/scripts/install-run-rush.js install
@@ -77,13 +79,20 @@ jobs:
         steps:
             - uses: actions/checkout@v3
             - uses: actions/setup-node@v3
+              with:
+                  cache: 'pnpm'
+                  cache-dependency-path: '**/pnpm-lock.yaml'
             - name: Install dependencies
               run: node common/scripts/install-run-rush.js install
-            - name: Install fossa
-              run: "curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossas/fossa-cli/master/install-latest.sh | bash"
-            - run: fossa analyze
-              env:
-                  FOSSA_API_KEY: ${{secrets.FOSSA_API_TOKEN}}
+            - name: FOSSA Scan
+              uses: fossas/fossa-action@main
+              with:
+                  api-key: ${{secrets.FOSSA_API_TOKEN}}
+            - name: 'Run FOSSA Test'
+              uses: fossas/fossa-action@main
+              with:
+                  api-key: ${{secrets.FOSSA_API_TOKEN}}
+                  run-tests: true
 
     release:
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
@@ -94,6 +103,9 @@ jobs:
               with:
                   fetch-depth: 0
             - uses: actions/setup-node@v3
+              with:
+                  cache: 'pnpm'
+                  cache-dependency-path: '**/pnpm-lock.yaml'
             - name: Setup git
               run: |
                   git config user.name github-actions
