@@ -1,6 +1,6 @@
-import { Formula } from '@educorvi/rita';
+import { Formula, Rule } from '@educorvi/rita';
 import SmtSolver from './SmtSolver';
-import { And, SNode } from '@educorvi/smtlib';
+import { And, Not, SNode } from '@educorvi/smtlib';
 
 export default async function simplify(formulas: Array<Formula>) {
     const smt = new SmtSolver();
@@ -12,4 +12,65 @@ export default async function simplify(formulas: Array<Formula>) {
     console.log(simplifiedSMT);
 
     return JSON.stringify({});
+}
+
+function powerSet<T>(set: Array<T>): Array<Array<T>> {
+    const initialArray: Array<Array<T>> = [[]];
+    return set.reduce(
+        (subsets, value) =>
+            subsets.concat(subsets.map((set) => [value, ...set])),
+        initialArray
+    );
+}
+
+function reduceSubSetToSMT(rules: Array<Rule>, solver: SmtSolver): SNode {
+    return rules.reduce((prev: SNode, curr, ind) => {
+        if (ind === 0) {
+            return solver.parseFormula(curr.rule);
+        } else {
+            return And(prev, solver.parseFormula(curr.rule));
+        }
+    }, '');
+}
+
+export type foundImplication = {
+    prerequisite: Array<Rule>;
+    consequence: Array<Rule>;
+};
+
+export async function findImplications(
+    rules: Array<Rule>
+): Promise<Array<foundImplication>> {
+    const found: Array<foundImplication> = [];
+    const p1 = powerSet(rules).filter((i) => i.length > 0);
+    for (const left of p1) {
+        for (const right of p1) {
+            let double = false;
+            for (const rule of right) {
+                if (left.includes(rule)) {
+                    double = true;
+                    break;
+                }
+            }
+            if (double) continue;
+            let solver = new SmtSolver();
+            solver.assertSMT(
+                And(
+                    reduceSubSetToSMT(left, solver),
+                    Not(reduceSubSetToSMT(right, solver))
+                )
+            );
+            const satRes = await solver.checkSat();
+            if (!satRes.satisfiable) {
+                found.push({
+                    prerequisite: left,
+                    consequence: right,
+                });
+            }
+        }
+    }
+
+    return found.sort(
+        (f1, f2) => f1.prerequisite.length - f2.prerequisite.length
+    );
 }

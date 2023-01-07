@@ -6,6 +6,7 @@ import { Parser } from '@educorvi/rita';
 import { program } from 'commander';
 import commandExists from 'command-exists';
 import { simplify } from './index';
+import { findImplications } from './simplify';
 
 const parser = new Parser();
 
@@ -100,4 +101,38 @@ program
             });
     });
 
+program
+    .command('checkimp <filepath>')
+    .description('check ruleset for rules that implicate each other')
+    .action((filepath) => {
+        commandExists('cvc5')
+            .then(() => {
+                let r;
+                try {
+                    r = JSON.parse(fs.readFileSync(filepath, 'utf-8'));
+                } catch (e) {
+                    console.error("Can't open file: " + filepath);
+                    process.exit(-1);
+                }
+                const rp = parser.parseRuleSet(r);
+                findImplications(rp)
+                    .then((res) => {
+                        console.log(
+                            res.map(
+                                (it) =>
+                                    `${it.prerequisite
+                                        .map((rule) => `"${rule.id}"`)
+                                        .join(' ∧ ')} => ${it.consequence
+                                        .map((rule) => `"${rule.id}"`)
+                                        .join(' ∧ ')}`
+                            )
+                        );
+                    })
+                    .catch(console.error);
+            })
+            .catch(() => {
+                console.error('You need to have cvc5 installed');
+                process.exit(-1);
+            });
+    });
 program.parse();

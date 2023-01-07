@@ -342,6 +342,10 @@ export default class SmtSolver {
         this.solver.assert(this.parseFormula(rule.rule));
     }
 
+    assertSMT(rule: SNode) {
+        this.solver.assert(rule);
+    }
+
     private parseAtom(rule: Atom, type: types): string {
         this.declareConstIfNotExists(rule.path, type);
         this.atoms.push(rule);

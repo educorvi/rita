@@ -5,9 +5,9 @@
     "repository": "https://github.com/educorvi/rita",
     "license": "MIT",
     "author": "Julian Pollinger",
-    "main": "dist/src/rita-smt.js",
-    "typings": "dist/src/index.d.ts",
-    "bin": "dist/src/bin.js",
+    "main": "dist/rita-smt.js",
+    "typings": "dist/index.d.ts",
+    "bin": "dist/bin.js",
     "files": [
         "dist"
     ],
