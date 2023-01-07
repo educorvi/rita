@@ -39,12 +39,18 @@ export type foundImplication = {
 };
 
 export async function findImplications(
-    rules: Array<Rule>
+    rules: Array<Rule>,
+    updateProgress?: (progress: number) => void
 ): Promise<Array<foundImplication>> {
     const found: Array<foundImplication> = [];
     const p1 = powerSet(rules).filter((i) => i.length > 0);
+    const totalSteps = p1.length * p1.length;
+    let currentStep = 0;
     for (const left of p1) {
         for (const right of p1) {
+            if (updateProgress) {
+                updateProgress(++currentStep / totalSteps);
+            }
             let double = false;
             for (const rule of right) {
                 if (left.includes(rule)) {

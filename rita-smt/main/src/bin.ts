@@ -7,8 +7,11 @@ import { program } from 'commander';
 import commandExists from 'command-exists';
 import { simplify } from './index';
 import { findImplications } from './simplify';
+import termkit from 'terminal-kit';
 
 const parser = new Parser();
+
+const term = termkit.terminal;
 
 program.version(process.env.VERSION || '0.0.0');
 program
@@ -115,8 +118,14 @@ program
                     process.exit(-1);
                 }
                 const rp = parser.parseRuleSet(r);
-                findImplications(rp)
+                const progressBar = term.progressBar({
+                    percent: true,
+                    eta: true,
+                });
+                findImplications(rp, progressBar.update)
                     .then((res) => {
+                        progressBar.stop();
+                        term('\n');
                         console.log(
                             res.map(
                                 (it) =>
