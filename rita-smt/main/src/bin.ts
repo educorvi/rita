@@ -19,7 +19,8 @@ program
     .option(
         '--verbose',
         'output more information, e.g. the generated smt and the output of the sat solver'
-    );
+    )
+    .option('--no-progress', 'hide progress details');
 
 program
     .command('checksat <filepath>')
@@ -94,8 +95,20 @@ program
                     process.exit(-1);
                 }
                 const rp = parser.parseRuleSet(r);
-                simplify(rp.map((r) => r.rule))
-                    .then(console.log)
+                let progressBar: termkit.Terminal.ProgressBarController | null =
+                    null;
+                if (program.opts().progress) {
+                    progressBar = term.progressBar({
+                        percent: true,
+                        eta: true,
+                    });
+                }
+                simplify(
+                    rp,
+                    program.opts().progress ? term : undefined,
+                    progressBar?.update
+                )
+                    .then((res) => console.log(Parser.toJson(res)))
                     .catch(console.error);
             })
             .catch(() => {
@@ -118,13 +131,17 @@ program
                     process.exit(-1);
                 }
                 const rp = parser.parseRuleSet(r);
-                const progressBar = term.progressBar({
-                    percent: true,
-                    eta: true,
-                });
-                findImplications(rp, progressBar.update)
+                let progressBar: termkit.Terminal.ProgressBarController | null =
+                    null;
+                if (program.opts().progress) {
+                    progressBar = term.progressBar({
+                        percent: true,
+                        eta: true,
+                    });
+                }
+                findImplications(rp, progressBar?.update)
                     .then((res) => {
-                        progressBar.stop();
+                        progressBar?.stop();
                         term('\n');
                         console.log(
                             res.map(

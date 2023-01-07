@@ -1,17 +1,80 @@
-import { Formula, Rule } from '@educorvi/rita';
+import { Rule } from '@educorvi/rita';
 import SmtSolver from './SmtSolver';
-import { And, Not, SNode } from '@educorvi/smtlib';
+import { And, Not, SNode, Xor } from '@educorvi/smtlib';
+import { Terminal } from 'terminal-kit';
 
-export default async function simplify(formulas: Array<Formula>) {
-    const smt = new SmtSolver();
-    const simplifiedSMT = await smt.simplify(
-        formulas.reduce((previousValue: SNode, currentValue: Formula) => {
-            return And(previousValue, smt.parseFormula(currentValue));
-        }, 'true')
+export default async function simplify(
+    rules: Array<Rule>,
+    term?: Terminal,
+    updateProgress?: (progress: number) => void
+): Promise<Array<Rule>> {
+    // const smt = new SmtSolver();
+    // const simplifiedSMT = await smt.simplify(
+    //     formulas.reduce((previousValue: SNode, currentValue: Formula) => {
+    //         return And(previousValue, smt.parseFormula(currentValue));
+    //     }, 'true')
+    // );
+    // console.log(simplifiedSMT);
+    //
+    // return JSON.stringify({});
+    let newRuleset: Array<Rule> = [];
+    rules.forEach((val) => newRuleset.push(val));
+
+    let simplificationOptions: Array<foundImplication>;
+    do {
+        if (term) {
+            term('Searching simplification possibilities... \n');
+        }
+        const temp: Array<foundImplication> = await findImplications(
+            newRuleset,
+            updateProgress
+        );
+        if (term) {
+            term('\n');
+        }
+        const shortestPrerequisite = temp[0]?.prerequisite.length || 0;
+        simplificationOptions = temp.filter(
+            (imp) => imp.prerequisite.length === shortestPrerequisite
+        );
+        if (term) {
+            term.green(`Found ${simplificationOptions.length}\n`);
+        }
+        for (const simplificationOption of simplificationOptions) {
+            if (
+                simplificationOption.prerequisite.filter((p) =>
+                    newRuleset.includes(p)
+                ).length === simplificationOption.prerequisite.length
+            ) {
+                newRuleset = newRuleset.filter(
+                    (rule) => !simplificationOption.consequence.includes(rule)
+                );
+            }
+        }
+    } while (simplificationOptions.length);
+
+    const verifier = new SmtSolver();
+    verifier.assertSMT(
+        Xor(
+            reduceSubSetToSMT(rules, verifier),
+            reduceSubSetToSMT(newRuleset, verifier)
+        )
     );
-    console.log(simplifiedSMT);
 
-    return JSON.stringify({});
+    if (term) {
+        term('Verifying result... ');
+    }
+    const valid = !(await verifier.checkSat()).satisfiable;
+
+    if (term) {
+        if (valid) {
+            term.green('Valid\n');
+        } else {
+            term.red('Invalid\n');
+            throw new Error('Internal Error: Invalid Simplification');
+        }
+    }
+
+    return newRuleset;
 }
 
 function powerSet<T>(set: Array<T>): Array<Array<T>> {

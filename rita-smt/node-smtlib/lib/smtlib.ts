@@ -71,6 +71,10 @@ function And(...args: SNode[]): SNode {
     if (args.length === 1) return args[0];
     return new SExpr('and', ...args);
 }
+function Xor(...args: SNode[]): SNode {
+    if (args.length === 1) return args[0];
+    return new SExpr('xor', ...args);
+}
 function Or(...args: SNode[]): SNode {
     if (args.length === 1) return args[0];
     return new SExpr('or', ...args);
@@ -139,6 +143,7 @@ export {
     Implies,
     And,
     Or,
+    Xor,
     Not,
     Eq,
     NEq,

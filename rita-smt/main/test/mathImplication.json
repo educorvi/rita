@@ -90,6 +90,20 @@
                     4
                 ]
             }
+        },
+        {
+            "id": "d=42",
+            "rule": {
+                "type": "comparison",
+                "operation": "equal",
+                "arguments": [
+                    {
+                        "type": "atom",
+                        "path": "d"
+                    },
+                    42
+                ]
+            }
         }
     ]
 }
