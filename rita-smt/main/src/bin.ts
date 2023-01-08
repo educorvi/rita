@@ -14,18 +14,21 @@ const parser = new Parser();
 const term = termkit.terminal;
 
 program.version(process.env.VERSION || '0.0.0');
-program
-    .argument('filepath', 'path to the file that contains the Rita ruleset')
-    .option(
-        '--verbose',
-        'output more information, e.g. the generated smt and the output of the sat solver'
-    )
-    .option('--no-progress', 'hide progress details');
+program.argument('filepath', 'path to the file that contains the Rita ruleset');
 
 program
     .command('checksat <filepath>')
     .description('check satisfiability of a ruleset')
-    .action((filepath) => {
+    .option(
+        '--timelimit <number>',
+        'Sets the timelimit for the smt solver in milliseconds. Default is 180000, 0 means no timelimit',
+        '180000'
+    )
+    .option(
+        '--verbose',
+        'output more information, e.g. the generated smt and the output of the sat solver'
+    )
+    .action(function (filepath) {
         commandExists('cvc5')
             .then(() => {
                 let r;
@@ -46,7 +49,11 @@ program
 
                 let s: SmtSolver;
                 try {
-                    s = new SmtSolver(true);
+                    // @ts-ignore
+                    s = new SmtSolver(
+                        true,
+                        Number.parseInt(this.opts().timelimit)
+                    );
                     for (const rule of rp) {
                         s.assertRule(rule);
                     }
@@ -58,14 +65,16 @@ program
                     process.exit(-1);
                 }
 
-                if (program.opts().verbose) {
+                // @ts-ignore
+                if (this.opts().verbose) {
                     console.log('Generated SMT:');
                     s.dump();
                     console.log('\n');
                 }
 
                 s.checkSat().then((res) => {
-                    if (program.opts().verbose) {
+                    // @ts-ignore
+                    if (this.opts().verbose) {
                         console.log('Output of CVC5:');
                         s.output.forEach((value) => console.log(value));
                         console.log('\n');
@@ -75,7 +84,8 @@ program
                 });
             })
             .catch((e) => {
-                if (program.opts().verbose) console.error(e);
+                // @ts-ignore
+                if (this.opts().verbose) console.error(e);
                 console.error('You need to have cvc5 installed');
                 process.exit(-1);
             });
@@ -84,7 +94,8 @@ program
 program
     .command('simplify <filepath>')
     .description('simplify ruleset')
-    .action((filepath) => {
+    .option('--no-progress', 'hide progress details')
+    .action(function (filepath) {
         commandExists('cvc5')
             .then(() => {
                 let r;
@@ -97,15 +108,17 @@ program
                 const rp = parser.parseRuleSet(r);
                 let progressBar: termkit.Terminal.ProgressBarController | null =
                     null;
-                if (program.opts().progress) {
+                // @ts-ignore
+                if (this.opts().progress) {
                     progressBar = term.progressBar({
                         percent: true,
                         eta: true,
                     });
                 }
+                // @ts-ignore
                 simplify(
                     rp,
-                    program.opts().progress ? term : undefined,
+                    this.opts().progress ? term : undefined,
                     progressBar?.update
                 )
                     .then((res) =>
@@ -128,7 +141,8 @@ program
 program
     .command('checkimp <filepath>')
     .description('check ruleset for rules that implicate each other')
-    .action((filepath) => {
+    .option('--no-progress', 'hide progress details')
+    .action(function (filepath) {
         commandExists('cvc5')
             .then(() => {
                 let r;
@@ -141,7 +155,8 @@ program
                 const rp = parser.parseRuleSet(r);
                 let progressBar: termkit.Terminal.ProgressBarController | null =
                     null;
-                if (program.opts().progress) {
+                // @ts-ignore
+                if (this.opts().progress) {
                     progressBar = term.progressBar({
                         percent: true,
                         eta: true,

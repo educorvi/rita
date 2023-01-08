@@ -5,8 +5,8 @@ import bl from 'byline';
 import { Model } from './base_solver';
 
 export default abstract class LocalCVCSolver extends BaseSolver {
-    protected constructor(logic: string) {
-        super(logic);
+    constructor(logic?: string, timelimit?: number) {
+        super(logic, timelimit);
         this.setOption('strings-exp');
     }
 

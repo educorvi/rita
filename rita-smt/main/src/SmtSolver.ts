@@ -45,11 +45,15 @@ type RitaSatResult = {
 };
 
 export default class SmtSolver {
-    private readonly solver: LocalCVC5Solver = new LocalCVC5Solver('QF_SNIRA');
+    private solver: LocalCVC5Solver;
+
+    public output: Array<string>;
     private declaredConsts: Array<string> = [];
     private atoms: Array<Atom> = [];
 
-    constructor(produceModel = false) {
+    constructor(produceModel = false, timelimit?: number) {
+        this.solver = new LocalCVC5Solver('QF_SNIRA', timelimit);
+        this.output = this.solver.output;
         if (produceModel) {
             this.solver.enableAssignments();
         }
@@ -105,8 +109,6 @@ export default class SmtSolver {
     public simplify(formula: SNode) {
         return this.solver.simplify(formula);
     }
-
-    public readonly output = this.solver.output;
 
     private getModel(satResult: SatResult): Record<string, any> | undefined {
         if (!satResult.model) {

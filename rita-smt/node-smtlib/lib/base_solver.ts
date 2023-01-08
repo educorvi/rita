@@ -21,11 +21,11 @@ export default class BaseSmtSolver {
     placeholders: string[] = [];
     public readonly output: string[] = [];
 
-    constructor(logic = 'QF_ALL_SUPPORTED') {
+    constructor(logic = 'QF_ALL_SUPPORTED', timelimit = 180000) {
         this._statements = [smt.SetLogic(logic)];
 
         this.withAssignments = false;
-        this.timeLimit = 180000;
+        this.timeLimit = timelimit;
     }
 
     addPlaceholder(s: string) {

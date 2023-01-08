@@ -8,13 +8,13 @@
                 "operation": "equal",
                 "dates": true,
                 "arguments": [
-                    "2022-10-29T02:00:00.000+02:00",
+                    "2022-10-29T02:00:00.000Z",
                     {
                         "type": "dateCalculation",
                         "operation": "add",
                         "dateCalculationUnit": "days",
                         "arguments": [
-                            "2022-10-25T02:00:00.000+02:00",
+                            "2022-10-25T02:00:00.000Z",
                             {
                                 "type": "calculation",
                                 "operation": "modulo",
@@ -24,7 +24,7 @@
                                         "operation": "subtract",
                                         "dateResultUnit": "seconds",
                                         "arguments": [
-                                            "2022-10-25T02:00:00.000+02:00",
+                                            "2022-10-25T02:00:00.000Z",
                                             {
                                                 "type": "atom",
                                                 "path": "randomVal",
