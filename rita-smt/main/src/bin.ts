@@ -108,7 +108,15 @@ program
                     program.opts().progress ? term : undefined,
                     progressBar?.update
                 )
-                    .then((res) => console.log(Parser.toJson(res)))
+                    .then((res) =>
+                        console.log(
+                            JSON.stringify(
+                                JSON.parse(Parser.toJson(res)),
+                                null,
+                                2
+                            )
+                        )
+                    )
                     .catch(console.error);
             })
             .catch(() => {

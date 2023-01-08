@@ -17,27 +17,25 @@ export default async function simplify(
     // console.log(simplifiedSMT);
     //
     // return JSON.stringify({});
+    let iteration = 0;
     let newRuleset: Array<Rule> = [];
     rules.forEach((val) => newRuleset.push(val));
 
     let simplificationOptions: Array<foundImplication>;
     do {
         if (term) {
-            term('Searching simplification possibilities... \n');
+            term(`\nIteration ${++iteration}`);
         }
         const temp: Array<foundImplication> = await findImplications(
             newRuleset,
             updateProgress
         );
-        if (term) {
-            term('\n');
-        }
         const shortestPrerequisite = temp[0]?.prerequisite.length || 0;
         simplificationOptions = temp.filter(
             (imp) => imp.prerequisite.length === shortestPrerequisite
         );
         if (term) {
-            term.green(`Found ${simplificationOptions.length}\n`);
+            term.yellow(` (${simplificationOptions.length}) `);
         }
         for (const simplificationOption of simplificationOptions) {
             if (
@@ -52,6 +50,16 @@ export default async function simplify(
         }
     } while (simplificationOptions.length);
 
+    const difference = rules.length - newRuleset.length;
+
+    if (term) {
+        term.yellow(
+            `\n\nEliminated ${difference} ${
+                difference !== 1 ? 'rules' : 'rule'
+            }\n`
+        );
+    }
+
     const verifier = new SmtSolver();
     verifier.assertSMT(
         Xor(
@@ -65,13 +73,15 @@ export default async function simplify(
     }
     const valid = !(await verifier.checkSat()).satisfiable;
 
-    if (term) {
-        if (valid) {
-            term.green('Valid\n');
-        } else {
-            term.red('Invalid\n');
-            throw new Error('Internal Error: Invalid Simplification');
+    if (valid) {
+        if (term) {
+            term.green('Valid\n\n');
         }
+    } else {
+        if (term) {
+            term.red('Invalid\n\n');
+        }
+        throw new Error('Internal Error: Invalid Simplification');
     }
 
     return newRuleset;
