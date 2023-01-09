@@ -153,7 +153,10 @@ export default class SmtSolver {
             return `"${rule}"`;
         }
         if (typeof rule === 'number') {
-            return rule.toString();
+            const formatter = new Intl.NumberFormat('en-US', {
+                minimumFractionDigits: 1,
+            });
+            return formatter.format(rule);
         }
         if (rule instanceof Date) {
             return rule.getTime().toString();
@@ -181,7 +184,10 @@ export default class SmtSolver {
         for (const argument of rule.arguments) {
             funcArgs.push(this.parseFormula(argument, types.number));
         }
-        if (rule.operation === operations.divide) {
+        if (
+            rule.operation === operations.divide ||
+            rule.operation === operations.modulo
+        ) {
             for (let i = 1; i < funcArgs.length; i++) {
                 const funcArg = funcArgs[i];
                 this.solver.assert(NEq(funcArg, '0'));

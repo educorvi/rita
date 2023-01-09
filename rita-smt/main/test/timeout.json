@@ -1,0 +1,43 @@
+{
+    "$schema": "../../../rita-core/src/schema/schema.json",
+    "rules": [
+        {
+            "id": "rule3",
+            "rule": {
+                "type": "comparison",
+                "operation": "equal",
+                "arguments": [
+                    {
+                        "type": "calculation",
+                        "operation": "modulo",
+                        "arguments": [
+                            {
+                                "type": "calculation",
+                                "operation": "subtract",
+                                "arguments": [
+                                    30,
+                                    {
+                                        "type": "atom",
+                                        "path": "randomVal"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "calculation",
+                                "operation": "divide",
+                                "arguments": [
+                                    2,
+                                    {
+                                        "type": "atom",
+                                        "path": "number"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    4
+                ]
+            }
+        }
+    ]
+}

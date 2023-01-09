@@ -3,8 +3,10 @@ import { SExpr, SNode } from '@educorvi/smtlib';
 function Mod(arg1: SNode, arg2: SNode): SExpr {
     return new SExpr(
         '%',
-        new SExpr('to_real', arg1),
-        new SExpr('to_real', arg2)
+        // new SExpr('to_real', arg1),
+        // new SExpr('to_real', arg2)
+        arg1,
+        arg2
     );
 }
 
