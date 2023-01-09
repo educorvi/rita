@@ -49,9 +49,9 @@ program
 
                 let s: SmtSolver;
                 try {
-                    // @ts-ignore
                     s = new SmtSolver(
                         true,
+                        // @ts-ignore
                         Number.parseInt(this.opts().timelimit)
                     );
                     for (const rule of rp) {
@@ -115,9 +115,9 @@ program
                         eta: true,
                     });
                 }
-                // @ts-ignore
                 simplify(
                     rp,
+                    // @ts-ignore
                     this.opts().progress ? term : undefined,
                     progressBar?.update
                 )
