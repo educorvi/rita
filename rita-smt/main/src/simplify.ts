@@ -21,6 +21,7 @@ export default async function simplify(
     let newRuleset: Array<Rule> = [];
     rules.forEach((val) => newRuleset.push(val));
 
+    double = true;
     let simplificationOptions: Array<foundImplication>;
     do {
         if (term) {
@@ -117,33 +118,28 @@ export async function findImplications(
 ): Promise<Array<foundImplication>> {
     const found: Array<foundImplication> = [];
     const p1 = powerSet(rules).filter((i) => i.length > 0);
-    const totalSteps = p1.length * p1.length;
+    const totalSteps = p1.length * rules.length;
     let currentStep = 0;
     for (const left of p1) {
-        for (const right of p1) {
+        for (const right of rules) {
             if (updateProgress) {
                 updateProgress(++currentStep / totalSteps);
             }
-            let double = false;
-            for (const rule of right) {
-                if (left.includes(rule)) {
-                    double = true;
-                    break;
-                }
+            if (left.includes(right)) {
+                continue;
             }
-            if (double) continue;
             let solver = new SmtSolver();
             solver.assertSMT(
                 And(
                     reduceSubSetToSMT(left, solver),
-                    Not(reduceSubSetToSMT(right, solver))
+                    Not(solver.parseFormula(right.rule))
                 )
             );
             const satRes = await solver.checkSat();
             if (!satRes.satisfiable) {
                 found.push({
                     prerequisite: left,
-                    consequence: right,
+                    consequence: [right],
                 });
             }
         }
