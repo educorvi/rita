@@ -21,7 +21,6 @@ export default async function simplify(
     let newRuleset: Array<Rule> = [];
     rules.forEach((val) => newRuleset.push(val));
 
-    double = true;
     let simplificationOptions: Array<foundImplication>;
     do {
         if (term) {
