@@ -42,6 +42,20 @@
                     "Julian"
                 ]
             }
+        },
+        {
+            "id": "string comparison3",
+            "rule": {
+                "type": "comparison",
+                "operation": "smaller",
+                "arguments": [
+                    {
+                        "type": "atom",
+                        "path": "randomName2"
+                    },
+                    "Juliaz"
+                ]
+            }
         }
     ]
 }
