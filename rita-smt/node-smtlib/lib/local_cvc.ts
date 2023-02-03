@@ -5,9 +5,9 @@ import bl from 'byline';
 import { Model } from './base_solver';
 
 export default abstract class LocalCVCSolver extends BaseSolver {
-    constructor(logic?: string, timelimit?: number) {
+    protected constructor(logic?: string, timelimit?: number) {
         super(logic, timelimit);
-        this.setOption('strings-exp');
+        // this.setOption('strings-exp');
     }
 
     protected abstract spawnCVC(): ChildProcessWithoutNullStreams;

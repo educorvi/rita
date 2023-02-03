@@ -26,14 +26,11 @@ export default async function simplify(
         if (term) {
             term(`\nIteration ${++iteration}`);
         }
-        const temp: Array<foundImplication> = await findImplications(
+        simplificationOptions = await findImplications(
             newRuleset,
             updateProgress
         );
-        const shortestPrerequisite = temp[0]?.prerequisite.length || 0;
-        simplificationOptions = temp.filter(
-            (imp) => imp.prerequisite.length === shortestPrerequisite
-        );
+
         if (term) {
             term.yellow(` (${simplificationOptions.length}) `);
         }
