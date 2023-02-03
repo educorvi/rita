@@ -8,6 +8,7 @@ import commandExists from 'command-exists';
 import { simplify } from './index';
 import { findImplications } from './simplify';
 import termkit from 'terminal-kit';
+import * as util from 'util';
 
 const parser = new Parser();
 
@@ -80,7 +81,14 @@ program
                         console.log('\n');
                     }
 
-                    console.log('Result:', res);
+                    console.log('Result:');
+                    console.log(
+                        util.inspect(res, {
+                            showHidden: false,
+                            depth: null,
+                            colors: true,
+                        })
+                    );
                 });
             })
             .catch((e) => {
