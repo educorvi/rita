@@ -25,7 +25,7 @@ export class Atom extends Formula {
     public path: string;
     public isDate: boolean;
 
-    constructor(path: string, isDate: boolean) {
+    constructor(path: string, isDate: boolean = false) {
         super();
         this.path = path;
         this.isDate = isDate;

@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-import SmtSolver from './SmtSolver';
 import * as fs from 'fs';
 import { Parser } from '@educorvi/rita';
 import { program } from 'commander';
@@ -8,7 +7,8 @@ import commandExists from 'command-exists';
 import { simplify } from './index';
 import { findImplications } from './simplify';
 import termkit from 'terminal-kit';
-import * as util from 'util';
+import { benchmark } from './Benchmark';
+import { checkSat } from './checkSat';
 
 const parser = new Parser();
 
@@ -48,48 +48,8 @@ program
                     process.exit(-1);
                 }
 
-                let s: SmtSolver;
-                try {
-                    s = new SmtSolver(
-                        true,
-                        // @ts-ignore
-                        Number.parseInt(this.opts().timelimit)
-                    );
-                    for (const rule of rp) {
-                        s.assertRule(rule);
-                    }
-                } catch (e) {
-                    console.error(
-                        'There was an error while converting to SMT:',
-                        e
-                    );
-                    process.exit(-1);
-                }
-
                 // @ts-ignore
-                if (this.opts().verbose) {
-                    console.log('Generated SMT:');
-                    s.dump();
-                    console.log('\n');
-                }
-
-                s.checkSat().then((res) => {
-                    // @ts-ignore
-                    if (this.opts().verbose) {
-                        console.log('Output of CVC5:');
-                        s.output.forEach((value) => console.log(value));
-                        console.log('\n');
-                    }
-
-                    console.log('Result:');
-                    console.log(
-                        util.inspect(res, {
-                            showHidden: false,
-                            depth: null,
-                            colors: true,
-                        })
-                    );
-                });
+                checkSat(rp, this.opts());
             })
             .catch((e) => {
                 // @ts-ignore
@@ -192,4 +152,38 @@ program
                 process.exit(-1);
             });
     });
+
+program
+    .command('benchmark')
+    .description('benchmark the commands of this on tool on this machine')
+    .option(
+        '--maxEquationDegree <number>',
+        'The degree of the used equation system',
+        '20'
+    )
+    .option(
+        '--maxWorkers <number>',
+        'The maximum amount of parallel Workers',
+        '4'
+    )
+    .option(
+        '--timelimit <number>',
+        'Sets the timelimit for the smt solver in milliseconds. Default is 180000, 0 means no timelimit',
+        '180000'
+    )
+    .option(
+        '--statsFile <path>',
+        'output path for the stats file',
+        './stats.csv'
+    )
+    .option(
+        '--verbose',
+        'output more information, e.g. the generated smt and the output of the sat solver'
+    )
+    .option('--noImp', 'Skip Implication checking')
+    .action(function () {
+        // @ts-ignore
+        benchmark(this.opts());
+    });
+
 program.parse();

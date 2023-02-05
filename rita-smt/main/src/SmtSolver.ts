@@ -155,8 +155,13 @@ export default class SmtSolver {
         if (typeof rule === 'number') {
             const formatter = new Intl.NumberFormat('en-US', {
                 minimumFractionDigits: 1,
+                useGrouping: false,
             });
-            return formatter.format(rule);
+            if (rule >= 0) {
+                return formatter.format(rule);
+            } else {
+                return `(- ${formatter.format(Math.abs(rule))})`;
+            }
         }
         if (rule instanceof Date) {
             return rule.getTime().toString();

@@ -32,6 +32,9 @@ const base = {
             'process.env.VERSION': JSON.stringify(pjson.version),
         }),
     ],
+    node: {
+        __dirname: false,
+    },
 };
 
 module.exports = [
@@ -40,6 +43,19 @@ module.exports = [
         entry: './src/index.ts',
         output: {
             filename: 'rita-smt.js',
+            path: path.resolve(__dirname, 'dist'),
+            library: {
+                name: 'rita-smt',
+                type: 'umd',
+            },
+            globalObject: 'this',
+        },
+    },
+    {
+        ...base,
+        entry: './src/BenchmarkingWorker.ts',
+        output: {
+            filename: 'BenchmarkingWorker.js',
             path: path.resolve(__dirname, 'dist'),
             library: {
                 name: 'rita-smt',

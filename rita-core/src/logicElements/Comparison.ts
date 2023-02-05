@@ -42,7 +42,7 @@ export class Comparison extends Formula {
     constructor(
         formulaArguments: Array<Atom | number | Date | string | Calculation>,
         operation: comparisons,
-        dates: boolean
+        dates: boolean = false
     ) {
         super();
         this.arguments = formulaArguments;
