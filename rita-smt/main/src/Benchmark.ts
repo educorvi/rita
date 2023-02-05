@@ -16,13 +16,7 @@ export type BenchmarkResult = {
 }[];
 
 export async function benchmark(opts: BenchmarkOptions): Promise<void> {
-    // const stream = fs.createWriteStream(opts.statsFile);
-    // stream.write("degree;timeSat;timeImp;sat\n")
-    // stream.end();
-
-    // let system = createSystemOfEquations(opts.maxEquationDegree || 20);
-
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         let runningWorkers = 0,
             currDegree = 0;
         const results: BenchmarkResult = [];
@@ -34,7 +28,7 @@ export async function benchmark(opts: BenchmarkOptions): Promise<void> {
                     opts,
                 },
             });
-            worker.on('error', reject);
+            worker.on('error', console.error);
             worker.on('exit', () => {
                 if (currDegree <= opts.maxEquationDegree) {
                     addWorker(currDegree++);
