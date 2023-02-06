@@ -22,6 +22,7 @@ export async function benchmark(opts: BenchmarkOptions): Promise<void> {
         const results: BenchmarkResult = [];
 
         function addWorker(degree: number) {
+            runningWorkers++;
             const worker = new Worker(__dirname + '/BenchmarkingWorker.js', {
                 workerData: {
                     degree,
@@ -30,10 +31,11 @@ export async function benchmark(opts: BenchmarkOptions): Promise<void> {
             });
             worker.on('error', console.error);
             worker.on('exit', () => {
+                runningWorkers--;
                 if (currDegree <= opts.maxEquationDegree) {
                     addWorker(currDegree++);
                 } else {
-                    if (--runningWorkers <= 0) {
+                    if (runningWorkers <= 0) {
                         if (fs.existsSync(opts.statsFile)) {
                             fs.unlinkSync(opts.statsFile);
                         }
@@ -70,9 +72,12 @@ export async function benchmark(opts: BenchmarkOptions): Promise<void> {
         }
 
         console.info(`Running with ${opts.maxWorkers} threads...`);
-        for (let i = 0; i < opts.maxWorkers; i++) {
+        for (
+            let i = 0;
+            i < Math.min(opts.maxWorkers, opts.maxEquationDegree);
+            i++
+        ) {
             addWorker(currDegree++);
         }
-        runningWorkers = opts.maxWorkers;
     });
 }

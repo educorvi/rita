@@ -162,6 +162,10 @@ program
         '20'
     )
     .option(
+        '--lineEquations',
+        'Instead of solving polynoms, solve n line equations. n is maxEquationDegree '
+    )
+    .option(
         '--maxWorkers <number>',
         'The maximum amount of parallel Workers',
         '4'

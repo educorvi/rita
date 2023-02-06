@@ -78,16 +78,63 @@ function createSystemOfEquations(degree: number): Rule[] {
     return rules;
 }
 
+function createLineEquation(
+    point: [x: number, y: number],
+    varIndex: number
+): Rule {
+    return new Rule(
+        'g' + varIndex,
+        new Comparison(
+            [
+                point[1],
+                new Calculation(
+                    [
+                        new Calculation(
+                            [new Atom('m' + varIndex), point[0]],
+                            operations.multiply
+                        ),
+                        new Atom('t' + varIndex),
+                    ],
+                    operations.add
+                ),
+            ],
+            comparisons.equal
+        )
+    );
+}
+
+function createNLineEquations(n: number): Rule[] {
+    const ret: Rule[] = [];
+    for (let i = 0; i < n; i++) {
+        const point1: [x: number, y: number] = [
+            Math.floor(Math.random() * 300),
+            Math.floor(Math.random() * 300),
+        ];
+        const point2: [x: number, y: number] = [
+            Math.floor(Math.random() * 300),
+            Math.floor(Math.random() * 300),
+        ];
+        ret.push(createLineEquation(point1, i));
+        ret.push(createLineEquation(point2, i));
+    }
+    return ret;
+}
+
 async function run() {
     const { degree, opts } = workerData;
-    const eqs = createSystemOfEquations(degree);
+    let eqs;
+    if (opts.lineEquations) {
+        eqs = createNLineEquations(degree);
+    } else {
+        eqs = createSystemOfEquations(degree);
+    }
 
     let start = new Date();
     const sat = (await checkSat(eqs, { ...opts, hideOutput: true }))
         .satisfiable;
     let end = new Date();
     if (!sat) {
-        console.warn('Not satisfied!');
+        console.warn('Not satisfiable!');
     }
     const timeSat = end.getTime() - start.getTime();
 
