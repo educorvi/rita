@@ -2,54 +2,6 @@
     "$schema": "../../../rita-core/src/schema/schema.json",
     "rules": [
         {
-            "id": "a+b=8",
-            "rule": {
-                "type": "comparison",
-                "operation": "equal",
-                "arguments": [
-                    {
-                        "type": "calculation",
-                        "operation": "add",
-                        "arguments": [
-                            {
-                                "type": "atom",
-                                "path": "a"
-                            },
-                            {
-                                "type": "atom",
-                                "path": "b"
-                            }
-                        ]
-                    },
-                    8
-                ]
-            }
-        },
-        {
-            "id": "c-b=3",
-            "rule": {
-                "type": "comparison",
-                "operation": "equal",
-                "arguments": [
-                    {
-                        "type": "calculation",
-                        "operation": "subtract",
-                        "arguments": [
-                            {
-                                "type": "atom",
-                                "path": "c"
-                            },
-                            {
-                                "type": "atom",
-                                "path": "b"
-                            }
-                        ]
-                    },
-                    3
-                ]
-            }
-        },
-        {
             "id": "c=7",
             "rule": {
                 "type": "comparison",
@@ -102,6 +54,54 @@
                         "path": "d"
                     },
                     42
+                ]
+            }
+        },
+        {
+            "id": "a+b=8",
+            "rule": {
+                "type": "comparison",
+                "operation": "equal",
+                "arguments": [
+                    {
+                        "type": "calculation",
+                        "operation": "add",
+                        "arguments": [
+                            {
+                                "type": "atom",
+                                "path": "a"
+                            },
+                            {
+                                "type": "atom",
+                                "path": "b"
+                            }
+                        ]
+                    },
+                    8
+                ]
+            }
+        },
+        {
+            "id": "c-b=3",
+            "rule": {
+                "type": "comparison",
+                "operation": "equal",
+                "arguments": [
+                    {
+                        "type": "calculation",
+                        "operation": "subtract",
+                        "arguments": [
+                            {
+                                "type": "atom",
+                                "path": "c"
+                            },
+                            {
+                                "type": "atom",
+                                "path": "b"
+                            }
+                        ]
+                    },
+                    3
                 ]
             }
         }

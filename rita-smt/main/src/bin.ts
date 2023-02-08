@@ -7,7 +7,7 @@ import commandExists from 'command-exists';
 import { simplify } from './index';
 import { findImplications } from './simplify';
 import termkit from 'terminal-kit';
-import { benchmark } from './Benchmark';
+import { benchmark } from './benchmark';
 import { checkSat } from './checkSat';
 
 const parser = new Parser();
@@ -62,7 +62,6 @@ program
 program
     .command('simplify <filepath>')
     .description('simplify ruleset')
-    .option('--no-progress', 'hide progress details')
     .action(function (filepath) {
         commandExists('cvc5')
             .then(() => {
@@ -74,20 +73,10 @@ program
                     process.exit(-1);
                 }
                 const rp = parser.parseRuleSet(r);
-                let progressBar: termkit.Terminal.ProgressBarController | null =
-                    null;
-                // @ts-ignore
-                if (this.opts().progress) {
-                    progressBar = term.progressBar({
-                        percent: true,
-                        eta: true,
-                    });
-                }
                 simplify(
                     rp,
                     // @ts-ignore
-                    this.opts().progress ? term : undefined,
-                    progressBar?.update
+                    this.opts().progress ? term : undefined
                 )
                     .then((res) =>
                         console.log(
@@ -109,7 +98,6 @@ program
 program
     .command('checkimp <filepath>')
     .description('check ruleset for rules that implicate each other')
-    .option('--no-progress', 'hide progress details')
     .action(function (filepath) {
         commandExists('cvc5')
             .then(() => {
@@ -121,27 +109,14 @@ program
                     process.exit(-1);
                 }
                 const rp = parser.parseRuleSet(r);
-                let progressBar: termkit.Terminal.ProgressBarController | null =
-                    null;
-                // @ts-ignore
-                if (this.opts().progress) {
-                    progressBar = term.progressBar({
-                        percent: true,
-                        eta: true,
-                    });
-                }
-                findImplications(rp, progressBar?.update)
+                findImplications(rp)
                     .then((res) => {
-                        progressBar?.stop();
-                        term('\n');
                         console.log(
                             res.map(
                                 (it) =>
                                     `${it.prerequisite
                                         .map((rule) => `"${rule.id}"`)
-                                        .join(' ∧ ')} => ${it.consequence
-                                        .map((rule) => `"${rule.id}"`)
-                                        .join(' ∧ ')}`
+                                        .join(' ∧ ')} => "${it.consequence.id}"`
                             )
                         );
                     })

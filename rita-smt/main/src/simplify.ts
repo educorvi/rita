@@ -5,47 +5,17 @@ import { Terminal } from 'terminal-kit';
 
 export default async function simplify(
     rules: Array<Rule>,
-    term?: Terminal,
-    updateProgress?: (progress: number) => void
+    term?: Terminal
 ): Promise<Array<Rule>> {
-    // const smt = new SmtSolver();
-    // const simplifiedSMT = await smt.simplify(
-    //     formulas.reduce((previousValue: SNode, currentValue: Formula) => {
-    //         return And(previousValue, smt.parseFormula(currentValue));
-    //     }, 'true')
-    // );
-    // console.log(simplifiedSMT);
-    //
-    // return JSON.stringify({});
-    let iteration = 0;
     let newRuleset: Array<Rule> = [];
     rules.forEach((val) => newRuleset.push(val));
 
-    let simplificationOptions: Array<foundImplication>;
-    do {
-        if (term) {
-            term(`\nIteration ${++iteration}`);
-        }
-        simplificationOptions = await findImplications(
-            newRuleset,
-            updateProgress
+    let simplificationOptions = await findImplications(rules);
+    for (const simplificationOption of simplificationOptions) {
+        newRuleset = newRuleset.filter(
+            (r) => r !== simplificationOption.consequence
         );
-
-        if (term) {
-            term.yellow(` (${simplificationOptions.length}) `);
-        }
-        for (const simplificationOption of simplificationOptions) {
-            if (
-                simplificationOption.prerequisite.filter((p) =>
-                    newRuleset.includes(p)
-                ).length === simplificationOption.prerequisite.length
-            ) {
-                newRuleset = newRuleset.filter(
-                    (rule) => !simplificationOption.consequence.includes(rule)
-                );
-            }
-        }
-    } while (simplificationOptions.length);
+    }
 
     const difference = rules.length - newRuleset.length;
 
@@ -84,15 +54,6 @@ export default async function simplify(
     return newRuleset;
 }
 
-function powerSet<T>(set: Array<T>): Array<Array<T>> {
-    const initialArray: Array<Array<T>> = [[]];
-    return set.reduce(
-        (subsets, value) =>
-            subsets.concat(subsets.map((set) => [value, ...set])),
-        initialArray
-    );
-}
-
 function reduceSubSetToSMT(rules: Array<Rule>, solver: SmtSolver): SNode {
     return rules.reduce((prev: SNode, curr, ind) => {
         if (ind === 0) {
@@ -105,41 +66,48 @@ function reduceSubSetToSMT(rules: Array<Rule>, solver: SmtSolver): SNode {
 
 export type foundImplication = {
     prerequisite: Array<Rule>;
-    consequence: Array<Rule>;
+    consequence: Rule;
 };
 
 export async function findImplications(
-    rules: Array<Rule>,
-    updateProgress?: (progress: number) => void
+    rules: Array<Rule>
 ): Promise<Array<foundImplication>> {
     const found: Array<foundImplication> = [];
-    const p1 = powerSet(rules).filter((i) => i.length > 0);
-    const totalSteps = p1.length * rules.length;
-    let currentStep = 0;
-    for (const left of p1) {
-        for (const right of rules) {
-            if (updateProgress) {
-                updateProgress(++currentStep / totalSteps);
-            }
-            if (left.includes(right)) {
-                continue;
-            }
+
+    // Create copy of rules array and sort it by descending length of ruleset to try to eliminate the most complex rules
+    let base: Rule[] = [];
+    rules.forEach((val) => base.push(val));
+    base.sort(
+        (r1, r2) =>
+            JSON.stringify(r2.toJsonReady()).length -
+            JSON.stringify(r1.toJsonReady()).length
+    );
+
+    let foundOne: boolean;
+    do {
+        foundOne = false;
+        for (const rule of base) {
+            const others = base.filter((r) => r !== rule);
+
             let solver = new SmtSolver();
             solver.assertSMT(
                 And(
-                    reduceSubSetToSMT(left, solver),
-                    Not(solver.parseFormula(right.rule))
+                    reduceSubSetToSMT(others, solver),
+                    Not(solver.parseFormula(rule.rule))
                 )
             );
             const satRes = await solver.checkSat();
             if (!satRes.satisfiable) {
                 found.push({
-                    prerequisite: left,
-                    consequence: [right],
+                    prerequisite: others,
+                    consequence: rule,
                 });
+                base = others;
+                foundOne = true;
+                break;
             }
         }
-    }
+    } while (foundOne);
 
     return found.sort(
         (f1, f2) => f1.prerequisite.length - f2.prerequisite.length

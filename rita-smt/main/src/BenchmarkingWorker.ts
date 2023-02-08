@@ -114,6 +114,7 @@ function createNLineEquations(n: number): Rule[] {
             Math.floor(Math.random() * 300),
             Math.floor(Math.random() * 300),
         ];
+        if (point1[0] === point2[0]) point2[0]--;
         ret.push(createLineEquation(point1, i));
         ret.push(createLineEquation(point2, i));
     }
