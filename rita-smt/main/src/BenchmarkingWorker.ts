@@ -33,8 +33,20 @@ function createPolynom(degree: number): (x: number) => Calculation | Atom {
     }
 }
 
+function createPolynomString(degree: number): (x: number) => string {
+    if (degree < 0) {
+        throw new Error('Degree must be at least 0');
+    } else if (degree === 0) {
+        return () => 'a0';
+    } else {
+        return (x) =>
+            `a_${degree}*${x}^${degree}+${createPolynomString(degree - 1)(x)}`;
+    }
+}
+
 function createSystemOfEquations(degree: number): Rule[] {
     const polFunc = createPolynom(degree);
+    const polStringFunc = createPolynomString(degree);
     const rules: Rule[] = [];
     for (let i = 0; i < degree; i++) {
         const point = [i, 0];
@@ -42,7 +54,11 @@ function createSystemOfEquations(degree: number): Rule[] {
         rules.push(
             new Rule(
                 'e' + i,
-                new Comparison([point[1], polFunc(point[0])], comparisons.equal)
+                new Comparison(
+                    [point[1], polFunc(point[0])],
+                    comparisons.equal
+                ),
+                `${point[1]}=${polStringFunc(point[0])}`
             )
         );
     }
@@ -58,7 +74,7 @@ function createSystemOfEquations(degree: number): Rule[] {
                 noZeros,
             ]);
         }
-        rules.push(new Rule('zero_cond', noZeros));
+        rules.push(new Rule('zero_cond', noZeros, 'for n>0: a_n != 0'));
     }
 
     let limits: Formula = new And([
@@ -74,16 +90,17 @@ function createSystemOfEquations(degree: number): Rule[] {
             limits,
         ]);
     }
-    rules.push(new Rule('limits', limits));
+    rules.push(new Rule('limits', limits, '-1000<a_n<1000'));
     return rules;
 }
 
 function createLineEquation(
     point: [x: number, y: number],
-    varIndex: number
+    varIndex: number,
+    ruleIndex: number
 ): Rule {
     return new Rule(
-        'g' + varIndex,
+        `g${varIndex}_${ruleIndex}`,
         new Comparison(
             [
                 point[1],
@@ -99,7 +116,8 @@ function createLineEquation(
                 ),
             ],
             comparisons.equal
-        )
+        ),
+        `${point[1]}=m_${varIndex}*${point[0]}+t`
     );
 }
 
@@ -115,8 +133,8 @@ function createNLineEquations(n: number): Rule[] {
             Math.floor(Math.random() * 300),
         ];
         if (point1[0] === point2[0]) point2[0]--;
-        ret.push(createLineEquation(point1, i));
-        ret.push(createLineEquation(point2, i));
+        ret.push(createLineEquation(point1, i, 0));
+        ret.push(createLineEquation(point2, i, 1));
     }
     return ret;
 }
@@ -128,6 +146,16 @@ async function run() {
         eqs = createNLineEquations(degree);
     } else {
         eqs = createSystemOfEquations(degree);
+    }
+
+    if (opts.verbose) {
+        console.log(
+            JSON.stringify(
+                eqs.map((r) => r.toJsonReady()),
+                undefined,
+                2
+            )
+        );
     }
 
     let start = new Date();
