@@ -121,8 +121,17 @@ function createLineEquation(
     );
 }
 
-function createNLineEquations(n: number): Rule[] {
+function createNLineEquations(n: number, simplifiable = false): Rule[] {
     const ret: Rule[] = [];
+    const point1g: [x: number, y: number] = [
+        Math.floor(Math.random() * 300),
+        Math.floor(Math.random() * 300),
+    ];
+    const point2g: [x: number, y: number] = [
+        Math.floor(Math.random() * 300),
+        Math.floor(Math.random() * 300),
+    ];
+    if (point1g[0] === point2g[0]) point2g[0]--;
     for (let i = 0; i < n; i++) {
         const point1: [x: number, y: number] = [
             Math.floor(Math.random() * 300),
@@ -133,8 +142,13 @@ function createNLineEquations(n: number): Rule[] {
             Math.floor(Math.random() * 300),
         ];
         if (point1[0] === point2[0]) point2[0]--;
-        ret.push(createLineEquation(point1, i, 0));
-        ret.push(createLineEquation(point2, i, 1));
+        if (simplifiable) {
+            ret.push(createLineEquation(point1g, 0, 0));
+            ret.push(createLineEquation(point2g, 0, 1));
+        } else {
+            ret.push(createLineEquation(point1, i, 0));
+            ret.push(createLineEquation(point2, i, 1));
+        }
     }
     return ret;
 }
@@ -143,7 +157,7 @@ async function run() {
     const { degree, opts } = workerData;
     let eqs;
     if (opts.lineEquations) {
-        eqs = createNLineEquations(degree);
+        eqs = createNLineEquations(degree, opts.simplifiable);
     } else {
         eqs = createSystemOfEquations(degree);
     }

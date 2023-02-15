@@ -44,8 +44,6 @@ export default class LocalCVC5Solver extends LocalCVCSolver {
         if (this.timeLimit > 0) {
             args.push('--tlimit=' + this.timeLimit);
         }
-        if (this.withAssignments) {
-        }
         args.push('--dump-models');
 
         return child_process.spawn('cvc5', args);

@@ -130,7 +130,9 @@ program
 
 program
     .command('benchmark')
-    .description('benchmark the commands of this on tool on this machine')
+    .description(
+        'Benchmark the commands of this on tool on this machine. Runs the checkSat and checkImp iteratively from 0 to maxEquationDegree, measures the time needed and writes it to the statsFile.'
+    )
     .option(
         '--maxEquationDegree <number>',
         'The degree of the used equation system',
@@ -139,6 +141,10 @@ program
     .option(
         '--lineEquations',
         'Instead of solving polynoms, solve n line equations. n is maxEquationDegree '
+    )
+    .option(
+        '--simplifiable',
+        'All equations are the same, so they become simplifiable. Only available for line equations.'
     )
     .option(
         '--maxWorkers <number>',
