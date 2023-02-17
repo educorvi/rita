@@ -1,0 +1,39 @@
+{
+    "$schema": "../../../rita-core/src/schema/schema.json",
+    "rules": [
+        {
+            "id": "rule",
+            "rule": {
+                "type": "and",
+                "arguments": [
+                    {
+                        "type": "or",
+                        "arguments": [
+                            {
+                                "type": "atom",
+                                "path": "x"
+                            },
+                            {
+                                "type": "atom",
+                                "path": "y"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "atom",
+                        "path": "x"
+                    },
+                    {
+                        "type": "not",
+                        "arguments": [
+                            {
+                                "type": "atom",
+                                "path": "y"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}
