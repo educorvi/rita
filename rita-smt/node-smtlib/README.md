@@ -21,6 +21,7 @@ expressions, taking care of escaping:
 ```js
 const smt = require('@educorvi/smtlib');
 let solver = new smt.LocalCVC5Solver();
+solver.enableAssignments();
 solver.add(smt.DeclareConst('x', 'Bool'));
 solver.add(smt.DeclareConst('y', 'Bool'));
 solver.assert(smt.And(smt.Or('x', 'y'), 'x', smt.Not('y')));
