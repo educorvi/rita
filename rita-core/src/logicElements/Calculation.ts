@@ -88,7 +88,7 @@ export class Calculation extends Formula {
                 tempFunc = (x1, x2) => {
                     if (x2 === 0)
                         throw new UsageError('Division by zero is not allowed');
-                    return x1 % x2;
+                    return x1 - Math.floor(x1 / x2) * x2;
                 };
                 break;
         }

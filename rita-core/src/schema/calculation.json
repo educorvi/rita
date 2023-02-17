@@ -10,7 +10,7 @@
             "enum": ["calculation"]
         },
         "operation": {
-            "description": "The mathematical operation to be calculated",
+            "description": "The mathematical operation to be calculated. Modulo refers to the function mod(a,b)=a-(floor(a/b)*b)",
             "type": "string",
             "enum": ["add", "subtract", "multiply", "divide", "modulo"]
         },
