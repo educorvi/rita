@@ -89,7 +89,7 @@ export async function findImplications(
         for (const rule of base) {
             const others = base.filter((r) => r !== rule);
 
-            let solver = new SmtSolver();
+            let solver = new SmtSolver(false, 0);
             solver.assertSMT(
                 And(
                     reduceSubSetToSMT(others, solver),
