@@ -40,7 +40,6 @@ export async function checkSat(rp: Rule[], opts: CheckSatOpts = {}) {
     }
 
     if (!hideOutput || verbose) {
-        console.log('Result:');
         console.log(
             util.inspect(res, {
                 showHidden: false,
