@@ -31,7 +31,7 @@ import {
     Rule,
 } from '@educorvi/rita';
 import { GEqS, GTS, LEqS, LTS, Mod } from './customSMTFunctions';
-import { casualMatrix } from './conversionMatrices';
+import { accurateMatrix as conversionMatrix } from './conversionMatrices';
 
 enum types {
     boolean = 'Bool',
@@ -44,6 +44,9 @@ type RitaSatResult = {
     model: Record<string, any> | undefined;
 };
 
+/**
+ * This class can be used translate from rita to SMT-LIB and use the solver provided by node-smtlib package to solve those translations
+ */
 export default class SmtSolver {
     private solver: LocalCVC5Solver;
 
@@ -242,7 +245,7 @@ export default class SmtSolver {
             } else {
                 return Mult(
                     this.parseFormula(v, types.number),
-                    casualMatrix[rule.dateCalculationUnit || 'seconds'][
+                    conversionMatrix[rule.dateCalculationUnit || 'seconds'][
                         'milliseconds'
                     ].toString()
                 );
@@ -257,7 +260,7 @@ export default class SmtSolver {
             wrapOperation = (res) =>
                 Div(
                     res,
-                    casualMatrix[rule.dateResultUnit || 'seconds'][
+                    conversionMatrix[rule.dateResultUnit || 'seconds'][
                         'milliseconds'
                     ].toString()
                 );

@@ -25,7 +25,7 @@ import dateCalculation3 from './dateCalculation3.json';
 import simpleRuleUnsat from './simpleRuleUnsat.json';
 // @ts-ignore
 import comparisonUnsat from './comparisonUnsat.json';
-import SmtSolver from '../src';
+import { RitaSmtSolver as SmtSolver } from '../src';
 import { evaluateAll, Parser } from '@educorvi/rita';
 
 const examples_satisfiable = {

@@ -89,12 +89,16 @@ export class DateCalculation extends Formula {
         ): Date | Duration {
             //If arguments are two dates, calculate the result with the milliseconds of the dates
             if (d1 instanceof Date && d2 instanceof Date) {
-                return Duration.fromMillis(func(d1.getTime(), d2.getTime()));
+                return Duration.fromMillis(func(d1.getTime(), d2.getTime()), {
+                    conversionAccuracy: 'longterm',
+                });
             }
 
             //If neither arguments are dates, combine the durations by applying the function to their millisecond values
             if (!(d1 instanceof Date) && !(d2 instanceof Date)) {
-                return Duration.fromMillis(func(d1.toMillis(), d2.toMillis()));
+                return Duration.fromMillis(func(d1.toMillis(), d2.toMillis()), {
+                    conversionAccuracy: 'longterm',
+                });
             }
 
             //If neither of the above returned, we now know one must be a date and one a duration, so let's find out which is which
@@ -150,9 +154,12 @@ export class DateCalculation extends Formula {
         const tmp = results.map((item) => {
             assertNumberOrDate(item);
             if (typeof item === 'number') {
-                return Duration.fromObject({
-                    [this.dateCalculationUnit]: item,
-                });
+                return Duration.fromObject(
+                    {
+                        [this.dateCalculationUnit]: item,
+                    },
+                    { conversionAccuracy: 'longterm' }
+                );
             } else {
                 return item;
             }
