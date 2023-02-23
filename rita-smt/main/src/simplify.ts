@@ -2,9 +2,7 @@ import { Rule } from '@educorvi/rita';
 import SmtSolver from './SmtSolver';
 import { And, Not, SNode, Xor } from '@educorvi/smtlib';
 
-export default async function simplify(
-    rules: Array<Rule>
-): Promise<Array<Rule>> {
+export async function simplify(rules: Array<Rule>): Promise<Array<Rule>> {
     let newRuleset: Array<Rule> = [];
     rules.forEach((val) => newRuleset.push(val));
 

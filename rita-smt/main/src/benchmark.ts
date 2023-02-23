@@ -21,6 +21,7 @@ export async function benchmark(opts: BenchmarkOptions): Promise<void> {
             currDegree = 0;
         const results: BenchmarkResult = [];
 
+        // function to add multithreading worker
         function addWorker(degree: number) {
             runningWorkers++;
             const worker = new Worker(__dirname + '/BenchmarkingWorker.js', {
@@ -30,12 +31,14 @@ export async function benchmark(opts: BenchmarkOptions): Promise<void> {
                 },
             });
             worker.on('error', console.error);
+            // start a new worker wants this one finishes, if there is still stuff left to do. Keeps the number of concurrent workers steady.
             worker.on('exit', () => {
                 runningWorkers--;
                 if (currDegree <= opts.maxEquationDegree) {
                     addWorker(currDegree++);
                 } else {
                     if (runningWorkers <= 0) {
+                        // This is the last worker, print results to csv file
                         if (fs.existsSync(opts.statsFile)) {
                             fs.unlinkSync(opts.statsFile);
                         }
@@ -64,6 +67,7 @@ export async function benchmark(opts: BenchmarkOptions): Promise<void> {
                     }
                 }
             });
+            // Worker calculated result
             worker.on('message', (msg) => {
                 console.log(msg);
                 const { degree, timeSat, timeImp, sat } = msg;
@@ -71,6 +75,7 @@ export async function benchmark(opts: BenchmarkOptions): Promise<void> {
             });
         }
 
+        // Start workers
         console.info(`Running with ${opts.maxWorkers} threads...`);
         for (
             let i = 0;
