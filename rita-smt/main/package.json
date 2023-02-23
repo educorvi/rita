@@ -22,8 +22,7 @@
     "dependencies": {
         "@educorvi/smtlib": "workspace:^1.1.1",
         "command-exists": "^1.2.9",
-        "commander": "^9.2.0",
-        "terminal-kit": "^2.4.0"
+        "commander": "^9.2.0"
     },
     "devDependencies": {
         "@educorvi/rita": "workspace:^4.0.1",

@@ -1,16 +1,14 @@
 import { Rule } from '@educorvi/rita';
 import SmtSolver from './SmtSolver';
-import util from 'util';
 
 export type CheckSatOpts = {
     timelimit?: number;
     verbose?: boolean;
-    hideOutput?: boolean;
 };
 
 export async function checkSat(rp: Rule[], opts: CheckSatOpts = {}) {
     let s: SmtSolver;
-    const { timelimit, verbose, hideOutput } = opts;
+    const { timelimit, verbose } = opts;
     try {
         s = new SmtSolver(
             true,
@@ -39,14 +37,5 @@ export async function checkSat(rp: Rule[], opts: CheckSatOpts = {}) {
         console.log('\n');
     }
 
-    if (!hideOutput || verbose) {
-        console.log(
-            util.inspect(res, {
-                showHidden: false,
-                depth: null,
-                colors: true,
-            })
-        );
-    }
     return res;
 }

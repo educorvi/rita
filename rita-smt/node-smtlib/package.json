@@ -24,13 +24,13 @@
         "extends": "@istanbuljs/nyc-config-typescript"
     },
     "dependencies": {
-        "@types/byline": "^4.2.33",
         "byline": "^5.0.0"
     },
     "devDependencies": {
         "@istanbuljs/nyc-config-typescript": "^1.0.2",
         "@semantic-release/changelog": "^6.0.1",
         "@semantic-release/git": "^10.0.1",
+        "@types/byline": "^4.2.33",
         "@typescript-eslint/eslint-plugin": "^4.33.0",
         "@typescript-eslint/parser": "^4.33.0",
         "coveralls": "^3.1.1",

@@ -1,131 +1,137 @@
 #!/usr/bin/env node
 
 import * as fs from 'fs';
-import { Parser } from '@educorvi/rita';
+import { Parser, Rule } from '@educorvi/rita';
 import { program } from 'commander';
 import commandExists from 'command-exists';
 import { simplify } from './index';
 import { findImplications } from './simplify';
-import termkit from 'terminal-kit';
 import { benchmark } from './benchmark';
 import { checkSat } from './checkSat';
+import util from 'util';
 
+// Create a parser for rulesets
 const parser = new Parser();
 
-const term = termkit.terminal;
+/**
+ * Check if CVC5 is installed
+ */
+async function checkCVC() {
+    try {
+        await commandExists('cvc5');
+    } catch (e) {
+        // @ts-ignore
+        if (this.opts().verbose) console.error(e);
+        console.error('You need to have cvc5 installed');
+        process.exit(-1);
+    }
+}
+
+/**
+ * Reads a ruleset from a file
+ * @param path Path of the file
+ */
+function readRulesetFromFile(path: string): Rule[] {
+    let r;
+    try {
+        r = JSON.parse(fs.readFileSync(path, 'utf-8'));
+    } catch (e) {
+        console.error("Can't open file: " + path);
+        process.exit(-1);
+    }
+
+    try {
+        return parser.parseRuleSet(r);
+    } catch (e) {
+        console.error('Error while parsing:', e);
+        process.exit(-1);
+    }
+}
+
+/**
+ * Logs an error and exits afterwards
+ * @param e the error
+ */
+const logAndExit = (e: Error) => {
+    console.error(e);
+    process.exit(-1);
+};
 
 program.version(process.env.VERSION || '0.0.0');
-program.argument('filepath', 'path to the file that contains the Rita ruleset');
 
+/**
+ * Checksat command
+ * Checks for satisfiability of a ruleset
+ */
 program
-    .command('checksat <filepath>')
-    .description('check satisfiability of a ruleset')
+    .command('checksat')
+    .argument('filepath', 'path to the file that contains the Rita ruleset')
+    .description('Check satisfiability of a ruleset')
     .option(
         '--timelimit <number>',
-        'Sets the timelimit for the smt solver in milliseconds. Default is 180000, 0 means no timelimit',
+        'sets the timelimit for the smt solver in milliseconds. Default is 180000, 0 means no timelimit',
         '180000'
     )
     .option(
         '--verbose',
         'output more information, e.g. the generated smt and the output of the sat solver'
     )
-    .action(function (filepath) {
-        commandExists('cvc5')
-            .then(() => {
-                let r;
-                try {
-                    r = JSON.parse(fs.readFileSync(filepath, 'utf-8'));
-                } catch (e) {
-                    console.error("Can't open file: " + filepath);
-                    process.exit(-1);
-                }
+    .action(async function (filepath) {
+        await checkCVC();
 
-                let rp;
-                try {
-                    rp = parser.parseRuleSet(r);
-                } catch (e) {
-                    console.error('Error while parsing:', e);
-                    process.exit(-1);
-                }
+        const rp = readRulesetFromFile(filepath);
 
-                // @ts-ignore
-                checkSat(rp, this.opts());
+        // Check satisfiability
+        // @ts-ignore
+        const res = await checkSat(rp, this.opts()).catch(logAndExit);
+        console.log(
+            util.inspect(res, {
+                showHidden: false,
+                depth: null,
+                colors: true,
             })
-            .catch((e) => {
-                // @ts-ignore
-                if (this.opts().verbose) console.error(e);
-                console.error('You need to have cvc5 installed');
-                process.exit(-1);
-            });
+        );
+    });
+
+/**
+ * Simplify command
+ * Removes unnecessary rules from a ruleset
+ */
+program
+    .command('simplify')
+    .argument('filepath', 'path to the file that contains the Rita ruleset')
+    .description(
+        'simplify ruleset by removing rules that are implied by others'
+    )
+    .action(async function (filepath) {
+        await checkCVC();
+
+        const rp = readRulesetFromFile(filepath);
+
+        const res = await simplify(rp).catch(logAndExit);
+
+        console.log(JSON.stringify(JSON.parse(Parser.toJson(res)), null, 2));
     });
 
 program
-    .command('simplify <filepath>')
-    .description('simplify ruleset')
-    .action(function (filepath) {
-        commandExists('cvc5')
-            .then(() => {
-                let r;
-                try {
-                    r = JSON.parse(fs.readFileSync(filepath, 'utf-8'));
-                } catch (e) {
-                    console.error("Can't open file: " + filepath);
-                    process.exit(-1);
-                }
-                const rp = parser.parseRuleSet(r);
-                simplify(
-                    rp,
-                    // @ts-ignore
-                    this.opts().progress ? term : undefined
-                )
-                    .then((res) =>
-                        console.log(
-                            JSON.stringify(
-                                JSON.parse(Parser.toJson(res)),
-                                null,
-                                2
-                            )
-                        )
-                    )
-                    .catch(console.error);
-            })
-            .catch(() => {
-                console.error('You need to have cvc5 installed');
-                process.exit(-1);
-            });
-    });
-
-program
-    .command('checkimp <filepath>')
+    .command('checkimp')
+    .argument('filepath', 'path to the file that contains the Rita ruleset')
     .description('check ruleset for rules that implicate each other')
-    .action(function (filepath) {
-        commandExists('cvc5')
-            .then(() => {
-                let r;
-                try {
-                    r = JSON.parse(fs.readFileSync(filepath, 'utf-8'));
-                } catch (e) {
-                    console.error("Can't open file: " + filepath);
-                    process.exit(-1);
-                }
-                const rp = parser.parseRuleSet(r);
-                findImplications(rp)
-                    .then((res) => {
-                        console.log(
-                            res.map(
-                                (it) =>
-                                    `${it.prerequisite
-                                        .map((rule) => `"${rule.id}"`)
-                                        .join(' ∧ ')} => "${it.consequence.id}"`
-                            )
-                        );
-                    })
-                    .catch(console.error);
-            })
-            .catch(() => {
-                console.error('You need to have cvc5 installed');
-                process.exit(-1);
-            });
+    .action(async function (filepath) {
+        await checkCVC();
+
+        const rp = readRulesetFromFile(filepath);
+
+        const res = await findImplications(rp).catch(logAndExit);
+
+        console.log(
+            res.map(
+                (it) =>
+                    `${it.prerequisite
+                        .map((rule) => `"${rule.id}"`)
+                        .join(' ∧ ')} => "${it.consequence.id}"`
+            )
+        );
     });
 
 program
@@ -140,7 +146,7 @@ program
     )
     .option(
         '--lineEquations',
-        'Instead of solving polynoms, solve n line equations. n is maxEquationDegree '
+        'Instead of solving polynoms, solve n line equations. n is maxEquationDegree'
     )
     .option(
         '--simplifiable',
@@ -163,12 +169,12 @@ program
     )
     .option(
         '--verbose',
-        'output more information, e.g. the generated smt and the output of the sat solver'
+        'output more information, e.g. the generated rulesets and smt code'
     )
     .option('--noImp', 'Skip Implication checking')
-    .action(function () {
+    .action(async function () {
         // @ts-ignore
-        benchmark(this.opts());
+        await benchmark(this.opts());
     });
 
 program.parse();

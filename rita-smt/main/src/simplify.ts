@@ -1,11 +1,9 @@
 import { Rule } from '@educorvi/rita';
 import SmtSolver from './SmtSolver';
 import { And, Not, SNode, Xor } from '@educorvi/smtlib';
-import { Terminal } from 'terminal-kit';
 
 export default async function simplify(
-    rules: Array<Rule>,
-    term?: Terminal
+    rules: Array<Rule>
 ): Promise<Array<Rule>> {
     let newRuleset: Array<Rule> = [];
     rules.forEach((val) => newRuleset.push(val));
@@ -17,16 +15,6 @@ export default async function simplify(
         );
     }
 
-    const difference = rules.length - newRuleset.length;
-
-    if (term) {
-        term.yellow(
-            `\n\nEliminated ${difference} ${
-                difference !== 1 ? 'rules' : 'rule'
-            }\n`
-        );
-    }
-
     const verifier = new SmtSolver();
     verifier.assertSMT(
         Xor(
@@ -35,20 +23,10 @@ export default async function simplify(
         )
     );
 
-    if (term) {
-        term('Verifying result... ');
-    }
     const valid = !(await verifier.checkSat()).satisfiable;
 
-    if (valid) {
-        if (term) {
-            term.green('Valid\n\n');
-        }
-    } else {
-        if (term) {
-            term.red('Invalid\n\n');
-        }
-        throw new Error('Internal Error: Invalid Simplification');
+    if (!valid) {
+        throw new Error('Internal Error: Invalid Simplification detected');
     }
 
     return newRuleset;
