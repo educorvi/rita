@@ -1,5 +1,12 @@
 // @ts-ignore
-import { evaluateAll, Parser } from '../../src';
+import {
+    Comparison,
+    comparisons,
+    evaluateAll,
+    InternalError,
+    Parser,
+    UsageError,
+} from '../../src';
 // @ts-ignore
 import { exampleData, ruleTemplate } from '../assets/exampleData';
 // @ts-ignore
@@ -108,4 +115,14 @@ it('birthday before 27.02.2002, but other birthday', () => {
 it('run math example', async () => {
     const ruleset = p.parseRuleSet(mathExample);
     expect((await evaluateAll(ruleset, exampleData)).result).toBe(true);
+});
+
+it('error on different type', async () => {
+    const c = new Comparison([2, 'Test'], comparisons.equal);
+    try {
+        await c.evaluate({});
+        expect(true).toBe(false);
+    } catch (e) {
+        expect(e).toBeInstanceOf(UsageError);
+    }
 });

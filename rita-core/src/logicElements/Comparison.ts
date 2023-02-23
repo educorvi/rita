@@ -1,7 +1,7 @@
 import { Formula } from './Formula';
 import { Atom } from './Atom';
 import { Calculation, mapArgumentsToJSONReady } from './Calculation';
-import { UnimplementedError } from '../Errors';
+import { UnimplementedError, UsageError } from '../Errors';
 
 /**
  * Types of comparisons
@@ -71,6 +71,12 @@ export class Comparison extends Formula {
                 : this.arguments[1];
 
         if (p1 === undefined || p2 === undefined) return false;
+
+        if (typeof p1 !== typeof p2) {
+            throw new UsageError(
+                'Elements in comparison must have the same type'
+            );
+        }
 
         if (p1 instanceof Date) p1 = p1.getTime();
         if (p2 instanceof Date) p2 = p2.getTime();

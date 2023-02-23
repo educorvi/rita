@@ -1,4 +1,4 @@
-export type FormulaResults = boolean | Date | number | String;
+export type FormulaResults = boolean | Date | number | string;
 
 export abstract class Formula {
     /**
