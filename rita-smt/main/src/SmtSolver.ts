@@ -360,9 +360,10 @@ export default class SmtSolver {
     }
 
     private parseAtom(rule: Atom, type: types): string {
-        this.declareConstIfNotExists(rule.path, type);
+        const path = rule.path.replace(/\[(\w+)]/g, '.$1'); // convert indexes to properties
+        this.declareConstIfNotExists(path, type);
         this.atoms.push(rule);
-        return rule.path;
+        return path;
     }
 
     private static setPropertyByString(o: any, s: string, v: any): void {
