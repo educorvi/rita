@@ -10,8 +10,10 @@ import {
     Formula,
     Not,
     operations,
+    Parser,
     Rule,
 } from '@educorvi/rita';
+import util from 'util';
 
 function createPolynom(degree: number): (x: number) => Calculation | Atom {
     if (degree < 0) {
@@ -164,11 +166,11 @@ async function run() {
 
     if (opts.verbose) {
         console.log(
-            JSON.stringify(
-                eqs.map((r) => r.toJsonReady()),
-                undefined,
-                2
-            )
+            util.inspect(Parser.toJson(eqs), {
+                showHidden: false,
+                depth: null,
+                colors: true,
+            })
         );
     }
 
