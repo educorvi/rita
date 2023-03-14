@@ -4,7 +4,7 @@
 https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/operation
 ```
 
-The mathematical operation to be calculated
+The mathematical operation to be calculated. Modulo refers to the function mod(a,b)=a-(floor(a/b)\*b)
 
 | Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                     |
 | :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :----------------------------------------------------------------------------- |

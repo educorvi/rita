@@ -8,6 +8,8 @@
 
 *   [Comparison](./comparison.md "Compare strings, dates or numbers with each other") – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json`
 
+*   [Date Calculation](./datecalculation.md "Calculations involving dates") – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/dateCalculation.json`
+
 *   [Formula](./formula.md) – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/formula.json`
 
 *   [Macro](./macro.md "Describes macros") – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/macro.json`
@@ -62,7 +64,9 @@
 
 *   [Untitled array in Comparison](./comparison-properties-arguments.md) – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/arguments`
 
-*   [Untitled array in Comparison](./comparison-properties-arguments.md) – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/arguments`
+*   [Untitled array in Date Calculation](./datecalculation-properties-arguments.md) – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/dateCalculation.json#/properties/arguments`
+
+*   [Untitled array in Date Calculation](./datecalculation-properties-arguments.md) – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/dateCalculation.json#/properties/arguments`
 
 *   [Untitled array in Quantifier](./quantifier-properties-data-array-oneof-0.md) – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/quantifier.json#/properties/array/oneOf/0`
 

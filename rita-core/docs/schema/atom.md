@@ -16,10 +16,11 @@ Describes an atom. Those can be used to read Data
 
 # Atom Properties
 
-| Property      | Type     | Required | Nullable       | Defined by                                                                                                                             |
-| :------------ | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------- |
-| [type](#type) | `string` | Required | cannot be null | [Atom](atom-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/atom.json#/properties/type") |
-| [path](#path) | `string` | Required | cannot be null | [Atom](atom-properties-path.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/atom.json#/properties/path") |
+| Property          | Type      | Required | Nullable       | Defined by                                                                                                                                 |
+| :---------------- | :-------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------- |
+| [type](#type)     | `string`  | Required | cannot be null | [Atom](atom-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/atom.json#/properties/type")     |
+| [path](#path)     | `string`  | Required | cannot be null | [Atom](atom-properties-path.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/atom.json#/properties/path")     |
+| [isDate](#isdate) | `boolean` | Optional | cannot be null | [Atom](atom-properties-isdate.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/atom.json#/properties/isDate") |
 
 ## type
 
@@ -64,3 +65,21 @@ The path to the atom in the data
 ### path Type
 
 `string`
+
+## isDate
+
+Must be set to true if the atom should be parsed as a date
+
+`isDate`
+
+*   is optional
+
+*   Type: `boolean`
+
+*   cannot be null
+
+*   defined in: [Atom](atom-properties-isdate.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/atom.json#/properties/isDate")
+
+### isDate Type
+
+`boolean`

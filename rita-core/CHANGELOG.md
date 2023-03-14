@@ -1,6 +1,22 @@
 # Change Log - @educorvi/rita
 
-This log was last generated on Wed, 20 Jul 2022 08:46:27 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Mar 2023 19:16:22 GMT and should not be manually modified.
+
+## 5.0.0
+
+Tue, 14 Mar 2023 19:16:22 GMT
+
+### Breaking changes
+
+-   change conversion matrix for durations
+-   refactor dateCalculation in extra type independent from calculation
+-   atoms that are supposed to read dates have to have the 'isDate' property set to true
+-   remove validate from evaluate
+-   comparisons now need property "dates" set to true if comparing dates
+
+### Patches
+
+-   round calculation result to 12 decimals to avoid floating point weirdness
 
 ## 4.0.1
 

@@ -2,6 +2,26 @@
     "name": "@educorvi/rita-plugin-http",
     "entries": [
         {
+            "version": "1.1.1",
+            "tag": "@educorvi/rita-plugin-http_v1.1.1",
+            "date": "Tue, 14 Mar 2023 19:16:22 GMT",
+            "comments": {
+                "patch": [
+                    {
+                        "comment": "fix object pollution"
+                    }
+                ],
+                "dependency": [
+                    {
+                        "comment": "Updating dependency \"@educorvi/rita\" from `^4.0.1` to `^5.0.0`"
+                    },
+                    {
+                        "comment": "Updating dependency \"@educorvi/rita\" from `^4.0.1` to `^5.0.0`"
+                    }
+                ]
+            }
+        },
+        {
             "version": "1.1.0",
             "tag": "@educorvi/rita-plugin-http_v1.1.0",
             "date": "Wed, 29 Jun 2022 12:53:14 GMT",

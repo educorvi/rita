@@ -1,11 +1,37 @@
 {
-  "name": "@educorvi/smtlib",
-  "entries": [
-    {
-      "version": "1.1.1",
-      "tag": "@educorvi/smtlib_v1.1.1",
-      "date": "Thu, 09 Jun 2022 16:12:17 GMT",
-      "comments": {}
-    }
-  ]
+    "name": "@educorvi/smtlib",
+    "entries": [
+        {
+            "version": "1.2.0",
+            "tag": "@educorvi/smtlib_v1.2.0",
+            "date": "Tue, 14 Mar 2023 19:16:22 GMT",
+            "comments": {
+                "minor": [
+                    {
+                        "comment": "add Xor"
+                    },
+                    {
+                        "comment": "add defineFun function to base_solver"
+                    }
+                ],
+                "patch": [
+                    {
+                        "comment": "add support for string in model"
+                    },
+                    {
+                        "comment": "fix typo: rename satisfieable to satisifiable"
+                    },
+                    {
+                        "comment": "parse negative numbers"
+                    }
+                ]
+            }
+        },
+        {
+            "version": "1.1.1",
+            "tag": "@educorvi/smtlib_v1.1.1",
+            "date": "Thu, 09 Jun 2022 16:12:17 GMT",
+            "comments": {}
+        }
+    ]
 }

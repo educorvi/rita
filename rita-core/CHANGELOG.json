@@ -2,6 +2,35 @@
     "name": "@educorvi/rita",
     "entries": [
         {
+            "version": "5.0.0",
+            "tag": "@educorvi/rita_v5.0.0",
+            "date": "Tue, 14 Mar 2023 19:16:22 GMT",
+            "comments": {
+                "major": [
+                    {
+                        "comment": "change conversion matrix for durations"
+                    },
+                    {
+                        "comment": "refactor dateCalculation in extra type independent from calculation"
+                    },
+                    {
+                        "comment": "atoms that are supposed to read dates have to have the 'isDate' property set to true"
+                    },
+                    {
+                        "comment": "remove validate from evaluate"
+                    },
+                    {
+                        "comment": "comparisons now need property \"dates\" set to true if comparing dates"
+                    }
+                ],
+                "patch": [
+                    {
+                        "comment": "round calculation result to 12 decimals to avoid floating point weirdness"
+                    }
+                ]
+            }
+        },
+        {
             "version": "4.0.1",
             "tag": "@educorvi/rita_v4.0.1",
             "date": "Wed, 20 Jul 2022 08:46:27 GMT",

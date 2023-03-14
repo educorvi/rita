@@ -16,13 +16,11 @@ Calculates a result
 
 # Calculation Properties
 
-| Property                                    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                |
-| :------------------------------------------ | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [type](#type)                               | `string` | Required | cannot be null | [Calculation](calculation-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/type")                               |
-| [operation](#operation)                     | `string` | Required | cannot be null | [Calculation](calculation-properties-operation.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/operation")                     |
-| [arguments](#arguments)                     | `array`  | Required | cannot be null | [Calculation](calculation-properties-arguments.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/arguments")                     |
-| [dateResultUnit](#dateresultunit)           | `string` | Optional | cannot be null | [Calculation](calculation-properties-dateresultunit.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/dateResultUnit")           |
-| [dateCalculationUnit](#datecalculationunit) | `string` | Optional | cannot be null | [Calculation](calculation-properties-datecalculationunit.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/dateCalculationUnit") |
+| Property                | Type     | Required | Nullable       | Defined by                                                                                                                                                            |
+| :---------------------- | :------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [type](#type)           | `string` | Required | cannot be null | [Calculation](calculation-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/type")           |
+| [operation](#operation) | `string` | Required | cannot be null | [Calculation](calculation-properties-operation.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/operation") |
+| [arguments](#arguments) | `array`  | Required | cannot be null | [Calculation](calculation-properties-arguments.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/arguments") |
 
 ## type
 
@@ -52,7 +50,7 @@ Calculates a result
 
 ## operation
 
-The mathematical operation to be calculated
+The mathematical operation to be calculated. Modulo refers to the function mod(a,b)=a-(floor(a/b)\*b)
 
 `operation`
 
@@ -101,81 +99,3 @@ an array of merged types ([Details](calculation-properties-arguments-items.md))
 ### arguments Constraints
 
 **minimum number of items**: the minimum number of items for this array is: `2`
-
-## dateResultUnit
-
-Which unit is to use when working with dates. For example, if two days are subtracted, should the result be in days, or months? Also usable, when adding days/months/years to a date
-
-`dateResultUnit`
-
-*   is optional
-
-*   Type: `string`
-
-*   cannot be null
-
-*   defined in: [Calculation](calculation-properties-dateresultunit.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/dateResultUnit")
-
-### dateResultUnit Type
-
-`string`
-
-### dateResultUnit Constraints
-
-**enum**: the value of this property must be equal to one of the following values:
-
-| Value       | Explanation |
-| :---------- | :---------- |
-| `"seconds"` |             |
-| `"minutes"` |             |
-| `"hours"`   |             |
-| `"days"`    |             |
-| `"months"`  |             |
-| `"years"`   |             |
-
-### dateResultUnit Default Value
-
-The default value is:
-
-```json
-"seconds"
-```
-
-## dateCalculationUnit
-
-Which unit is to use when adding/subtracting number from/with dates.
-
-`dateCalculationUnit`
-
-*   is optional
-
-*   Type: `string`
-
-*   cannot be null
-
-*   defined in: [Calculation](calculation-properties-datecalculationunit.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/dateCalculationUnit")
-
-### dateCalculationUnit Type
-
-`string`
-
-### dateCalculationUnit Constraints
-
-**enum**: the value of this property must be equal to one of the following values:
-
-| Value       | Explanation |
-| :---------- | :---------- |
-| `"seconds"` |             |
-| `"minutes"` |             |
-| `"hours"`   |             |
-| `"days"`    |             |
-| `"months"`  |             |
-| `"years"`   |             |
-
-### dateCalculationUnit Default Value
-
-The default value is:
-
-```json
-"seconds"
-```

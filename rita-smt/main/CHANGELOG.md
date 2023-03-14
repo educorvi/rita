@@ -1,6 +1,27 @@
 # Change Log - @educorvi/rita-smt
 
-This log was last generated on Fri, 24 Jun 2022 12:22:43 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Mar 2023 19:16:22 GMT and should not be manually modified.
+
+## 2.0.0
+
+Tue, 14 Mar 2023 19:16:22 GMT
+
+### Breaking changes
+
+-   Make solver private and expose necessary methods directly to correctly reconstruct model
+-   Update Rita Version to v5
+
+### Minor changes
+
+-   find rules in a ruleset that imply each other
+-   simplify rulesets that contain implications
+
+### Patches
+
+-   define modulo as function
+-   fix string comparisons
+-   fix typo: rename satisfieable to satisifiable
+-   proper date calculation
 
 ## 1.2.2
 
