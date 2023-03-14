@@ -46,6 +46,6 @@ jobs:
             - name: Build
               run: node common/scripts/install-run-rush.js build
             - name: Publish to NPM
-              run: node common/scripts/install-run-rush.js publish -p -b main --include-all --version-policy "rita-publish" --set-access-level=public
+              run: node common/scripts/install-run-rush.js publish -p --include-all --version-policy "rita-publish" --set-access-level=public
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}

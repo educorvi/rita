@@ -167,13 +167,17 @@ jobs:
                   git rebase main
                   git push --follow-tags
             - name: Publish to NPM
-              run: node common/scripts/install-run-rush.js publish -p -b main --include-all --version-policy "rita-publish" --set-access-level=public
+              run: node common/scripts/install-run-rush.js publish -p --include-all --version-policy "rita-publish" --set-access-level=public
               env:
                   NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     buildDocker:
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         needs: [release]
         uses: ./.github/workflows/docker.yml
+    githubPackages:
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        needs: [release]
+        uses: ./.github/workflows/github_packages.yml
     deploy:
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         needs: [release]
