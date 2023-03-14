@@ -15,7 +15,7 @@ jobs:
 
         strategy:
             matrix:
-                node-version: [14.x, 16.x]
+                node-version: [16.x, 18.x]
                 # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
         env:
@@ -56,44 +56,91 @@ jobs:
                 ports:
                     # Maps tcp port 5432 on service container to the host
                     - 5432:5432
+            mysql:
+                image: mysql:5.7
+                env:
+                    MYSQL_DATABASE: prita
+                    MYSQL_ROOT_PASSWORD: root
+                ports:
+                    - 3306:3306
+                options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
         steps:
-            - name: Set up MySQL
-              run: |
-                  sudo /etc/init.d/mysql start
-                  mysql -e 'CREATE DATABASE ${{ env.MYSQL_DATABASE }};' -u${{ env.MYSQL_USER }} -p${{ env.MYSQL_PASSWORD }}
             - uses: actions/checkout@v3
             - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node-version }}
+            - name: Cache Rush
+              uses: actions/cache@v3
+              with:
+                  path: |
+                      common/temp/install-run
+                      ~/.rush
+                  key: ${{ runner.os }}-${{ hashFiles('rush.json') }}
+            - name: Cache pnpm
+              uses: actions/cache@v3
+              with:
+                  path: |
+                      common/temp/pnpm-store
+                  key: ${{ runner.os }}-${{ hashFiles('common/config/rush/pnpm-lock.yaml') }}
             - name: Install
               run: node common/scripts/install-run-rush.js install
             - name: Build and test
-              run: node common/scripts/install-run-rush.js build-and-test
+              run: node common/scripts/install-run-rush.js build-and-test --verbose
 
-    licenses:
-        runs-on: ubuntu-latest
-        if: github.event_name != 'pull_request'
-        steps:
-            - uses: actions/checkout@v3
-            - uses: actions/setup-node@v3
-            - name: Install dependencies
-              run: node common/scripts/install-run-rush.js install
-            - name: Install fossa
-              run: "curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossas/fossa-cli/master/install-latest.sh | bash"
-            - run: fossa analyze
-              env:
-                  FOSSA_API_KEY: ${{secrets.FOSSA_API_TOKEN}}
+    #    licenses:
+    #        runs-on: ubuntu-latest
+    #        if: github.event_name != 'pull_request'
+    #        steps:
+    #            - uses: actions/checkout@v3
+    #            - uses: actions/setup-node@v3
+    #            - name: Cache Rush
+    #              uses: actions/cache@v3
+    #              with:
+    #                  path: |
+    #                      common/temp/install-run
+    #                      ~/.rush
+    #                  key: ${{ runner.os }}-${{ hashFiles('rush.json') }}
+    #            - name: Cache pnpm
+    #              uses: actions/cache@v3
+    #              with:
+    #                  path: |
+    #                      common/temp/pnpm-store
+    #                  key: ${{ runner.os }}-${{ hashFiles('common/config/rush/pnpm-lock.yaml') }}
+    #            - name: Install dependencies
+    #              run: node common/scripts/install-run-rush.js install
+    #            - name: FOSSA Scan
+    #              uses: fossas/fossa-action@main
+    #              with:
+    #                  api-key: ${{secrets.FOSSA_API_TOKEN}}
+    #            - name: 'Run FOSSA Test'
+    #              uses: fossas/fossa-action@main
+    #              with:
+    #                  api-key: ${{secrets.FOSSA_API_TOKEN}}
+    #                  run-tests: true
 
     release:
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         runs-on: ubuntu-latest
-        needs: [buildAndTest, licenses]
+        needs: [buildAndTest]
         steps:
             - uses: actions/checkout@v3
               with:
                   fetch-depth: 0
             - uses: actions/setup-node@v3
+            - name: Cache Rush
+              uses: actions/cache@v3
+              with:
+                  path: |
+                      common/temp/install-run
+                      ~/.rush
+                  key: ${{ runner.os }}-${{ hashFiles('rush.json') }}
+            - name: Cache pnpm
+              uses: actions/cache@v3
+              with:
+                  path: |
+                      common/temp/pnpm-store
+                  key: ${{ runner.os }}-${{ hashFiles('common/config/rush/pnpm-lock.yaml') }}
             - name: Setup git
               run: |
                   git config user.name github-actions

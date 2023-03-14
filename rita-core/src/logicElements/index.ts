@@ -8,3 +8,4 @@ export * from './Calculation';
 export * from './Quantifier';
 export * from './Macro';
 export * from './Plugin';
+export * from './DateCalculation';

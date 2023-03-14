@@ -1,0 +1,26 @@
+{
+    "$schema": "../../../rita-core/src/schema/schema.json",
+    "rules": [
+        {
+            "id": "example1",
+            "rule": {
+                "type": "and",
+                "arguments": [
+                    {
+                        "type": "atom",
+                        "path": "hatComputer"
+                    },
+                    {
+                        "type": "not",
+                        "arguments": [
+                            {
+                                "type": "atom",
+                                "path": "mitarbeiter"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}

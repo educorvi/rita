@@ -1,0 +1,10 @@
+{
+    "changes": [
+        {
+            "packageName": "@educorvi/smtlib",
+            "comment": "add Xor",
+            "type": "minor"
+        }
+    ],
+    "packageName": "@educorvi/smtlib"
+}

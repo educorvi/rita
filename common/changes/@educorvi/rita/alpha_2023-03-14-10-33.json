@@ -1,0 +1,10 @@
+{
+    "changes": [
+        {
+            "packageName": "@educorvi/rita",
+            "comment": "change conversion matrix for durations",
+            "type": "major"
+        }
+    ],
+    "packageName": "@educorvi/rita"
+}

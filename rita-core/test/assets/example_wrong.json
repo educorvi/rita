@@ -1,25 +1,26 @@
 {
-  "$schema": "https://raw.githubusercontent.com/educorvi/rita/main/schema/schema.json",
-  "rules": [
-    {
-      "id": "rule1",
-      "rule": {
-        "type": "and",
-        "arguments": [
-          {
-            "type": "atom",
-            "path": "member"
-          },
-          {
-            "type": "not",
-            "arguments": [
-              {
-                "type": "atom"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  ]
+    "$schema": "https://raw.githubusercontent.com/educorvi/rita/main/schema/schema.json",
+    "rules": [
+        {
+            "id": "rule1",
+            "comment": "",
+            "rule": {
+                "type": "and",
+                "arguments": [
+                    {
+                        "type": "atom",
+                        "path": "member"
+                    },
+                    {
+                        "type": "not",
+                        "arguments": [
+                            {
+                                "type": "atom"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
 }

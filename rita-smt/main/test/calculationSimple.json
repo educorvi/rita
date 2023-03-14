@@ -1,37 +1,34 @@
 {
-  "$schema": "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/schema.json",
-  "rules": [
-    {
-      "id": "simple rule",
-      "rule": {
-        "type": "comparison",
-        "operation": "equal",
-        "arguments": [
-          4,
-          4
-        ]
-      }
-    },
-    {
-      "id": "simple rule 2",
-      "rule": {
-        "type": "comparison",
-        "operation": "greaterOrEqual",
-        "arguments": [
-          4,
-          {
-            "type": "calculation",
-            "operation": "subtract",
-            "arguments": [
-              14.99,
-              {
-                "type": "atom",
-                "path": "visit.priceWithoutTax"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  ]
+    "$schema": "../../../rita-core/src/schema/schema.json",
+    "rules": [
+        {
+            "id": "simple rule",
+            "rule": {
+                "type": "comparison",
+                "operation": "equal",
+                "arguments": [4, 4]
+            }
+        },
+        {
+            "id": "simple rule 2",
+            "rule": {
+                "type": "comparison",
+                "operation": "greaterOrEqual",
+                "arguments": [
+                    4,
+                    {
+                        "type": "calculation",
+                        "operation": "subtract",
+                        "arguments": [
+                            14.99,
+                            {
+                                "type": "atom",
+                                "path": "visit.priceWithoutTax"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
 }

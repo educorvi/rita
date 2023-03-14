@@ -1,27 +1,34 @@
 import { Formula, FormulaResults } from './Formula';
 import { DateTime } from 'luxon';
-import { RulesetError, UndefinedPathError } from '../Errors';
+import { UndefinedPathError, UsageError } from '../Errors';
 
-export function testForDate(val: string): string | Date {
+/**
+ * Parses the date in the argument string. Throws an exception if date can not be parsed
+ * @param val the string to be parsed
+ */
+export function parseDate(val: string): Date {
     const testDate = DateTime.fromISO(val).toJSDate();
     if (!isNaN(testDate.getTime())) {
         return testDate;
+    } else {
+        throw new UsageError(`Date "${val}" could not be parsed`);
     }
-    return val;
 }
 
 /**
- * A atom that gets it value from the data
+ * An atom that gets it value from the data
  */
 export class Atom extends Formula {
     /**
      * The path of the value in the data
      */
     public path: string;
+    public isDate: boolean;
 
-    constructor(path: string) {
+    constructor(path: string, isDate: boolean = false) {
         super();
         this.path = path;
+        this.isDate = isDate;
     }
 
     /**
@@ -53,24 +60,21 @@ export class Atom extends Formula {
     }
 
     toJsonReady(): Record<string, any> {
-        return {
+        const at: Record<string, any> = {
             type: 'atom',
             path: this.path,
         };
+        if (this.isDate) at['isDate'] = true;
+        return at;
     }
 
     async evaluate(
         data: Record<string, any>
     ): Promise<FormulaResults | Array<FormulaResults>> {
-        if (!this.validate())
-            throw new RulesetError(
-                'Invalid: ' + JSON.stringify(this.toJsonReady())
-            );
-
         const val = Atom.getPropertyByString(data, this.path);
 
-        if (typeof val === 'string') {
-            return new Promise((resolve) => resolve(testForDate(val)));
+        if (typeof val === 'string' && this.isDate) {
+            return parseDate(val);
         }
         return val;
     }

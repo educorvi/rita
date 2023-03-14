@@ -1,7 +1,7 @@
 import { Formula } from './Formula';
 import { Atom } from './Atom';
 import { Calculation, mapArgumentsToJSONReady } from './Calculation';
-import { RulesetError, UnimplementedError } from '../Errors';
+import { UnimplementedError, UsageError } from '../Errors';
 
 /**
  * Types of comparisons
@@ -29,44 +29,58 @@ export class Comparison extends Formula {
     public operation: comparisons;
 
     /**
+     * Indicates if dates are compared
+     */
+    public dates: boolean;
+
+    /**
      * @constructor
      * @param formulaArguments The arguments
      * @param operation Type of the comparison
+     * @param dates Indicates if dates are compared
      */
     constructor(
         formulaArguments: Array<Atom | number | Date | string | Calculation>,
-        operation: comparisons
+        operation: comparisons,
+        dates: boolean = false
     ) {
         super();
         this.arguments = formulaArguments;
         this.operation = operation;
+        this.dates = dates;
     }
 
     toJsonReady(): Record<string, any> {
-        return {
+        const comp: Record<string, any> = {
             type: 'comparison',
             operation: this.operation,
             arguments: this.arguments.map(mapArgumentsToJSONReady),
         };
+        if (this.dates) comp['dates'] = true;
+        return comp;
     }
 
     async evaluate(data: Record<string, any>): Promise<boolean> {
-        if (!this.validate())
-            throw new RulesetError(
-                'Invalid: ' + JSON.stringify(this.toJsonReady())
-            );
-
         //if one of the arguments is either an Atom or a Calculation evaluate it first
-        const p1 =
+        let p1 =
             this.arguments[0] instanceof Formula
                 ? await this.arguments[0].evaluate(data)
                 : this.arguments[0];
-        const p2 =
+        let p2 =
             this.arguments[1] instanceof Formula
                 ? await this.arguments[1].evaluate(data)
                 : this.arguments[1];
 
         if (p1 === undefined || p2 === undefined) return false;
+
+        if (typeof p1 !== typeof p2) {
+            throw new UsageError(
+                'Elements in comparison must have the same type'
+            );
+        }
+
+        if (p1 instanceof Date) p1 = p1.getTime();
+        if (p2 instanceof Date) p2 = p2.getTime();
 
         switch (this.operation) {
             case comparisons.equal:

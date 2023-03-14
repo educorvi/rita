@@ -1,0 +1,10 @@
+{
+    "changes": [
+        {
+            "packageName": "@educorvi/smtlib",
+            "comment": "fix typo: rename satisfieable to satisifiable",
+            "type": "patch"
+        }
+    ],
+    "packageName": "@educorvi/smtlib"
+}

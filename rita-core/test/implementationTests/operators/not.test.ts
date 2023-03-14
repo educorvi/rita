@@ -19,22 +19,23 @@ it('!member', () => {
     });
     expect(rule.evaluate(exampleData)).resolves.toBe(false);
 });
-it('member  employee', () => {
+it('!!member', () => {
     const rule = p.parseRule({
         ...ruleTemplate,
         rule: {
             type: 'not',
             arguments: [
                 {
-                    type: 'atom',
-                    path: 'member',
-                },
-                {
-                    type: 'atom',
-                    path: 'employee',
+                    type: 'not',
+                    arguments: [
+                        {
+                            type: 'atom',
+                            path: 'member',
+                        },
+                    ],
                 },
             ],
         },
     });
-    expect(() => rule.evaluate(exampleData)).rejects.toThrow();
+    expect(rule.evaluate(exampleData)).resolves.toBe(true);
 });

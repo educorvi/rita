@@ -3,3 +3,7 @@ version: 3
 project:
     name: Rita
     url: https://github.com/educorvi/rita
+
+paths:
+    exclude:
+        - common

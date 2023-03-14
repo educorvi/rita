@@ -1,4 +1,10 @@
-import { evaluateAll, Parser } from '../../src';
+import {
+    Comparison,
+    comparisons,
+    evaluateAll,
+    Parser,
+    UsageError,
+} from '../../src';
 // @ts-ignore
 import { exampleData, ruleTemplate } from '../assets/exampleData';
 // @ts-ignore
@@ -41,10 +47,12 @@ it('birthday before 27.02.2002', () => {
         rule: {
             type: 'comparison',
             operation: 'smaller',
+            dates: true,
             arguments: [
                 {
                     type: 'atom',
                     path: 'dateOfBirth',
+                    isDate: true,
                 },
                 '2002-02-27',
             ],
@@ -95,6 +103,7 @@ it('birthday before 27.02.2002, but other birthday', () => {
         rule: {
             type: 'comparison',
             operation: 'smaller',
+            dates: true,
             arguments: ['2003-02-28', '2002-02-27'],
         },
     });
@@ -104,4 +113,14 @@ it('birthday before 27.02.2002, but other birthday', () => {
 it('run math example', async () => {
     const ruleset = p.parseRuleSet(mathExample);
     expect((await evaluateAll(ruleset, exampleData)).result).toBe(true);
+});
+
+it('error on different type', async () => {
+    const c = new Comparison([2, 'Test'], comparisons.equal);
+    try {
+        await c.evaluate({});
+        expect(true).toBe(false);
+    } catch (e) {
+        expect(e).toBeInstanceOf(UsageError);
+    }
 });

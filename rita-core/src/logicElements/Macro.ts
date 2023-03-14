@@ -1,7 +1,6 @@
 import { Formula, FormulaResults } from './Formula';
 import { Atom } from './Atom';
 import { assertArray } from '../Assertions';
-import { RulesetError } from '../Errors';
 
 export class Macro extends Formula {
     /** Indicates the type of this atom **/
@@ -17,11 +16,6 @@ export class Macro extends Formula {
     }
 
     async evaluate(data: Record<string, any>): Promise<FormulaResults> {
-        if (!this.validate())
-            throw new RulesetError(
-                'Invalid: ' + JSON.stringify(this.toJsonReady())
-            );
-
         switch (this.macro) {
             case 'now':
                 return new Date();

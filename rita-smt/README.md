@@ -1,5 +1,4 @@
 # Rita-SMT
-[![CI](https://github.com/educorvi/rita-smt/actions/workflows/main.yml/badge.svg)](https://github.com/educorvi/rita-smt/actions/workflows/main.yml)
 [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-%230074c1.svg)](http://www.typescriptlang.org/)
 
 A module to test satisfiability of [Rita](https://github.com/educorvi/rita) rule sets.

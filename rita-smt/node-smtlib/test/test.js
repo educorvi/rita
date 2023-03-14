@@ -6,9 +6,12 @@ function test1() {
     solver.add(smt.DeclareFun('x', [], 'Bool'));
     solver.add(smt.DeclareFun('y', [], 'Bool'));
     solver.assert(smt.And(smt.Or('x', 'y'), smt.Not('x'), smt.Not('y')));
-    return solver.checkSat().then(({satisfieable}) => assert(!satisfieable)).catch((e) => {
-        console.error('FAILED: ' + e.message);
-    });
+    return solver
+        .checkSat()
+        .then(({ satisfiable }) => assert(!satisfiable))
+        .catch((e) => {
+            console.error('FAILED: ' + e.message);
+        });
 }
 function test2() {
     let solver = new smt.LocalCVC4Solver('QF_ALL_SUPPORTED');
@@ -16,13 +19,16 @@ function test2() {
     solver.add(smt.DeclareFun('x', [], 'Bool'));
     solver.add(smt.DeclareFun('y', [], 'Bool'));
     solver.assert(smt.And(smt.Or('x', 'y'), 'x', 'y'));
-    return solver.checkSat().then(({satisfieable, model}) => {
-        assert(satisfieable);
-        assert(model.x);
-        assert(model.y);
-    }).catch((e) => {
-        console.error('FAILED: ' + e.message);
-    });
+    return solver
+        .checkSat()
+        .then(({ satisfiable, model }) => {
+            assert(satisfiable);
+            assert(model.x);
+            assert(model.y);
+        })
+        .catch((e) => {
+            console.error('FAILED: ' + e.message);
+        });
 }
 function test3() {
     let solver = new smt.LocalCVC4Solver('QF_ALL_SUPPORTED');
@@ -32,15 +38,20 @@ function test3() {
     solver.add(smt.DeclareFun('y', [], 'Bool'));
     solver.add(smt.DeclareFun('z', [], 'MyType'));
     solver.assert(smt.And(smt.Or('x', 'y'), 'x', 'y'));
-    return solver.checkSat().then(({satisfieable, model}) => {
-        assert(satisfieable);
-        assert(model.x);
-        assert(model.y);
-    }).catch((e) => {
-        console.error('FAILED: ' + e.message);
-    });
+    return solver
+        .checkSat()
+        .then(({ satisfiable, model }) => {
+            assert(satisfiable);
+            assert(model.x);
+            assert(model.y);
+        })
+        .catch((e) => {
+            console.error('FAILED: ' + e.message);
+        });
 }
 function main() {
-    test1().then(() => test2()).then(() => test3());
+    test1()
+        .then(() => test2())
+        .then(() => test3());
 }
 main();

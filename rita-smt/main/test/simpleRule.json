@@ -1,26 +1,26 @@
 {
-  "$schema": "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/schema.json",
-  "rules": [
-    {
-      "id": "satisfiable",
-      "rule": {
-        "type": "or",
-        "arguments": [
-          {
-            "type": "atom",
-            "path": "var1"
-          },
-          {
-            "type": "not",
-            "arguments": [
-              {
-                "type": "atom",
-                "path": "var2"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  ]
+    "$schema": "../../../rita-core/src/schema/schema.json",
+    "rules": [
+        {
+            "id": "satisfiable",
+            "rule": {
+                "type": "or",
+                "arguments": [
+                    {
+                        "type": "atom",
+                        "path": "var1"
+                    },
+                    {
+                        "type": "not",
+                        "arguments": [
+                            {
+                                "type": "atom",
+                                "path": "var2"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
 }

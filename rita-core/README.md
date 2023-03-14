@@ -4,8 +4,8 @@ JSON Schema for rule-based evaluation and an Typescript Implementation to evalua
 
 ## Schema
 
-The Schema is available in the schema-folder and has the id `https://raw.githubusercontent.com/educorvi/rita/main/schema/schema.json`.
-Documentation on the schema can be found [here](https://educorvi.github.io/rita/schema/#/).
+The Schema is available in the schema-folder and has the id `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/schema.json`.
+Documentation on the schema can be found [here](https://educorvi.github.io/rita/rita-core/docs/schema/#/).
 
 ## Implementation
 
@@ -29,4 +29,4 @@ const result: boolean = ruleSet[0].evaluate(exampleData);
 
 ## Documentation
 
-The documentation of the schema and the implementation can be found here: [https://educorvi.github.io/rita](https://educorvi.github.io/rita)
+The documentation of the schema and the implementation can be found here: [https://educorvi.github.io/rita/rita-core/docs/index.html](https://educorvi.github.io/rita/rita-core/docs/index.html)

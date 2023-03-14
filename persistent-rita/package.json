@@ -3,7 +3,7 @@
     "version": "4.0.0",
     "repository": {
         "type": "git",
-        "url": "https://github.com/educorvi/persistent-rita"
+        "url": "https://github.com/educorvi/rita"
     },
     "license": "MIT",
     "author": "Julian Pollinger",

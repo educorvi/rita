@@ -1,4 +1,6 @@
 import SmtSolver from './SmtSolver';
-import simplify from './simplify';
 
-export { SmtSolver as default, simplify };
+export { SmtSolver as RitaSmtSolver };
+
+export * from './simplify';
+export * from './checkSat';

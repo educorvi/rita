@@ -1,0 +1,10 @@
+{
+    "changes": [
+        {
+            "packageName": "@educorvi/rita",
+            "comment": "atoms that are supposed to read dates have to have the 'isDate' property set to true",
+            "type": "major"
+        }
+    ],
+    "packageName": "@educorvi/rita"
+}

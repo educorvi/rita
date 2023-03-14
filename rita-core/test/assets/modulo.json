@@ -1,0 +1,27 @@
+{
+    "$schema": "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/schema.json",
+    "rules": [
+        {
+            "id": "modulo",
+            "comment": "",
+            "rule": {
+                "type": "comparison",
+                "operation": "equal",
+                "arguments": [
+                    0.6,
+                    {
+                        "type": "calculation",
+                        "operation": "modulo",
+                        "arguments": [
+                            5,
+                            {
+                                "type": "atom",
+                                "path": "numberFromData"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}

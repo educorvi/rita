@@ -1,0 +1,10 @@
+{
+    "changes": [
+        {
+            "packageName": "@educorvi/rita-smt",
+            "comment": "fix string comparisons",
+            "type": "patch"
+        }
+    ],
+    "packageName": "@educorvi/rita-smt"
+}

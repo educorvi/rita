@@ -20,6 +20,11 @@
                 "equal"
             ]
         },
+        "dates": {
+            "description": "Indicates if dates are compared",
+            "type": "boolean",
+            "default": false
+        },
         "arguments": {
             "type": "array",
             "minItems": 2,
@@ -28,9 +33,6 @@
                 "oneOf": [
                     {
                         "$ref": "atom.json"
-                    },
-                    {
-                        "$ref": "plugin.json"
                     },
                     {
                         "$ref": "macro.json"
@@ -47,6 +49,9 @@
                     },
                     {
                         "$ref": "calculation.json"
+                    },
+                    {
+                        "$ref": "dateCalculation.json"
                     }
                 ]
             }
