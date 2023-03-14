@@ -1,33 +1,33 @@
 {
-  "$schema": "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/schema.json",
-  "rules": [
-    {
-      "id": "satisfiable",
-      "rule": {
-        "type": "comparison",
-        "operation": "equal",
-        "arguments": [
-          5,
-          {
-            "type": "atom",
-            "path": "zahl"
-          }
-        ]
-      }
-    },
-    {
-      "id": "bad",
-      "rule": {
-        "type": "comparison",
-        "operation": "greater",
-        "arguments": [
-          5,
-          {
-            "type": "atom",
-            "path": "zahl"
-          }
-        ]
-      }
-    }
-  ]
+    "$schema": "../../../rita-core/src/schema/schema.json",
+    "rules": [
+        {
+            "id": "satisfiable",
+            "rule": {
+                "type": "comparison",
+                "operation": "equal",
+                "arguments": [
+                    5,
+                    {
+                        "type": "atom",
+                        "path": "zahl"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "bad",
+            "rule": {
+                "type": "comparison",
+                "operation": "greater",
+                "arguments": [
+                    5,
+                    {
+                        "type": "atom",
+                        "path": "zahl"
+                    }
+                ]
+            }
+        }
+    ]
 }

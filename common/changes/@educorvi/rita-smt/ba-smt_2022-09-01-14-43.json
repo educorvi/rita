@@ -1,0 +1,10 @@
+{
+    "changes": [
+        {
+            "packageName": "@educorvi/rita-smt",
+            "comment": "define modulo as function",
+            "type": "patch"
+        }
+    ],
+    "packageName": "@educorvi/rita-smt"
+}

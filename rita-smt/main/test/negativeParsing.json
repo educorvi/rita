@@ -1,0 +1,49 @@
+{
+    "$schema": "../../../rita-core/src/schema/schema.json",
+    "rules": [
+        {
+            "id": "neg1",
+            "rule": {
+                "type": "comparison",
+                "operation": "smaller",
+                "arguments": [
+                    {
+                        "type": "atom",
+                        "path": "var1"
+                    },
+                    -1
+                ]
+            }
+        },
+        {
+            "id": "neg2",
+            "rule": {
+                "type": "and",
+                "arguments": [
+                    {
+                        "type": "comparison",
+                        "operation": "smaller",
+                        "arguments": [
+                            {
+                                "type": "atom",
+                                "path": "var2"
+                            },
+                            -1
+                        ]
+                    },
+                    {
+                        "type": "comparison",
+                        "operation": "greater",
+                        "arguments": [
+                            {
+                                "type": "atom",
+                                "path": "var2"
+                            },
+                            -1.01
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -4,6 +4,7 @@ import operator from './operator.json';
 import rule from './rule.json';
 import formula from './formula.json';
 import calculation from './calculation.json';
+import dateCalculation from './dateCalculation.json';
 import comparison from './comparison.json';
 import quantifiers from './quantifier.json';
 import macro from './macro.json';
@@ -20,6 +21,7 @@ export {
     quantifiers,
     macro,
     plugin,
+    dateCalculation,
 };
 
 export default [
@@ -33,4 +35,5 @@ export default [
     quantifiers,
     macro,
     plugin,
+    dateCalculation,
 ];

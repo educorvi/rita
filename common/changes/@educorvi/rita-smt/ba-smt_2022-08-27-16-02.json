@@ -1,0 +1,10 @@
+{
+    "changes": [
+        {
+            "packageName": "@educorvi/rita-smt",
+            "comment": "Make solver private and expose necessary methods directly to correctly reconstruct model",
+            "type": "major"
+        }
+    ],
+    "packageName": "@educorvi/rita-smt"
+}

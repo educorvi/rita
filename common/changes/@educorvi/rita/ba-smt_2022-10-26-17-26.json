@@ -1,0 +1,10 @@
+{
+    "changes": [
+        {
+            "packageName": "@educorvi/rita",
+            "comment": "remove validate from evaluate",
+            "type": "major"
+        }
+    ],
+    "packageName": "@educorvi/rita"
+}

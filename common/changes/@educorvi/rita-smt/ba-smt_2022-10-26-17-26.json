@@ -1,0 +1,10 @@
+{
+    "changes": [
+        {
+            "packageName": "@educorvi/rita-smt",
+            "comment": "proper date calculation",
+            "type": "patch"
+        }
+    ],
+    "packageName": "@educorvi/rita-smt"
+}

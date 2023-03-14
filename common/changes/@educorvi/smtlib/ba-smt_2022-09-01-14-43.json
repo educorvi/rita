@@ -1,0 +1,10 @@
+{
+    "changes": [
+        {
+            "packageName": "@educorvi/smtlib",
+            "comment": "add defineFun function to base_solver",
+            "type": "minor"
+        }
+    ],
+    "packageName": "@educorvi/smtlib"
+}

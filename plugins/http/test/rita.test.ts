@@ -3,7 +3,7 @@ import HTTP_Plugin from '../src/index';
 
 const p = new Parser([HTTP_Plugin]);
 
-const address = 'http://localhost:3123';
+const address = 'http://127.0.0.1:3123';
 const data = {
     member: true,
     employee: false,

@@ -19,7 +19,7 @@ export class Rule {
      */
     public comment: string;
 
-    constructor(id: string, rule: Formula, comment: string) {
+    constructor(id: string, rule: Formula, comment: string = '') {
         this.id = id;
         this.rule = rule;
         this.comment = comment;

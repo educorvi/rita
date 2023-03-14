@@ -12,6 +12,7 @@ import { logger, init, DEVELOPMENT, rita, configDB } from './helper/globals';
 import { errorHandler, middleware } from './helper/middleware';
 import { startConfigurator } from './config/TerminalConfigurator';
 import { Server } from 'http';
+import process from 'node:process';
 
 let { PORT } = process.env;
 const port = PORT || '3000';
@@ -34,12 +35,7 @@ function shutDown() {
     });
 }
 
-process.on('SIGINT', function () {
-    shutDown();
-});
-process.on('SIGTERM', function () {
-    shutDown();
-});
+process.once('SIGINT', shutDown);
 
 /**
  * Start the webserver

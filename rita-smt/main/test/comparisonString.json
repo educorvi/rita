@@ -1,19 +1,61 @@
 {
-  "$schema": "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/schema.json",
-  "rules": [
-    {
-      "id": "satisfiable",
-      "rule": {
-        "type": "comparison",
-        "operation": "equal",
-        "arguments": [
-          "testValue",
-          {
-            "type": "atom",
-            "path": "testPath"
-          }
-        ]
-      }
-    }
-  ]
+    "$schema": "../../../rita-core/src/schema/schema.json",
+    "rules": [
+        {
+            "id": "satisfiable",
+            "rule": {
+                "type": "comparison",
+                "operation": "equal",
+                "arguments": [
+                    "testValue",
+                    {
+                        "type": "atom",
+                        "path": "testPath"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "string comparison",
+            "rule": {
+                "type": "comparison",
+                "operation": "smaller",
+                "arguments": [
+                    {
+                        "type": "atom",
+                        "path": "randomName"
+                    },
+                    "Julian"
+                ]
+            }
+        },
+        {
+            "id": "string comparison2",
+            "rule": {
+                "type": "comparison",
+                "operation": "greater",
+                "arguments": [
+                    {
+                        "type": "atom",
+                        "path": "randomName2"
+                    },
+                    "Julian"
+                ]
+            }
+        },
+        {
+            "id": "string comparison3",
+            "rule": {
+                "type": "comparison",
+                "operation": "smaller",
+                "arguments": [
+                    {
+                        "type": "atom",
+                        "path": "randomName2"
+                    },
+                    "Juliaz"
+                ]
+            }
+        }
+    ]
 }

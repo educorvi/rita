@@ -1,6 +1,6 @@
 import { Formula } from './Formula';
 import { Atom } from './Atom';
-import { RulesetError, UsageError } from '../Errors';
+import { UsageError } from '../Errors';
 
 export class Quantifier extends Formula {
     /**
@@ -37,11 +37,6 @@ export class Quantifier extends Formula {
     }
 
     async evaluate(data: Record<string, any>): Promise<boolean> {
-        if (!this.validate())
-            throw new RulesetError(
-                'Invalid: ' + JSON.stringify(this.toJsonReady())
-            );
-
         //Get the array from the data
         let ar;
         if (Array.isArray(this.array)) {

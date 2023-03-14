@@ -2,8 +2,8 @@
     "changes": [
         {
             "packageName": "rita-http",
-            "comment": "",
-            "type": "none"
+            "comment": "Update Rita Version to v5",
+            "type": "major"
         }
     ],
     "packageName": "rita-http"

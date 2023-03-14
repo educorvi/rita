@@ -3,8 +3,9 @@
     <config-file value="$PROJECT_DIR$/rita-core/jest.config.js" />
     <node-interpreter value="$USER_HOME$/.nvm/versions/node/v18.12.1/bin/node" />
     <node-options value="" />
-    <jest-package value="$PROJECT_DIR$/persistent-rita/node_modules/jest" />
+    <jest-package value="$PROJECT_DIR$/rita-core/node_modules/jest" />
     <working-dir value="$PROJECT_DIR$/rita-core" />
+    <jest-options value="--maxWorkers=8" />
     <envs />
     <scope-kind value="ALL" />
     <method v="2" />

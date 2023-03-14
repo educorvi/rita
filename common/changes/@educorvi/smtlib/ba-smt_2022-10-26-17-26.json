@@ -1,0 +1,10 @@
+{
+    "changes": [
+        {
+            "packageName": "@educorvi/smtlib",
+            "comment": "parse negative numbers",
+            "type": "patch"
+        }
+    ],
+    "packageName": "@educorvi/smtlib"
+}

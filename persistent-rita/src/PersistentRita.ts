@@ -79,8 +79,14 @@ export class PersistentRita {
     /**
      * Close the connection to the database.
      */
-    closeDBConnection(): Promise<void> {
+    async closeDBConnection(): Promise<void> {
         this.logger.debug('Close database connection');
-        return this.db.close();
+        try {
+            await this.db.close();
+        } catch (e) {
+            this.logger.error(
+                'An error occurred while closing the connection to the rita database'
+            );
+        }
     }
 }

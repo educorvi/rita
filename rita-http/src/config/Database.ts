@@ -136,9 +136,15 @@ export default class Database {
     /**
      * Closes the database connection
      */
-    close(): Promise<void> {
+    async close(): Promise<void> {
         Database.db = undefined;
-        return this.connection.destroy();
+        try {
+            await this.connection.destroy();
+        } catch (e) {
+            logger.error(
+                'An error occurred while closing the connection to the config database'
+            );
+        }
     }
 }
 
