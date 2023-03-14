@@ -4,7 +4,7 @@ JSON Schema for rule-based evaluation and an Typescript Implementation to evalua
 
 ## Schema
 
-The Schema is available in the schema-folder and has the id `https://raw.githubusercontent.com/educorvi/rita/develop/rita-core/src/schema/schema.json`.
+The Schema is available in the schema-folder and has the id `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/schema.json`.
 Documentation on the schema can be found [here](https://educorvi.github.io/rita/rita-core/docs/schema/#/).
 
 ## Implementation
