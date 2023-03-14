@@ -34,23 +34,18 @@ function getPropertyByString(o: any, s: string): boolean | string | number {
  * @param v value
  * @private
  */
-function setPropertyByString(o: any, s: string, v: any): any {
+function setPropertyByString(o: any, s: string, v: any): void {
     s = s.replace(/\[(\w+)]/g, '.$1'); // convert indexes to properties
     s = s.replace(/^\./, ''); // strip a leading dot
-    let curr = o;
     const a = s.split('.');
-    for (let i = 0, n = a.length; i < n; ++i) {
+    for (let i = 0, n = a.length; i < n - 1; ++i) {
         const k = a[i];
-        if (!(k in curr)) {
-            if (i === a.length - 1) {
-                curr[k] = v;
-            } else {
-                curr[k] = {};
-            }
+        if (!(k in o)) {
+            o[k] = Object.create(null);
         }
-        curr = curr[k];
+        o = o[k];
     }
-    return o;
+    o[a[a.length - 1]] = v;
 }
 
 export default class HTTP_Plugin extends Plugin {
@@ -78,7 +73,7 @@ export default class HTTP_Plugin extends Plugin {
         // Limit postdata to given keys if limitTo is defined
         let postData = data;
         if (limitTo && method === 'POST') {
-            postData = {};
+            postData = Object.create(null);
             for (const limitToVal of limitTo) {
                 setPropertyByString(
                     postData,
