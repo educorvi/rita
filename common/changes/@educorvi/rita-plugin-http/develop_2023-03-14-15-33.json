@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@educorvi/rita-plugin-http",
+      "comment": "fix object pollution",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@educorvi/rita-plugin-http"
+}
