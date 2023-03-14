@@ -51,12 +51,13 @@ export class Comparison extends Formula {
     }
 
     toJsonReady(): Record<string, any> {
-        return {
+        const comp: Record<string, any> = {
             type: 'comparison',
             operation: this.operation,
             arguments: this.arguments.map(mapArgumentsToJSONReady),
-            dates: this.dates,
         };
+        if (this.dates) comp['dates'] = true;
+        return comp;
     }
 
     async evaluate(data: Record<string, any>): Promise<boolean> {

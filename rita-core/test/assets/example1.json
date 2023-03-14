@@ -1,33 +1,35 @@
 {
-  "$schema": "../../src/schema/schema.json",
-  "rules": [
-    {
-      "id": "rule1",
-      "rule": {
-        "type": "and",
-        "arguments": [
-          {
-            "type": "atom",
-            "path": "member"
-          },
-          {
-            "type": "not",
-            "arguments": [
-              {
+    "$schema": "../../src/schema/schema.json",
+    "rules": [
+        {
+            "id": "rule1",
+            "comment": "",
+            "rule": {
+                "type": "and",
+                "arguments": [
+                    {
+                        "type": "atom",
+                        "path": "member"
+                    },
+                    {
+                        "type": "not",
+                        "arguments": [
+                            {
+                                "type": "atom",
+                                "path": "employee"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "rule2",
+            "comment": "",
+            "rule": {
                 "type": "atom",
                 "path": "employee"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "rule2",
-      "rule": {
-        "type": "atom",
-        "path": "employee"
-      }
-    }
-  ]
+            }
+        }
+    ]
 }

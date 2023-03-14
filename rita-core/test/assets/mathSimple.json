@@ -3,6 +3,7 @@
     "rules": [
         {
             "id": "simple rule",
+            "comment": "",
             "rule": {
                 "type": "comparison",
                 "operation": "equal",
@@ -11,6 +12,7 @@
         },
         {
             "id": "simple rule 2",
+            "comment": "",
             "rule": {
                 "type": "comparison",
                 "operation": "greaterOrEqual",

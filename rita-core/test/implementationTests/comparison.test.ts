@@ -1,9 +1,7 @@
-// @ts-ignore
 import {
     Comparison,
     comparisons,
     evaluateAll,
-    InternalError,
     Parser,
     UsageError,
 } from '../../src';

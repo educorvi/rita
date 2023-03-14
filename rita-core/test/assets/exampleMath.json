@@ -54,6 +54,7 @@
         },
         {
             "id": "string-comparison",
+            "comment": "compares two strings",
             "rule": {
                 "type": "comparison",
                 "operation": "equal",

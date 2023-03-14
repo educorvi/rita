@@ -5,6 +5,7 @@ export default {
     rules: [
         {
             id: 'r1',
+            comment: '',
             rule: {
                 type: 'comparison',
                 operation: 'greater',
@@ -22,6 +23,7 @@ export default {
         },
         {
             id: 'r2',
+            comment: '',
             rule: {
                 type: 'comparison',
                 operation: 'equal',

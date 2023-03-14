@@ -3,6 +3,7 @@
     "rules": [
         {
             "id": "rule3",
+            "comment": "",
             "rule": {
                 "type": "comparison",
                 "operation": "equal",
