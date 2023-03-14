@@ -1,5 +1,6 @@
 {
     "name": "@educorvi/persistent-rita",
+    "description": "This is a package to persist rita rulesets in a database",
     "version": "5.0.0",
     "repository": {
         "type": "git",

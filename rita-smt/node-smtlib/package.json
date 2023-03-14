@@ -1,7 +1,7 @@
 {
     "name": "@educorvi/smtlib",
     "version": "1.2.0",
-    "description": "A Javascript wrapper with a Z3-ish API for SMT-LIB 2.0, the language of Satisfiability Modulo Theories solvers",
+    "description": "A Javascript wrapper with a Z3-ish API for SMT-LIB 2.6, the language of Satisfiability Modulo Theories solvers",
     "repository": "https://github.com/educorvi/rita",
     "license": "MIT",
     "author": "Julian Pollinger",
