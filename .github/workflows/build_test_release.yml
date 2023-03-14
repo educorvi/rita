@@ -150,13 +150,9 @@ jobs:
             - name: Build
               run: node common/scripts/install-run-rush.js build
             - name: Bump version
-              run: node common/scripts/install-run-rush.js version --bump
+              run: node common/scripts/install-run-rush.js version --bump --version-policy "rita-publish"
             - name: Generate documentation
               run: node common/scripts/install-run-rush.js generate-documentation
-            - name: Publish to NPM
-              run: node common/scripts/install-run-rush.js publish -p -b main --include-all --version-policy "rita-publish" --set-access-level=public
-              env:
-                  NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
             - run: node common/scripts/install-run-rush.js update
             - run: git add .
             - name: Commit changes
@@ -170,6 +166,10 @@ jobs:
                   git pull
                   git rebase main
                   git push --follow-tags
+            - name: Publish to NPM
+              run: node common/scripts/install-run-rush.js publish -p -b main --include-all --version-policy "rita-publish" --set-access-level=public
+              env:
+                  NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     buildDocker:
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         needs: [release]
