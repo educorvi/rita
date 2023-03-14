@@ -117,7 +117,7 @@ export default class SmtSolver {
         if (!satResult.model) {
             return undefined;
         }
-        const o = {};
+        const o = Object.create(null);
         for (const key of Object.keys(satResult.model)) {
             let val: any = satResult.model[key];
             if (
@@ -376,7 +376,7 @@ export default class SmtSolver {
         for (let i = 0, n = a.length; i < n - 1; ++i) {
             const k = a[i];
             if (!(k in o)) {
-                o[k] = {};
+                o[k] = Object.create(null);
             }
             o = o[k];
         }
