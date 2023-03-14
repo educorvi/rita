@@ -82,7 +82,7 @@ jobs:
             - name: Install
               run: node common/scripts/install-run-rush.js install
             - name: Build and test
-              run: node common/scripts/install-run-rush.js build-and-test
+              run: node common/scripts/install-run-rush.js build-and-test --verbose
 
     licenses:
         runs-on: ubuntu-latest
