@@ -1,71 +1,71 @@
 {
-  "$schema": "../../node_modules/@educorvi/rita/src/schema/schema.json",
-  "rules": [
-    {
-      "id": "rule1",
-      "comment": "The time between the date of birth and the 21st of July 2021 must be at least 18 years or 20 must be more than the price plus tax.",
-      "rule": {
-        "type": "or",
-        "arguments": [
-          {
-            "type": "comparison",
-            "operation": "greaterOrEqual",
-            "arguments": [
-              {
-                "type": "calculation",
-                "operation": "subtract",
-                "dateResultUnit": "years",
-                "dateCalculationUnit": "seconds",
+    "$schema": "../../src/schema/schema.json",
+    "rules": [
+        {
+            "id": "rule1",
+            "comment": "The time between the date of birth and the 21st of July 2021 must be at least 18 years or 20 must be more than the price plus tax.",
+            "rule": {
+                "type": "or",
                 "arguments": [
-                  "2021-07-21T02:00:00.000+02:00",
-                  {
-                    "type": "atom",
-                    "path": "dateOfBirth"
-                  }
+                    {
+                        "type": "comparison",
+                        "operation": "greaterOrEqual",
+                        "arguments": [
+                            {
+                                "type": "dateCalculation",
+                                "operation": "subtract",
+                                "dateResultUnit": "years",
+                                "dateCalculationUnit": "seconds",
+                                "arguments": [
+                                    "2021-07-21T02:00:00.000+02:00",
+                                    {
+                                        "type": "atom",
+                                        "path": "dateOfBirth",
+                                        "isDate": true
+                                    }
+                                ]
+                            },
+                            18
+                        ]
+                    },
+                    {
+                        "type": "comparison",
+                        "operation": "greater",
+                        "arguments": [
+                            20,
+                            {
+                                "type": "calculation",
+                                "operation": "add",
+                                "arguments": [
+                                    {
+                                        "type": "atom",
+                                        "path": "visit.priceWithoutTax"
+                                    },
+                                    {
+                                        "type": "atom",
+                                        "path": "visit.tax"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
                 ]
-              },
-              18
-            ]
-          },
-          {
-            "type": "comparison",
-            "operation": "greater",
-            "arguments": [
-              20,
-              {
-                "type": "calculation",
-                "operation": "add",
-                "dateCalculationUnit": "seconds",
-                "dateResultUnit": "seconds",
+            }
+        },
+        {
+            "id": "string-comparison",
+            "comment": "compares two strings",
+            "rule": {
+                "type": "comparison",
+                "operation": "equal",
                 "arguments": [
-                  {
-                    "type": "atom",
-                    "path": "visit.priceWithoutTax"
-                  },
-                  {
-                    "type": "atom",
-                    "path": "visit.tax"
-                  }
+                    "Julian",
+                    {
+                        "type": "atom",
+                        "path": "name"
+                    }
                 ]
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "string-comparison",
-      "rule": {
-        "type": "comparison",
-        "operation": "equal",
-        "arguments": [
-          "Julian",
-          {
-            "type": "atom",
-            "path": "name"
-          }
-        ]
-      }
-    }
-  ]
+            }
+        }
+    ]
 }
