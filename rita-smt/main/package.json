@@ -20,7 +20,7 @@
         "test": ">&2 echo \"Tests for rita-smt are temporarily disabled. Run them with 'npx jest'\""
     },
     "dependencies": {
-        "@educorvi/smtlib": "workspace:^1.2.0",
+        "@educorvi/smtlib": "workspace:^1.2.1",
         "command-exists": "^1.2.9",
         "commander": "^9.2.0"
     },

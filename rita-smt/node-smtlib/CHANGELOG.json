@@ -2,6 +2,18 @@
     "name": "@educorvi/smtlib",
     "entries": [
         {
+            "version": "1.2.1",
+            "tag": "@educorvi/smtlib_v1.2.1",
+            "date": "Mon, 20 Mar 2023 23:49:20 GMT",
+            "comments": {
+                "patch": [
+                    {
+                        "comment": "fix bug with cvc5 v1.0.5"
+                    }
+                ]
+            }
+        },
+        {
             "version": "1.2.0",
             "tag": "@educorvi/smtlib_v1.2.0",
             "date": "Tue, 14 Mar 2023 19:16:22 GMT",
