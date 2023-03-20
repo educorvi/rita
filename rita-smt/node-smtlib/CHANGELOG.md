@@ -1,6 +1,14 @@
 # Change Log - @educorvi/smtlib
 
-This log was last generated on Tue, 14 Mar 2023 19:16:22 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Mar 2023 23:49:20 GMT and should not be manually modified.
+
+## 1.2.1
+
+Mon, 20 Mar 2023 23:49:20 GMT
+
+### Patches
+
+-   fix bug with cvc5 v1.0.5
 
 ## 1.2.0
 
