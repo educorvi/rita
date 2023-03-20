@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@educorvi/smtlib",
+      "comment": "fix bug with cvc5 v1.0.5",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@educorvi/smtlib"
+}
