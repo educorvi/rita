@@ -183,7 +183,3 @@ jobs:
         needs: [release]
         uses: ./.github/workflows/deploy.yml
         secrets: inherit
-#            - name: Publish to Github Packages
-#              run: node common/scripts/install-run-rush.js publish -p -b main --include-all --version-policy "rita-publish" --set-access-level=public --registry "https://npm.pkg.github.com/"
-#              env:
-#                  NPM_AUTH_TOKEN: ${{ secrets.PUBLISH_GITHUB_PACKAGE_TOKEN }}
