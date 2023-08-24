@@ -30,21 +30,11 @@
 
 *   [Non-Unary operator](./operator-oneof-non-unary-operator.md "Requires at least two arguments") – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/operator.json#/oneOf/0`
 
-*   [Non-Unary operator](./operator-oneof-non-unary-operator.md "Requires at least two arguments") – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/operator.json#/oneOf/0`
-
-*   [Unary operator](./operator-oneof-unary-operator.md "Requires exactly on parameter") – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/operator.json#/oneOf/1`
-
 *   [Unary operator](./operator-oneof-unary-operator.md "Requires exactly on parameter") – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/operator.json#/oneOf/1`
 
 *   [Untitled object in Plugin](./plugin-properties-options.md "The plugins options") – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/plugin.json#/properties/options`
 
-*   [Untitled object in Plugin](./plugin-properties-options.md "The plugins options") – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/plugin.json#/properties/options`
-
 *   [length](./macro-properties-macro-oneof-length.md "Returns the length of an array") – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/macro.json#/properties/macro/oneOf/1`
-
-*   [length](./macro-properties-macro-oneof-length.md "Returns the length of an array") – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/macro.json#/properties/macro/oneOf/1`
-
-*   [now](./macro-properties-macro-oneof-now.md "Returns the current time") – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/macro.json#/properties/macro/oneOf/0`
 
 *   [now](./macro-properties-macro-oneof-now.md "Returns the current time") – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/macro.json#/properties/macro/oneOf/0`
 
@@ -52,11 +42,7 @@
 
 *   [Multiple arguments](./operator-oneof-non-unary-operator-properties-multiple-arguments.md) – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/operator.json#/oneOf/0/properties/arguments`
 
-*   [Multiple arguments](./operator-oneof-non-unary-operator-properties-multiple-arguments.md) – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/operator.json#/oneOf/0/properties/arguments`
-
 *   [Ruleset](./schema-properties-ruleset.md "Array of all rules in this ruleset") – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/schema.json#/properties/rules`
-
-*   [Unary Arguments](./operator-oneof-unary-operator-properties-unary-arguments.md) – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/operator.json#/oneOf/1/properties/arguments`
 
 *   [Unary Arguments](./operator-oneof-unary-operator-properties-unary-arguments.md) – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/operator.json#/oneOf/1/properties/arguments`
 
@@ -65,10 +51,6 @@
 *   [Untitled array in Comparison](./comparison-properties-arguments.md) – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/arguments`
 
 *   [Untitled array in Date Calculation](./datecalculation-properties-arguments.md) – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/dateCalculation.json#/properties/arguments`
-
-*   [Untitled array in Date Calculation](./datecalculation-properties-arguments.md) – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/dateCalculation.json#/properties/arguments`
-
-*   [Untitled array in Quantifier](./quantifier-properties-data-array-oneof-0.md) – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/quantifier.json#/properties/array/oneOf/0`
 
 *   [Untitled array in Quantifier](./quantifier-properties-data-array-oneof-0.md) – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/quantifier.json#/properties/array/oneOf/0`
 
