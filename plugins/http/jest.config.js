@@ -1,3 +1,4 @@
+// noinspection JSValidateJSDoc
 /** @type {import('@ts-jest/dist/types').InitialOptionsTsJest} */
 module.exports = {
     preset: 'ts-jest',
@@ -5,4 +6,7 @@ module.exports = {
     testEnvironment: 'node',
     globalSetup: '<rootDir>/test/setupTestServer.js',
     globalTeardown: '<rootDir>/test/teardownServer.js',
+    moduleNameMapper: {
+        '^axios$': require.resolve('axios'),
+    },
 };

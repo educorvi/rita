@@ -1,13 +1,13 @@
-import { ISettingsParam, Logger } from 'tslog';
+import { ILogObj, ISettingsParam, Logger } from 'tslog';
 import { PersistentRitaLogger } from '@educorvi/persistent-rita';
 
 /**
  * Logger class
  */
 export default class CustomLogger extends PersistentRitaLogger {
-    private logger: Logger;
+    private logger: Logger<ILogObj>;
     private enabled: boolean = true;
-    constructor(settings?: ISettingsParam) {
+    constructor(settings?: ISettingsParam<ILogObj>) {
         super();
         this.logger = new Logger(settings);
     }
