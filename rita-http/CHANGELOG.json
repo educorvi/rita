@@ -2,6 +2,18 @@
     "name": "rita-http",
     "entries": [
         {
+            "version": "4.0.1",
+            "tag": "rita-http_v4.0.1",
+            "date": "Fri, 22 Dec 2023 15:58:04 GMT",
+            "comments": {
+                "dependency": [
+                    {
+                        "comment": "Updating dependency \"@educorvi/rita-plugin-http\" to `1.1.2`"
+                    }
+                ]
+            }
+        },
+        {
             "version": "4.0.0",
             "tag": "rita-http_v4.0.0",
             "date": "Tue, 14 Mar 2023 19:16:22 GMT",

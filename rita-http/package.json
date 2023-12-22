@@ -1,6 +1,6 @@
 {
     "name": "rita-http",
-    "version": "4.0.0",
+    "version": "4.0.1",
     "description": "HTTP API for Rita",
     "keywords": [
         "rita",

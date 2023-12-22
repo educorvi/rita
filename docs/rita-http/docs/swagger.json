@@ -5,7 +5,157 @@
 		"parameters": {},
 		"requestBodies": {},
 		"responses": {},
-		"schemas": {},
+		"schemas": {
+			"evaluationResult": {
+				"properties": {
+					"details": {
+						"items": {
+							"properties": {
+								"result": {
+									"type": "boolean"
+								},
+								"id": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"result",
+								"id"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					},
+					"counts": {
+						"properties": {
+							"false": {
+								"type": "number",
+								"format": "double"
+							},
+							"true": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"false",
+							"true"
+						],
+						"type": "object"
+					},
+					"result": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"details",
+					"counts",
+					"result"
+				],
+				"type": "object",
+				"description": "Type of results of an evaluation"
+			},
+			"errorResponse": {
+				"properties": {
+					"details": {
+						"type": "string"
+					},
+					"message": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"message"
+				],
+				"type": "object"
+			},
+			"evaluationData": {
+				"properties": {},
+				"additionalProperties": {},
+				"type": "object",
+				"description": "type of data to evaluate against"
+			},
+			"Ruleset": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id",
+					"name",
+					"description"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ritaBody": {
+				"properties": {
+					"rules": {
+						"items": {},
+						"type": "array"
+					},
+					"version": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"$schema": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"id": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"rules"
+				],
+				"type": "object",
+				"description": "Type for the body of a request, that edits rita"
+			},
+			"Record_string.string_": {
+				"properties": {},
+				"type": "object",
+				"description": "Construct a type with a set of properties K of type T"
+			},
+			"welcomeMessage": {
+				"properties": {
+					"plugins": {
+						"items": {
+							"$ref": "#/components/schemas/Record_string.string_"
+						},
+						"type": "array"
+					},
+					"ritaVersion": {
+						"type": "string"
+					},
+					"message": {
+						"type": "string"
+					},
+					"version": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"plugins",
+					"ritaVersion",
+					"message",
+					"version"
+				],
+				"type": "object",
+				"description": "Root controller"
+			}
+		},
 		"securitySchemes": {
 			"api_key": {
 				"type": "apiKey",
@@ -21,7 +171,7 @@
 	},
 	"info": {
 		"title": "rita-http",
-		"version": "4.0.0",
+		"version": "4.0.1",
 		"description": "HTTP API for Rita",
 		"license": {
 			"name": "MIT"
@@ -31,7 +181,302 @@
 		}
 	},
 	"openapi": "3.0.0",
-	"paths": {},
+	"paths": {
+		"/evaluate/{rulesetID}": {
+			"post": {
+				"operationId": "EvaluateRuleset",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/evaluationResult"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/errorResponse"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/errorResponse"
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Validation Error: An invalid object has been passed",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/errorResponse"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [
+							"evaluate"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "rulesetID",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/evaluationData"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/rulesets": {
+			"get": {
+				"operationId": "GetRulesets",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Ruleset"
+									},
+									"type": "array"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/errorResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Gets all saved rulesets.",
+				"security": [
+					{
+						"api_key": [
+							"view"
+						]
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/rulesets/{rulesetID}": {
+			"get": {
+				"operationId": "GetRuleset",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Ruleset"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/errorResponse"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/errorResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Gets a ruleset with a specific ID.",
+				"security": [
+					{
+						"api_key": [
+							"view"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"description": "The ID to search for.",
+						"in": "path",
+						"name": "rulesetID",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "SaveRuleset",
+				"responses": {
+					"201": {
+						"description": ""
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/errorResponse"
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Validation Error: An invalid object has been passed",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/errorResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Saves a ruleset.",
+				"security": [
+					{
+						"api_key": [
+							"manage"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"description": "The ID of the ruleset.",
+						"in": "path",
+						"name": "rulesetID",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"description": "The ruleset to save. Must fulfill the RITA Schema.",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ritaBody",
+								"description": "The ruleset to save. Must fulfill the RITA Schema."
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "DeleteRuleset",
+				"responses": {
+					"204": {
+						"description": "Successfully deleted"
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/errorResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Deletes a ruleset if it exists.",
+				"security": [
+					{
+						"api_key": [
+							"manage"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"description": "The ID of the ruleset.",
+						"in": "path",
+						"name": "rulesetID",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/": {
+			"get": {
+				"operationId": "GetWelcome",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/welcomeMessage"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"version": "3.0.0",
+											"message": "Welcome to the RITA API.",
+											"ritaVersion": "3.0.1",
+											"plugins": []
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": []
+			}
+		}
+	},
 	"servers": [
 		{
 			"url": "/"

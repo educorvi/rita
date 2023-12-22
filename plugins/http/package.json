@@ -1,6 +1,6 @@
 {
     "name": "@educorvi/rita-plugin-http",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "A plugin to use http requests in rita",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
