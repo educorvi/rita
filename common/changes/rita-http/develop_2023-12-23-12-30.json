@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "rita-http",
+      "comment": "Update mysql to v3 and persistent-rita",
+      "type": "patch"
+    }
+  ],
+  "packageName": "rita-http"
+}
