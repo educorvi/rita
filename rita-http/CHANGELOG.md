@@ -1,6 +1,14 @@
 # Change Log - rita-http
 
-This log was last generated on Fri, 22 Dec 2023 15:58:04 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Feb 2024 11:14:38 GMT and should not be manually modified.
+
+## 4.0.2
+
+Fri, 23 Feb 2024 11:14:38 GMT
+
+### Patches
+
+-   Update mysql to v3 and persistent-rita
 
 ## 4.0.1
 

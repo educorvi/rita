@@ -2,6 +2,23 @@
     "name": "@educorvi/persistent-rita",
     "entries": [
         {
+            "version": "6.0.0",
+            "tag": "@educorvi/persistent-rita_v6.0.0",
+            "date": "Fri, 23 Feb 2024 11:14:38 GMT",
+            "comments": {
+                "major": [
+                    {
+                        "comment": "Update mysql2 peer dependency to v3"
+                    }
+                ],
+                "none": [
+                    {
+                        "comment": "Update dependencies"
+                    }
+                ]
+            }
+        },
+        {
             "version": "5.0.0",
             "tag": "@educorvi/persistent-rita_v5.0.0",
             "date": "Tue, 14 Mar 2023 19:16:22 GMT",

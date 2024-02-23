@@ -1,6 +1,14 @@
 # Change Log - @educorvi/persistent-rita
 
-This log was last generated on Tue, 14 Mar 2023 19:16:22 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Feb 2024 11:14:38 GMT and should not be manually modified.
+
+## 6.0.0
+
+Fri, 23 Feb 2024 11:14:38 GMT
+
+### Breaking changes
+
+-   Update mysql2 peer dependency to v3
 
 ## 5.0.0
 

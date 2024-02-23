@@ -188,7 +188,7 @@ importers:
   ../../rita-http:
     dependencies:
       '@educorvi/persistent-rita':
-        specifier: workspace:^5.0.0
+        specifier: workspace:^6.0.0
         version: link:../persistent-rita
       '@educorvi/rita':
         specifier: workspace:^5.0.0
