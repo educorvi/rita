@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@educorvi/rita",
+      "comment": "Update dependencies",
+      "type": "none"
+    }
+  ],
+  "packageName": "@educorvi/rita"
+}

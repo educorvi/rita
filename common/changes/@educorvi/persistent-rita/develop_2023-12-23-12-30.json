@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@educorvi/persistent-rita",
+      "comment": "Update mysql2 peer dependency to v3",
+      "type": "major"
+    }
+  ],
+  "packageName": "@educorvi/persistent-rita"
+}

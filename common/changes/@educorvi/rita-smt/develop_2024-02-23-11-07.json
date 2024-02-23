@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@educorvi/rita-smt",
+      "comment": "Update dependencies",
+      "type": "none"
+    }
+  ],
+  "packageName": "@educorvi/rita-smt"
+}
