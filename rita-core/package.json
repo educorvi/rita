@@ -33,7 +33,8 @@
     "dependencies": {
         "ajv": "^8.12.0",
         "ajv-formats": "^2.1.1",
-        "luxon": "^3.4.4"
+        "luxon": "^3.4.4",
+        "tslib": "^2.6.2"
     },
     "devDependencies": {
         "@adobe/jsonschema2md": "^7.1.5",
@@ -49,7 +50,6 @@
         "terser-webpack-plugin": "^5.3.10",
         "ts-jest": "^27.0.7",
         "ts-loader": "^9.5.1",
-        "tslib": "^2.6.2",
         "typedoc": "0.25.8",
         "typescript": "4.9.5",
         "webpack": "^5.90.3",

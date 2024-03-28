@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@educorvi/rita",
+      "comment": "Add tslib to dependencies",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@educorvi/rita"
+}
