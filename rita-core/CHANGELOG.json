@@ -2,6 +2,23 @@
     "name": "@educorvi/rita",
     "entries": [
         {
+            "version": "5.0.1",
+            "tag": "@educorvi/rita_v5.0.1",
+            "date": "Thu, 28 Mar 2024 16:26:46 GMT",
+            "comments": {
+                "none": [
+                    {
+                        "comment": "Update dependencies"
+                    }
+                ],
+                "patch": [
+                    {
+                        "comment": "Add tslib to dependencies"
+                    }
+                ]
+            }
+        },
+        {
             "version": "5.0.0",
             "tag": "@educorvi/rita_v5.0.0",
             "date": "Tue, 14 Mar 2023 19:16:22 GMT",

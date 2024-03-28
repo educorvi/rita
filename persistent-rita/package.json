@@ -27,7 +27,7 @@
         "reflect-metadata": "^0.2.1"
     },
     "devDependencies": {
-        "@educorvi/rita": "workspace:^5.0.0",
+        "@educorvi/rita": "workspace:^5.0.1",
         "@types/jest": "^27.0.3",
         "dotenv": "^16.4.5",
         "jest": "^27.4.5",
@@ -43,7 +43,7 @@
         "webpack-node-externals": "^3.0.0"
     },
     "peerDependencies": {
-        "@educorvi/rita": "^5.0.0",
+        "@educorvi/rita": "^5.0.1",
         "mysql2": "^3.6.5",
         "pg": "^8.7.1",
         "sqlite3": "^5.0.6",

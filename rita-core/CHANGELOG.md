@@ -1,6 +1,14 @@
 # Change Log - @educorvi/rita
 
-This log was last generated on Tue, 14 Mar 2023 19:16:22 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Mar 2024 16:26:46 GMT and should not be manually modified.
+
+## 5.0.1
+
+Thu, 28 Mar 2024 16:26:46 GMT
+
+### Patches
+
+-   Add tslib to dependencies
 
 ## 5.0.0
 
