@@ -29,8 +29,10 @@ export function assertDuration(value: any): asserts value is Duration {
     }
 }
 
-export function assertArray(value: any): asserts value is Array<any> {
-    if (!Array.isArray(value)) {
-        throw new TypeError();
+export function hasLength(
+    value: any
+): asserts value is Record<any, any> & { length: number } {
+    if (!('length' in value)) {
+        throw new TypeError('Value does not have a length property');
     }
 }
