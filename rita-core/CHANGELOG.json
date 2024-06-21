@@ -2,6 +2,23 @@
     "name": "@educorvi/rita",
     "entries": [
         {
+            "version": "5.1.0",
+            "tag": "@educorvi/rita_v5.1.0",
+            "date": "Fri, 21 Jun 2024 14:07:26 GMT",
+            "comments": {
+                "patch": [
+                    {
+                        "comment": "support length on anything that has a length, not just arrays"
+                    }
+                ],
+                "minor": [
+                    {
+                        "comment": "add ´allowDifferentTypes´ option to comparisons"
+                    }
+                ]
+            }
+        },
+        {
             "version": "5.0.1",
             "tag": "@educorvi/rita_v5.0.1",
             "date": "Thu, 28 Mar 2024 16:26:46 GMT",

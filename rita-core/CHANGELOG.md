@@ -1,6 +1,18 @@
 # Change Log - @educorvi/rita
 
-This log was last generated on Thu, 28 Mar 2024 16:26:46 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Jun 2024 14:07:26 GMT and should not be manually modified.
+
+## 5.1.0
+
+Fri, 21 Jun 2024 14:07:26 GMT
+
+### Minor changes
+
+-   add ´allowDifferentTypes´ option to comparisons
+
+### Patches
+
+-   support length on anything that has a length, not just arrays
 
 ## 5.0.1
 

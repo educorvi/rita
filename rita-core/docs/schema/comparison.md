@@ -42,12 +42,13 @@ Compare strings, dates or numbers with each other
 
 # Comparison Properties
 
-| Property                | Type      | Required | Nullable       | Defined by                                                                                                                                                         |
-| :---------------------- | :-------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [type](#type)           | `string`  | Required | cannot be null | [Comparison](comparison-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/type")           |
-| [operation](#operation) | `string`  | Required | cannot be null | [Comparison](comparison-properties-operation.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/operation") |
-| [dates](#dates)         | `boolean` | Optional | cannot be null | [Comparison](comparison-properties-dates.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/dates")         |
-| [arguments](#arguments) | `array`   | Required | cannot be null | [Comparison](comparison-properties-arguments.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/arguments") |
+| Property                                    | Type      | Required | Nullable       | Defined by                                                                                                                                                                             |
+| :------------------------------------------ | :-------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [type](#type)                               | `string`  | Required | cannot be null | [Comparison](comparison-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/type")                               |
+| [operation](#operation)                     | `string`  | Required | cannot be null | [Comparison](comparison-properties-operation.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/operation")                     |
+| [dates](#dates)                             | `boolean` | Optional | cannot be null | [Comparison](comparison-properties-dates.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/dates")                             |
+| [allowDifferentTypes](#allowdifferenttypes) | `boolean` | Optional | cannot be null | [Comparison](comparison-properties-allowdifferenttypes.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/allowDifferentTypes") |
+| [arguments](#arguments)                     | `array`   | Required | cannot be null | [Comparison](comparison-properties-arguments.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/arguments")                     |
 
 ## type
 
@@ -120,6 +121,24 @@ Indicates if dates are compared
 *   defined in: [Comparison](comparison-properties-dates.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/dates")
 
 ### dates Type
+
+`boolean`
+
+## allowDifferentTypes
+
+Indicates if different types are allowed inside a comparison. This follows the JavaScript rules for comparison (´===´ is used for ´equals´).
+
+`allowDifferentTypes`
+
+*   is optional
+
+*   Type: `boolean`
+
+*   cannot be null
+
+*   defined in: [Comparison](comparison-properties-allowdifferenttypes.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/allowDifferentTypes")
+
+### allowDifferentTypes Type
 
 `boolean`
 
