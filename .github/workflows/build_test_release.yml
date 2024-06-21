@@ -174,10 +174,12 @@ jobs:
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         needs: [release]
         uses: ./.github/workflows/docker.yml
+        secrets: inherit
     githubPackages:
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         needs: [release]
         uses: ./.github/workflows/github_packages.yml
+        secrets: inherit
     deploy:
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         needs: [release]
