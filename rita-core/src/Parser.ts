@@ -186,11 +186,7 @@ export default class Parser {
                     throw new UsageError('Invalid Date: ' + parameter);
                 }
             } else {
-                if (typeof parameter === 'number') {
-                    params.push(parameter);
-                } else {
-                    params.push(parameter);
-                }
+                params.push(parameter);
             }
         }
         return params;
@@ -207,7 +203,8 @@ export default class Parser {
                 jsonRuleset['dates']
             ),
             jsonRuleset['operation'],
-            jsonRuleset['dates']
+            jsonRuleset['dates'],
+            jsonRuleset['allowDifferentTypes']
         );
     }
 

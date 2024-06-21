@@ -25,6 +25,11 @@
             "type": "boolean",
             "default": false
         },
+        "allowDifferentTypes": {
+            "description": "Indicates if different types are allowed inside a comparison. This follows the JavaScript rules for comparison (´===´ is used for ´equals´).",
+            "type": "boolean",
+            "default": false
+        },
         "arguments": {
             "type": "array",
             "minItems": 2,
