@@ -34,20 +34,28 @@ export class Comparison extends Formula {
     public dates: boolean;
 
     /**
+     * Indicates if different types are allowed inside a comparison
+     */
+    public allowDifferentTypes: boolean;
+
+    /**
      * @constructor
      * @param formulaArguments The arguments
      * @param operation Type of the comparison
      * @param dates Indicates if dates are compared
+     * @param allowDifferentTypes Indicates if different types are allowed inside a comparison
      */
     constructor(
         formulaArguments: Array<Atom | number | Date | string | Calculation>,
         operation: comparisons,
-        dates: boolean = false
+        dates: boolean = false,
+        allowDifferentTypes: boolean = false
     ) {
         super();
         this.arguments = formulaArguments;
         this.operation = operation;
         this.dates = dates;
+        this.allowDifferentTypes = allowDifferentTypes;
     }
 
     toJsonReady(): Record<string, any> {
@@ -74,9 +82,11 @@ export class Comparison extends Formula {
         if (p1 === undefined || p2 === undefined) return false;
 
         if (typeof p1 !== typeof p2) {
-            throw new UsageError(
-                'Elements in comparison must have the same type'
-            );
+            if (!this.allowDifferentTypes) {
+                throw new UsageError(
+                    'Elements in comparison must have the same type'
+                );
+            }
         }
 
         if (p1 instanceof Date) p1 = p1.getTime();

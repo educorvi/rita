@@ -1,10 +1,4 @@
-import {
-    Comparison,
-    comparisons,
-    evaluateAll,
-    Parser,
-    UsageError,
-} from '../../src';
+import { evaluateAll, Parser, UsageError } from '../../src';
 // @ts-ignore
 import { exampleData, ruleTemplate } from '../assets/exampleData';
 // @ts-ignore
@@ -116,11 +110,25 @@ it('run math example', async () => {
 });
 
 it('error on different type', async () => {
-    const c = new Comparison([2, 'Test'], comparisons.equal);
+    const c = p.parseComparison({
+        type: 'comparison',
+        operation: 'smaller',
+        arguments: [2, '2'],
+    });
     try {
         await c.evaluate({});
         expect(true).toBe(false);
     } catch (e) {
         expect(e).toBeInstanceOf(UsageError);
     }
+});
+
+it('compare number with string', async () => {
+    const c = p.parseComparison({
+        type: 'comparison',
+        operation: 'equal',
+        allowDifferentTypes: true,
+        arguments: [2, '2'],
+    });
+    expect(await c.evaluate({})).toBe(false);
 });
