@@ -1,9 +1,11 @@
-FROM node:18-alpine as build
+FROM node:18-alpine AS build
 
 WORKDIR /app
+RUN apk add jq moreutils
 RUN corepack enable
 RUN npm install -g @microsoft/rush
 COPY . .
+RUN jq '.buildCacheEnabled = false' common/config/rush/build-cache.json | sponge common/config/rush/build-cache.json
 RUN rush update
 RUN rush build --to-except rita-http
 WORKDIR /app/rita-http
@@ -11,7 +13,7 @@ RUN rush-pnpm pack
 RUN tar zxvf rita-http-*.tgz
 
 
-FROM node:18-alpine as prod
+FROM node:18-alpine AS prod
 RUN apk add git
 
 ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.9.0/wait /wait
