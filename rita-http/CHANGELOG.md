@@ -1,6 +1,14 @@
 # Change Log - rita-http
 
-This log was last generated on Fri, 23 Feb 2024 11:14:38 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Jul 2024 11:35:12 GMT and should not be manually modified.
+
+## 4.0.3
+
+Tue, 02 Jul 2024 11:35:12 GMT
+
+### Patches
+
+-   Update dependencies
 
 ## 4.0.2
 

@@ -2,6 +2,21 @@
     "name": "@educorvi/rita",
     "entries": [
         {
+            "version": "5.1.1",
+            "tag": "@educorvi/rita_v5.1.1",
+            "date": "Tue, 02 Jul 2024 11:35:12 GMT",
+            "comments": {
+                "patch": [
+                    {
+                        "comment": "Update dependencies"
+                    },
+                    {
+                        "comment": "check if data is defined when testing for length property"
+                    }
+                ]
+            }
+        },
+        {
             "version": "5.1.0",
             "tag": "@educorvi/rita_v5.1.0",
             "date": "Fri, 21 Jun 2024 14:07:26 GMT",

@@ -15,7 +15,7 @@ importers:
         version: 0.2.1
     devDependencies:
       '@educorvi/rita':
-        specifier: workspace:^5.1.0
+        specifier: workspace:^5.1.1
         version: link:../rita-core
       '@types/jest':
         specifier: ^27.0.3
@@ -64,7 +64,7 @@ importers:
         version: 1.7.2
     devDependencies:
       '@educorvi/rita':
-        specifier: workspace:^5.1.0
+        specifier: workspace:^5.1.1
         version: link:../../rita-core
       '@types/jest':
         specifier: ^27.0.3
@@ -179,10 +179,10 @@ importers:
   ../../rita-http:
     dependencies:
       '@educorvi/persistent-rita':
-        specifier: workspace:^6.0.0
+        specifier: workspace:^6.0.1
         version: link:../persistent-rita
       '@educorvi/rita':
-        specifier: workspace:^5.1.0
+        specifier: workspace:^5.1.1
         version: link:../rita-core
       '@educorvi/rita-plugin-http':
         specifier: workspace:*
@@ -316,7 +316,7 @@ importers:
         version: 9.2.0
     devDependencies:
       '@educorvi/rita':
-        specifier: workspace:^5.1.0
+        specifier: workspace:^5.1.1
         version: link:../../rita-core
       '@rollup/plugin-commonjs':
         specifier: ^21.1.0
@@ -9121,14 +9121,6 @@ packages:
       lru-cache: 6.0.0
     dev: true
 
-  /semver@7.6.0:
-    resolution: {integrity: sha512-EnwXhrlwXMk9gKu5/flx5sv/an57AkRplG3hTK68W7FRDN+k+OWBj65M7719OkA82XLBxrcX0KSHj+X5COhOVg==}
-    engines: {node: '>=10'}
-    hasBin: true
-    dependencies:
-      lru-cache: 6.0.0
-    dev: true
-
   /semver@7.6.2:
     resolution: {integrity: sha512-FNAIBWCx9qcRhoHcgcJ0gvU7SN1lYU2ZXuSfl04bSC5OpvDHFyJCjdNHomPXxjQlCBU67YW64PzY7/VIEH7F2w==}
     engines: {node: '>=10'}
@@ -10014,7 +10006,7 @@ packages:
       json5: 2.2.3
       lodash.memoize: 4.1.2
       make-error: 1.3.6
-      semver: 7.6.0
+      semver: 7.6.2
       typescript: 4.9.5
       yargs-parser: 20.2.9
     dev: true
@@ -10029,7 +10021,7 @@ packages:
       chalk: 4.1.2
       enhanced-resolve: 5.15.0
       micromatch: 4.0.5
-      semver: 7.6.0
+      semver: 7.6.2
       source-map: 0.7.4
       typescript: 4.9.5
       webpack: 5.92.1(webpack-cli@4.9.2)

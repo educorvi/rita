@@ -1,6 +1,14 @@
 # Change Log - @educorvi/persistent-rita
 
-This log was last generated on Fri, 23 Feb 2024 11:14:38 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Jul 2024 11:35:12 GMT and should not be manually modified.
+
+## 6.0.1
+
+Tue, 02 Jul 2024 11:35:12 GMT
+
+### Patches
+
+-   Update dependencies
 
 ## 6.0.0
 

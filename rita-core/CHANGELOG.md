@@ -1,6 +1,15 @@
 # Change Log - @educorvi/rita
 
-This log was last generated on Fri, 21 Jun 2024 14:07:26 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Jul 2024 11:35:12 GMT and should not be manually modified.
+
+## 5.1.1
+
+Tue, 02 Jul 2024 11:35:12 GMT
+
+### Patches
+
+-   Update dependencies
+-   check if data is defined when testing for length property
 
 ## 5.1.0
 
