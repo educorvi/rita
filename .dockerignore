@@ -1,12 +1,11 @@
 **/node_modules
 **/temp
+**/.env
+common/temp
 Dockerfile
 docs
 .github
 .run
-.git
-.gitattributes
-.gitignore
 .prettierignore
 .prettierrc.json
 commitlint.config.js
