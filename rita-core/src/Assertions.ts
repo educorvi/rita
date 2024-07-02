@@ -32,7 +32,7 @@ export function assertDuration(value: any): asserts value is Duration {
 export function hasLength(
     value: any
 ): asserts value is Record<any, any> & { length: number } {
-    if (!value.hasOwnProperty('length')) {
+    if (!value || !value.hasOwnProperty('length')) {
         throw new TypeError('Value does not have a length property');
     }
 }
