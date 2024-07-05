@@ -2,6 +2,18 @@
     "name": "@educorvi/rita",
     "entries": [
         {
+            "version": "5.1.2",
+            "tag": "@educorvi/rita_v5.1.2",
+            "date": "Fri, 05 Jul 2024 12:45:38 GMT",
+            "comments": {
+                "patch": [
+                    {
+                        "comment": "better error messages"
+                    }
+                ]
+            }
+        },
+        {
             "version": "5.1.1",
             "tag": "@educorvi/rita_v5.1.1",
             "date": "Tue, 02 Jul 2024 11:35:12 GMT",

@@ -15,7 +15,7 @@ importers:
         version: 0.2.1
     devDependencies:
       '@educorvi/rita':
-        specifier: workspace:^5.1.1
+        specifier: workspace:^5.1.2
         version: link:../rita-core
       '@types/jest':
         specifier: ^27.0.3
@@ -64,7 +64,7 @@ importers:
         version: 1.7.2
     devDependencies:
       '@educorvi/rita':
-        specifier: workspace:^5.1.1
+        specifier: workspace:^5.1.2
         version: link:../../rita-core
       '@types/jest':
         specifier: ^27.0.3
@@ -182,7 +182,7 @@ importers:
         specifier: workspace:^6.0.1
         version: link:../persistent-rita
       '@educorvi/rita':
-        specifier: workspace:^5.1.1
+        specifier: workspace:^5.1.2
         version: link:../rita-core
       '@educorvi/rita-plugin-http':
         specifier: workspace:*
@@ -316,7 +316,7 @@ importers:
         version: 9.2.0
     devDependencies:
       '@educorvi/rita':
-        specifier: workspace:^5.1.1
+        specifier: workspace:^5.1.2
         version: link:../../rita-core
       '@rollup/plugin-commonjs':
         specifier: ^21.1.0

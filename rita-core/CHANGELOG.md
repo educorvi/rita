@@ -1,6 +1,14 @@
 # Change Log - @educorvi/rita
 
-This log was last generated on Tue, 02 Jul 2024 11:35:12 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Jul 2024 12:45:38 GMT and should not be manually modified.
+
+## 5.1.2
+
+Fri, 05 Jul 2024 12:45:38 GMT
+
+### Patches
+
+-   better error messages
 
 ## 5.1.1
 
