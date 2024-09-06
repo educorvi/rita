@@ -1,6 +1,14 @@
 # Change Log - @educorvi/rita
 
-This log was last generated on Fri, 05 Jul 2024 12:45:38 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Sep 2024 14:13:15 GMT and should not be manually modified.
+
+## 5.1.3
+
+Fri, 06 Sep 2024 14:13:15 GMT
+
+### Patches
+
+-   don't fail on error due to calling `toString()` on undefined
 
 ## 5.1.2
 
