@@ -1,45 +1,64 @@
 import { Duration } from 'luxon';
+import { Formula } from './logicElements';
+import {
+    HasNoLengthError,
+    NotBooleanError,
+    NotDateError,
+    NotDurationError,
+    NotNumberError,
+    NotNumberOrDateError,
+} from './Errors';
 
-export function assertBoolean(value: unknown): asserts value is boolean {
+export function assertBoolean(
+    value: unknown,
+    context: Formula
+): asserts value is boolean {
     if (typeof value !== 'boolean') {
-        throw new TypeError('Value is not a boolean: ' + value?.toString());
+        throw new NotBooleanError(context, value);
     }
 }
 
-export function assertNumber(value: unknown): asserts value is number {
+export function assertNumber(
+    value: unknown,
+    context: Formula
+): asserts value is number {
     if (typeof value !== 'number') {
-        throw new TypeError('Value is not a number: ' + value?.toString());
+        throw new NotNumberError(context, value);
     }
 }
 
-export function assertDate(value: unknown): asserts value is Date {
+export function assertDate(
+    value: unknown,
+    context: Formula
+): asserts value is Date {
     if (!(value instanceof Date)) {
-        throw new TypeError('Value is not a date: ' + value?.toString());
+        throw new NotDateError(context, value);
     }
 }
 
 export function assertNumberOrDate(
-    value: unknown
+    value: unknown,
+    context: Formula
 ): asserts value is number | Date {
     if (!(typeof value === 'number' || value instanceof Date)) {
-        throw new TypeError(
-            'Value is neither a number nor a data: ' + value?.toString()
-        );
+        throw new NotNumberOrDateError(context, value);
     }
 }
 
-export function assertDuration(value: unknown): asserts value is Duration {
+export function assertDuration(
+    value: unknown,
+    context: Formula
+): asserts value is Duration {
     if (!Duration.isDuration(value)) {
-        throw new TypeError('Value is not a duration: ' + value?.toString());
+        throw new NotDurationError(context, value);
     }
 }
 
 export function hasLength(
-    value: unknown
-): asserts value is Record<any, any> & { length: number } {
+    value: unknown,
+    context: Formula
+): asserts value is unknown & { length: number } {
     if (!value || !value.hasOwnProperty('length')) {
-        throw new TypeError(
-            'Value does not have a length property: ' + value?.toString()
-        );
+        throw new HasNoLengthError(context, value);
     }
 }

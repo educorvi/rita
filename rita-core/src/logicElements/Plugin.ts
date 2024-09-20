@@ -35,12 +35,12 @@ export abstract class Plugin extends Formula {
     async evaluate(
         data: Record<string, any>
     ): Promise<FormulaResults | Array<FormulaResults>> {
-        if (!this.formula) throw new UsageError('Empty formula');
+        if (!this.formula) throw new UsageError('Empty formula', this);
         return this.formula.evaluate(await this.enrichData(data));
     }
 
     validate(): boolean {
-        if (!this.formula) throw new UsageError('Empty formula');
+        if (!this.formula) throw new UsageError('Empty formula', this);
         return this.formula.validate();
     }
 

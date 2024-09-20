@@ -83,6 +83,8 @@ export class DateCalculation extends Formula {
     ): (d1: Date | Duration, d2: Date | Duration) => Date | Duration {
         const operation = this.operation;
 
+        const context = this;
+
         return function (
             d1: Date | Duration,
             d2: Date | Duration
@@ -120,7 +122,10 @@ export class DateCalculation extends Formula {
                 case dateOperations.subtract:
                     return lDate.minus(duration).toJSDate();
                 default:
-                    throw new RulesetError('Invalid Operation for Dates');
+                    throw new RulesetError(
+                        'Invalid Operation for Dates',
+                        context
+                    );
             }
         };
     }
@@ -152,7 +157,7 @@ export class DateCalculation extends Formula {
 
         //Map numbers to durations
         const tmp = results.map((item) => {
-            assertNumberOrDate(item);
+            assertNumberOrDate(item, this);
             if (typeof item === 'number') {
                 return Duration.fromObject(
                     {
