@@ -1,6 +1,14 @@
 # Change Log - @educorvi/rita
 
-This log was last generated on Fri, 20 Sep 2024 12:55:57 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Sep 2024 13:53:01 GMT and should not be manually modified.
+
+## 5.2.1
+
+Fri, 20 Sep 2024 13:53:01 GMT
+
+### Patches
+
+-   refactor getPropertyByStringMethod
 
 ## 5.2.0
 
