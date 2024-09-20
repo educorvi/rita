@@ -80,14 +80,20 @@ export class Calculation extends Formula {
             case operations.divide:
                 tempFunc = (x1, x2) => {
                     if (x2 === 0)
-                        throw new UsageError('Division by zero is not allowed');
+                        throw new UsageError(
+                            'Division by zero is not allowed',
+                            this
+                        );
                     return x1 / x2;
                 };
                 break;
             case operations.modulo:
                 tempFunc = (x1, x2) => {
                     if (x2 === 0)
-                        throw new UsageError('Division by zero is not allowed');
+                        throw new UsageError(
+                            'Division by zero is not allowed',
+                            this
+                        );
                     return x1 - Math.floor(x1 / x2) * x2;
                 };
                 break;
@@ -108,7 +114,8 @@ export class Calculation extends Formula {
         for (const parameter of results) {
             if (parameter instanceof Date) {
                 throw new UsageError(
-                    'No dates in calculation allowed! Use dateCalculation'
+                    'No dates in calculation allowed! Use dateCalculation',
+                    this
                 );
             }
         }

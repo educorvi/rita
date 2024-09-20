@@ -49,7 +49,8 @@ export class Quantifier extends Formula {
         //Check that it is indeed an array
         if (!Array.isArray(ar)) {
             throw new UsageError(
-                "Property 'array' in a quantifier must be an array!"
+                "Property 'array' in a quantifier must be an array!",
+                this
             );
         }
 

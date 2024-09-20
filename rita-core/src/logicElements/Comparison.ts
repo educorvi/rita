@@ -84,7 +84,8 @@ export class Comparison extends Formula {
         if (typeof p1 !== typeof p2) {
             if (!this.allowDifferentTypes) {
                 throw new UsageError(
-                    'Elements in comparison must have the same type'
+                    'Elements in comparison must have the same type',
+                    this
                 );
             }
         }

@@ -21,7 +21,7 @@ export class Macro extends Formula {
                 return new Date();
             case 'length':
                 const ar = await this.array?.evaluate(data);
-                hasLength(ar);
+                hasLength(ar, this);
                 return ar.length;
         }
     }
