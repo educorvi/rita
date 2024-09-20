@@ -35,10 +35,14 @@ export class Atom extends Formula {
     /**
      * Get the value of an object property or array by a path that is passed as string
      * @param object object
-     * @private
+     * @param path path
+     * @param context the context of the formula
      */
-    getPropertyByString(object: any): boolean | string | number {
-        let path = this.path;
+    static getPropertyByString(
+        object: any,
+        path: string,
+        context?: Formula
+    ): Promise<FormulaResults | FormulaResults[]> {
         path = path.replace(/\[(\w+)]/g, '.$1'); // convert indexes to properties
         path = path.replace(/^\./, ''); // strip a leading dot
         const a = path.split('.');
@@ -49,11 +53,22 @@ export class Atom extends Formula {
             } else {
                 throw new UndefinedPathError(
                     'Undefinded path in data: ' + path,
-                    this
+                    context
                 );
             }
         }
         return object;
+    }
+
+    /**
+     * Get the value of an object property or array by a path that is passed as string
+     * @param object object
+     * @private
+     */
+    getPropertyByString(
+        object: any
+    ): Promise<FormulaResults | FormulaResults[]> {
+        return Atom.getPropertyByString(object, this.path, this);
     }
 
     validate(): boolean {
