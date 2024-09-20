@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@educorvi/rita",
+      "comment": "refactor getPropertyByStringMethod",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@educorvi/rita"
+}
