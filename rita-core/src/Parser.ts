@@ -161,7 +161,11 @@ export default class Parser {
      * @param jsonRuleset the atom
      */
     public parseAtom(jsonRuleset: Record<string, any>): Atom {
-        return new Atom(jsonRuleset['path'], !!jsonRuleset['isDate']);
+        return new Atom(
+            jsonRuleset['path'],
+            !!jsonRuleset['isDate'],
+            jsonRuleset['default']
+        );
     }
 
     /**

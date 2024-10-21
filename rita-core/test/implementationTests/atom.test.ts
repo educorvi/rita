@@ -1,6 +1,8 @@
 import { Parser } from '../../src';
 // @ts-ignore
 import { exampleData, ruleTemplate } from '../assets/exampleData';
+// @ts-ignore
+import ruleset_defaultVal from '../assets/defaultVal.json';
 
 const p = new Parser();
 
@@ -43,4 +45,12 @@ it('second customer rated', () => {
         },
     });
     expect(rule.evaluate(exampleData)).resolves.toBe(true);
+});
+it('use default value', () => {
+    const rule = p.parseRuleSet(ruleset_defaultVal)[0];
+    expect(rule.evaluate({})).resolves.toBe(true);
+});
+it('do not use default value when value is specified', () => {
+    const rule = p.parseRuleSet(ruleset_defaultVal)[0];
+    expect(rule.evaluate({ fancyness: 'very' })).resolves.toBe(false);
 });

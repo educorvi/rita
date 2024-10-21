@@ -14,6 +14,8 @@ import rule_qfa from './assets/quantifiers_fa.json';
 // @ts-ignore
 import rule_qex from './assets/quantifiers_ex.json';
 // @ts-ignore
+import rule_defaultValue from './assets/defaultVal.json';
+// @ts-ignore
 import macros from './assets/macros';
 import { DateTime } from 'luxon';
 
@@ -132,6 +134,7 @@ describe('Validate Rule examples', () => {
             rule_qfa,
             rule_qex,
             macros,
+            rule_defaultValue,
         ];
         for (let i = 0; i < examples.length; i++) {
             const example = examples[i];
