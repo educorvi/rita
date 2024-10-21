@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@educorvi/rita",
+      "comment": "make `getPropertyByString` synchronous",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@educorvi/rita"
+}
