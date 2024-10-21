@@ -46,6 +46,8 @@
 
 *   [Unary Arguments](./operator-oneof-unary-operator-properties-unary-arguments.md) – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/operator.json#/oneOf/1/properties/arguments`
 
+*   [Untitled array in Atom](./atom-properties-default-oneof-4.md) – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/atom.json#/properties/default/oneOf/4`
+
 *   [Untitled array in Calculation](./calculation-properties-arguments.md) – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/arguments`
 
 *   [Untitled array in Comparison](./comparison-properties-arguments.md) – `https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/arguments`
