@@ -1,6 +1,6 @@
 {
     "name": "@educorvi/rita",
-    "version": "5.3.1",
+    "version": "5.3.2",
     "description": "JSON Schema for rules that can be used to evaluate data and a Typescript implementation to evaluate those rules",
     "bugs": {
         "url": "https://github.com/educorvi/rita/issues"

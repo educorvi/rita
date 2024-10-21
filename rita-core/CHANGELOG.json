@@ -2,6 +2,18 @@
     "name": "@educorvi/rita",
     "entries": [
         {
+            "version": "5.3.2",
+            "tag": "@educorvi/rita_v5.3.2",
+            "date": "Mon, 21 Oct 2024 09:25:14 GMT",
+            "comments": {
+                "patch": [
+                    {
+                        "comment": "fix type guard for ArrayLike"
+                    }
+                ]
+            }
+        },
+        {
             "version": "5.3.1",
             "tag": "@educorvi/rita_v5.3.1",
             "date": "Mon, 21 Oct 2024 08:48:52 GMT",
