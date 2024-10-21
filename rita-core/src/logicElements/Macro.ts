@@ -1,6 +1,6 @@
 import { Formula, FormulaResults } from './Formula';
 import { Atom } from './Atom';
-import { hasLength } from '../Assertions';
+import { assertArrayLike } from '../Assertions';
 
 export class Macro extends Formula {
     /** Indicates the type of this atom **/
@@ -21,7 +21,7 @@ export class Macro extends Formula {
                 return new Date();
             case 'length':
                 const ar = await this.array?.evaluate(data);
-                hasLength(ar, this);
+                assertArrayLike(ar, this);
                 return ar.length;
         }
     }

@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@educorvi/rita",
+      "comment": "fix type guard for ArrayLike",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@educorvi/rita"
+}
