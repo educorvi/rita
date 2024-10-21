@@ -1,6 +1,14 @@
 # Change Log - @educorvi/rita
 
-This log was last generated on Mon, 21 Oct 2024 08:14:32 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Oct 2024 08:48:52 GMT and should not be manually modified.
+
+## 5.3.1
+
+Mon, 21 Oct 2024 08:48:52 GMT
+
+### Patches
+
+-   fix incorrect comparisons
 
 ## 5.3.0
 
