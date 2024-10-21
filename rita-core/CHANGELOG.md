@@ -1,6 +1,14 @@
 # Change Log - @educorvi/rita
 
-This log was last generated on Mon, 21 Oct 2024 09:25:14 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Oct 2024 09:56:49 GMT and should not be manually modified.
+
+## 5.3.3
+
+Mon, 21 Oct 2024 09:56:49 GMT
+
+### Patches
+
+-   make `getPropertyByString` synchronous
 
 ## 5.3.2
 
