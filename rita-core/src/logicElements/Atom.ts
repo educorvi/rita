@@ -58,7 +58,7 @@ export class Atom extends Formula {
             const k = a[i];
             if (k in object) {
                 object = object[k];
-            } else if (defaultVal) {
+            } else if (defaultVal !== undefined) {
                 return defaultVal;
             } else {
                 throw new UndefinedPathError(
@@ -96,7 +96,7 @@ export class Atom extends Formula {
             path: this.path,
         };
         if (this.isDate) at['isDate'] = true;
-        if (this.defaultValue) at['default'] = this.defaultValue;
+        if (this.defaultValue !== undefined) at['default'] = this.defaultValue;
         return at;
     }
 
