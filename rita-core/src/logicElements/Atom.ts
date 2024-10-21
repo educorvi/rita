@@ -45,12 +45,12 @@ export class Atom extends Formula {
      * @param defaultVal default value to return if path is not found
      * @param context the context of the formula
      */
-    static async getPropertyByString(
+    static getPropertyByString(
         object: any,
         path: string,
         defaultVal?: FormulaResults | Array<FormulaResults>,
         context?: Formula
-    ): Promise<FormulaResults | FormulaResults[]> {
+    ): FormulaResults | FormulaResults[] {
         path = path.replace(/\[(\w+)]/g, '.$1'); // convert indexes to properties
         path = path.replace(/^\./, ''); // strip a leading dot
         const a = path.split('.');
@@ -75,9 +75,7 @@ export class Atom extends Formula {
      * @param object object
      * @private
      */
-    getPropertyByString(
-        object: any
-    ): Promise<FormulaResults | FormulaResults[]> {
+    getPropertyByString(object: any): FormulaResults | FormulaResults[] {
         return Atom.getPropertyByString(
             object,
             this.path,
@@ -104,7 +102,7 @@ export class Atom extends Formula {
         data: Record<string, any>
     ): Promise<FormulaResults | FormulaResults[]> {
         let val: FormulaResults | FormulaResults[] =
-            await this.getPropertyByString(data);
+            this.getPropertyByString(data);
 
         if (typeof val === 'string' && this.isDate) {
             return parseDate(val, this);
