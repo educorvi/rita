@@ -25,22 +25,30 @@ export class Atom extends Formula {
      */
     public path: string;
     public isDate: boolean;
+    public defaultValue?: FormulaResults | Array<FormulaResults>;
 
-    constructor(path: string, isDate: boolean = false) {
+    constructor(
+        path: string,
+        isDate: boolean = false,
+        defaultValue?: FormulaResults | Array<FormulaResults>
+    ) {
         super();
         this.path = path;
         this.isDate = isDate;
+        this.defaultValue = defaultValue;
     }
 
     /**
      * Get the value of an object property or array by a path that is passed as string
      * @param object object
      * @param path path
+     * @param defaultVal default value to return if path is not found
      * @param context the context of the formula
      */
-    static getPropertyByString(
+    static async getPropertyByString(
         object: any,
         path: string,
+        defaultVal?: FormulaResults | Array<FormulaResults>,
         context?: Formula
     ): Promise<FormulaResults | FormulaResults[]> {
         path = path.replace(/\[(\w+)]/g, '.$1'); // convert indexes to properties
@@ -50,6 +58,8 @@ export class Atom extends Formula {
             const k = a[i];
             if (k in object) {
                 object = object[k];
+            } else if (defaultVal) {
+                return defaultVal;
             } else {
                 throw new UndefinedPathError(
                     'Undefinded path in data: ' + path,
@@ -68,7 +78,12 @@ export class Atom extends Formula {
     getPropertyByString(
         object: any
     ): Promise<FormulaResults | FormulaResults[]> {
-        return Atom.getPropertyByString(object, this.path, this);
+        return Atom.getPropertyByString(
+            object,
+            this.path,
+            this.defaultValue,
+            this
+        );
     }
 
     validate(): boolean {
@@ -81,13 +96,15 @@ export class Atom extends Formula {
             path: this.path,
         };
         if (this.isDate) at['isDate'] = true;
+        if (this.defaultValue) at['default'] = this.defaultValue;
         return at;
     }
 
     async evaluate(
         data: Record<string, any>
-    ): Promise<FormulaResults | Array<FormulaResults>> {
-        const val = this.getPropertyByString(data);
+    ): Promise<FormulaResults | FormulaResults[]> {
+        let val: FormulaResults | FormulaResults[] =
+            await this.getPropertyByString(data);
 
         if (typeof val === 'string' && this.isDate) {
             return parseDate(val, this);

@@ -17,6 +17,26 @@
             "type": "boolean",
             "default": false,
             "description": "Must be set to true if the atom should be parsed as a date"
+        },
+        "default": {
+            "oneOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "number"
+                },
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                {
+                    "type": "array"
+                }
+            ]
         }
     },
     "required": ["type", "path"],
