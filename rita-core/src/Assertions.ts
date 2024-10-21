@@ -54,11 +54,11 @@ export function assertDuration(
     }
 }
 
-export function hasLength(
+export function assertArrayLike(
     value: unknown,
     context: Formula
 ): asserts value is unknown & { length: number } {
-    if (!value || !value.hasOwnProperty('length')) {
+    if (!value?.hasOwnProperty('length')) {
         throw new HasNoLengthError(context, value);
     }
 }
