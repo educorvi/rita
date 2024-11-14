@@ -1,4 +1,4 @@
-FROM node:18-alpine AS build
+FROM node:22-alpine AS build
 
 WORKDIR /app
 RUN apk add jq moreutils
@@ -13,7 +13,7 @@ RUN rush-pnpm pack
 RUN tar zxvf rita-http-*.tgz
 
 
-FROM node:18-alpine AS prod
+FROM node:22-alpine AS prod
 RUN apk add git
 
 ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.9.0/wait /wait
