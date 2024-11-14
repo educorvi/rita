@@ -289,6 +289,7 @@ export default class Parser {
             jsonRuleset['type'],
             array,
             jsonRuleset['placeholder'],
+            jsonRuleset['indexPlaceholder'],
             this.parseFormula(jsonRuleset['rule'])
         );
     }
