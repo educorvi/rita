@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@educorvi/smtlib",
+      "comment": "Update dependencies",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@educorvi/smtlib"
+}
