@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@educorvi/rita",
+      "comment": "Fix getPropertyByString for undefined array item",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@educorvi/rita"
+}
