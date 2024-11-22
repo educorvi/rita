@@ -4,6 +4,8 @@ import { Parser } from '../../src';
 import rule_qfa from '../assets/quantifiers_fa.json';
 // @ts-ignore
 import rule_qex from '../assets/quantifiers_ex.json';
+// @ts-ignore
+import rule_qit from '../assets/quantifiers_indexTests.json';
 import { evaluateAll } from '../../src';
 import { UsageError } from '../../src';
 
@@ -99,5 +101,19 @@ describe('exists', () => {
             arraydata: [val1, val2, val3],
         });
         res.details.forEach((it) => expect(it.result).toBe(false));
+    });
+
+    it('index placeholder false', async () => {
+        const res = await evaluateAll(p.parseRuleSet(rule_qit), {
+            arraydata: [true, false, false],
+        });
+        res.details.forEach((it) => expect(it.result).toBe(false));
+    });
+
+    it('index placeholder true', async () => {
+        const res = await evaluateAll(p.parseRuleSet(rule_qit), {
+            arraydata: [false, false, true],
+        });
+        res.details.forEach((it) => expect(it.result).toBe(true));
     });
 });
