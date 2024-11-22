@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@educorvi/rita",
+      "comment": "Add index in quantifier environment",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@educorvi/rita"
+}
