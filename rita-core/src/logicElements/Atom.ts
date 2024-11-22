@@ -56,6 +56,16 @@ export class Atom extends Formula {
         const a = path.split('.');
         for (let i = 0, n = a.length; i < n; ++i) {
             const k = a[i];
+            if (typeof object === 'undefined') {
+                if (defaultVal !== undefined) {
+                    return defaultVal;
+                } else {
+                    throw new UndefinedPathError(
+                        'Undefinded path in data: ' + path,
+                        context
+                    );
+                }
+            }
             if (k in object) {
                 object = object[k];
             } else if (defaultVal !== undefined) {

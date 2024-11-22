@@ -6,6 +6,8 @@ import rule_qfa from '../assets/quantifiers_fa.json';
 import rule_qex from '../assets/quantifiers_ex.json';
 // @ts-ignore
 import rule_qit from '../assets/quantifiers_indexTests.json';
+// @ts-ignore
+import rule_qit2 from '../assets/quantifiers_indexTests2.json';
 import { evaluateAll } from '../../src';
 import { UsageError } from '../../src';
 
@@ -113,6 +115,13 @@ describe('exists', () => {
     it('index placeholder true', async () => {
         const res = await evaluateAll(p.parseRuleSet(rule_qit), {
             arraydata: [false, false, true],
+        });
+        res.details.forEach((it) => expect(it.result).toBe(true));
+    });
+
+    it('undefined in array', async () => {
+        const res = await evaluateAll(p.parseRuleSet(rule_qit2), {
+            arraydata: [undefined, { boolean: true }, undefined],
         });
         res.details.forEach((it) => expect(it.result).toBe(true));
     });
