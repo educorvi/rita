@@ -29,6 +29,12 @@
             "type": "string",
             "minLength": 1
         },
+        "indexPlaceholder": {
+            "description": "This is a placeholder name for the current index of the array object. This is the property name with wich you can reference the current index in the subsequent rule",
+            "type": "string",
+            "minLength": 1,
+            "default": "index"
+        },
         "rule": {
             "$ref": "formula.json"
         }

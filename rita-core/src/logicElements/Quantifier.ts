@@ -19,6 +19,11 @@ export class Quantifier extends Formula {
     public placeholder: string;
 
     /**
+     * The property name under which the current index will be merged into the data.
+     */
+    public indexPlaceholder: string;
+
+    /**
      * The formula to evaluate for each value
      */
     public formula: Formula;
@@ -27,6 +32,7 @@ export class Quantifier extends Formula {
         quantifier: 'forall' | 'exists',
         array: Atom | Array<Formula>,
         placeholder: string,
+        indexPlaceholder: string = 'index',
         formula: Formula
     ) {
         super();
@@ -34,6 +40,7 @@ export class Quantifier extends Formula {
         this.array = array;
         this.placeholder = placeholder;
         this.formula = formula;
+        this.indexPlaceholder = indexPlaceholder;
     }
 
     async evaluate(data: Record<string, any>): Promise<boolean> {
@@ -55,8 +62,9 @@ export class Quantifier extends Formula {
         }
 
         //Execute forall respectively exists
-        for (const arrayElement of ar) {
-            data[this.placeholder] = arrayElement;
+        for (let i = 0; i < ar.length; i++) {
+            data[this.placeholder] = ar[i];
+            data[this.indexPlaceholder] = i;
             const res = await this.formula.evaluate(data);
             if (this.quantifier === 'forall' && !res) {
                 return false;
