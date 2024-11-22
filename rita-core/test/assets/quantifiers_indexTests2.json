@@ -1,0 +1,38 @@
+{
+    "$schema": "../../src/schema/schema.json",
+    "rules": [
+        {
+            "id": "exists",
+            "comment": "",
+            "rule": {
+                "type": "exists",
+                "array": {
+                    "type": "atom",
+                    "path": "arraydata"
+                },
+                "placeholder": "arrayItem",
+                "rule": {
+                    "type": "and",
+                    "arguments": [
+                        {
+                            "type": "atom",
+                            "path": "arrayItem.boolean",
+                            "default": false
+                        },
+                        {
+                            "type": "comparison",
+                            "operation": "equal",
+                            "arguments": [
+                                {
+                                    "type": "atom",
+                                    "path": "index"
+                                },
+                                1
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}
