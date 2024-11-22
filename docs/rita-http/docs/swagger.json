@@ -1,4 +1,5 @@
 {
+	"openapi": "3.0.0",
 	"components": {
 		"examples": {},
 		"headers": {},
@@ -6,6 +7,103 @@
 		"requestBodies": {},
 		"responses": {},
 		"schemas": {
+			"Record_string.string_": {
+				"properties": {},
+				"additionalProperties": {
+					"type": "string"
+				},
+				"type": "object",
+				"description": "Construct a type with a set of properties K of type T"
+			},
+			"welcomeMessage": {
+				"properties": {
+					"plugins": {
+						"items": {
+							"$ref": "#/components/schemas/Record_string.string_"
+						},
+						"type": "array"
+					},
+					"ritaVersion": {
+						"type": "string"
+					},
+					"message": {
+						"type": "string"
+					},
+					"version": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"plugins",
+					"ritaVersion",
+					"message",
+					"version"
+				],
+				"type": "object",
+				"description": "Root controller"
+			},
+			"Ruleset": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id",
+					"name",
+					"description"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"errorResponse": {
+				"properties": {
+					"details": {
+						"type": "string"
+					},
+					"message": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"message"
+				],
+				"type": "object"
+			},
+			"ritaBody": {
+				"properties": {
+					"rules": {
+						"items": {},
+						"type": "array"
+					},
+					"version": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"$schema": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"id": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"rules"
+				],
+				"type": "object",
+				"description": "Type for the body of a request, that edits rita"
+			},
 			"evaluationResult": {
 				"properties": {
 					"details": {
@@ -55,105 +153,11 @@
 				"type": "object",
 				"description": "Type of results of an evaluation"
 			},
-			"errorResponse": {
-				"properties": {
-					"details": {
-						"type": "string"
-					},
-					"message": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"message"
-				],
-				"type": "object"
-			},
 			"evaluationData": {
 				"properties": {},
 				"additionalProperties": {},
 				"type": "object",
 				"description": "type of data to evaluate against"
-			},
-			"Ruleset": {
-				"properties": {
-					"id": {
-						"type": "string"
-					},
-					"name": {
-						"type": "string"
-					},
-					"description": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"id",
-					"name",
-					"description"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"ritaBody": {
-				"properties": {
-					"rules": {
-						"items": {},
-						"type": "array"
-					},
-					"version": {
-						"type": "string"
-					},
-					"description": {
-						"type": "string"
-					},
-					"$schema": {
-						"type": "string"
-					},
-					"name": {
-						"type": "string"
-					},
-					"id": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"rules"
-				],
-				"type": "object",
-				"description": "Type for the body of a request, that edits rita"
-			},
-			"Record_string.string_": {
-				"properties": {},
-				"type": "object",
-				"description": "Construct a type with a set of properties K of type T"
-			},
-			"welcomeMessage": {
-				"properties": {
-					"plugins": {
-						"items": {
-							"$ref": "#/components/schemas/Record_string.string_"
-						},
-						"type": "array"
-					},
-					"ritaVersion": {
-						"type": "string"
-					},
-					"message": {
-						"type": "string"
-					},
-					"version": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"plugins",
-					"ritaVersion",
-					"message",
-					"version"
-				],
-				"type": "object",
-				"description": "Root controller"
 			}
 		},
 		"securitySchemes": {
@@ -171,7 +175,7 @@
 	},
 	"info": {
 		"title": "rita-http",
-		"version": "4.0.3",
+		"version": "5.0.0",
 		"description": "HTTP API for Rita",
 		"license": {
 			"name": "MIT"
@@ -180,80 +184,34 @@
 			"name": "Julian Pollinger"
 		}
 	},
-	"openapi": "3.0.0",
 	"paths": {
-		"/evaluate/{rulesetID}": {
-			"post": {
-				"operationId": "EvaluateRuleset",
+		"/": {
+			"get": {
+				"operationId": "GetWelcome",
 				"responses": {
 					"200": {
 						"description": "Ok",
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/evaluationResult"
-								}
-							}
-						}
-					},
-					"401": {
-						"description": "Unauthorized",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/errorResponse"
-								}
-							}
-						}
-					},
-					"404": {
-						"description": "Not Found",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/errorResponse"
-								}
-							}
-						}
-					},
-					"422": {
-						"description": "Validation Error: An invalid object has been passed",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/errorResponse"
+									"$ref": "#/components/schemas/welcomeMessage"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"version": "3.0.0",
+											"message": "Welcome to the RITA API.",
+											"ritaVersion": "3.0.1",
+											"plugins": []
+										}
+									}
 								}
 							}
 						}
 					}
 				},
-				"security": [
-					{
-						"api_key": [
-							"evaluate"
-						]
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "rulesetID",
-						"required": true,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/evaluationData"
-							}
-						}
-					}
-				}
+				"security": [],
+				"parameters": []
 			}
 		},
 		"/rulesets": {
@@ -447,33 +405,78 @@
 				]
 			}
 		},
-		"/": {
-			"get": {
-				"operationId": "GetWelcome",
+		"/evaluate/{rulesetID}": {
+			"post": {
+				"operationId": "EvaluateRuleset",
 				"responses": {
 					"200": {
 						"description": "Ok",
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/welcomeMessage"
-								},
-								"examples": {
-									"Example 1": {
-										"value": {
-											"version": "3.0.0",
-											"message": "Welcome to the RITA API.",
-											"ritaVersion": "3.0.1",
-											"plugins": []
-										}
-									}
+									"$ref": "#/components/schemas/evaluationResult"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/errorResponse"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/errorResponse"
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Validation Error: An invalid object has been passed",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/errorResponse"
 								}
 							}
 						}
 					}
 				},
-				"security": [],
-				"parameters": []
+				"security": [
+					{
+						"api_key": [
+							"evaluate"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "rulesetID",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/evaluationData"
+							}
+						}
+					}
+				}
 			}
 		}
 	},

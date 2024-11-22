@@ -1,6 +1,18 @@
 # Change Log - @educorvi/rita
 
-This log was last generated on Mon, 21 Oct 2024 09:56:49 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Nov 2024 14:19:58 GMT and should not be manually modified.
+
+## 5.4.0
+
+Fri, 22 Nov 2024 14:19:58 GMT
+
+### Minor changes
+
+-   Add index in quantifier environment
+
+### Patches
+
+-   Update dependencies
 
 ## 5.3.3
 

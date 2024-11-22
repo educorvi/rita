@@ -175,7 +175,7 @@
 	},
 	"info": {
 		"title": "rita-http",
-		"version": "4.0.3",
+		"version": "5.0.0",
 		"description": "HTTP API for Rita",
 		"license": {
 			"name": "MIT"

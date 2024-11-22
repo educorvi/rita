@@ -40,12 +40,13 @@ Quantifiers that can be used to evaluate rules on arrays in Data
 
 # Quantifier Properties
 
-| Property                    | Type     | Required | Nullable       | Defined by                                                                                                                                                             |
-| :-------------------------- | :------- | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [type](#type)               | `string` | Required | cannot be null | [Quantifier](quantifier-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/quantifier.json#/properties/type")               |
-| [array](#array)             | Merged   | Required | cannot be null | [Quantifier](quantifier-properties-data-array.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/quantifier.json#/properties/array")        |
-| [placeholder](#placeholder) | `string` | Required | cannot be null | [Quantifier](quantifier-properties-placeholder.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/quantifier.json#/properties/placeholder") |
-| [rule](#rule)               | Merged   | Required | cannot be null | [Quantifier](formula.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/formula.json#/properties/rule")                                     |
+| Property                              | Type     | Required | Nullable       | Defined by                                                                                                                                                                       |
+| :------------------------------------ | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [type](#type)                         | `string` | Required | cannot be null | [Quantifier](quantifier-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/quantifier.json#/properties/type")                         |
+| [array](#array)                       | Merged   | Required | cannot be null | [Quantifier](quantifier-properties-data-array.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/quantifier.json#/properties/array")                  |
+| [placeholder](#placeholder)           | `string` | Required | cannot be null | [Quantifier](quantifier-properties-placeholder.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/quantifier.json#/properties/placeholder")           |
+| [indexPlaceholder](#indexplaceholder) | `string` | Optional | cannot be null | [Quantifier](quantifier-properties-indexplaceholder.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/quantifier.json#/properties/indexPlaceholder") |
+| [rule](#rule)                         | Merged   | Required | cannot be null | [Quantifier](formula.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/formula.json#/properties/rule")                                               |
 
 ## type
 
@@ -119,6 +120,36 @@ This is a placeholder name for the current array object. This is the property na
 ### placeholder Constraints
 
 **minimum length**: the minimum number of characters for this string is: `1`
+
+## indexPlaceholder
+
+This is a placeholder name for the current index of the array object. This is the property name with wich you can reference the current index in the subsequent rule
+
+`indexPlaceholder`
+
+*   is optional
+
+*   Type: `string`
+
+*   cannot be null
+
+*   defined in: [Quantifier](quantifier-properties-indexplaceholder.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/quantifier.json#/properties/indexPlaceholder")
+
+### indexPlaceholder Type
+
+`string`
+
+### indexPlaceholder Constraints
+
+**minimum length**: the minimum number of characters for this string is: `1`
+
+### indexPlaceholder Default Value
+
+The default value is:
+
+```json
+"index"
+```
 
 ## rule
 

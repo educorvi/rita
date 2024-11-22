@@ -1,6 +1,14 @@
 # Change Log - rita-http
 
-This log was last generated on Tue, 02 Jul 2024 11:35:12 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Nov 2024 14:19:58 GMT and should not be manually modified.
+
+## 5.0.0
+
+Fri, 22 Nov 2024 14:19:58 GMT
+
+### Breaking changes
+
+-   Update dependencies; new mimimum node version is 18
 
 ## 4.0.3
 

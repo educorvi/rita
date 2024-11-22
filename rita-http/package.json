@@ -1,6 +1,6 @@
 {
     "name": "rita-http",
-    "version": "4.0.3",
+    "version": "5.0.0",
     "description": "HTTP API for Rita",
     "keywords": [
         "rita",
@@ -37,8 +37,8 @@
         "test": "start-server-and-test start http://localhost:3000 test:no-server"
     },
     "dependencies": {
-        "@educorvi/persistent-rita": "workspace:^6.0.1",
-        "@educorvi/rita": "workspace:^5.3.3",
+        "@educorvi/persistent-rita": "workspace:^6.0.2",
+        "@educorvi/rita": "workspace:^5.4.0",
         "@educorvi/rita-plugin-http": "workspace:*",
         "@tsoa/runtime": "^6.5.1",
         "body-parser": "^1.20.3",

@@ -1,6 +1,14 @@
 # Change Log - @educorvi/rita-smt
 
-This log was last generated on Tue, 14 Mar 2023 19:16:22 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Nov 2024 14:19:58 GMT and should not be manually modified.
+
+## 2.0.1
+
+Fri, 22 Nov 2024 14:19:58 GMT
+
+### Patches
+
+-   Update dependencies
 
 ## 2.0.0
 
