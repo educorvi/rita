@@ -2,6 +2,18 @@
     "name": "@educorvi/rita",
     "entries": [
         {
+            "version": "5.4.1",
+            "tag": "@educorvi/rita_v5.4.1",
+            "date": "Fri, 22 Nov 2024 15:56:10 GMT",
+            "comments": {
+                "patch": [
+                    {
+                        "comment": "Fix getPropertyByString for undefined array item"
+                    }
+                ]
+            }
+        },
+        {
             "version": "5.4.0",
             "tag": "@educorvi/rita_v5.4.0",
             "date": "Fri, 22 Nov 2024 14:19:58 GMT",

@@ -1,6 +1,14 @@
 # Change Log - @educorvi/rita
 
-This log was last generated on Fri, 22 Nov 2024 14:19:58 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Nov 2024 15:56:10 GMT and should not be manually modified.
+
+## 5.4.1
+
+Fri, 22 Nov 2024 15:56:10 GMT
+
+### Patches
+
+-   Fix getPropertyByString for undefined array item
 
 ## 5.4.0
 
