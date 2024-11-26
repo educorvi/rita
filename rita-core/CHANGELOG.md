@@ -1,6 +1,14 @@
 # Change Log - @educorvi/rita
 
-This log was last generated on Fri, 22 Nov 2024 15:56:10 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Nov 2024 08:56:14 GMT and should not be manually modified.
+
+## 5.4.2
+
+Tue, 26 Nov 2024 08:56:14 GMT
+
+### Patches
+
+-   Improve error message for invalid type in data
 
 ## 5.4.1
 

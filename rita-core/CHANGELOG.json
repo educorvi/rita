@@ -2,6 +2,18 @@
     "name": "@educorvi/rita",
     "entries": [
         {
+            "version": "5.4.2",
+            "tag": "@educorvi/rita_v5.4.2",
+            "date": "Tue, 26 Nov 2024 08:56:14 GMT",
+            "comments": {
+                "patch": [
+                    {
+                        "comment": "Improve error message for invalid type in data"
+                    }
+                ]
+            }
+        },
+        {
             "version": "5.4.1",
             "tag": "@educorvi/rita_v5.4.1",
             "date": "Fri, 22 Nov 2024 15:56:10 GMT",
