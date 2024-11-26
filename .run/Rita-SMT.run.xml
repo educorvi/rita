@@ -1,8 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Rita-SMT" type="JavaScriptTestRunnerJest">
     <config-file value="$PROJECT_DIR$/rita-smt/main/jest.config.js" />
-    <node-interpreter value="$USER_HOME$/.nvm/versions/node/v18.12.1/bin/node" />
-    <node-options value="" />
+    <node-interpreter value="project" />
     <jest-package value="$PROJECT_DIR$/persistent-rita/node_modules/jest" />
     <working-dir value="$PROJECT_DIR$/rita-smt/main" />
     <envs />
