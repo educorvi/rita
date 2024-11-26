@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@educorvi/rita",
+      "comment": "Improve error message for invalid type in data",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@educorvi/rita"
+}

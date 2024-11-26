@@ -56,12 +56,17 @@ export class Atom extends Formula {
         const a = path.split('.');
         for (let i = 0, n = a.length; i < n; ++i) {
             const k = a[i];
-            if (typeof object === 'undefined') {
+            if (typeof object !== 'object') {
                 if (defaultVal !== undefined) {
                     return defaultVal;
                 } else {
                     throw new UndefinedPathError(
-                        'Undefinded path in data: ' + path,
+                        'Invalid path in data: ' +
+                            path +
+                            ' is of invalid type ' +
+                            typeof object +
+                            ' with value ' +
+                            object,
                         context
                     );
                 }
