@@ -1,6 +1,14 @@
 # Change Log - @educorvi/smtlib
 
-This log was last generated on Fri, 22 Nov 2024 14:19:58 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Jul 2025 09:41:58 GMT and should not be manually modified.
+
+## 1.2.3
+
+Thu, 10 Jul 2025 09:41:58 GMT
+
+### Patches
+
+-   update dependencies
 
 ## 1.2.2
 

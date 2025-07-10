@@ -16,6 +16,6 @@ merged type ([Details](macro-properties-macro.md))
 
 one (and only one) of
 
-*   [now](macro-properties-macro-oneof-now.md "check type definition")
+* [now](macro-properties-macro-oneof-now.md "check type definition")
 
-*   [length](macro-properties-macro-oneof-length.md "check type definition")
+* [length](macro-properties-macro-oneof-length.md "check type definition")

@@ -51,13 +51,13 @@ Describes macros. Available macros are `now` and `length`
 
 `type`
 
-*   is required
+* is required
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [Macro](macro-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/macro.json#/properties/type")
+* defined in: [Macro](macro-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/macro.json#/properties/type")
 
 ### type Type
 
@@ -77,13 +77,13 @@ Describes macros. Available macros are `now` and `length`
 
 `macro`
 
-*   is required
+* is required
 
-*   Type: merged type ([Details](macro-properties-macro.md))
+* Type: merged type ([Details](macro-properties-macro.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [Macro](macro-properties-macro.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/macro.json#/properties/macro")
+* defined in: [Macro](macro-properties-macro.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/macro.json#/properties/macro")
 
 ### macro Type
 
@@ -91,6 +91,6 @@ merged type ([Details](macro-properties-macro.md))
 
 one (and only one) of
 
-*   [now](macro-properties-macro-oneof-now.md "check type definition")
+* [now](macro-properties-macro-oneof-now.md "check type definition")
 
-*   [length](macro-properties-macro-oneof-length.md "check type definition")
+* [length](macro-properties-macro-oneof-length.md "check type definition")

@@ -56,13 +56,13 @@ Compare strings, dates or numbers with each other
 
 `type`
 
-*   is required
+* is required
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [Comparison](comparison-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/type")
+* defined in: [Comparison](comparison-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/type")
 
 ### type Type
 
@@ -82,13 +82,13 @@ Selects how the arguments should be compared
 
 `operation`
 
-*   is required
+* is required
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [Comparison](comparison-properties-operation.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/operation")
+* defined in: [Comparison](comparison-properties-operation.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/operation")
 
 ### operation Type
 
@@ -112,13 +112,13 @@ Indicates if dates are compared
 
 `dates`
 
-*   is optional
+* is optional
 
-*   Type: `boolean`
+* Type: `boolean`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [Comparison](comparison-properties-dates.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/dates")
+* defined in: [Comparison](comparison-properties-dates.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/dates")
 
 ### dates Type
 
@@ -130,13 +130,13 @@ Indicates if different types are allowed inside a comparison. This follows the J
 
 `allowDifferentTypes`
 
-*   is optional
+* is optional
 
-*   Type: `boolean`
+* Type: `boolean`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [Comparison](comparison-properties-allowdifferenttypes.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/allowDifferentTypes")
+* defined in: [Comparison](comparison-properties-allowdifferenttypes.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/allowDifferentTypes")
 
 ### allowDifferentTypes Type
 
@@ -148,13 +148,13 @@ Indicates if different types are allowed inside a comparison. This follows the J
 
 `arguments`
 
-*   is required
+* is required
 
-*   Type: an array of merged types ([Details](comparison-properties-arguments-items.md))
+* Type: an array of merged types ([Details](comparison-properties-arguments-items.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [Comparison](comparison-properties-arguments.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/arguments")
+* defined in: [Comparison](comparison-properties-arguments.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/comparison.json#/properties/arguments")
 
 ### arguments Type
 

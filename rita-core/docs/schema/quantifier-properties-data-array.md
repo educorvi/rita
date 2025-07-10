@@ -16,6 +16,6 @@ merged type ([Data array](quantifier-properties-data-array.md))
 
 one (and only one) of
 
-*   [Untitled array in Quantifier](quantifier-properties-data-array-oneof-0.md "check type definition")
+* [Untitled array in Quantifier](quantifier-properties-data-array-oneof-0.md "check type definition")
 
-*   [Atom](atom.md "check type definition")
+* [Atom](atom.md "check type definition")

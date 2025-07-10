@@ -54,13 +54,13 @@ https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/rule.j
 
 `id`
 
-*   is required
+* is required
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [Rule](rule-properties-id.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/rule.json#/properties/id")
+* defined in: [Rule](rule-properties-id.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/rule.json#/properties/id")
 
 ### id Type
 
@@ -72,13 +72,13 @@ A comment about what the rule does
 
 `comment`
 
-*   is optional
+* is optional
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [Rule](rule-properties-comment.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/rule.json#/properties/comment")
+* defined in: [Rule](rule-properties-comment.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/rule.json#/properties/comment")
 
 ### comment Type
 
@@ -90,13 +90,13 @@ A comment about what the rule does
 
 `rule`
 
-*   is required
+* is required
 
-*   Type: merged type ([Formula](formula.md))
+* Type: merged type ([Formula](formula.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [Rule](formula.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/formula.json#/properties/rule")
+* defined in: [Rule](formula.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/formula.json#/properties/rule")
 
 ### rule Type
 
@@ -104,16 +104,16 @@ merged type ([Formula](formula.md))
 
 one (and only one) of
 
-*   one (and only one) of
+* one (and only one) of
 
-    *   [Non-Unary operator](operator-oneof-non-unary-operator.md "check type definition")
+  * [Non-Unary operator](operator-oneof-non-unary-operator.md "check type definition")
 
-    *   [Unary operator](operator-oneof-unary-operator.md "check type definition")
+  * [Unary operator](operator-oneof-unary-operator.md "check type definition")
 
-*   [Atom](atom.md "check type definition")
+* [Atom](atom.md "check type definition")
 
-*   [Plugin](plugin.md "check type definition")
+* [Plugin](plugin.md "check type definition")
 
-*   [Comparison](comparison.md "check type definition")
+* [Comparison](comparison.md "check type definition")
 
-*   [Quantifier](quantifier.md "check type definition")
+* [Quantifier](quantifier.md "check type definition")

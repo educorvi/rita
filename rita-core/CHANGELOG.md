@@ -1,6 +1,15 @@
 # Change Log - @educorvi/rita
 
-This log was last generated on Tue, 26 Nov 2024 08:56:14 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Jul 2025 09:41:58 GMT and should not be manually modified.
+
+## 5.4.3
+
+Thu, 10 Jul 2025 09:41:58 GMT
+
+### Patches
+
+-   include failed value for array check in error message of quantifier
+-   update dependencies
 
 ## 5.4.2
 

@@ -28,13 +28,13 @@ Calculates a result
 
 `type`
 
-*   is required
+* is required
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [Calculation](calculation-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/type")
+* defined in: [Calculation](calculation-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/type")
 
 ### type Type
 
@@ -54,13 +54,13 @@ The mathematical operation to be calculated. Modulo refers to the function mod(a
 
 `operation`
 
-*   is required
+* is required
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [Calculation](calculation-properties-operation.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/operation")
+* defined in: [Calculation](calculation-properties-operation.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/operation")
 
 ### operation Type
 
@@ -84,13 +84,13 @@ The mathematical operation to be calculated. Modulo refers to the function mod(a
 
 `arguments`
 
-*   is required
+* is required
 
-*   Type: an array of merged types ([Details](calculation-properties-arguments-items.md))
+* Type: an array of merged types ([Details](calculation-properties-arguments-items.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [Calculation](calculation-properties-arguments.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/arguments")
+* defined in: [Calculation](calculation-properties-arguments.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/calculation.json#/properties/arguments")
 
 ### arguments Type
 

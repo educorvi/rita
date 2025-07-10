@@ -2,6 +2,26 @@
     "name": "@educorvi/persistent-rita",
     "entries": [
         {
+            "version": "6.0.3",
+            "tag": "@educorvi/persistent-rita_v6.0.3",
+            "date": "Thu, 10 Jul 2025 09:41:58 GMT",
+            "comments": {
+                "patch": [
+                    {
+                        "comment": "update dependencies"
+                    }
+                ],
+                "dependency": [
+                    {
+                        "comment": "Updating dependency \"@educorvi/rita\" from `^5.4.2` to `5.4.3`"
+                    },
+                    {
+                        "comment": "Updating dependency \"@educorvi/rita\" from `^5.4.2` to `5.4.3`"
+                    }
+                ]
+            }
+        },
+        {
             "version": "6.0.2",
             "tag": "@educorvi/persistent-rita_v6.0.2",
             "date": "Fri, 22 Nov 2024 14:19:58 GMT",

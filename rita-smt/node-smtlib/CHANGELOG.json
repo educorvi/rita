@@ -2,6 +2,18 @@
     "name": "@educorvi/smtlib",
     "entries": [
         {
+            "version": "1.2.3",
+            "tag": "@educorvi/smtlib_v1.2.3",
+            "date": "Thu, 10 Jul 2025 09:41:58 GMT",
+            "comments": {
+                "patch": [
+                    {
+                        "comment": "update dependencies"
+                    }
+                ]
+            }
+        },
+        {
             "version": "1.2.2",
             "tag": "@educorvi/smtlib_v1.2.2",
             "date": "Fri, 22 Nov 2024 14:19:58 GMT",

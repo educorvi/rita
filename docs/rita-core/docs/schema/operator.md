@@ -16,6 +16,6 @@ merged type ([Operator](operator.md))
 
 one (and only one) of
 
-*   [Non-Unary operator](operator-oneof-non-unary-operator.md "check type definition")
+* [Non-Unary operator](operator-oneof-non-unary-operator.md "check type definition")
 
-*   [Unary operator](operator-oneof-unary-operator.md "check type definition")
+* [Unary operator](operator-oneof-unary-operator.md "check type definition")

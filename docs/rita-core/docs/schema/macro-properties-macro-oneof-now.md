@@ -26,13 +26,13 @@ Returns the current time
 
 `type`
 
-*   is optional
+* is optional
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [Macro](macro-properties-macro-oneof-now-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/macro.json#/properties/macro/oneOf/0/properties/type")
+* defined in: [Macro](macro-properties-macro-oneof-now-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/macro.json#/properties/macro/oneOf/0/properties/type")
 
 ### type Type
 

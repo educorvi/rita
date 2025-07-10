@@ -29,13 +29,13 @@ Describes an atom. Those can be used to read Data
 
 `type`
 
-*   is required
+* is required
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [Atom](atom-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/atom.json#/properties/type")
+* defined in: [Atom](atom-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/atom.json#/properties/type")
 
 ### type Type
 
@@ -55,13 +55,13 @@ The path to the atom in the data
 
 `path`
 
-*   is required
+* is required
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [Atom](atom-properties-path.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/atom.json#/properties/path")
+* defined in: [Atom](atom-properties-path.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/atom.json#/properties/path")
 
 ### path Type
 
@@ -73,13 +73,13 @@ Must be set to true if the atom should be parsed as a date
 
 `isDate`
 
-*   is optional
+* is optional
 
-*   Type: `boolean`
+* Type: `boolean`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [Atom](atom-properties-isdate.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/atom.json#/properties/isDate")
+* defined in: [Atom](atom-properties-isdate.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/atom.json#/properties/isDate")
 
 ### isDate Type
 
@@ -91,13 +91,13 @@ Must be set to true if the atom should be parsed as a date
 
 `default`
 
-*   is optional
+* is optional
 
-*   Type: merged type ([Details](atom-properties-default.md))
+* Type: merged type ([Details](atom-properties-default.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [Atom](atom-properties-default.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/atom.json#/properties/default")
+* defined in: [Atom](atom-properties-default.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/atom.json#/properties/default")
 
 ### default Type
 
@@ -105,12 +105,12 @@ merged type ([Details](atom-properties-default.md))
 
 one (and only one) of
 
-*   [Untitled string in Atom](atom-properties-default-oneof-0.md "check type definition")
+* [Untitled string in Atom](atom-properties-default-oneof-0.md "check type definition")
 
-*   [Untitled number in Atom](atom-properties-default-oneof-1.md "check type definition")
+* [Untitled number in Atom](atom-properties-default-oneof-1.md "check type definition")
 
-*   [Untitled boolean in Atom](atom-properties-default-oneof-2.md "check type definition")
+* [Untitled boolean in Atom](atom-properties-default-oneof-2.md "check type definition")
 
-*   [Untitled string in Atom](atom-properties-default-oneof-3.md "check type definition")
+* [Untitled string in Atom](atom-properties-default-oneof-3.md "check type definition")
 
-*   [Untitled array in Atom](atom-properties-default-oneof-4.md "check type definition")
+* [Untitled array in Atom](atom-properties-default-oneof-4.md "check type definition")

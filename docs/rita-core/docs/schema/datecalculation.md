@@ -30,13 +30,13 @@ Calculations involving dates
 
 `type`
 
-*   is required
+* is required
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [Date Calculation](datecalculation-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/dateCalculation.json#/properties/type")
+* defined in: [Date Calculation](datecalculation-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/dateCalculation.json#/properties/type")
 
 ### type Type
 
@@ -56,13 +56,13 @@ Add/subtract a time interval to/from a date or subtract two dates to get the int
 
 `operation`
 
-*   is required
+* is required
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [Date Calculation](datecalculation-properties-operation.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/dateCalculation.json#/properties/operation")
+* defined in: [Date Calculation](datecalculation-properties-operation.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/dateCalculation.json#/properties/operation")
 
 ### operation Type
 
@@ -83,13 +83,13 @@ Add/subtract a time interval to/from a date or subtract two dates to get the int
 
 `arguments`
 
-*   is required
+* is required
 
-*   Type: an array of merged types ([Details](datecalculation-properties-arguments-items.md))
+* Type: an array of merged types ([Details](datecalculation-properties-arguments-items.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [Date Calculation](datecalculation-properties-arguments.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/dateCalculation.json#/properties/arguments")
+* defined in: [Date Calculation](datecalculation-properties-arguments.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/dateCalculation.json#/properties/arguments")
 
 ### arguments Type
 
@@ -107,13 +107,13 @@ What unit time intervals given as arguments will be in.
 
 `dateCalculationUnit`
 
-*   is optional
+* is optional
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [Date Calculation](datecalculation-properties-datecalculationunit.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/dateCalculation.json#/properties/dateCalculationUnit")
+* defined in: [Date Calculation](datecalculation-properties-datecalculationunit.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/dateCalculation.json#/properties/dateCalculationUnit")
 
 ### dateCalculationUnit Type
 
@@ -146,13 +146,13 @@ What unit time intervals representing the result will be in.
 
 `dateResultUnit`
 
-*   is optional
+* is optional
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [Date Calculation](datecalculation-properties-dateresultunit.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/dateCalculation.json#/properties/dateResultUnit")
+* defined in: [Date Calculation](datecalculation-properties-dateresultunit.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/dateCalculation.json#/properties/dateResultUnit")
 
 ### dateResultUnit Type
 

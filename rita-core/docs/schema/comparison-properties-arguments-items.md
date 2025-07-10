@@ -16,16 +16,16 @@ merged type ([Details](comparison-properties-arguments-items.md))
 
 one (and only one) of
 
-*   [Atom](atom.md "check type definition")
+* [Atom](atom.md "check type definition")
 
-*   [Macro](macro.md "check type definition")
+* [Macro](macro.md "check type definition")
 
-*   [Untitled number in Comparison](comparison-properties-arguments-items-oneof-2.md "check type definition")
+* [Untitled number in Comparison](comparison-properties-arguments-items-oneof-2.md "check type definition")
 
-*   [Untitled string in Comparison](comparison-properties-arguments-items-oneof-3.md "check type definition")
+* [Untitled string in Comparison](comparison-properties-arguments-items-oneof-3.md "check type definition")
 
-*   [Untitled string in Comparison](comparison-properties-arguments-items-oneof-4.md "check type definition")
+* [Untitled string in Comparison](comparison-properties-arguments-items-oneof-4.md "check type definition")
 
-*   [Calculation](calculation.md "check type definition")
+* [Calculation](calculation.md "check type definition")
 
-*   [Date Calculation](datecalculation.md "check type definition")
+* [Date Calculation](datecalculation.md "check type definition")

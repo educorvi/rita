@@ -27,13 +27,13 @@ Requires exactly on parameter
 
 `type`
 
-*   is required
+* is required
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [Operator](operator-oneof-unary-operator-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/operator.json#/oneOf/1/properties/type")
+* defined in: [Operator](operator-oneof-unary-operator-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/operator.json#/oneOf/1/properties/type")
 
 ### type Type
 
@@ -53,13 +53,13 @@ Requires exactly on parameter
 
 `arguments`
 
-*   is required
+* is required
 
-*   Type: an array of merged types ([Formula](formula.md))
+* Type: an array of merged types ([Formula](formula.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [Operator](operator-oneof-unary-operator-properties-unary-arguments.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/operator.json#/oneOf/1/properties/arguments")
+* defined in: [Operator](operator-oneof-unary-operator-properties-unary-arguments.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/operator.json#/oneOf/1/properties/arguments")
 
 ### arguments Type
 

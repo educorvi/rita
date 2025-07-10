@@ -27,13 +27,13 @@ Returns the length of an array
 
 `type`
 
-*   is optional
+* is optional
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [Macro](macro-properties-macro-oneof-length-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/macro.json#/properties/macro/oneOf/1/properties/type")
+* defined in: [Macro](macro-properties-macro-oneof-length-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/macro.json#/properties/macro/oneOf/1/properties/type")
 
 ### type Type
 
@@ -53,13 +53,13 @@ Describes an atom. Those can be used to read Data
 
 `array`
 
-*   is optional
+* is optional
 
-*   Type: `object` ([Atom](atom.md))
+* Type: `object` ([Atom](atom.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [Macro](atom.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/atom.json#/properties/macro/oneOf/1/properties/array")
+* defined in: [Macro](atom.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/atom.json#/properties/macro/oneOf/1/properties/array")
 
 ### array Type
 

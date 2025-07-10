@@ -26,13 +26,13 @@ Array of all rules in this ruleset.
 
 `rules`
 
-*   is required
+* is required
 
-*   Type: `object[]` ([Rule](rule.md))
+* Type: `object[]` ([Rule](rule.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [Main](schema-properties-ruleset.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/schema.json#/properties/rules")
+* defined in: [Main](schema-properties-ruleset.md "https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/schema.json#/properties/rules")
 
 ### rules Type
 

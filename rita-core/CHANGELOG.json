@@ -2,6 +2,21 @@
     "name": "@educorvi/rita",
     "entries": [
         {
+            "version": "5.4.3",
+            "tag": "@educorvi/rita_v5.4.3",
+            "date": "Thu, 10 Jul 2025 09:41:58 GMT",
+            "comments": {
+                "patch": [
+                    {
+                        "comment": "include failed value for array check in error message of quantifier"
+                    },
+                    {
+                        "comment": "update dependencies"
+                    }
+                ]
+            }
+        },
+        {
             "version": "5.4.2",
             "tag": "@educorvi/rita_v5.4.2",
             "date": "Tue, 26 Nov 2024 08:56:14 GMT",

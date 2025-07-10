@@ -2,6 +2,29 @@
     "name": "rita-http",
     "entries": [
         {
+            "version": "5.0.1",
+            "tag": "rita-http_v5.0.1",
+            "date": "Thu, 10 Jul 2025 09:41:58 GMT",
+            "comments": {
+                "patch": [
+                    {
+                        "comment": "update dependencies"
+                    }
+                ],
+                "dependency": [
+                    {
+                        "comment": "Updating dependency \"@educorvi/persistent-rita\" from `^6.0.2` to `6.0.3`"
+                    },
+                    {
+                        "comment": "Updating dependency \"@educorvi/rita\" from `^5.4.2` to `5.4.3`"
+                    },
+                    {
+                        "comment": "Updating dependency \"@educorvi/rita-plugin-http\" to `1.1.5`"
+                    }
+                ]
+            }
+        },
+        {
             "version": "5.0.0",
             "tag": "rita-http_v5.0.0",
             "date": "Fri, 22 Nov 2024 14:19:58 GMT",
