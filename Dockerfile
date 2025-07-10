@@ -1,7 +1,7 @@
-FROM node:22-alpine AS build
+FROM node:22 AS build
 
 WORKDIR /app
-RUN apk add jq moreutils
+RUN apt-get update && apt-get install -y jq moreutils
 RUN corepack enable
 RUN npm install -g @microsoft/rush
 COPY . .
