@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@educorvi/rita-plugin-http",
+      "comment": "update dependencies",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@educorvi/rita-plugin-http"
+}

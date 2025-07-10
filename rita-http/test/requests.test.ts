@@ -1,29 +1,25 @@
 import axiosImport from 'axios';
-import 'mocha';
-import { expect } from 'chai';
-// @ts-ignore
 import pjson from '../package.json';
-// @ts-ignore
-import { step } from 'mocha-steps';
-// @ts-ignore
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 import { ApiKey } from '../src/config/Database';
 import { configDB, init, rita, logger } from '../src/helper/globals';
 
+// Create a dedicated axios instance so we can mutate headers freely
 const axios = axiosImport.create();
 axios.interceptors.response.use(
     (response) => response,
     (error) => {
-        logger.debug(error.response.data.message);
-        throw error;
+        logger.debug(error.response?.data?.message);
+        return Promise.reject(error);
     }
 );
 
 const { PORT } = process.env;
 const base = `http://localhost:${PORT}/`;
+
+// ---------------------------------------------------------------------------
+// shared fixtures
+// ---------------------------------------------------------------------------
 
 const exampleRuleset = {
     rules: [
@@ -32,55 +28,51 @@ const exampleRuleset = {
             rule: {
                 type: 'and',
                 arguments: [
-                    {
-                        type: 'atom',
-                        path: 'member',
-                    },
+                    { type: 'atom', path: 'member' },
                     {
                         type: 'not',
-                        arguments: [
-                            {
-                                type: 'atom',
-                                path: 'employee',
-                            },
-                        ],
+                        arguments: [{ type: 'atom', path: 'employee' }],
                     },
                 ],
             },
         },
         {
             id: 'rule2',
-            rule: {
-                type: 'atom',
-                path: 'employee',
-            },
+            rule: { type: 'atom', path: 'employee' },
         },
     ],
     name: 'test1',
     description: '',
 };
 
+// ---------------------------------------------------------------------------
+// tests
+// ---------------------------------------------------------------------------
+
 describe('Basics', () => {
-    it('Startpage', async () => {
-        const req = await axios.get(base);
-        expect(req.status).to.equal(200);
-        expect(req.data.version).to.equal(pjson.version);
+    test('Startpage', async () => {
+        const res = await axios.get(base);
+        expect(res.status).toBe(200);
+        expect(res.data.version).toBe(pjson.version);
     });
 
-    it('Docs', async () => {
-        const req = await axios.get(base + 'docs');
-        expect(req.status).to.equal(200);
+    test('Docs', async () => {
+        const res = await axios.get(`${base}docs`);
+        expect(res.status).toBe(200);
     });
 });
 
 describe('Manage rulesets', () => {
-    let all: ApiKey, nothing: ApiKey;
+    let all: ApiKey;
+    let nothing: ApiKey;
 
-    before(async () => {
+    // ---------- global DB / key setup -------------------------------------------------
+    beforeAll(async () => {
         await init();
 
         all = await ApiKey.generateApiKey('all', true, true, true, configDB);
         await configDB.setApiKey(all);
+
         nothing = await ApiKey.generateApiKey(
             'nothing',
             false,
@@ -91,189 +83,163 @@ describe('Manage rulesets', () => {
         await configDB.setApiKey(nothing);
     });
 
+    // ---------- 1. WITHOUT API-KEY ----------------------------------------------------
     describe('Requests without Api Key and default public access', () => {
-        let initial_length: number;
-        step('List all rulesets', async () => {
-            const res = await axios.get(base + 'rulesets');
-            expect(res.status).to.equal(200);
-            initial_length = res.data.length;
+        let initialLength = 0;
+
+        test('List all rulesets', async () => {
+            const res = await axios.get(`${base}rulesets`);
+            expect(res.status).toBe(200);
+            initialLength = res.data.length;
         });
 
-        step('Show one ruleset that does not exist', async () => {
-            try {
-                await axios.get(base + 'rulesets/420');
-            } catch (e) {
-                expect(e.response.status).to.equal(404);
-            }
+        test('Show one ruleset that does not exist', async () => {
+            await expect(
+                axios.get(`${base}rulesets/420`)
+            ).rejects.toHaveProperty('response.status', 404);
         });
 
-        step('Create a ruleset', async () => {
-            try {
-                await axios.post(base + 'rulesets/420', exampleRuleset);
-            } catch (e) {
-                expect(e.response.status).to.equal(401);
-            }
+        test('Create a ruleset → 401', async () => {
+            await expect(
+                axios.post(`${base}rulesets/420`, exampleRuleset)
+            ).rejects.toHaveProperty('response.status', 401);
         });
 
-        step('Check amount of rulesets', async () => {
-            const res = await axios.get(base + 'rulesets');
-            expect(res.data.length).to.equal(initial_length);
+        test('Amount unchanged', async () => {
+            const res = await axios.get(`${base}rulesets`);
+            expect(res.data.length).toBe(initialLength);
         });
 
-        step('Overwrite a ruleset', async () => {
-            try {
-                await axios.post(base + 'rulesets/420', {
+        test('Overwrite a ruleset → 401', async () => {
+            await expect(
+                axios.post(`${base}rulesets/420`, {
                     ...exampleRuleset,
                     name: 'test2',
-                });
-            } catch (e) {
-                expect(e.response.status).to.equal(401);
-            }
+                })
+            ).rejects.toHaveProperty('response.status', 401);
         });
 
-        step('Check amount of rulesets', async () => {
-            const res = await axios.get(base + 'rulesets');
-            expect(res.data.length).to.equal(initial_length);
-        });
-
-        step('Delete a ruleset', async () => {
-            try {
-                await axios.delete(base + 'rulesets/420');
-            } catch (e) {
-                expect(e.response.status).to.equal(401);
-            }
-        });
-
-        step('Check amount of rulesets', async () => {
-            const res = await axios.get(base + 'rulesets');
-            expect(res.data.length).to.equal(initial_length);
+        test('Delete a ruleset → 401', async () => {
+            await expect(
+                axios.delete(`${base}rulesets/420`)
+            ).rejects.toHaveProperty('response.status', 401);
         });
     });
 
+    // ---------- 2. WITH “nothing” KEY -------------------------------------------------
     describe('Requests with "nothing" Api Key', () => {
-        before(() => {
+        beforeAll(() => {
             axios.defaults.headers.common['X-API-KEY'] = nothing.api_key;
         });
 
-        step('List all rulesets', async () => {
-            try {
-                await axios.get(base + 'rulesets');
-            } catch (e) {
-                expect(e.response.status).to.equal(401);
-            }
+        afterAll(() => {
+            delete axios.defaults.headers.common['X-API-KEY'];
         });
 
-        step('Show one ruleset that does not exist', async () => {
-            try {
-                await axios.get(base + 'rulesets/420');
-            } catch (e) {
-                expect(e.response.status).to.equal(401);
-            }
+        test('List all rulesets → 401', async () => {
+            await expect(axios.get(`${base}rulesets`)).rejects.toHaveProperty(
+                'response.status',
+                401
+            );
         });
 
-        step('Create a ruleset', async () => {
-            try {
-                await axios.post(base + 'rulesets/420', exampleRuleset);
-            } catch (e) {
-                expect(e.response.status).to.equal(401);
-            }
+        test('Show one ruleset → 401', async () => {
+            await expect(
+                axios.get(`${base}rulesets/420`)
+            ).rejects.toHaveProperty('response.status', 401);
         });
 
-        step('Overwrite a ruleset', async () => {
-            try {
-                await axios.post(base + 'rulesets/420', {
+        test('Create a ruleset → 401', async () => {
+            await expect(
+                axios.post(`${base}rulesets/420`, exampleRuleset)
+            ).rejects.toHaveProperty('response.status', 401);
+        });
+
+        test('Overwrite a ruleset → 401', async () => {
+            await expect(
+                axios.post(`${base}rulesets/420`, {
                     ...exampleRuleset,
                     name: 'test2',
-                });
-            } catch (e) {
-                expect(e.response.status).to.equal(401);
-            }
+                })
+            ).rejects.toHaveProperty('response.status', 401);
         });
 
-        step('Delete a ruleset', async () => {
-            try {
-                await axios.delete(base + 'rulesets/420');
-            } catch (e) {
-                expect(e.response.status).to.equal(401);
-            }
-        });
-
-        after(() => {
-            axios.defaults.headers.common['X-API-KEY'] = undefined;
+        test('Delete a ruleset → 401', async () => {
+            await expect(
+                axios.delete(`${base}rulesets/420`)
+            ).rejects.toHaveProperty('response.status', 401);
         });
     });
 
+    // ---------- 3. WITH “all” KEY -----------------------------------------------------
     describe('Requests with "all" Api Key', () => {
-        before(() => {
+        beforeAll(() => {
             axios.defaults.headers.common['X-API-KEY'] = all.api_key;
         });
 
-        let initial_length: number;
-        step('List all rulesets', async () => {
-            const res = await axios.get(base + 'rulesets');
-            expect(res.status).to.equal(200);
-            initial_length = res.data.length;
+        afterAll(() => {
+            delete axios.defaults.headers.common['X-API-KEY'];
         });
 
-        step('Show one ruleset that does not exist', async () => {
-            try {
-                await axios.get(base + 'rulesets/420');
-            } catch (e) {
-                expect(e.response.status).to.equal(404);
-            }
+        let initialLength = 0;
+
+        test('List all rulesets', async () => {
+            const res = await axios.get(`${base}rulesets`);
+            expect(res.status).toBe(200);
+            initialLength = res.data.length;
         });
 
-        step('Create a ruleset', async () => {
-            const res = await axios.post(base + 'rulesets/420', exampleRuleset);
-            expect(res.status).to.equal(201);
+        test('Show one ruleset that does not exist → 404', async () => {
+            await expect(
+                axios.get(`${base}rulesets/420`)
+            ).rejects.toHaveProperty('response.status', 404);
         });
 
-        step('Body ID must match url parameter', async () => {
-            try {
-                await axios.post(base + 'rulesets/422', {
+        test('Create a ruleset', async () => {
+            const res = await axios.post(`${base}rulesets/420`, exampleRuleset);
+            expect(res.status).toBe(201);
+        });
+
+        test('Body ID must match URL param → 400', async () => {
+            await expect(
+                axios.post(`${base}rulesets/422`, {
                     ...exampleRuleset,
                     id: '423',
-                });
-            } catch (e) {
-                expect(e.response.status).to.equal(400);
-            }
+                })
+            ).rejects.toHaveProperty('response.status', 400);
         });
 
-        step('Check amount of rulesets', async () => {
-            const res = await axios.get(base + 'rulesets');
-            expect(res.data.length).to.equal(initial_length + 1);
+        test('Amount grew by 1', async () => {
+            const res = await axios.get(`${base}rulesets`);
+            expect(res.data.length).toBe(initialLength + 1);
         });
 
-        step('Overwrite a ruleset', async () => {
-            const res = await axios.post(base + 'rulesets/420', {
+        test('Overwrite a ruleset', async () => {
+            const res = await axios.post(`${base}rulesets/420`, {
                 ...exampleRuleset,
                 name: 'test2',
             });
-            expect(res.status).to.equal(201);
+            expect(res.status).toBe(201);
         });
 
-        step('Check amount of rulesets', async () => {
-            const res = await axios.get(base + 'rulesets');
-            expect(res.data.length).to.equal(initial_length + 1);
+        test('Read ruleset', async () => {
+            const res = await axios.get(`${base}rulesets/420`);
+            expect(res.data.name).toBe('test2');
         });
 
-        step('Read ruleset', async () => {
-            const res = await axios.get(base + 'rulesets/420');
-            expect(res.data.name).to.equal('test2');
+        test('Delete a ruleset', async () => {
+            const res = await axios.delete(`${base}rulesets/420`);
+            expect(res.status).toBe(204);
         });
 
-        step('Delete a ruleset', async () => {
-            const res = await axios.delete(base + 'rulesets/420');
-            expect(res.status).to.equal(204);
-        });
-
-        step('Check amount of rulesets', async () => {
-            const res = await axios.get(base + 'rulesets');
-            expect(res.data.length).to.equal(initial_length);
+        test('Amount back to initial', async () => {
+            const res = await axios.get(`${base}rulesets`);
+            expect(res.data.length).toBe(initialLength);
         });
     });
 
-    after(async () => {
+    // ---------- global teardown -------------------------------------------------------
+    afterAll(async () => {
         await rita.deleteRuleset('420');
         await configDB.deleteApiKey(all);
         await configDB.deleteApiKey(nothing);
