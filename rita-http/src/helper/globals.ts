@@ -37,9 +37,9 @@ const {
     DB_SQLITE_PATH,
 } = process.env;
 
-const type = DB_TYPE.toLowerCase();
+const type = DB_TYPE?.toLowerCase();
 /**
- * Options for database connection read from environment
+ * Options for database connection read from the environment
  */
 export const db_options: DatabaseConfig = {
     host: DB_HOST || undefined,

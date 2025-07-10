@@ -33,7 +33,7 @@
         "generate-routes": "npx tsoa routes",
         "spec": "npx tsoa spec",
         "start": "node .",
-        "test:no-server": "LOGLEVEL=error mocha -r mocha-steps -r ts-node/register test/*.ts",
+        "test:no-server": "LOGLEVEL=error jest",
         "test": "start-server-and-test start http://localhost:3000 test:no-server"
     },
     "dependencies": {
@@ -70,8 +70,6 @@
         "axios": "^1.10.0",
         "bestzip": "^2.2.1",
         "chai": "^5.2.0",
-        "mocha": "^11.7.1",
-        "mocha-steps": "^1.3.0",
         "start-server-and-test": "^2.0.12",
         "ts-loader": "^9.5.2",
         "ts-node": "^10.9.2",
@@ -79,6 +77,9 @@
         "typescript": "5.8.3",
         "webpack": "^5.99.9",
         "webpack-cli": "^6.0.1",
-        "webpack-node-externals": "^3.0.0"
+        "webpack-node-externals": "^3.0.0",
+        "jest": "^30.0.4",
+        "ts-jest": "^29.4.0",
+        "@types/jest": "^30.0.0"
     }
 }
