@@ -46,6 +46,9 @@
                         "type": "number"
                     },
                     {
+                        "type": "boolean"
+                    },
+                    {
                         "type": "string",
                         "format": "date-time"
                     },
