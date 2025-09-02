@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@educorvi/rita",
+      "comment": "Add option to use boolean literal in comparison to schema",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@educorvi/rita"
+}
