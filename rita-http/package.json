@@ -38,7 +38,7 @@
     },
     "dependencies": {
         "@educorvi/persistent-rita": "workspace:^6.0.3",
-        "@educorvi/rita": "workspace:^5.4.3",
+        "@educorvi/rita": "workspace:^5.4.4",
         "@educorvi/rita-plugin-http": "workspace:*",
         "@tsoa/runtime": "^6.6.0",
         "body-parser": "^2.2.0",

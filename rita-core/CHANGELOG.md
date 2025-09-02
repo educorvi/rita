@@ -1,6 +1,14 @@
 # Change Log - @educorvi/rita
 
-This log was last generated on Thu, 10 Jul 2025 09:41:58 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Sep 2025 12:49:56 GMT and should not be manually modified.
+
+## 5.4.4
+
+Tue, 02 Sep 2025 12:49:56 GMT
+
+### Patches
+
+-   Add option to use boolean literal in comparison to schema
 
 ## 5.4.3
 

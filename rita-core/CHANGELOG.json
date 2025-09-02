@@ -2,6 +2,18 @@
     "name": "@educorvi/rita",
     "entries": [
         {
+            "version": "5.4.4",
+            "tag": "@educorvi/rita_v5.4.4",
+            "date": "Tue, 02 Sep 2025 12:49:56 GMT",
+            "comments": {
+                "patch": [
+                    {
+                        "comment": "Add option to use boolean literal in comparison to schema"
+                    }
+                ]
+            }
+        },
+        {
             "version": "5.4.3",
             "tag": "@educorvi/rita_v5.4.3",
             "date": "Thu, 10 Jul 2025 09:41:58 GMT",
