@@ -11,12 +11,13 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: deploy to server
-              uses: appleboy/ssh-action@master
+              uses: appleboy/ssh-action@v1
               with:
                   host: ${{ secrets.HOST }}
                   username: ${{ secrets.USERNAME }}
                   password: ${{ secrets.PASSWORD }}
                   port: ${{ secrets.PORT }}
+                  timeout: 5m
                   script: |
                       cd ~/rita
                       git pull
