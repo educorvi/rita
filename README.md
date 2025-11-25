@@ -6,10 +6,10 @@
 Rita is a project to enable rule based processing of data.
 It consists of:
 
--   [`rita-core`](https://github.com/educorvi/rita/tree/main/rita-core), the core package that is used to parse and evaluate rules.
--   [`persistent-rita`](https://github.com/educorvi/rita/tree/main/persistent-rita), used to persist rules
--   [`rita-http`](https://github.com/educorvi/rita/tree/main/rita-http), a REST-API to evaluate rules
--   _[`rita-smt`](https://github.com/educorvi/rita/tree/main/rita-smt), Rita and SMT_ (EXPERIMENTAL)
+- [`rita-core`](https://github.com/educorvi/rita/tree/main/rita-core), the core package that is used to parse and evaluate rules.
+- [`persistent-rita`](https://github.com/educorvi/rita/tree/main/persistent-rita), used to persist rules
+- [`rita-http`](https://github.com/educorvi/rita/tree/main/rita-http), a REST-API to evaluate rules
+- _[`rita-smt`](https://github.com/educorvi/rita/tree/main/rita-smt), Rita and SMT_ (EXPERIMENTAL)
 
 ## Documentation
 

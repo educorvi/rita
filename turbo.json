@@ -1,17 +1,17 @@
 {
-  "$schema": "https://turborepo.com/schema.json",
-  "tasks": {
-    "build": {
-      "outputs": ["dist/**", "docs/**"],
-      "dependsOn": ["^build"]
-    },
-    "test": {
-      "dependsOn": ["build"],
-      "outputs": []
-    },
-    "doc": {
-      "dependsOn": ["build"],
-      "outputs": ["docs/**"]
+    "$schema": "https://turborepo.com/schema.json",
+    "tasks": {
+        "build": {
+            "outputs": ["dist/**", "docs/**"],
+            "dependsOn": ["^build"]
+        },
+        "test": {
+            "dependsOn": ["build"],
+            "outputs": []
+        },
+        "doc": {
+            "dependsOn": ["build"],
+            "outputs": ["docs/**"]
+        }
     }
-  }
 }

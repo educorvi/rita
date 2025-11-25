@@ -8,7 +8,7 @@ Thu, 10 Jul 2025 09:41:58 GMT
 
 ### Patches
 
--   update dependencies
+- update dependencies
 
 ## 6.0.2
 
@@ -16,7 +16,7 @@ Fri, 22 Nov 2024 14:19:58 GMT
 
 ### Patches
 
--   Update dependencies
+- Update dependencies
 
 ## 6.0.1
 
@@ -24,7 +24,7 @@ Tue, 02 Jul 2024 11:35:12 GMT
 
 ### Patches
 
--   Update dependencies
+- Update dependencies
 
 ## 6.0.0
 
@@ -32,7 +32,7 @@ Fri, 23 Feb 2024 11:14:38 GMT
 
 ### Breaking changes
 
--   Update mysql2 peer dependency to v3
+- Update mysql2 peer dependency to v3
 
 ## 5.0.0
 
@@ -40,7 +40,7 @@ Tue, 14 Mar 2023 19:16:22 GMT
 
 ### Breaking changes
 
--   Update Rita Version to v5
+- Update Rita Version to v5
 
 ## 4.0.0
 
@@ -48,11 +48,11 @@ Fri, 24 Jun 2022 12:22:43 GMT
 
 ### Breaking changes
 
--   Use async rita. Exposed evaluateAll is now async
+- Use async rita. Exposed evaluateAll is now async
 
 ### Minor changes
 
--   Add support for plugins
+- Add support for plugins
 
 ## 3.0.1
 

@@ -1,7 +1,5 @@
 {
-    "include": [
-        "lib/**/*"
-    ],
+    "include": ["lib/**/*"],
     "compilerOptions": {
         "target": "es2018",
         "lib": ["es2018"],

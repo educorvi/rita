@@ -1,44 +1,43 @@
 version: '3'
 
 services:
+    mysql:
+        image: mysql:8.0.28
+        environment:
+            MYSQL_ROOT_PASSWORD: testRitaPass
+            MYSQL_DATABASE: rita
+        ports:
+            - '3312:3306'
 
-  mysql:
-    image: mysql:8.0.28
-    environment:
-      MYSQL_ROOT_PASSWORD: testRitaPass
-      MYSQL_DATABASE: rita
-    ports:
-      - "3312:3306"
+    phpmyadmin:
+        depends_on:
+            - mysql
+        image: phpmyadmin/phpmyadmin
+        ports:
+            - '8088:80'
+        environment:
+            PMA_HOST: mysql
+            MYSQL_ROOT_PASSWORD: testRitaPass
+        links:
+            - mysql
 
-  phpmyadmin:
-    depends_on:
-      - mysql
-    image: phpmyadmin/phpmyadmin
-    ports:
-      - '8088:80'
-    environment:
-      PMA_HOST: mysql
-      MYSQL_ROOT_PASSWORD: testRitaPass
-    links:
-      - mysql
+    postgres:
+        image: postgres
+        environment:
+            POSTGRES_USER: rita
+            POSTGRES_PASSWORD: testRitaPass
+            POSTGRES_DB: rita
+        ports:
+            - '5434:5432'
 
-  postgres:
-    image: postgres
-    environment:
-      POSTGRES_USER: rita
-      POSTGRES_PASSWORD: testRitaPass
-      POSTGRES_DB: rita
-    ports:
-      - "5434:5432"
-
-  adminer:
-    image: adminer
-    depends_on:
-      - postgres
-    links:
-      - postgres
-    ports:
-      - "8089:8080"
-    environment:
-      ADMINER_DEFAULT_SERVER: postgres
-      ADMINER_DESIGN: dracula
+    adminer:
+        image: adminer
+        depends_on:
+            - postgres
+        links:
+            - postgres
+        ports:
+            - '8089:8080'
+        environment:
+            ADMINER_DEFAULT_SERVER: postgres
+            ADMINER_DESIGN: dracula

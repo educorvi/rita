@@ -1,39 +1,39 @@
 {
-  "name": "rita",
-  "version": "1.0.0",
-  "private": true,
-  "workspaces": [
-    "rita-core",
-    "persistent-rita",
-    "rita-smt/node-smtlib",
-    "rita-smt/main",
-    "plugins/http",
-    "rita-http"
-  ],
-  "packageManager": "yarn@1.22.22",
-  "scripts": {
-    "prepare": "husky",
-    "commitlint": "commitlint --edit",
-    "pre-commit": "prettier --write --list-different .",
-    "build": "turbo run build",
-    "test": "turbo run test",
-    "build-and-test": "turbo run build test",
-    "doc": "turbo run doc --filter=!rita-http",
-    "generate-documentation": "yarn run doc && cp -r rita-core/docs docs/rita-core && cp -r persistent-rita/docs docs/persistent-rita && cp -r rita-http/docs docs/rita-http",
-    "release": "yarn workspaces run semantic-release -e semantic-release-monorepo",
-    "release:dry-run": "yarn workspaces run semantic-release --dry-run -e semantic-release-monorepo"
-  },
-  "devDependencies": {
-    "@commitlint/cli": "^20.0.0",
-    "@commitlint/config-conventional": "^20.0.0",
-    "husky": "^9.1.7",
-    "prettier": "^3.4.2",
-    "semantic-release": "^24.2.0",
-    "semantic-release-monorepo": "^8.0.2",
-    "semantic-release-yarn": "^3.0.2",
-    "turbo": "^2.3.3"
-  },
-  "engines": {
-    "node": ">=18.0.0 || >=16.13.0 <17.0.0 || >=14.0.0 <15.0.0"
-  }
+    "name": "rita",
+    "version": "1.0.0",
+    "private": true,
+    "workspaces": [
+        "rita-core",
+        "persistent-rita",
+        "rita-smt/node-smtlib",
+        "rita-smt/main",
+        "plugins/http",
+        "rita-http"
+    ],
+    "packageManager": "yarn@1.22.22",
+    "scripts": {
+        "prepare": "husky",
+        "commitlint": "commitlint --edit",
+        "pre-commit": "prettier --write --list-different .",
+        "build": "turbo run build",
+        "test": "turbo run test",
+        "build-and-test": "turbo run build test",
+        "doc": "turbo run doc --filter=!rita-http",
+        "generate-documentation": "yarn run doc && cp -r rita-core/docs docs/rita-core && cp -r persistent-rita/docs docs/persistent-rita && cp -r rita-http/docs docs/rita-http",
+        "release": "yarn workspaces run semantic-release -e semantic-release-monorepo",
+        "release:dry-run": "yarn workspaces run semantic-release --dry-run -e semantic-release-monorepo"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^20.0.0",
+        "@commitlint/config-conventional": "^20.0.0",
+        "husky": "^9.1.7",
+        "prettier": "^3.4.2",
+        "semantic-release": "^24.2.0",
+        "semantic-release-monorepo": "^8.0.2",
+        "semantic-release-yarn": "^3.0.2",
+        "turbo": "^2.3.3"
+    },
+    "engines": {
+        "node": ">=18.0.0 || >=16.13.0 <17.0.0 || >=14.0.0 <15.0.0"
+    }
 }

@@ -22,8 +22,8 @@ Fetches an URL and expects an JSON object as response. This JSON object will the
 
 ### Options
 
--   `url` is the url to fetch from.
--   `method` (optional) is the HTTP method to use. Currently `GET` and `POST` are supported.
-    When `POST` is selected, the current data will be passed via the requests body.
--   `limitTo` (optional) limits the keys that are send in the body when using `POST`.
-    If undefined all properties will be posted.
+- `url` is the url to fetch from.
+- `method` (optional) is the HTTP method to use. Currently `GET` and `POST` are supported.
+  When `POST` is selected, the current data will be passed via the requests body.
+- `limitTo` (optional) limits the keys that are send in the body when using `POST`.
+  If undefined all properties will be posted.

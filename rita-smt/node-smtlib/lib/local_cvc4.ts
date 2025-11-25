@@ -7,19 +7,19 @@
 import * as child_process from 'child_process';
 
 import * as smt from './smtlib';
-import LocalCVCSolver from "./local_cvc";
-import {SatResult} from "./base_solver";
+import LocalCVCSolver from './local_cvc';
+import { SatResult } from './base_solver';
 
 /**
  * @deprecated
  */
 export default class LocalCVC4Solver extends LocalCVCSolver {
-    constructor(logic : string) {
+    constructor(logic: string) {
         super(logic);
         this.setOption('strings-guess-model');
     }
 
-    checkSat() : Promise<SatResult> {
+    checkSat(): Promise<SatResult> {
         return new Promise((callback, errback) => {
             this.add(smt.CheckSat());
 
@@ -31,13 +31,15 @@ export default class LocalCVC4Solver extends LocalCVCSolver {
     }
 
     protected spawnCVC() {
-        const args = ['--lang', 'smt2.6', '--tlimit=' + this.timeLimit, '--cpu-time'];
-        if (this.withAssignments)
-            args.push('--dump-models');
+        const args = [
+            '--lang',
+            'smt2.6',
+            '--tlimit=' + this.timeLimit,
+            '--cpu-time',
+        ];
+        if (this.withAssignments) args.push('--dump-models');
 
         // const now = new Date;
         return child_process.spawn('cvc4', args);
     }
-
-
 }

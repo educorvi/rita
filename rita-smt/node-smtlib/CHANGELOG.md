@@ -8,7 +8,7 @@ Thu, 10 Jul 2025 09:41:58 GMT
 
 ### Patches
 
--   update dependencies
+- update dependencies
 
 ## 1.2.2
 
@@ -16,7 +16,7 @@ Fri, 22 Nov 2024 14:19:58 GMT
 
 ### Patches
 
--   Update dependencies
+- Update dependencies
 
 ## 1.2.1
 
@@ -24,7 +24,7 @@ Mon, 20 Mar 2023 23:49:20 GMT
 
 ### Patches
 
--   fix bug with cvc5 v1.0.5
+- fix bug with cvc5 v1.0.5
 
 ## 1.2.0
 
@@ -32,14 +32,14 @@ Tue, 14 Mar 2023 19:16:22 GMT
 
 ### Minor changes
 
--   add Xor
--   add defineFun function to base_solver
+- add Xor
+- add defineFun function to base_solver
 
 ### Patches
 
--   add support for string in model
--   fix typo: rename satisfieable to satisifiable
--   parse negative numbers
+- add support for string in model
+- fix typo: rename satisfieable to satisifiable
+- parse negative numbers
 
 ## 1.1.1
 
