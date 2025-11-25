@@ -1,0 +1,64 @@
+{
+    "rules": [
+        {
+            "id": "age-check",
+            "comment": "Verifies user is at least 18 years old",
+            "rule": {
+                "type": "comparison",
+                "operation": "greaterOrEqual",
+                "arguments": [
+                    {
+                        "type": "atom",
+                        "path": "age"
+                    },
+                    18
+                ]
+            }
+        },
+        {
+            "id": "premium-user",
+            "comment": "Checks if user has premium subscription or high score",
+            "rule": {
+                "type": "or",
+                "arguments": [
+                    {
+                        "type": "atom",
+                        "path": "isPremium"
+                    },
+                    {
+                        "type": "comparison",
+                        "operation": "greater",
+                        "arguments": [
+                            {
+                                "type": "atom",
+                                "path": "score"
+                            },
+                            1000
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "complete-profile",
+            "comment": "Ensures all required profile fields are filled",
+            "rule": {
+                "type": "and",
+                "arguments": [
+                    {
+                        "type": "atom",
+                        "path": "profile.name"
+                    },
+                    {
+                        "type": "atom",
+                        "path": "profile.email"
+                    },
+                    {
+                        "type": "atom",
+                        "path": "profile.phone"
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "id": "membership-rule",
+    "comment": "Checks if someone is a member but not an employee",
+    "rule": {
+        "type": "and",
+        "arguments": [
+            {
+                "type": "atom",
+                "path": "member"
+            },
+            {
+                "type": "not",
+                "arguments": [
+                    {
+                        "type": "atom",
+                        "path": "employee"
+                    }
+                ]
+            }
+        ]
+    }
+}
