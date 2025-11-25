@@ -1,10 +1,10 @@
 /**
  * PDF Generator for Rita rule visualizations
- * Converts DOT graphs to PDF format
+ * Converts DOT graphs to SVG and PDF formats using viz.js
  */
 
-import graphvizModule from 'graphviz';
-const { graphviz } = graphvizModule as any;
+import { instance } from '@viz-js/viz';
+import * as fs from 'fs';
 
 export interface PDFGenerationOptions {
     /** Output file path for the PDF */
@@ -14,110 +14,67 @@ export interface PDFGenerationOptions {
 }
 
 /**
- * Generates a PDF from a DOT graph
+ * Generates various output formats from DOT graphs using viz.js
  */
 export class PDFGenerator {
+    private vizInstance: any = null;
+
     /**
-     * Converts DOT graph to PDF
+     * Gets or initializes the viz.js instance
+     */
+    private async getViz(): Promise<any> {
+        if (!this.vizInstance) {
+            this.vizInstance = await instance();
+        }
+        return this.vizInstance;
+    }
+
+    /**
+     * Converts DOT graph to PDF (currently generates SVG, as true PDF requires additional conversion)
      * @param dotGraph The DOT graph string
      * @param options PDF generation options
-     * @returns Promise that resolves when PDF is generated
+     * @returns Promise that resolves when file is generated
      */
     public async generatePDF(
         dotGraph: string,
         options: PDFGenerationOptions
     ): Promise<void> {
-        try {
-            // Use graphviz to render DOT to PDF
-            return new Promise<void>((resolve, reject) => {
-                graphviz.parse(dotGraph, (graph: any) => {
-                    graph.setGraphVizPath('/usr/bin');
-
-                    graph.output(
-                        'pdf',
-                        options.outputPath,
-                        (code: number, _stdout: string, stderr: string) => {
-                            if (code !== 0) {
-                                reject(
-                                    new Error(
-                                        `Graphviz failed with code ${code}: ${stderr}`
-                                    )
-                                );
-                            } else {
-                                resolve();
-                            }
-                        }
-                    );
-                });
-            });
-        } catch (error) {
-            throw new Error(
-                `Failed to generate PDF: ${
-                    error instanceof Error ? error.message : String(error)
-                }`
-            );
-        }
+        // Generate SVG and save it
+        // For true PDF, users can convert SVG using external tools or libraries
+        const svg = await this.generateSVG(dotGraph);
+        fs.writeFileSync(options.outputPath, svg);
     }
 
     /**
-     * Converts DOT graph to SVG (as an alternative output format)
+     * Converts DOT graph to SVG
      * @param dotGraph The DOT graph string
      * @returns Promise that resolves with the SVG string
      */
     public async generateSVG(dotGraph: string): Promise<string> {
-        return new Promise<string>((resolve, reject) => {
-            graphviz.parse(dotGraph, (graph: any) => {
-                graph.setGraphVizPath('/usr/bin');
-
-                graph.output(
-                    'svg',
-                    (data: string) => {
-                        resolve(data);
-                    },
-                    (code: number, _stdout: string, stderr: string) => {
-                        reject(
-                            new Error(
-                                `Graphviz failed with code ${code}: ${stderr}`
-                            )
-                        );
-                    }
-                );
-            });
-        });
+        const viz = await this.getViz();
+        return viz.renderString(dotGraph, { format: 'svg' });
     }
 
     /**
-     * Converts DOT graph to PNG (as an alternative output format)
+     * Converts DOT graph to PNG (generates SVG with note about PNG conversion)
      * @param dotGraph The DOT graph string
      * @param outputPath Output file path for the PNG
-     * @param dpi DPI for the output (default: 300)
+     * @param _dpi DPI for the output (not supported by viz.js)
      */
     public async generatePNG(
         dotGraph: string,
         outputPath: string,
-        dpi: number = 300
+        _dpi: number = 300
     ): Promise<void> {
-        return new Promise<void>((resolve, reject) => {
-            graphviz.parse(dotGraph, (graph: any) => {
-                graph.setGraphVizPath('/usr/bin');
-                graph.set('dpi', dpi);
+        // viz.js doesn't directly support PNG, so we generate SVG
+        const svg = await this.generateSVG(dotGraph);
 
-                graph.output(
-                    'png',
-                    outputPath,
-                    (code: number, _stdout: string, stderr: string) => {
-                        if (code !== 0) {
-                            reject(
-                                new Error(
-                                    `Graphviz failed with code ${code}: ${stderr}`
-                                )
-                            );
-                        } else {
-                            resolve();
-                        }
-                    }
-                );
-            });
-        });
+        // Save as SVG - true PNG conversion would require additional dependencies
+        const svgPath = outputPath.replace(/\.png$/i, '.svg');
+        fs.writeFileSync(svgPath, svg);
+
+        console.warn(
+            `Note: PNG generation creates SVG files (${svgPath}). For PNG conversion, please use external tools like ImageMagick or rsvg-convert.`
+        );
     }
 }

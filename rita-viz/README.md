@@ -1,14 +1,15 @@
 # @educorvi/rita-viz
 
-Visualization package for Rita rules. Converts Rita rule JSON to visual diagrams in various formats (PDF, SVG, PNG).
+Visualization package for Rita rules. Converts Rita rule JSON to visual diagrams in SVG and DOT formats.
 
 ## Features
 
 -   📊 Visualize Rita rules as flowchart-style diagrams
--   📄 Export to PDF, SVG, PNG, or DOT format
+-   📄 Export to SVG or DOT format
 -   🖥️ Use as a CLI tool or programmatically
 -   🎨 Color-coded node types for easy understanding
 -   📦 Support for single rules or rule sets
+-   ✨ Pure JavaScript implementation using [viz.js](https://github.com/mdaines/viz-js) - no native dependencies!
 
 ## Installation
 
@@ -19,29 +20,52 @@ npm install @educorvi/rita-viz
 ## CLI Usage
 
 ```bash
-# Visualize a rule to PDF (default)
-rita-viz visualize rule.json -o output.pdf
-
-# Visualize to SVG
+# Visualize a rule to SVG (recommended)
 rita-viz visualize rule.json -o output.svg -f svg
-
-# Visualize to PNG with custom DPI
-rita-viz visualize rule.json -o output.png -f png --dpi 600
 
 # Generate DOT graph
 rita-viz visualize rule.json -o output.dot -f dot
 
 # Customize layout and title
-rita-viz visualize rule.json -o output.pdf -t "My Rule" -d LR
+rita-viz visualize rule.json -o output.svg -t "My Rule" -d LR
 ```
 
 ### CLI Options
 
--   `-o, --output <path>` - Output file path (default: output.pdf)
--   `-f, --format <format>` - Output format: pdf, svg, png, dot (default: pdf)
+-   `-o, --output <path>` - Output file path
+-   `-f, --format <format>` - Output format: svg, dot, pdf, png (default: pdf)
 -   `-t, --title <title>` - Title for the visualization
 -   `-d, --direction <dir>` - Graph direction: TB (top-bottom) or LR (left-right) (default: TB)
--   `--dpi <number>` - DPI for PNG output (default: 300)
+
+### Converting to PDF or PNG
+
+This package generates SVG output natively. To convert to PDF or PNG, use external tools:
+
+**PDF Conversion:**
+
+```bash
+# Using Inkscape
+inkscape output.svg --export-filename=output.pdf
+
+# Using rsvg-convert
+rsvg-convert -f pdf -o output.pdf output.svg
+
+# Using CairoSVG (Python)
+cairosvg output.svg -o output.pdf
+```
+
+**PNG Conversion:**
+
+```bash
+# Using rsvg-convert
+rsvg-convert -o output.png output.svg
+
+# Using ImageMagick
+convert output.svg output.png
+
+# Using CairoSVG (Python)
+cairosvg output.svg -o output.png
+```
 
 ## Programmatic Usage
 
@@ -79,20 +103,18 @@ const rule: Rule = {
 const dotGraph = viz.visualizeRule(rule);
 console.log(dotGraph);
 
-// Generate PDF
-await viz.visualizeRuleToPDF(rule, 'output.pdf');
-
 // Generate SVG
 const svg = await viz.visualizeRuleToSVG(rule);
+console.log(svg);
 
-// Generate PNG
-await viz.visualizeRuleToPNG(rule, 'output.png', undefined, 300);
+// Save to file
+await viz.visualizeRuleToPDF(rule, 'output.svg'); // Despite the name, this saves as SVG
 
 // Visualize a rule set
 const ruleSet: RuleSet = {
     rules: [rule1, rule2, rule3],
 };
-await viz.visualizeRuleSetToPDF(ruleSet, 'ruleset.pdf');
+const svg = await viz.visualizeRuleSetToSVG(ruleSet);
 ```
 
 ## Visualization Options
@@ -119,26 +141,6 @@ The visualization uses different shapes and colors for different node types:
 -   **Literals** - Rounded boxes (yellow)
 -   **Plugins** - Double octagons (dark green)
 
-## Requirements
-
-This package requires Graphviz to be installed on your system:
-
-### Linux
-
-```bash
-sudo apt-get install graphviz
-```
-
-### macOS
-
-```bash
-brew install graphviz
-```
-
-### Windows
-
-Download and install from [graphviz.org](https://graphviz.org/download/)
-
 ## API Reference
 
 ### RitaViz Class
@@ -149,12 +151,21 @@ Main class for visualizing rules.
 
 -   `visualizeRule(rule: Rule, options?: VisualizationOptions): string` - Returns DOT graph string
 -   `visualizeRuleSet(ruleSet: RuleSet, options?: VisualizationOptions): string` - Returns DOT graph string
--   `visualizeRuleToPDF(rule: Rule, outputPath: string, options?)` - Generates PDF file
--   `visualizeRuleSetToPDF(ruleSet: RuleSet, outputPath: string, options?)` - Generates PDF file
+-   `visualizeRuleToPDF(rule: Rule, outputPath: string, options?)` - Generates SVG file
+-   `visualizeRuleSetToPDF(ruleSet: RuleSet, outputPath: string, options?)` - Generates SVG file
 -   `visualizeRuleToSVG(rule: Rule, options?): Promise<string>` - Returns SVG string
 -   `visualizeRuleSetToSVG(ruleSet: RuleSet, options?): Promise<string>` - Returns SVG string
--   `visualizeRuleToPNG(rule: Rule, outputPath: string, options?, dpi?)` - Generates PNG file
--   `visualizeRuleSetToPNG(ruleSet: RuleSet, outputPath: string, options?, dpi?)` - Generates PNG file
+
+## Why viz.js?
+
+This package uses [viz.js](https://github.com/mdaines/viz-js), a pure JavaScript/WebAssembly implementation of Graphviz. This means:
+
+-   ✅ No native dependencies to install
+-   ✅ Works in any environment (Node.js, browsers, Docker, etc.)
+-   ✅ Consistent behavior across platforms
+-   ✅ Easy to install and deploy
+
+For PDF/PNG output, we recommend using well-established conversion tools post-generation, which gives you full control over the conversion process and output quality.
 
 ## License
 
