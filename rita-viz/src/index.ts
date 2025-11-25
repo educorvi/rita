@@ -3,21 +3,14 @@
  * Provides tools to visualize rita rules as diagrams
  */
 
-export {
-    RuleVisualizer,
-    VisualizationOptions,
-    Rule,
-    RuleSet,
-    Formula,
-} from './visualizer.js';
+export { RuleVisualizer, VisualizationOptions } from './visualizer.js';
 export { PDFGenerator, PDFGenerationOptions } from './pdfGenerator.js';
 
-import {
-    RuleVisualizer,
-    Rule,
-    RuleSet,
-    VisualizationOptions,
-} from './visualizer.js';
+// Re-export Rule and Formula from rita-core for convenience
+import * as RitaCore from '@educorvi/rita';
+export const { Rule, Formula } = RitaCore as any;
+
+import { RuleVisualizer, VisualizationOptions } from './visualizer.js';
 import { PDFGenerator, PDFGenerationOptions } from './pdfGenerator.js';
 
 /**
@@ -38,21 +31,21 @@ export class RitaViz {
      * @param options Visualization options
      * @returns DOT graph string
      */
-    public visualizeRule(rule: Rule, options?: VisualizationOptions): string {
+    public visualizeRule(rule: any, options?: VisualizationOptions): string {
         return this.visualizer.generateDot(rule, options);
     }
 
     /**
      * Visualizes a rule set and returns DOT graph
-     * @param ruleSet The rule set to visualize
+     * @param rules Array of rules to visualize
      * @param options Visualization options
      * @returns DOT graph string
      */
     public visualizeRuleSet(
-        ruleSet: RuleSet,
+        rules: any[],
         options?: VisualizationOptions
     ): string {
-        return this.visualizer.generateDotForRuleSet(ruleSet, options);
+        return this.visualizer.generateDotForRuleSet(rules, options);
     }
 
     /**
@@ -63,7 +56,7 @@ export class RitaViz {
      * @param pdfOptions PDF generation options
      */
     public async visualizeRuleToPDF(
-        rule: Rule,
+        rule: any,
         outputPath: string,
         visualizationOptions?: VisualizationOptions,
         pdfOptions?: Omit<PDFGenerationOptions, 'outputPath'>
@@ -77,18 +70,18 @@ export class RitaViz {
 
     /**
      * Visualizes a rule set and saves it as a PDF
-     * @param ruleSet The rule set to visualize
+     * @param rules Array of rules to visualize
      * @param outputPath Path where the PDF should be saved
      * @param visualizationOptions Visualization options
      * @param pdfOptions PDF generation options
      */
     public async visualizeRuleSetToPDF(
-        ruleSet: RuleSet,
+        rules: any[],
         outputPath: string,
         visualizationOptions?: VisualizationOptions,
         pdfOptions?: Omit<PDFGenerationOptions, 'outputPath'>
     ): Promise<void> {
-        const dotGraph = this.visualizeRuleSet(ruleSet, visualizationOptions);
+        const dotGraph = this.visualizeRuleSet(rules, visualizationOptions);
         await this.pdfGenerator.generatePDF(dotGraph, {
             ...pdfOptions,
             outputPath,
@@ -102,7 +95,7 @@ export class RitaViz {
      * @returns SVG string
      */
     public async visualizeRuleToSVG(
-        rule: Rule,
+        rule: any,
         options?: VisualizationOptions
     ): Promise<string> {
         const dotGraph = this.visualizeRule(rule, options);
@@ -111,15 +104,15 @@ export class RitaViz {
 
     /**
      * Visualizes a rule set and returns SVG
-     * @param ruleSet The rule set to visualize
+     * @param rules Array of rules to visualize
      * @param options Visualization options
      * @returns SVG string
      */
     public async visualizeRuleSetToSVG(
-        ruleSet: RuleSet,
+        rules: any[],
         options?: VisualizationOptions
     ): Promise<string> {
-        const dotGraph = this.visualizeRuleSet(ruleSet, options);
+        const dotGraph = this.visualizeRuleSet(rules, options);
         return this.pdfGenerator.generateSVG(dotGraph);
     }
 
@@ -131,7 +124,7 @@ export class RitaViz {
      * @param dpi DPI for the output (default: 300)
      */
     public async visualizeRuleToPNG(
-        rule: Rule,
+        rule: any,
         outputPath: string,
         visualizationOptions?: VisualizationOptions,
         dpi?: number
@@ -142,18 +135,18 @@ export class RitaViz {
 
     /**
      * Visualizes a rule set and saves it as PNG
-     * @param ruleSet The rule set to visualize
+     * @param rules Array of rules to visualize
      * @param outputPath Path where the PNG should be saved
      * @param visualizationOptions Visualization options
      * @param dpi DPI for the output (default: 300)
      */
     public async visualizeRuleSetToPNG(
-        ruleSet: RuleSet,
+        rules: any[],
         outputPath: string,
         visualizationOptions?: VisualizationOptions,
         dpi?: number
     ): Promise<void> {
-        const dotGraph = this.visualizeRuleSet(ruleSet, visualizationOptions);
+        const dotGraph = this.visualizeRuleSet(rules, visualizationOptions);
         await this.pdfGenerator.generatePNG(dotGraph, outputPath, dpi);
     }
 }

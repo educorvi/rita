@@ -1,14 +1,17 @@
-import { RuleVisualizer, Rule, RuleSet } from '../src/visualizer';
+import { RuleVisualizer } from '../src/visualizer';
+import { Parser } from '@educorvi/rita';
 
 describe('RuleVisualizer', () => {
     let visualizer: RuleVisualizer;
+    let parser: Parser;
 
     beforeEach(() => {
         visualizer = new RuleVisualizer();
+        parser = new Parser();
     });
 
     test('should generate DOT graph for simple atom rule', () => {
-        const rule: Rule = {
+        const ruleJSON = {
             id: 'test1',
             rule: {
                 type: 'atom',
@@ -16,6 +19,7 @@ describe('RuleVisualizer', () => {
             },
         };
 
+        const rule = parser.parseRule(ruleJSON);
         const dot = visualizer.generateDot(rule);
 
         expect(dot).toContain('digraph Rule');
@@ -24,7 +28,7 @@ describe('RuleVisualizer', () => {
     });
 
     test('should generate DOT graph for AND operator', () => {
-        const rule: Rule = {
+        const ruleJSON = {
             id: 'test2',
             rule: {
                 type: 'and',
@@ -41,6 +45,7 @@ describe('RuleVisualizer', () => {
             },
         };
 
+        const rule = parser.parseRule(ruleJSON);
         const dot = visualizer.generateDot(rule);
 
         expect(dot).toContain('digraph Rule');
@@ -51,7 +56,7 @@ describe('RuleVisualizer', () => {
     });
 
     test('should generate DOT graph for OR operator', () => {
-        const rule: Rule = {
+        const ruleJSON = {
             id: 'test3',
             rule: {
                 type: 'or',
@@ -68,6 +73,7 @@ describe('RuleVisualizer', () => {
             },
         };
 
+        const rule = parser.parseRule(ruleJSON);
         const dot = visualizer.generateDot(rule);
 
         expect(dot).toContain('OR');
@@ -75,7 +81,7 @@ describe('RuleVisualizer', () => {
     });
 
     test('should generate DOT graph for NOT operator', () => {
-        const rule: Rule = {
+        const ruleJSON = {
             id: 'test4',
             rule: {
                 type: 'not',
@@ -88,6 +94,7 @@ describe('RuleVisualizer', () => {
             },
         };
 
+        const rule = parser.parseRule(ruleJSON);
         const dot = visualizer.generateDot(rule);
 
         expect(dot).toContain('NOT');
@@ -95,7 +102,7 @@ describe('RuleVisualizer', () => {
     });
 
     test('should generate DOT graph for comparison', () => {
-        const rule: Rule = {
+        const ruleJSON = {
             id: 'test5',
             rule: {
                 type: 'comparison',
@@ -104,6 +111,7 @@ describe('RuleVisualizer', () => {
             },
         };
 
+        const rule = parser.parseRule(ruleJSON);
         const dot = visualizer.generateDot(rule);
 
         expect(dot).toContain('>');
@@ -122,22 +130,23 @@ describe('RuleVisualizer', () => {
         ];
 
         operations.forEach(({ op, symbol }) => {
-            const rule: Rule = {
+            const ruleJSON = {
                 id: `test_${op}`,
                 rule: {
                     type: 'comparison',
-                    operation: op as any,
+                    operation: op,
                     arguments: [1, 2],
                 },
             };
 
+            const rule = parser.parseRule(ruleJSON);
             const dot = visualizer.generateDot(rule);
             expect(dot).toContain(symbol);
         });
     });
 
     test('should include title and comment in DOT graph', () => {
-        const rule: Rule = {
+        const ruleJSON = {
             id: 'test6',
             comment: 'This is a test rule',
             rule: {
@@ -146,6 +155,7 @@ describe('RuleVisualizer', () => {
             },
         };
 
+        const rule = parser.parseRule(ruleJSON);
         const dot = visualizer.generateDot(rule, { title: 'Custom Title' });
 
         expect(dot).toContain('Custom Title');
@@ -153,13 +163,15 @@ describe('RuleVisualizer', () => {
     });
 
     test('should support different graph directions', () => {
-        const rule: Rule = {
+        const ruleJSON = {
             id: 'test7',
             rule: {
                 type: 'atom',
                 path: 'test',
             },
         };
+
+        const rule = parser.parseRule(ruleJSON);
 
         const dotTB = visualizer.generateDot(rule, { direction: 'TB' });
         expect(dotTB).toContain('rankdir=TB');
@@ -169,7 +181,7 @@ describe('RuleVisualizer', () => {
     });
 
     test('should generate DOT graph for rule set', () => {
-        const ruleSet: RuleSet = {
+        const ruleSetJSON = {
             rules: [
                 {
                     id: 'rule1',
@@ -188,7 +200,8 @@ describe('RuleVisualizer', () => {
             ],
         };
 
-        const dot = visualizer.generateDotForRuleSet(ruleSet);
+        const rules = parser.parseRuleSet(ruleSetJSON);
+        const dot = visualizer.generateDotForRuleSet(rules);
 
         expect(dot).toContain('digraph Rules');
         expect(dot).toContain('subgraph cluster_0');
@@ -198,7 +211,7 @@ describe('RuleVisualizer', () => {
     });
 
     test('should handle nested operators', () => {
-        const rule: Rule = {
+        const ruleJSON = {
             id: 'nested',
             rule: {
                 type: 'and',
@@ -224,6 +237,7 @@ describe('RuleVisualizer', () => {
             },
         };
 
+        const rule = parser.parseRule(ruleJSON);
         const dot = visualizer.generateDot(rule);
 
         expect(dot).toContain('AND');
@@ -234,7 +248,7 @@ describe('RuleVisualizer', () => {
     });
 
     test('should escape special characters in labels', () => {
-        const rule: Rule = {
+        const ruleJSON = {
             id: 'escape_test',
             comment: 'Test "quotes" and \\backslashes',
             rule: {
@@ -243,6 +257,7 @@ describe('RuleVisualizer', () => {
             },
         };
 
+        const rule = parser.parseRule(ruleJSON);
         const dot = visualizer.generateDot(rule);
 
         expect(dot).toContain('\\"');
@@ -250,7 +265,7 @@ describe('RuleVisualizer', () => {
     });
 
     test('should handle atom with date flag', () => {
-        const rule: Rule = {
+        const ruleJSON = {
             id: 'date_test',
             rule: {
                 type: 'atom',
@@ -259,6 +274,7 @@ describe('RuleVisualizer', () => {
             },
         };
 
+        const rule = parser.parseRule(ruleJSON);
         const dot = visualizer.generateDot(rule);
 
         expect(dot).toContain('birthdate');

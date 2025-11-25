@@ -8,7 +8,9 @@ import { Command } from 'commander';
 import * as fs from 'fs';
 import * as path from 'path';
 import { RitaViz } from './index.js';
-import type { Rule, RuleSet } from './visualizer.js';
+import RitaCoreModule from '@educorvi/rita';
+
+const Parser = (RitaCoreModule as any).Parser;
 
 const program = new Command();
 
@@ -45,9 +47,19 @@ program
 
             const inputData = JSON.parse(fs.readFileSync(inputPath, 'utf-8'));
 
+            // Parse rules using rita-core Parser
+            const parser = new Parser();
+
             // Determine if it's a single rule or a rule set
             const isRuleSet =
                 'rules' in inputData && Array.isArray(inputData.rules);
+
+            let rules: any[];
+            if (isRuleSet) {
+                rules = parser.parseRuleSet(inputData);
+            } else {
+                rules = [parser.parseRule(inputData)];
+            }
 
             const viz = new RitaViz();
             const visualizationOptions = {
@@ -72,29 +84,24 @@ program
 
             if (format === 'dot') {
                 // Generate DOT and save to file
-                const dotGraph = isRuleSet
-                    ? viz.visualizeRuleSet(
-                          inputData as RuleSet,
-                          visualizationOptions
-                      )
-                    : viz.visualizeRule(
-                          inputData as Rule,
-                          visualizationOptions
-                      );
+                const dotGraph =
+                    rules.length > 1
+                        ? viz.visualizeRuleSet(rules, visualizationOptions)
+                        : viz.visualizeRule(rules[0], visualizationOptions);
 
                 fs.writeFileSync(resolvedOutputPath, dotGraph);
                 console.log(`DOT graph saved to ${resolvedOutputPath}`);
             } else if (format === 'pdf') {
                 // Generate PDF
-                if (isRuleSet) {
+                if (rules.length > 1) {
                     await viz.visualizeRuleSetToPDF(
-                        inputData as RuleSet,
+                        rules,
                         resolvedOutputPath,
                         visualizationOptions
                     );
                 } else {
                     await viz.visualizeRuleToPDF(
-                        inputData as Rule,
+                        rules[0],
                         resolvedOutputPath,
                         visualizationOptions
                     );
@@ -102,31 +109,32 @@ program
                 console.log(`PDF saved to ${resolvedOutputPath}`);
             } else if (format === 'svg') {
                 // Generate SVG
-                const svg = isRuleSet
-                    ? await viz.visualizeRuleSetToSVG(
-                          inputData as RuleSet,
-                          visualizationOptions
-                      )
-                    : await viz.visualizeRuleToSVG(
-                          inputData as Rule,
-                          visualizationOptions
-                      );
+                const svg =
+                    rules.length > 1
+                        ? await viz.visualizeRuleSetToSVG(
+                              rules,
+                              visualizationOptions
+                          )
+                        : await viz.visualizeRuleToSVG(
+                              rules[0],
+                              visualizationOptions
+                          );
 
                 fs.writeFileSync(resolvedOutputPath, svg);
                 console.log(`SVG saved to ${resolvedOutputPath}`);
             } else if (format === 'png') {
                 // Generate PNG
                 const dpi = parseInt(options.dpi, 10);
-                if (isRuleSet) {
+                if (rules.length > 1) {
                     await viz.visualizeRuleSetToPNG(
-                        inputData as RuleSet,
+                        rules,
                         resolvedOutputPath,
                         visualizationOptions,
                         dpi
                     );
                 } else {
                     await viz.visualizeRuleToPNG(
-                        inputData as Rule,
+                        rules[0],
                         resolvedOutputPath,
                         visualizationOptions,
                         dpi

@@ -3,81 +3,25 @@
  * Converts rule JSON to a visual representation
  */
 
+import RitaCoreModule from '@educorvi/rita';
+
+// Extract the classes we need
+const RitaCore = RitaCoreModule as any;
+const Formula = RitaCore.Formula;
+const And = RitaCore.And;
+const Or = RitaCore.Or;
+const Not = RitaCore.Not;
+const Atom = RitaCore.Atom;
+const Comparison = RitaCore.Comparison;
+const Quantifier = RitaCore.Quantifier;
+const Calculation = RitaCore.Calculation;
+const DateCalculation = RitaCore.DateCalculation;
+
 export interface VisualizationOptions {
     /** Title for the visualization */
     title?: string;
     /** Direction of graph layout: TB (top to bottom), LR (left to right) */
     direction?: 'TB' | 'LR';
-}
-
-export interface Rule {
-    id: string;
-    comment?: string;
-    rule: Formula;
-}
-
-export interface RuleSet {
-    rules: Rule[];
-}
-
-export type Formula =
-    | Operator
-    | Atom
-    | Comparison
-    | Quantifier
-    | Plugin
-    | Calculation
-    | DateCalculation;
-
-export interface Operator {
-    type: 'and' | 'or' | 'not';
-    arguments: Formula[];
-}
-
-export interface Atom {
-    type: 'atom';
-    path: string;
-    isDate?: boolean;
-    default?: any;
-}
-
-export interface Comparison {
-    type: 'comparison';
-    operation:
-        | 'greater'
-        | 'smaller'
-        | 'greaterOrEqual'
-        | 'smallerOrEqual'
-        | 'equal';
-    arguments: any[];
-    dates?: boolean;
-}
-
-export interface Quantifier {
-    type: 'quantifier';
-    operation: 'all' | 'atLeastOne';
-    dataSource: any;
-    iteratorName: string;
-    arguments: Formula[];
-}
-
-export interface Plugin {
-    type: 'plugin';
-    [key: string]: any;
-}
-
-export interface Calculation {
-    type: 'calculation';
-    operation: string;
-    arguments: any[];
-}
-
-export interface DateCalculation {
-    type: 'dateCalculation';
-    operation: string;
-    arguments: any[];
-    dateResultUnit?: string;
-    dateCalculationUnit?: string;
 }
 
 /**
@@ -107,22 +51,12 @@ export class RuleVisualizer {
     /**
      * Generates a DOT representation for a formula
      */
-    private generateFormulaNode(formula: Formula, parentId?: string): string {
+    private generateFormulaNode(formula: any, parentId?: string): string {
         const nodeId = this.createNodeId();
 
-        if (
-            (formula as Operator).type === 'and' ||
-            (formula as Operator).type === 'or' ||
-            (formula as Operator).type === 'not'
-        ) {
-            const op = formula as Operator;
-            const label = op.type.toUpperCase();
-            const color =
-                op.type === 'and'
-                    ? '#4A90E2'
-                    : op.type === 'or'
-                    ? '#E24A4A'
-                    : '#F5A623';
+        if (formula instanceof And) {
+            const label = 'AND';
+            const color = '#4A90E2';
 
             this.dotLines.push(
                 `  ${nodeId} [label="${label}", shape=diamond, style=filled, fillcolor="${color}", fontcolor=white, fontsize=14];`
@@ -133,12 +67,43 @@ export class RuleVisualizer {
             }
 
             // Process children
-            op.arguments.forEach((arg) => {
+            formula.arguments.forEach((arg: any) => {
                 this.generateFormulaNode(arg, nodeId);
             });
-        } else if ((formula as Atom).type === 'atom') {
-            const atom = formula as Atom;
-            const label = atom.path + (atom.isDate ? '\\n(date)' : '');
+        } else if (formula instanceof Or) {
+            const label = 'OR';
+            const color = '#E24A4A';
+
+            this.dotLines.push(
+                `  ${nodeId} [label="${label}", shape=diamond, style=filled, fillcolor="${color}", fontcolor=white, fontsize=14];`
+            );
+
+            if (parentId) {
+                this.dotLines.push(`  ${parentId} -> ${nodeId};`);
+            }
+
+            // Process children
+            formula.arguments.forEach((arg: any) => {
+                this.generateFormulaNode(arg, nodeId);
+            });
+        } else if (formula instanceof Not) {
+            const label = 'NOT';
+            const color = '#F5A623';
+
+            this.dotLines.push(
+                `  ${nodeId} [label="${label}", shape=diamond, style=filled, fillcolor="${color}", fontcolor=white, fontsize=14];`
+            );
+
+            if (parentId) {
+                this.dotLines.push(`  ${parentId} -> ${nodeId};`);
+            }
+
+            // Process children
+            formula.arguments.forEach((arg: any) => {
+                this.generateFormulaNode(arg, nodeId);
+            });
+        } else if (formula instanceof Atom) {
+            const label = formula.path + (formula.isDate ? '\\n(date)' : '');
             this.dotLines.push(
                 `  ${nodeId} [label="${this.escapeLabel(
                     label
@@ -148,10 +113,9 @@ export class RuleVisualizer {
             if (parentId) {
                 this.dotLines.push(`  ${parentId} -> ${nodeId};`);
             }
-        } else if ((formula as Comparison).type === 'comparison') {
-            const comp = formula as Comparison;
-            const operationSymbol = this.getComparisonSymbol(comp.operation);
-            const label = operationSymbol + (comp.dates ? '\\n(dates)' : '');
+        } else if (formula instanceof Comparison) {
+            const operationSymbol = this.getComparisonSymbol(formula.operation);
+            const label = operationSymbol + (formula.dates ? '\\n(dates)' : '');
 
             this.dotLines.push(
                 `  ${nodeId} [label="${label}", shape=ellipse, style=filled, fillcolor="#BD10E0", fontcolor=white, fontsize=12];`
@@ -162,12 +126,11 @@ export class RuleVisualizer {
             }
 
             // Process arguments
-            comp.arguments.forEach((arg) => {
+            formula.arguments.forEach((arg: any) => {
                 this.generateArgumentNode(arg, nodeId);
             });
-        } else if ((formula as Calculation).type === 'calculation') {
-            const calc = formula as Calculation;
-            const label = `CALC: ${calc.operation}`;
+        } else if (formula instanceof Calculation) {
+            const label = `CALC: ${formula.operation}`;
 
             this.dotLines.push(
                 `  ${nodeId} [label="${label}", shape=ellipse, style=filled, fillcolor="#50E3C2", fontsize=12];`
@@ -178,12 +141,11 @@ export class RuleVisualizer {
             }
 
             // Process arguments
-            calc.arguments.forEach((arg) => {
+            formula.arguments.forEach((arg: any) => {
                 this.generateArgumentNode(arg, nodeId);
             });
-        } else if ((formula as DateCalculation).type === 'dateCalculation') {
-            const calc = formula as DateCalculation;
-            const label = `DATE CALC: ${calc.operation}`;
+        } else if (formula instanceof DateCalculation) {
+            const label = `DATE CALC: ${formula.operation}`;
 
             this.dotLines.push(
                 `  ${nodeId} [label="${label}", shape=ellipse, style=filled, fillcolor="#8B572A", fontcolor=white, fontsize=12];`
@@ -194,13 +156,12 @@ export class RuleVisualizer {
             }
 
             // Process arguments
-            calc.arguments.forEach((arg) => {
+            formula.arguments.forEach((arg: any) => {
                 this.generateArgumentNode(arg, nodeId);
             });
-        } else if ((formula as Quantifier).type === 'quantifier') {
-            const quant = formula as Quantifier;
-            const label = `${quant.operation.toUpperCase()}\\n(${
-                quant.iteratorName
+        } else if (formula instanceof Quantifier) {
+            const label = `${formula.quantifier.toUpperCase()}\\n(${
+                formula.placeholder
             })`;
 
             this.dotLines.push(
@@ -211,11 +172,10 @@ export class RuleVisualizer {
                 this.dotLines.push(`  ${parentId} -> ${nodeId};`);
             }
 
-            // Process arguments
-            quant.arguments.forEach((arg) => {
-                this.generateFormulaNode(arg, nodeId);
-            });
-        } else if ((formula as Plugin).type === 'plugin') {
+            // Process the formula
+            this.generateFormulaNode(formula.formula, nodeId);
+        } else {
+            // Handle Plugin or other unknown formula types
             const label = 'PLUGIN';
 
             this.dotLines.push(
@@ -234,9 +194,9 @@ export class RuleVisualizer {
      * Generates a node for an argument (which might be a literal or a formula)
      */
     private generateArgumentNode(arg: any, parentId: string): void {
-        if (typeof arg === 'object' && arg !== null && 'type' in arg) {
+        if (arg instanceof Formula) {
             // It's a formula
-            this.generateFormulaNode(arg as Formula, parentId);
+            this.generateFormulaNode(arg, parentId);
         } else {
             // It's a literal value
             const nodeId = this.createNodeId();
@@ -273,7 +233,7 @@ export class RuleVisualizer {
     /**
      * Generates a DOT graph for a single rule
      */
-    public generateDot(rule: Rule, options: VisualizationOptions = {}): string {
+    public generateDot(rule: any, options: VisualizationOptions = {}): string {
         this.nodeCounter = 0;
         this.dotLines = [];
 
@@ -304,7 +264,7 @@ export class RuleVisualizer {
      * Generates a DOT graph for multiple rules
      */
     public generateDotForRuleSet(
-        ruleSet: RuleSet,
+        rules: any[],
         options: VisualizationOptions = {}
     ): string {
         const direction = options.direction || 'TB';
@@ -321,7 +281,7 @@ export class RuleVisualizer {
         allDotLines.push('');
 
         // Create a subgraph for each rule
-        ruleSet.rules.forEach((rule, index) => {
+        rules.forEach((rule, index) => {
             this.nodeCounter = 0;
             this.dotLines = [];
 
