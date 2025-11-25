@@ -70,27 +70,54 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node-version }}
-            - name: Get yarn cache directory path
-              id: yarn-cache-dir-path
-              run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
-            - name: Cache Yarn dependencies
+            - name: Cache Rush
               uses: actions/cache@v3
               with:
-                  path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-                  key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-                  restore-keys: |
-                      ${{ runner.os }}-yarn-
-            - name: Cache Turbo
+                  path: |
+                      common/temp/install-run
+                      ~/.rush
+                  key: ${{ runner.os }}-${{ hashFiles('rush.json') }}
+            - name: Cache pnpm
               uses: actions/cache@v3
               with:
-                  path: .turbo
-                  key: ${{ runner.os }}-turbo-${{ github.sha }}
-                  restore-keys: |
-                      ${{ runner.os }}-turbo-
-            - name: Install dependencies
-              run: yarn install --frozen-lockfile
+                  path: |
+                      common/temp/pnpm-store
+                  key: ${{ runner.os }}-${{ hashFiles('common/config/rush/pnpm-lock.yaml') }}
+            - name: Install
+              run: node common/scripts/install-run-rush.js install
             - name: Build and test
-              run: yarn build-and-test
+              run: node common/scripts/install-run-rush.js build-and-test --verbose
+
+    #    licenses:
+    #        runs-on: ubuntu-latest
+    #        if: github.event_name != 'pull_request'
+    #        steps:
+    #            - uses: actions/checkout@v3
+    #            - uses: actions/setup-node@v3
+    #            - name: Cache Rush
+    #              uses: actions/cache@v3
+    #              with:
+    #                  path: |
+    #                      common/temp/install-run
+    #                      ~/.rush
+    #                  key: ${{ runner.os }}-${{ hashFiles('rush.json') }}
+    #            - name: Cache pnpm
+    #              uses: actions/cache@v3
+    #              with:
+    #                  path: |
+    #                      common/temp/pnpm-store
+    #                  key: ${{ runner.os }}-${{ hashFiles('common/config/rush/pnpm-lock.yaml') }}
+    #            - name: Install dependencies
+    #              run: node common/scripts/install-run-rush.js install
+    #            - name: FOSSA Scan
+    #              uses: fossas/fossa-action@main
+    #              with:
+    #                  api-key: ${{secrets.FOSSA_API_TOKEN}}
+    #            - name: 'Run FOSSA Test'
+    #              uses: fossas/fossa-action@main
+    #              with:
+    #                  api-key: ${{secrets.FOSSA_API_TOKEN}}
+    #                  run-tests: true
 
     release:
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
@@ -101,45 +128,48 @@ jobs:
               with:
                   fetch-depth: 0
             - uses: actions/setup-node@v3
-              with:
-                  node-version: 20.x
-            - name: Get yarn cache directory path
-              id: yarn-cache-dir-path
-              run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
-            - name: Cache Yarn dependencies
+            - name: Cache Rush
               uses: actions/cache@v3
               with:
-                  path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-                  key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-                  restore-keys: |
-                      ${{ runner.os }}-yarn-
+                  path: |
+                      common/temp/install-run
+                      ~/.rush
+                  key: ${{ runner.os }}-${{ hashFiles('rush.json') }}
+            - name: Cache pnpm
+              uses: actions/cache@v3
+              with:
+                  path: |
+                      common/temp/pnpm-store
+                  key: ${{ runner.os }}-${{ hashFiles('common/config/rush/pnpm-lock.yaml') }}
             - name: Setup git
               run: |
                   git config user.name 'github-actions[bot]'
                   git config user.email 'github-actions[bot]@users.noreply.github.com'
-            - name: Install dependencies
-              run: yarn install --frozen-lockfile
+            - name: Install
+              run: node common/scripts/install-run-rush.js install
             - name: Build
-              run: yarn build
+              run: node common/scripts/install-run-rush.js build
+            - name: Bump version
+              run: node common/scripts/install-run-rush.js version --bump --version-policy "rita-publish"
             - name: Generate documentation
-              run: yarn generate-documentation
-            - name: Commit documentation changes
+              run: node common/scripts/install-run-rush.js generate-documentation
+            - run: node common/scripts/install-run-rush.js update
+            - run: git add .
+            - name: Commit changes
               run: |
-                  git add docs
-                  git commit -m 'docs: update documentation [skip ci]' || echo "No documentation changes to commit"
-                  git push || echo "No changes to push"
-            - name: Release with semantic-release
-              run: yarn release
-              env:
-                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            - name: Rebase develop branch
+                  git commit -a -m 'chore: bump version and generate documentation' || echo "No changes to commit"
+                  git push --follow-tags
+            - name: Rebase
               run: |
-                  git fetch origin develop
+                  git branch
                   git checkout develop
+                  git pull
                   git rebase main
-                  git push --follow-tags || echo "Failed to push develop branch"
-
+                  git push --follow-tags
+            - name: Publish to NPM
+              run: node common/scripts/install-run-rush.js publish -p --include-all --version-policy "rita-publish" --set-access-level=public
+              env:
+                  NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     buildDocker:
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         needs: [release]

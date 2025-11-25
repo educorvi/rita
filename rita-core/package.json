@@ -7,7 +7,8 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/educorvi/rita.git"
+        "url": "https://github.com/educorvi/rita.git",
+        "directory": "rita-core"
     },
     "license": "MIT",
     "author": "Julian Pollinger",
@@ -20,15 +21,14 @@
         "src/schema"
     ],
     "scripts": {
-        "_phase:build": "rushx build",
-        "_phase:test": "rushx test",
-        "build": "npm run clean && webpack",
+        "build": "yarn run clean && webpack",
         "clean": "rimraf dist dist_zip",
-        "doc": "npm run doc:implementation && npm run doc:schema && git add docs",
+        "doc": "yarn run doc:implementation && yarn run doc:schema && git add docs",
         "doc:implementation": "npx typedoc --out docs/implementation src/index.ts",
         "doc:schema": "jsonschema2md -d src/schema -o docs/schema -e json -x -",
-        "prepack": "npm run build",
-        "test": "jest 2>&1"
+        "prepack": "yarn run build",
+        "test": "jest 2>&1",
+        "semantic-release": "semantic-release"
     },
     "dependencies": {
         "ajv": "^8.17.1",
@@ -58,5 +58,8 @@
     },
     "engines": {
         "node": ">=10"
+    },
+    "publishConfig": {
+        "access": "public"
     }
 }

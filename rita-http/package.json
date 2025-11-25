@@ -14,7 +14,8 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/educorvi/rita.git"
+        "url": "https://github.com/educorvi/rita.git",
+        "directory": "rita-http"
     },
     "license": "MIT",
     "author": "Julian Pollinger",
@@ -23,13 +24,11 @@
         "dist"
     ],
     "scripts": {
-        "_phase:build": "rushx build",
-        "_phase:test": "rushx test",
-        "prepack": "npm run build",
-        "build": "npm run generate-routes && npm run spec && webpack",
+        "prepack": "yarn run build",
+        "build": "yarn run generate-routes && yarn run spec && webpack",
         "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
         "dev:config": "ts-node-dev --respawn --transpile-only src/index.ts -- --config",
-        "doc": "npm run spec",
+        "doc": "yarn run spec",
         "generate-routes": "npx tsoa routes",
         "spec": "npx tsoa spec",
         "start": "node .",
@@ -37,9 +36,9 @@
         "test": "start-server-and-test start http://localhost:3000 test:no-server"
     },
     "dependencies": {
-        "@educorvi/persistent-rita": "workspace:^6.0.3",
-        "@educorvi/rita": "workspace:^5.4.4",
-        "@educorvi/rita-plugin-http": "workspace:*",
+        "@educorvi/persistent-rita": "*",
+        "@educorvi/rita": "*",
+        "@educorvi/rita-plugin-http": "*",
         "@tsoa/runtime": "^6.6.0",
         "body-parser": "^2.2.0",
         "dotenv": "^17.0.1",

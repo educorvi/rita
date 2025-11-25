@@ -13,7 +13,8 @@
         "outDir": "dist",
         "sourceMap": true,
         "incremental": true,
-        "declaration": true
+        "declaration": true,
+        "skipLibCheck": true
     },
     "typedocOptions": {
         "mode": "library",

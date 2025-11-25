@@ -6,9 +6,9 @@ then
 fi
 
 echo "Installing dependencies..."
-node common/scripts/install-run-rush.js install
+yarn install
 
 echo "Building project"
-node common/scripts/install-run-rush.js build
+yarn build
 
 printf "\n\n\n Project built.\n You can now enter the rita-http directory and start the webserver by running 'node .'\n"

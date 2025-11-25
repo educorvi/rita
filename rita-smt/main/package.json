@@ -2,7 +2,11 @@
     "name": "@educorvi/rita-smt",
     "version": "2.0.2",
     "description": "A module to test satisfiability of Rita rule sets.",
-    "repository": "https://github.com/educorvi/rita",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/educorvi/rita",
+        "directory": "rita-smt/main"
+    },
     "license": "MIT",
     "author": "Julian Pollinger",
     "main": "dist/rita-smt.js",
@@ -12,20 +16,19 @@
         "dist"
     ],
     "scripts": {
-        "_phase:build": "rushx build",
-        "_phase:test": "rushx test",
         "build": "webpack",
-        "prepack": "npm run build",
+        "prepack": "yarn run build",
         "runbin": "ts-node src/bin.ts",
-        "test": ">&2 echo \"Tests for rita-smt are temporarily disabled. Run them with 'npx jest'\""
+        "test": ">&2 echo \"Tests for rita-smt are temporarily disabled. Run them with 'npx jest'\"",
+        "semantic-release": "semantic-release"
     },
     "dependencies": {
-        "@educorvi/smtlib": "workspace:^1.2.3",
+        "@educorvi/smtlib": "*",
         "command-exists": "^1.2.9",
         "commander": "^14.0.0"
     },
     "devDependencies": {
-        "@educorvi/rita": "workspace:^5.4.4",
+        "@educorvi/rita": "*",
         "@types/command-exists": "^1.2.3",
         "@types/node": "^24.0.10",
         "@types/terminal-kit": "^2.5.7",
@@ -43,5 +46,8 @@
     },
     "peerDependencies": {
         "@educorvi/rita": "^5.4.4"
+    },
+    "publishConfig": {
+        "access": "public"
     }
 }
