@@ -1,0 +1,51 @@
+{
+    "name": "@educorvi/rita-viz",
+    "version": "1.0.0",
+    "description": "Visualization package for rita rules",
+    "bugs": {
+        "url": "https://github.com/educorvi/rita/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/educorvi/rita.git"
+    },
+    "license": "MIT",
+    "author": "educorvi GmbH",
+    "type": "module",
+    "main": "dist/index.js",
+    "typings": "dist/index.d.ts",
+    "bin": {
+        "rita-viz": "dist/cli.js"
+    },
+    "files": [
+        "dist",
+        "src"
+    ],
+    "scripts": {
+        "_phase:build": "rushx build",
+        "_phase:test": "rushx test",
+        "build": "npm run clean && tsc",
+        "clean": "rimraf dist",
+        "test": "jest 2>&1"
+    },
+    "dependencies": {
+        "@educorvi/rita": "workspace:^5.4.4",
+        "commander": "^14.0.0",
+        "graphviz": "^0.0.9",
+        "pdfkit": "^0.15.0",
+        "svg-to-pdfkit": "^0.1.8",
+        "tslib": "^2.8.1"
+    },
+    "devDependencies": {
+        "@types/jest": "^30.0.0",
+        "@types/node": "^24.0.10",
+        "@types/pdfkit": "^0.13.5",
+        "jest": "^30.0.4",
+        "rimraf": "^6.0.1",
+        "ts-jest": "^29.4.0",
+        "typescript": "5.8.3"
+    },
+    "engines": {
+        "node": ">=14"
+    }
+}

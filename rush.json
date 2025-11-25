@@ -434,6 +434,12 @@
             "projectFolder": "rita-http",
             "shouldPublish": false,
             "versionPolicyName": "simpleIndividual"
+        },
+        {
+            "packageName": "@educorvi/rita-viz",
+            "projectFolder": "rita-viz",
+            "shouldPublish": true,
+            "versionPolicyName": "rita-publish"
         }
 
         // {
