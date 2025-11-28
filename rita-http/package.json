@@ -29,6 +29,7 @@
     "scripts": {
         "_phase:build": "rushx build",
         "_phase:test": "rushx test",
+        "check-types": "tsc --noEmit",
         "prepack": "npm run build",
         "build": "npm run generate-routes && npm run spec && vite build",
         "dev": "ts-node-dev --respawn --transpile-only src/index.ts",

@@ -23,6 +23,7 @@
     "scripts": {
         "_phase:build": "rushx build",
         "_phase:test": "rushx test",
+        "check-types": "tsc --noEmit",
         "build": "npm run clean && vite build",
         "clean": "rimraf dist dist_zip",
         "doc": "npm run doc:implementation && npm run doc:schema && git add docs",

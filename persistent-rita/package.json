@@ -18,6 +18,7 @@
     "scripts": {
         "_phase:build": "rushx build",
         "_phase:test": "rushx test",
+        "check-types": "tsc --noEmit",
         "prebuild": "rimraf dist",
         "build": "vite build",
         "doc": "npx typedoc",
