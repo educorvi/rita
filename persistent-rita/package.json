@@ -22,18 +22,15 @@
         "build": "vite build",
         "doc": "npx typedoc",
         "prepack": "npm run build",
-        "test": "jest 2>&1"
+        "test": "vitest run"
     },
     "dependencies": {
         "reflect-metadata": "^0.2.2"
     },
     "devDependencies": {
         "@educorvi/rita": "workspace:^5.4.4",
-        "@types/jest": "^30.0.0",
         "dotenv": "17.2.3",
-        "jest": "^30.0.4",
         "rimraf": "^6.0.1",
-        "ts-jest": "^29.4.0",
         "tslib": "^2.8.1",
         "typedoc": "0.28.7",
         "typeorm": "0.3.27",
@@ -42,7 +39,8 @@
         "vite-plugin-externalize-deps": "~0.10.0",
         "unplugin-dts": "~1.0.0-beta.6",
         "@rollup/plugin-swc": "~0.4.0",
-        "@swc/core": "~1.15.3"
+        "@swc/core": "~1.15.3",
+        "vitest": "^2.1.9"
     },
     "peerDependencies": {
         "@educorvi/rita": "^5.4.4",

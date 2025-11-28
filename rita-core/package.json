@@ -29,7 +29,7 @@
         "doc:implementation": "npx typedoc --out docs/implementation src/index.ts",
         "doc:schema": "jsonschema2md -d src/schema -o docs/schema -e json -x -",
         "prepack": "npm run build",
-        "test": "jest 2>&1"
+        "test": "vitest run"
     },
     "dependencies": {
         "ajv": "^8.17.1",
@@ -40,18 +40,16 @@
     "devDependencies": {
         "@adobe/jsonschema2md": "^8.0.3",
         "@types/deep-equal": "^1.0.4",
-        "@types/jest": "^30.0.0",
         "@types/luxon": "^3.6.2",
         "@types/madge": "^5.0.3",
-        "jest": "^30.0.4",
         "jest-extended": "^6.0.0",
         "madge": "^8.0.0",
         "mkdirp": "^3.0.1",
         "rimraf": "^6.0.1",
-        "ts-jest": "^29.4.0",
         "typedoc": "0.28.7",
         "typescript": "5.8.3",
         "vite": "~7.2.4",
+        "vitest": "^2.1.9",
         "unplugin-dts": "~1.0.0-beta.6",
         "vite-plugin-externalize-deps": "~0.10.0"
     },
