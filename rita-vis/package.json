@@ -1,0 +1,29 @@
+{
+    "name": "@educorvi/rita-vis",
+    "version": "0.0.1",
+    "description": "Visualization tool for RITA rulesets",
+    "main": "dist/index.js",
+    "bin": {
+        "rita-vis": "dist/cli.js"
+    },
+    "scripts": {
+        "build": "tsc",
+        "test": "jest",
+        "clean": "rimraf dist"
+    },
+    "dependencies": {
+        "@educorvi/rita": "workspace:^5.4.4",
+        "commander": "^14.0.0",
+        "tslib": "^2.8.1",
+        "xmlbuilder2": "^3.1.1"
+    },
+    "devDependencies": {
+        "typescript": "5.8.3",
+        "ts-node": "^10.9.2",
+        "@types/node": "^24.0.10",
+        "jest": "^30.0.4",
+        "ts-jest": "^29.4.0",
+        "@types/jest": "^30.0.0",
+        "rimraf": "^6.0.1"
+    }
+}

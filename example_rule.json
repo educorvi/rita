@@ -1,0 +1,46 @@
+{
+    "$schema": "https://raw.githubusercontent.com/educorvi/rita/alpha/rita-core/src/schema/schema.json",
+    "rules": [
+        {
+            "id": "rule1",
+            "rule": {
+                "type": "and",
+                "arguments": [
+                    {
+                        "type": "not",
+                        "arguments": [
+                            {
+                                "type": "atom",
+                                "path": "istAngestellter"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "comparison",
+                        "operation": "greaterOrEqual",
+                        "arguments": [
+                            {
+                                "type": "dateCalculation",
+                                "dateResultUnit": "years",
+                                "operation": "subtract",
+                                "arguments": [
+                                    {
+                                        "type": "atom",
+                                        "path": "kaufdatum",
+                                        "isDate": true
+                                    },
+                                    {
+                                        "type": "atom",
+                                        "path": "geburtsdatum",
+                                        "isDate": true
+                                    }
+                                ]
+                            },
+                            18
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}
