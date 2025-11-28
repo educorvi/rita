@@ -16,6 +16,7 @@
         "dist"
     ],
     "scripts": {
+        "type-check": "tsc --noEmit",
         "build": "webpack",
         "prepack": "yarn run build",
         "runbin": "ts-node src/bin.ts",

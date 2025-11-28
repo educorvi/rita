@@ -21,6 +21,7 @@
         "src/schema"
     ],
     "scripts": {
+        "type-check": "tsc --noEmit",
         "build": "yarn run clean && webpack",
         "clean": "rimraf dist dist_zip",
         "doc": "yarn run doc:implementation && yarn run doc:schema && git add docs",

@@ -8,6 +8,7 @@
         "dist"
     ],
     "scripts": {
+        "type-check": "tsc --noEmit",
         "test": "jest 2>&1",
         "build": "webpack",
         "prepack": "yarn run build",

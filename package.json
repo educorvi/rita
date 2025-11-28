@@ -15,6 +15,7 @@
         "prepare": "husky",
         "commitlint": "commitlint --edit",
         "pre-commit": "prettier --write --list-different .",
+        "type-check": "turbo run type-check",
         "build": "turbo run build",
         "test": "turbo run test",
         "build-and-test": "turbo run build test",

@@ -16,6 +16,7 @@
         "lib"
     ],
     "scripts": {
+        "type-check": "tsc --noEmit",
         "build": "tsc --build tsconfig.json",
         "coverage": "nyc report --reporter=text-lcov | coveralls",
         "lint": "eslint --ext .js,.jsx,.ts,.tsx ./lib ./test",

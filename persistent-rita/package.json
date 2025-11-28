@@ -16,6 +16,7 @@
         "dist"
     ],
     "scripts": {
+        "type-check": "tsc --noEmit",
         "prebuild": "rimraf dist",
         "build": "webpack",
         "doc": "npx typedoc",

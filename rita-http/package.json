@@ -24,6 +24,7 @@
         "dist"
     ],
     "scripts": {
+        "type-check": "tsc --noEmit",
         "prepack": "yarn run build",
         "build": "yarn run generate-routes && yarn run spec && webpack",
         "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
