@@ -8,6 +8,6 @@ docs
 .run
 .prettierignore
 .prettierrc.json
-commitlint.config.js
+commitlint.config.cjs
 .dockerignore
 README.md

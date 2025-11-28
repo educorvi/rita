@@ -56,5 +56,5 @@ export default class Postgres extends TypeORM {
 @Entity({ name: SQLModel.database_name })
 class PostgresModel extends SQLModel {
     @Column({ type: 'text' })
-    rules!: string;
+    declare rules: string;
 }

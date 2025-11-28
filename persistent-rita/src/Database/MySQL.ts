@@ -56,5 +56,5 @@ export default class MySQL extends TypeORM {
 @Entity({ name: SQLModel.database_name })
 class MySQLModel extends SQLModel {
     @Column({ type: 'mediumtext' })
-    rules!: string;
+    declare rules: string;
 }

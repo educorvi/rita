@@ -2,9 +2,7 @@ import { Column, DataSource, Entity, PrimaryColumn, Repository } from 'typeorm';
 import { DatabaseConnectionClosedError } from '@educorvi/persistent-rita';
 import crypto from 'crypto';
 import { logger } from '../CustomLogger';
-import { MysqlConnectionOptions } from 'typeorm/driver/mysql/MysqlConnectionOptions';
-import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
-import { SqliteConnectionOptions } from 'typeorm/driver/sqlite/SqliteConnectionOptions';
+import type { DataSourceOptions } from 'typeorm';
 
 export type supportedDBTypes = 'mysql' | 'sqlite' | 'postgres';
 
@@ -29,12 +27,7 @@ export default class Database {
      * @param options The connection options
      * @return The config database
      */
-    static async getDB(
-        options:
-            | MysqlConnectionOptions
-            | PostgresConnectionOptions
-            | SqliteConnectionOptions
-    ): Promise<Database> {
+    static async getDB(options: DataSourceOptions): Promise<Database> {
         let dataSource;
         if (Database.db) {
             return Database.db;

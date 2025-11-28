@@ -40,12 +40,7 @@ export default class LocalCVC5Solver extends LocalCVCSolver {
     }
 
     protected spawnCVC() {
-        const args = [
-            '--lang',
-            'smt2.6',
-            '--no-flex-parser',
-            '--no-stdin-input-per-line',
-        ];
+        const args = ['--lang', 'smt2.6'];
         if (this.timeLimit > 0) {
             args.push('--tlimit=' + this.timeLimit);
         }
