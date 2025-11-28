@@ -2,15 +2,25 @@
     "name": "@educorvi/rita-plugin-http",
     "version": "1.1.5",
     "description": "A plugin to use http requests in rita",
-    "main": "dist/index.js",
-    "typings": "dist/index.d.ts",
+    "type": "module",
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.mjs",
+            "require": "./dist/index.cjs",
+            "default": "./dist/index.js"
+        }
+    },
     "files": [
         "dist"
     ],
     "scripts": {
         "type-check": "tsc --noEmit",
         "test": "jest 2>&1",
-        "build": "webpack",
+        "build": "vite build",
         "prepack": "yarn run build",
         "semantic-release": "semantic-release"
     },
@@ -32,14 +42,11 @@
         "body-parser": "^2.2.0",
         "express": "^4.21.2",
         "jest": "^30.0.4",
-        "terser-webpack-plugin": "^5.3.14",
-        "ts-loader": "^9.5.2",
+        "ts-jest": "^29.4.0",
         "tslib": "^2.8.1",
         "typescript": "5.8.3",
-        "webpack": "^5.99.9",
-        "webpack-cli": "^6.0.1",
-        "webpack-node-externals": "^3.0.0",
-        "ts-jest": "^29.4.0"
+        "vite": "^6.0.5",
+        "vite-plugin-dts": "^4.4.0"
     },
     "peerDependencies": {
         "@educorvi/rita": "^5.4.4"

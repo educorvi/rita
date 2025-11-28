@@ -9,15 +9,25 @@
     },
     "license": "MIT",
     "author": "Julian Pollinger",
-    "main": "dist/rita-smt.js",
-    "typings": "dist/index.d.ts",
-    "bin": "dist/bin.js",
+    "type": "module",
+    "main": "./dist/rita-smt.cjs",
+    "module": "./dist/rita-smt.mjs",
+    "types": "./dist/index.d.ts",
+    "bin": "./dist/bin.js",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/rita-smt.mjs",
+            "require": "./dist/rita-smt.cjs",
+            "default": "./dist/rita-smt.js"
+        }
+    },
     "files": [
         "dist"
     ],
     "scripts": {
         "type-check": "tsc --noEmit",
-        "build": "webpack",
+        "build": "vite build && BUILD_TARGET=bin vite build && BUILD_TARGET=worker vite build && mv dist/bin.cjs dist/bin.js && mv dist/bin.cjs.map dist/bin.js.map && mv dist/BenchmarkingWorker.cjs dist/BenchmarkingWorker.js && mv dist/BenchmarkingWorker.cjs.map dist/BenchmarkingWorker.js.map && (grep -q '^#!/usr/bin/env node' dist/bin.js || (printf '#!/usr/bin/env node\\n' | cat - dist/bin.js > dist/bin.tmp && mv dist/bin.tmp dist/bin.js)) && chmod +x dist/bin.js",
         "prepack": "yarn run build",
         "runbin": "ts-node src/bin.ts",
         "test": ">&2 echo \"Tests for rita-smt are temporarily disabled. Run them with 'npx jest'\"",
@@ -31,19 +41,16 @@
     "devDependencies": {
         "@educorvi/rita": "*",
         "@types/command-exists": "^1.2.3",
+        "@types/jest": "^30.0.0",
         "@types/node": "^24.0.10",
         "@types/terminal-kit": "^2.5.7",
-        "typescript": "5.8.3",
+        "jest": "^30.0.4",
+        "ts-jest": "^29.4.0",
         "ts-node": "^10.9.2",
         "tslib": "^2.8.1",
-        "webpack": "^5.99.9",
-        "webpack-cli": "^6.0.1",
-        "webpack-node-externals": "^3.0.0",
-        "terser-webpack-plugin": "^5.3.14",
-        "ts-loader": "^9.5.2",
-        "ts-jest": "^29.4.0",
-        "jest": "^30.0.4",
-        "@types/jest": "^30.0.0"
+        "typescript": "5.8.3",
+        "vite": "^6.0.5",
+        "vite-plugin-dts": "^4.4.0"
     },
     "peerDependencies": {
         "@educorvi/rita": "^5.4.4"
