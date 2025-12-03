@@ -1,4 +1,4 @@
-import PersistentRita, { PersistentRitaLogger } from '../src';
+import { PersistentRita, PersistentRitaLogger } from '../src';
 import Ruleset from '../src/Ruleset';
 import { Parser } from '@educorvi/rita';
 // @ts-ignore

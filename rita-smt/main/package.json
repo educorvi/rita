@@ -5,19 +5,23 @@
     "repository": "https://github.com/educorvi/rita",
     "license": "MIT",
     "author": "Julian Pollinger",
-    "main": "dist/rita-smt.js",
+    "main": "dist/rita-smt.umd.js",
+    "module": "dist/rita-smt.mjs",
     "typings": "dist/index.d.ts",
-    "bin": "dist/bin.js",
+    "bin": "bin/rita-smt-bin.js",
     "files": [
-        "dist"
+        "dist",
+        "bin"
     ],
     "scripts": {
         "_phase:build": "rushx build",
         "_phase:test": "rushx test",
-        "build": "webpack",
+        "check-types": "tsc --noEmit",
+        "build": "vite build && vite build --config vite.bin.config.ts",
         "prepack": "npm run build",
         "runbin": "ts-node src/bin.ts",
-        "test": ">&2 echo \"Tests for rita-smt are temporarily disabled. Run them with 'npx jest'\""
+        "test:manual": "vitest run",
+        "test": "echo \"No tests yet\""
     },
     "dependencies": {
         "@educorvi/smtlib": "workspace:^1.2.3",
@@ -32,14 +36,10 @@
         "typescript": "5.8.3",
         "ts-node": "^10.9.2",
         "tslib": "^2.8.1",
-        "webpack": "^5.99.9",
-        "webpack-cli": "^6.0.1",
-        "webpack-node-externals": "^3.0.0",
-        "terser-webpack-plugin": "^5.3.14",
-        "ts-loader": "^9.5.2",
-        "ts-jest": "^29.4.0",
-        "jest": "^30.0.4",
-        "@types/jest": "^30.0.0"
+        "unplugin-dts": "~1.0.0-beta.6",
+        "vite": "~7.2.4",
+        "vite-plugin-externalize-deps": "~0.10.0",
+        "vitest": "^2.1.9"
     },
     "peerDependencies": {
         "@educorvi/rita": "^5.4.4"

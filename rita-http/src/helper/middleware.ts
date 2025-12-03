@@ -9,6 +9,7 @@ import bodyParser from 'body-parser';
 import { NotFoundError, UnauthorizedError } from '../Errors';
 import { ValidateError } from '@tsoa/runtime';
 import { UsageError } from '@educorvi/rita';
+import { Connect } from 'vite';
 
 /**
  * All the middleware for the express server
@@ -28,7 +29,7 @@ function accessLogger(req: Request, res: Response, next: NextFunction) {
 /**
  * Export of every middleware
  */
-export const middleware = [
+export const middleware: Connect.NextHandleFunction[] = [
     bodyParser.urlencoded({ extended: true }),
     bodyParser.json(),
     express.static('docs'),

@@ -1,4 +1,5 @@
-import PersistentRita, {
+import {
+    PersistentRita,
     DatabaseInterface,
     MySQL,
     Postgres,

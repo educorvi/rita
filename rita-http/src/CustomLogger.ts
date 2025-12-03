@@ -42,13 +42,30 @@ export default class CustomLogger extends PersistentRitaLogger {
     }
 }
 
+function getLogLevel() {
+    const logLevelString = process.env.LOGLEVEL || 'info';
+    switch (logLevelString) {
+        case 'silly':
+            return 0;
+        case 'trace':
+            return 1;
+        case 'debug':
+            return 2;
+        case 'info':
+            return 3;
+        case 'warn':
+            return 4;
+        case 'error':
+            return 5;
+        case 'fatal':
+            return 6;
+    }
+}
+
 /**
  * Logger for use in the application
  */
 export const logger = new CustomLogger({
-    displayFilePath: 'hidden',
-    displayFunctionName: false,
-    dateTimeTimezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-    // @ts-ignore
-    minLevel: process.env.LOGLEVEL || 'info',
+    minLevel: getLogLevel(),
+    hideLogPositionForProduction: true,
 });

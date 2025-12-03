@@ -1,5 +1,6 @@
 import { evaluateAll, Parser, UsageError } from '@educorvi/rita';
 import HTTP_Plugin from '../src/index';
+import { describe, it, expect } from 'vitest';
 
 const p = new Parser([HTTP_Plugin]);
 

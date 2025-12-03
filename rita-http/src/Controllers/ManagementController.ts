@@ -8,7 +8,7 @@ import {
     SuccessResponse,
     Delete,
 } from '@tsoa/runtime';
-import PersistentRita, { Ruleset } from '@educorvi/persistent-rita';
+import { PersistentRita, Ruleset } from '@educorvi/persistent-rita';
 import { rita } from '../helper/globals';
 import { NotFoundError, UsageError } from '../Errors';
 import { Response, Security } from 'tsoa';

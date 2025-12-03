@@ -90,7 +90,7 @@ describe('Validate Schema against Meta-Schema', () => {
     for (const schema of schemas) {
         it(schema.name, () => {
             expect.assertions(1);
-            schema
+            return schema
                 .schema()
                 .then((res) => expect(ajv.validateSchema(res)).toBe(true));
         });
