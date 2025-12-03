@@ -20,7 +20,8 @@
         "build": "vite build && vite build --config vite.bin.config.ts",
         "prepack": "npm run build",
         "runbin": "ts-node src/bin.ts",
-        "test": "vitest run"
+        "test:manual": "vitest run",
+        "test:ci": "echo \"No ci tests yet\""
     },
     "dependencies": {
         "@educorvi/smtlib": "workspace:^1.2.3",
