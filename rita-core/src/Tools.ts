@@ -1,4 +1,13 @@
-import { Rule } from './logicElements';
+import {
+    Atom,
+    Calculation,
+    Comparison,
+    DateCalculation,
+    Formula,
+    Operator,
+    Quantifier,
+    Rule,
+} from './logicElements';
 
 export type EvaluationDetails = {
     /**
@@ -59,4 +68,62 @@ export async function evaluateAll(
         });
     }
     return ret;
+}
+
+type AtomSearchResults = {
+    pathSet: string[];
+    atoms: Atom[];
+};
+
+function mergeAtomSearchResults(
+    base: AtomSearchResults,
+    add: AtomSearchResults
+) {
+    for (const path of add.pathSet) base.pathSet.push(path);
+    base.atoms.push(...add.atoms);
+}
+
+export function getAtoms(rules: Rule[]): AtomSearchResults {
+    const paths: Set<string> = new Set();
+    const atoms: Atom[] = [];
+    for (const rule of rules) {
+        const res = getAtomsFromFormula(rule.rule);
+        mergeAtomSearchResults({ pathSet: Array.from(paths), atoms }, res);
+    }
+    return { pathSet: Array.from(paths), atoms };
+}
+
+function getAtomsFromFormula(formula: Formula): AtomSearchResults {
+    const paths: Set<string> = new Set();
+    const atoms: Atom[] = [];
+    if (formula instanceof Atom) {
+        paths.add(formula.path);
+        atoms.push(formula);
+    } else if (
+        formula instanceof Operator ||
+        formula instanceof Calculation ||
+        formula instanceof Comparison ||
+        formula instanceof DateCalculation
+    ) {
+        for (const formulaElement of formula.arguments) {
+            if (!(formulaElement instanceof Formula)) continue;
+
+            const res = getAtomsFromFormula(formulaElement);
+            mergeAtomSearchResults({ pathSet: Array.from(paths), atoms }, res);
+        }
+    } else if (formula instanceof Quantifier) {
+        if (formula.array instanceof Atom) {
+            paths.add(formula.array.path);
+            atoms.push(formula.array);
+        } else {
+            for (const formulaElement of formula.array) {
+                const res = getAtomsFromFormula(formulaElement);
+                mergeAtomSearchResults(
+                    { pathSet: Array.from(paths), atoms },
+                    res
+                );
+            }
+        }
+    }
+    return { pathSet: Array.from(paths), atoms };
 }
