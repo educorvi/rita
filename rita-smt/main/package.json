@@ -21,7 +21,7 @@
         "prepack": "npm run build",
         "runbin": "ts-node src/bin.ts",
         "test:manual": "vitest run",
-        "test:ci": "echo \"No ci tests yet\""
+        "test": "echo \"No tests yet\""
     },
     "dependencies": {
         "@educorvi/smtlib": "workspace:^1.2.3",
