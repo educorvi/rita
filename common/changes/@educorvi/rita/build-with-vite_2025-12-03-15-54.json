@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@educorvi/rita",
+      "comment": "Add additional build formats and use vite",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@educorvi/rita"
+}

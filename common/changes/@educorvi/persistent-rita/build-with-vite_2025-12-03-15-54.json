@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@educorvi/persistent-rita",
+      "comment": "Using named instead of default export",
+      "type": "major"
+    }
+  ],
+  "packageName": "@educorvi/persistent-rita"
+}
