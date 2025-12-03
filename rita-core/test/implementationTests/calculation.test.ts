@@ -1,8 +1,6 @@
 import { evaluateAll, Parser } from '../../src';
-// @ts-ignore
-import { exampleData, ruleTemplate } from '../assets/exampleData';
+import { exampleData } from '../assets/exampleData';
 import { DateTime } from 'luxon';
-// @ts-ignore
 import modulo from '../assets/modulo.json';
 
 const p = new Parser();

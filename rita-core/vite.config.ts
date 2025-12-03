@@ -14,5 +14,8 @@ export default defineConfig({
             formats: ['es', 'cjs', 'umd'],
         },
     },
-    plugins: [externalizeDeps(), dts()],
+    plugins: [
+        externalizeDeps(),
+        dts({ entryRoot: 'src', exclude: ['test', 'vite.config.ts'] }),
+    ],
 });
