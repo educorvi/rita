@@ -5,7 +5,8 @@
     "repository": "https://github.com/educorvi/rita",
     "license": "MIT",
     "author": "Julian Pollinger",
-    "main": "dist/index.js",
+    "main": "dist/smtlib.umd.js",
+    "module": "dist/smtlib.mjs",
     "types": "dist/index.d.ts",
     "files": [
         "dist",
@@ -14,7 +15,8 @@
     "scripts": {
         "_phase:build": "rushx build",
         "_phase:test": "rushx test",
-        "build": "tsc --build tsconfig.json",
+        "check-types": "tsc --noEmit",
+        "build": "vite build",
         "coverage": "nyc report --reporter=text-lcov | coveralls",
         "lint": "eslint --ext .js,.jsx,.ts,.tsx ./lib ./test",
         "prepack": "npm run build",
@@ -42,6 +44,9 @@
         "typedoc": "0.28.7",
         "typescript": "5.8.3",
         "ts-node": "^10.9.2",
-        "@types/node": "^24.0.10"
+        "@types/node": "^24.0.10",
+        "unplugin-dts": "~1.0.0-beta.6",
+        "vite": "~7.2.4",
+        "vite-plugin-externalize-deps": "~0.10.0"
     }
 }

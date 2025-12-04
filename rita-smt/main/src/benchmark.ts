@@ -24,12 +24,16 @@ export async function benchmark(opts: BenchmarkOptions): Promise<void> {
         // function to add multithreading worker
         function addWorker(degree: number) {
             runningWorkers++;
-            const worker = new Worker(__dirname + '/BenchmarkingWorker.js', {
-                workerData: {
-                    degree,
-                    opts,
-                },
-            });
+            const extension = import.meta.url.endsWith('ts') ? 'ts' : 'js';
+            const worker = new Worker(
+                new URL(`./BenchmarkingWorker.${extension}`, import.meta.url),
+                {
+                    workerData: {
+                        degree,
+                        opts,
+                    },
+                }
+            );
             worker.on('error', console.error);
             // start a new worker wants this one finishes, if there is still stuff left to do. Keeps the number of concurrent workers steady.
             worker.on('exit', () => {

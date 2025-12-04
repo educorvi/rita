@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="HTTP Plugin" type="JavaScriptTestRunnerJest">
-    <config-file value="$PROJECT_DIR$/plugins/http/jest.config.js" />
+    <config-file value="$PROJECT_DIR$/plugins/http/jest.config.cjs" />
     <node-interpreter value="project" />
     <node-options value="" />
     <jest-package value="$PROJECT_DIR$/plugins/http/node_modules/jest" />

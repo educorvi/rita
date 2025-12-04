@@ -1,7 +1,5 @@
 import { evaluateAll, Parser, UsageError } from '../../src';
-// @ts-ignore
 import { exampleData, ruleTemplate } from '../assets/exampleData';
-// @ts-ignore
 import mathExample from '../assets/exampleMath.json';
 
 const p = new Parser();

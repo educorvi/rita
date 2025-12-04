@@ -56,5 +56,5 @@ export default class SQLite extends TypeORM {
 @Entity({ name: SQLModel.database_name })
 class SQLiteModel extends SQLModel {
     @Column()
-    rules!: string;
+    declare rules: string;
 }

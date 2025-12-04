@@ -1,12 +1,8 @@
 import { Parser } from '../../src';
 
-// @ts-ignore
 import rule_qfa from '../assets/quantifiers_fa.json';
-// @ts-ignore
 import rule_qex from '../assets/quantifiers_ex.json';
-// @ts-ignore
 import rule_qit from '../assets/quantifiers_indexTests.json';
-// @ts-ignore
 import rule_qit2 from '../assets/quantifiers_indexTests2.json';
 import { evaluateAll } from '../../src';
 import { UsageError } from '../../src';

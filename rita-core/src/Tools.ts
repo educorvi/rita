@@ -1,4 +1,15 @@
-import { Rule } from './logicElements';
+import {
+    Atom,
+    Calculation,
+    Comparison,
+    DateCalculation,
+    Formula,
+    Macro,
+    Operator,
+    Plugin,
+    Quantifier,
+    Rule,
+} from './logicElements';
 
 export type EvaluationDetails = {
     /**
@@ -59,4 +70,68 @@ export async function evaluateAll(
         });
     }
     return ret;
+}
+
+type AtomSearchResults = {
+    pathSet: string[];
+    atoms: Atom[];
+};
+
+export function getAtoms(rules: Rule[]): AtomSearchResults {
+    const paths: Set<string> = new Set();
+    const atoms: Atom[] = [];
+    for (const rule of rules) {
+        const res = getAtomsFromFormula(rule.rule);
+        res.pathSet.forEach((p) => paths.add(p));
+        atoms.push(...res.atoms);
+    }
+    return { pathSet: Array.from(paths), atoms };
+}
+
+function getAtomsFromFormula(formula: Formula): AtomSearchResults {
+    const paths: Set<string> = new Set();
+    const atoms: Atom[] = [];
+    if (formula instanceof Atom) {
+        paths.add(formula.path);
+        atoms.push(formula);
+    } else if (
+        formula instanceof Operator ||
+        formula instanceof Calculation ||
+        formula instanceof Comparison ||
+        formula instanceof DateCalculation
+    ) {
+        for (const formulaElement of formula.arguments) {
+            if (!(formulaElement instanceof Formula)) continue;
+
+            const res = getAtomsFromFormula(formulaElement);
+            res.pathSet.forEach((p) => paths.add(p));
+            atoms.push(...res.atoms);
+        }
+    } else if (formula instanceof Quantifier) {
+        if (formula.array instanceof Atom) {
+            paths.add(formula.array.path);
+            atoms.push(formula.array);
+        } else {
+            for (const formulaElement of formula.array) {
+                const res = getAtomsFromFormula(formulaElement);
+                res.pathSet.forEach((p) => paths.add(p));
+                atoms.push(...res.atoms);
+            }
+        }
+        const res = getAtomsFromFormula(formula.formula);
+        res.pathSet.forEach((p) => paths.add(p));
+        atoms.push(...res.atoms);
+    } else if (formula instanceof Macro) {
+        if (formula.array) {
+            paths.add(formula.array.path);
+            atoms.push(formula.array);
+        }
+    } else if (formula instanceof Plugin) {
+        if (formula.formula) {
+            const res = getAtomsFromFormula(formula.formula);
+            res.pathSet.forEach((p) => paths.add(p));
+            atoms.push(...res.atoms);
+        }
+    }
+    return { pathSet: Array.from(paths), atoms };
 }

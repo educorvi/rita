@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@educorvi/rita",
+      "comment": "Add methods to get all atoms from formula",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@educorvi/rita"
+}

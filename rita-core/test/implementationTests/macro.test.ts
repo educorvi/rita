@@ -1,8 +1,5 @@
-import 'jest-extended';
-// @ts-ignore
 import macroRuleset from '../assets/macros';
 import { evaluateAll, Parser } from '../../src';
-// @ts-ignore
 import { exampleData } from '../assets/exampleData';
 
 const p = new Parser();

@@ -1,6 +1,4 @@
-// @ts-ignore
 import exampleRule from '../assets/example1.json';
-// @ts-ignore
 import { exampleData } from '../assets/exampleData';
 import { evaluateAll, Parser } from '../../src';
 
