@@ -1,4 +1,3 @@
-// @ts-ignore
 import dateCalc from '../assets/dateCalc.json';
 import { Parser } from '../../src';
 

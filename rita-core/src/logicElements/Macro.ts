@@ -7,7 +7,7 @@ export class Macro extends Formula {
     private readonly macro: 'now' | 'length';
 
     /** If the type of the macro is 'length', this is the Atom that contains the array **/
-    private readonly array?: Atom;
+    public readonly array?: Atom;
 
     constructor(macro: 'now' | 'length', array?: Atom) {
         super();

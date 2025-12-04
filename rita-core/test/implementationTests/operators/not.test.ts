@@ -1,4 +1,3 @@
-// @ts-ignore
 import { exampleData, ruleTemplate } from '../../assets/exampleData';
 import { Parser } from '../../../src';
 

@@ -1,21 +1,13 @@
 import Ajv from 'ajv/dist/2019';
 import addFormats from 'ajv-formats';
 import { Parser } from '../src';
-// @ts-ignore
 import exampleRule from './assets/example1.json';
-// @ts-ignore
 import exampleMathDefault from './assets/exampleMath.json';
-// @ts-ignore
 import exampleMathSimple from './assets/mathSimple.json';
-// @ts-ignore
 import wrongExampleRule from './assets/example_wrong.json';
-// @ts-ignore
 import rule_qfa from './assets/quantifiers_fa.json';
-// @ts-ignore
 import rule_qex from './assets/quantifiers_ex.json';
-// @ts-ignore
 import rule_defaultValue from './assets/defaultVal.json';
-// @ts-ignore
 import macros from './assets/macros';
 import { DateTime } from 'luxon';
 
@@ -27,58 +19,47 @@ exampleMath.rules[0].rule.arguments[0].arguments[0].arguments[0] =
 const schemas = [
     {
         name: 'Atom',
-        // @ts-ignore
         schema: () => import('../src/schema/atom.json'),
     },
     {
         name: 'Operator',
-        // @ts-ignore
         schema: () => import('../src/schema/operator.json'),
     },
     {
         name: 'Comparison',
-        // @ts-ignore
         schema: () => import('../src/schema/comparison.json'),
     },
     {
         name: 'Calculation',
-        // @ts-ignore
         schema: () => import('../src/schema/calculation.json'),
     },
     {
         name: 'DateCalculation',
-        // @ts-ignore
         schema: () => import('../src/schema/dateCalculation.json'),
     },
     {
         name: 'Term',
-        // @ts-ignore
         schema: () => import('../src/schema/formula.json'),
     },
     {
         name: 'Rule',
-        // @ts-ignore
         schema: () => import('../src/schema/rule.json'),
     },
     {
         name: 'Quantifier',
-        // @ts-ignore
         schema: () => import('../src/schema/quantifier.json'),
     },
     {
         name: 'Macro',
-        // @ts-ignore
         schema: () => import('../src/schema/macro.json'),
     },
     {
         name: 'Plugin',
-        // @ts-ignore
         schema: () => import('../src/schema/plugin.json'),
     },
 
     {
         name: 'Main',
-        // @ts-ignore
         schema: () => import('../src/schema/schema.json'),
     },
 ];

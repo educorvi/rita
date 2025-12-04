@@ -1,7 +1,5 @@
 import { Parser } from '../../src';
-// @ts-ignore
 import { exampleData, ruleTemplate } from '../assets/exampleData';
-// @ts-ignore
 import ruleset_defaultVal from '../assets/defaultVal.json';
 
 const p = new Parser();
