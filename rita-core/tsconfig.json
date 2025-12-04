@@ -1,6 +1,6 @@
 {
     // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
-    "include": ["src/**/*", "vite.config.ts", "test/**/*.ts"],
+    "include": ["src/**/*", "src/test/**/*.ts"],
     "compilerOptions": {
         "module": "ES2020",
         "importHelpers": true,
@@ -9,8 +9,9 @@
         // output .js.map sourcemap files for consumers
         "sourceMap": true,
         // match output dir to input dir. e.g. dist/index instead of dist/src/index
-        // "rootDir": "./src",
-        // stricter type-checking for stronger correctness. Recommended by TS    "strict": true,
+        "rootDir": "./src",
+        // stricter type-checking for stronger correctness. Recommended by TS
+        "strict": true,
         // linter checks for common issues
         "noImplicitReturns": true,
         "noFallthroughCasesInSwitch": true,

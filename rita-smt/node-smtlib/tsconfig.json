@@ -1,5 +1,5 @@
 {
-    "include": ["lib/**/*", "vite.config.ts"],
+    "include": ["lib/**/*"],
     "compilerOptions": {
         "module": "es6",
         "importHelpers": true,

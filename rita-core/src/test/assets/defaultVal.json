@@ -1,0 +1,21 @@
+{
+    "$schema": "../../schema/schema.json",
+    "rules": [
+        {
+            "id": "r1",
+            "comment": "",
+            "rule": {
+                "type": "comparison",
+                "operation": "equal",
+                "arguments": [
+                    {
+                        "type": "atom",
+                        "path": "fancyness",
+                        "default": "unicorn"
+                    },
+                    "unicorn"
+                ]
+            }
+        }
+    ]
+}

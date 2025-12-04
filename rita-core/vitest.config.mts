@@ -6,8 +6,8 @@ export default mergeConfig(
     defineConfig({
         test: {
             environment: 'node',
-            include: ['test/**/*.test.ts'],
-            setupFiles: ['./test/setup.ts'],
+            include: ['src/test/**/*.test.ts'],
+            setupFiles: ['./src/test/setup.ts'],
             globals: true,
         },
     })

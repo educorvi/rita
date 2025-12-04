@@ -1,6 +1,6 @@
 {
     // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
-    "include": ["src", "vite.config.ts"],
+    "include": ["src"],
     "compilerOptions": {
         "module": "es6",
         "importHelpers": true,

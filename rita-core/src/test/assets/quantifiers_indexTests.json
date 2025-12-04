@@ -1,0 +1,70 @@
+{
+    "$schema": "../../schema/schema.json",
+    "rules": [
+        {
+            "id": "exists",
+            "comment": "",
+            "rule": {
+                "type": "exists",
+                "array": {
+                    "type": "atom",
+                    "path": "arraydata"
+                },
+                "placeholder": "arrayItem",
+                "rule": {
+                    "type": "and",
+                    "arguments": [
+                        {
+                            "type": "atom",
+                            "path": "arrayItem"
+                        },
+                        {
+                            "type": "comparison",
+                            "operation": "equal",
+                            "arguments": [
+                                {
+                                    "type": "atom",
+                                    "path": "index"
+                                },
+                                2
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "id": "exists",
+            "comment": "",
+            "rule": {
+                "type": "exists",
+                "array": {
+                    "type": "atom",
+                    "path": "arraydata"
+                },
+                "placeholder": "$arrayItem",
+                "indexPlaceholder": "$index",
+                "rule": {
+                    "type": "and",
+                    "arguments": [
+                        {
+                            "type": "atom",
+                            "path": "$arrayItem"
+                        },
+                        {
+                            "type": "comparison",
+                            "operation": "equal",
+                            "arguments": [
+                                {
+                                    "type": "atom",
+                                    "path": "$index"
+                                },
+                                2
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

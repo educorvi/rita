@@ -1,0 +1,47 @@
+{
+    "$schema": "../../schema/schema.json",
+    "rules": [
+        {
+            "id": "forall",
+            "comment": "",
+            "rule": {
+                "type": "forall",
+                "array": {
+                    "type": "atom",
+                    "path": "arraydata"
+                },
+                "placeholder": "arrayItem",
+                "rule": {
+                    "type": "atom",
+                    "path": "arrayItem"
+                }
+            }
+        },
+        {
+            "id": "forall_wa",
+            "comment": "",
+            "rule": {
+                "type": "forall",
+                "array": [
+                    {
+                        "type": "atom",
+                        "path": "val1"
+                    },
+                    {
+                        "type": "atom",
+                        "path": "val2"
+                    },
+                    {
+                        "type": "atom",
+                        "path": "val3"
+                    }
+                ],
+                "placeholder": "arrayItem",
+                "rule": {
+                    "type": "atom",
+                    "path": "arrayItem"
+                }
+            }
+        }
+    ]
+}

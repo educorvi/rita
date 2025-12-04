@@ -21,7 +21,7 @@
         "check-types": "tsc --noEmit",
         "prebuild": "rimraf dist",
         "build": "vite build",
-        "doc": "npx typedoc",
+        "doc": "npx typedoc src/index.ts --out docs",
         "prepack": "npm run build",
         "test": "vitest run"
     },
