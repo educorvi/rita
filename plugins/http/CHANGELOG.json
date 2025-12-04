@@ -2,6 +2,26 @@
     "name": "@educorvi/rita-plugin-http",
     "entries": [
         {
+            "version": "1.2.0",
+            "tag": "@educorvi/rita-plugin-http_v1.2.0",
+            "date": "Thu, 04 Dec 2025 09:41:23 GMT",
+            "comments": {
+                "minor": [
+                    {
+                        "comment": " Add additional build formats and use vite"
+                    }
+                ],
+                "dependency": [
+                    {
+                        "comment": "Updating dependency \"@educorvi/rita\" from `^5.4.4` to `5.5.0`"
+                    },
+                    {
+                        "comment": "Updating dependency \"@educorvi/rita\" from `^5.4.4` to `5.5.0`"
+                    }
+                ]
+            }
+        },
+        {
             "version": "1.1.5",
             "tag": "@educorvi/rita-plugin-http_v1.1.5",
             "date": "Thu, 10 Jul 2025 09:41:58 GMT",

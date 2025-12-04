@@ -1,6 +1,14 @@
 # Change Log - rita-http
 
-This log was last generated on Thu, 10 Jul 2025 09:41:58 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Dec 2025 09:41:23 GMT and should not be manually modified.
+
+## 5.1.0
+
+Thu, 04 Dec 2025 09:41:23 GMT
+
+### Minor changes
+
+-   Add additional build formats and use vite
 
 ## 5.0.1
 

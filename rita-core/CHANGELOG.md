@@ -1,6 +1,15 @@
 # Change Log - @educorvi/rita
 
-This log was last generated on Tue, 02 Sep 2025 12:49:56 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Dec 2025 09:41:23 GMT and should not be manually modified.
+
+## 5.5.0
+
+Thu, 04 Dec 2025 09:41:23 GMT
+
+### Minor changes
+
+-   Add methods to get all atoms from formula
+-   Add additional build formats and use vite
 
 ## 5.4.4
 

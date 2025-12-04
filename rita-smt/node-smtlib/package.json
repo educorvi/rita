@@ -1,6 +1,6 @@
 {
     "name": "@educorvi/smtlib",
-    "version": "1.2.3",
+    "version": "1.3.0",
     "description": "A Javascript wrapper with a Z3-ish API for SMT-LIB 2.6, the language of Satisfiability Modulo Theories solvers",
     "repository": "https://github.com/educorvi/rita",
     "license": "MIT",

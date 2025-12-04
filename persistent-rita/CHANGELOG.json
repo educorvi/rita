@@ -2,6 +2,26 @@
     "name": "@educorvi/persistent-rita",
     "entries": [
         {
+            "version": "7.0.0",
+            "tag": "@educorvi/persistent-rita_v7.0.0",
+            "date": "Thu, 04 Dec 2025 09:41:23 GMT",
+            "comments": {
+                "major": [
+                    {
+                        "comment": "Using named instead of default export"
+                    }
+                ],
+                "dependency": [
+                    {
+                        "comment": "Updating dependency \"@educorvi/rita\" from `^5.4.4` to `5.5.0`"
+                    },
+                    {
+                        "comment": "Updating dependency \"@educorvi/rita\" from `^5.4.4` to `5.5.0`"
+                    }
+                ]
+            }
+        },
+        {
             "version": "6.0.3",
             "tag": "@educorvi/persistent-rita_v6.0.3",
             "date": "Thu, 10 Jul 2025 09:41:58 GMT",

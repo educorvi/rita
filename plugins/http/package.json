@@ -1,6 +1,6 @@
 {
     "name": "@educorvi/rita-plugin-http",
-    "version": "1.1.5",
+    "version": "1.2.0",
     "description": "A plugin to use http requests in rita",
     "main": "dist/rita-plugin-http.umd.js",
     "module": "dist/rita-plugin-http.mjs",
@@ -27,7 +27,7 @@
     },
     "homepage": "https://github.com/educorvi/rita/tree/develop/plugins/http#readme",
     "devDependencies": {
-        "@educorvi/rita": "workspace:^5.4.4",
+        "@educorvi/rita": "workspace:^5.5.0",
         "@types/node": "^24.0.10",
         "express": "^4.21.2",
         "tslib": "^2.8.1",
@@ -39,7 +39,7 @@
         "vitest": "^2.1.9"
     },
     "peerDependencies": {
-        "@educorvi/rita": "^5.4.4"
+        "@educorvi/rita": "^5.5.0"
     },
     "dependencies": {
         "axios": "^1.10.0"

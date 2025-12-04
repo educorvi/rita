@@ -2,6 +2,21 @@
     "name": "@educorvi/rita",
     "entries": [
         {
+            "version": "5.5.0",
+            "tag": "@educorvi/rita_v5.5.0",
+            "date": "Thu, 04 Dec 2025 09:41:23 GMT",
+            "comments": {
+                "minor": [
+                    {
+                        "comment": "Add methods to get all atoms from formula"
+                    },
+                    {
+                        "comment": "Add additional build formats and use vite"
+                    }
+                ]
+            }
+        },
+        {
             "version": "5.4.4",
             "tag": "@educorvi/rita_v5.4.4",
             "date": "Tue, 02 Sep 2025 12:49:56 GMT",

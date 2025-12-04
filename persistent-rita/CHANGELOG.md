@@ -1,6 +1,14 @@
 # Change Log - @educorvi/persistent-rita
 
-This log was last generated on Thu, 10 Jul 2025 09:41:58 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Dec 2025 09:41:23 GMT and should not be manually modified.
+
+## 7.0.0
+
+Thu, 04 Dec 2025 09:41:23 GMT
+
+### Breaking changes
+
+-   Using named instead of default export
 
 ## 6.0.3
 
