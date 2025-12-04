@@ -1,5 +1,5 @@
 import dateCalc from '../assets/dateCalc.json';
-import { Parser } from '../../src';
+import { Parser } from '../../index';
 
 const p = new Parser();
 const data = { randomVal: '2022-10-24T23:59:56.000Z' };

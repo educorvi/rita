@@ -1,6 +1,6 @@
 import Ajv from 'ajv/dist/2019';
 import addFormats from 'ajv-formats';
-import { Parser } from '../src';
+import { Parser } from '../index';
 import exampleRule from './assets/example1.json';
 import exampleMathDefault from './assets/exampleMath.json';
 import exampleMathSimple from './assets/mathSimple.json';
@@ -19,48 +19,48 @@ exampleMath.rules[0].rule.arguments[0].arguments[0].arguments[0] =
 const schemas = [
     {
         name: 'Atom',
-        schema: () => import('../src/schema/atom.json'),
+        schema: () => import('../schema/atom.json'),
     },
     {
         name: 'Operator',
-        schema: () => import('../src/schema/operator.json'),
+        schema: () => import('../schema/operator.json'),
     },
     {
         name: 'Comparison',
-        schema: () => import('../src/schema/comparison.json'),
+        schema: () => import('../schema/comparison.json'),
     },
     {
         name: 'Calculation',
-        schema: () => import('../src/schema/calculation.json'),
+        schema: () => import('../schema/calculation.json'),
     },
     {
         name: 'DateCalculation',
-        schema: () => import('../src/schema/dateCalculation.json'),
+        schema: () => import('../schema/dateCalculation.json'),
     },
     {
         name: 'Term',
-        schema: () => import('../src/schema/formula.json'),
+        schema: () => import('../schema/formula.json'),
     },
     {
         name: 'Rule',
-        schema: () => import('../src/schema/rule.json'),
+        schema: () => import('../schema/rule.json'),
     },
     {
         name: 'Quantifier',
-        schema: () => import('../src/schema/quantifier.json'),
+        schema: () => import('../schema/quantifier.json'),
     },
     {
         name: 'Macro',
-        schema: () => import('../src/schema/macro.json'),
+        schema: () => import('../schema/macro.json'),
     },
     {
         name: 'Plugin',
-        schema: () => import('../src/schema/plugin.json'),
+        schema: () => import('../schema/plugin.json'),
     },
 
     {
         name: 'Main',
-        schema: () => import('../src/schema/schema.json'),
+        schema: () => import('../schema/schema.json'),
     },
 ];
 

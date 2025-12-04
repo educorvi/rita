@@ -1,4 +1,4 @@
-import { Parser } from '../../../src';
+import { Parser } from '../../../index';
 import { exampleData, ruleTemplate } from '../../assets/exampleData';
 
 const p = new Parser();

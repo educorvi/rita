@@ -1,4 +1,4 @@
-import { getAtoms, Parser, Plugin } from '../../src';
+import { getAtoms, Parser, Plugin } from '../../index';
 import example1 from '../assets/example1.json';
 import exampleMath from '../assets/exampleMath.json';
 import dateCalc from '../assets/dateCalc.json';

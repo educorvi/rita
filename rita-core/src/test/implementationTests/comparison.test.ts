@@ -1,4 +1,4 @@
-import { evaluateAll, Parser, UsageError } from '../../src';
+import { evaluateAll, Parser, UsageError } from '../../index';
 import { exampleData, ruleTemplate } from '../assets/exampleData';
 import mathExample from '../assets/exampleMath.json';
 

@@ -3,24 +3,24 @@ export const exampleData = {
     employee: false,
     visit: {
         paymentDetails: {
-            payed: true
+            payed: true,
         },
         priceWithoutTax: 10.99,
-        tax: 1
+        tax: 1,
     },
     customers: [
         {
-            rated: false
+            rated: false,
         },
         {
-            rated: true
-        }
+            rated: true,
+        },
     ],
-    dateOfBirth: "2000-01-01T00:00:00+00:00",
-    name: "Julian"
-}
+    dateOfBirth: '2000-01-01T00:00:00+00:00',
+    name: 'Julian',
+};
 
 export const ruleTemplate = {
     id: 'testrule',
-    rule: {}
-}
+    rule: {},
+};

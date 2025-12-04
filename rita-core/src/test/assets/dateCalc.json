@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../rita-core/src/schema/schema.json",
+    "$schema": "../../schema/schema.json",
     "rules": [
         {
             "id": "rule3",

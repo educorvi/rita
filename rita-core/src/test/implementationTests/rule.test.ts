@@ -1,6 +1,6 @@
 import exampleRule from '../assets/example1.json';
 import { exampleData } from '../assets/exampleData';
-import { evaluateAll, Parser } from '../../src';
+import { evaluateAll, Parser } from '../../index';
 
 const p = new Parser();
 

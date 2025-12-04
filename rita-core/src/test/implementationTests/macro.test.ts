@@ -1,5 +1,5 @@
 import macroRuleset from '../assets/macros';
-import { evaluateAll, Parser } from '../../src';
+import { evaluateAll, Parser } from '../../index';
 import { exampleData } from '../assets/exampleData';
 
 const p = new Parser();

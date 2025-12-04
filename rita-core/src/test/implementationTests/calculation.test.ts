@@ -1,4 +1,4 @@
-import { evaluateAll, Parser } from '../../src';
+import { evaluateAll, Parser } from '../../index';
 import { exampleData } from '../assets/exampleData';
 import { DateTime } from 'luxon';
 import modulo from '../assets/modulo.json';

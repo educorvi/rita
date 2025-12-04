@@ -1,11 +1,11 @@
-import { Parser } from '../../src';
+import { Parser } from '../../index';
 
 import rule_qfa from '../assets/quantifiers_fa.json';
 import rule_qex from '../assets/quantifiers_ex.json';
 import rule_qit from '../assets/quantifiers_indexTests.json';
 import rule_qit2 from '../assets/quantifiers_indexTests2.json';
-import { evaluateAll } from '../../src';
-import { UsageError } from '../../src';
+import { evaluateAll } from '../../index';
+import { UsageError } from '../../index';
 
 const p = new Parser();
 
