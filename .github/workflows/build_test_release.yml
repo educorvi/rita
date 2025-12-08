@@ -142,6 +142,7 @@ jobs:
                   echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
             - name: Publish to NPM
               run: |
+                  # TODO: Consider using yarn workspaces foreach or changesets for better version management
                   for package_dir in rita-core persistent-rita rita-smt/node-smtlib rita-smt/main plugins/http; do
                     if [ -f "$package_dir/package.json" ]; then
                       cd "$package_dir"
