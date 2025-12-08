@@ -21,6 +21,6 @@ jobs:
                   script: |
                       cd ~/rita
                       git pull
-                      node common/scripts/install-run-rush.js install
-                      node common/scripts/install-run-rush.js build -t rita-http
+                      yarn install --immutable
+                      yarn turbo build --filter=rita-http
                       pm2 restart rita-http

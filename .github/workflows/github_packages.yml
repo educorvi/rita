@@ -24,28 +24,27 @@ jobs:
                   node-version: '22.x'
                   registry-url: 'https://npm.pkg.github.com'
                   scope: '@educorvi'
+                  cache: yarn
             - name: Setup git
               run: |
                   git config user.name 'github-actions[bot]'
                   git config user.email 'github-actions[bot]@users.noreply.github.com'
-            - name: Cache Rush
-              uses: actions/cache@v3
-              with:
-                  path: |
-                      common/temp/install-run
-                      ~/.rush
-                  key: ${{ runner.os }}-${{ hashFiles('rush.json') }}
-            - name: Cache pnpm
-              uses: actions/cache@v3
-              with:
-                  path: |
-                      common/temp/pnpm-store
-                  key: ${{ runner.os }}-${{ hashFiles('common/config/rush/pnpm-lock.yaml') }}
-            - name: Install
-              run: node common/scripts/install-run-rush.js install
+            - name: Install dependencies
+              run: yarn install --immutable
             - name: Build
-              run: node common/scripts/install-run-rush.js build
-            - name: Publish to NPM
-              run: node common/scripts/install-run-rush.js publish -p --include-all --version-policy "rita-publish" --set-access-level=public
+              run: yarn build
+            - name: Publish to GitHub Packages
+              run: |
+                  for package_dir in rita-core persistent-rita rita-smt/node-smtlib rita-smt/main plugins/http; do
+                    if [ -f "$package_dir/package.json" ]; then
+                      cd "$package_dir"
+                      if grep -q '"private".*:.*true' package.json; then
+                        echo "Skipping $package_dir (private package)"
+                      else
+                        npm publish || echo "Failed to publish $package_dir or already published"
+                      fi
+                      cd -
+                    fi
+                  done
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.PUBLISH_GITHUB_PACKAGE_TOKEN }}
