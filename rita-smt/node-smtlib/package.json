@@ -5,7 +5,7 @@
     "repository": "https://github.com/educorvi/rita",
     "license": "MIT",
     "author": "Julian Pollinger",
-    "main": "dist/smtlib.umd.js",
+    "main": "dist/smtlib.js",
     "module": "dist/smtlib.mjs",
     "types": "dist/index.d.ts",
     "files": [

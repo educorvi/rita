@@ -11,7 +11,7 @@ export default defineConfig({
         lib: {
             entry: 'src/index.ts',
             name: 'rita-smt',
-            formats: ['es', 'cjs', 'umd'],
+            formats: ['es', 'cjs'],
         },
     },
     plugins: [externalizeDeps(), dts()],

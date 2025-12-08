@@ -12,7 +12,7 @@
     "license": "MIT",
     "author": "Julian Pollinger",
     "sideEffects": false,
-    "main": "dist/rita.umd.js",
+    "main": "dist/rita.js",
     "module": "dist/rita.mjs",
     "typings": "dist/index.d.ts",
     "files": [

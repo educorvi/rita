@@ -9,7 +9,7 @@
     "license": "MIT",
     "author": "Julian Pollinger",
     "sideEffects": false,
-    "main": "dist/persistent-rita.umd.js",
+    "main": "dist/persistent-rita.js",
     "module": "dist/persistent-rita.mjs",
     "typings": "dist/index.d.ts",
     "files": [
