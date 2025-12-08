@@ -13,8 +13,6 @@
         "lib"
     ],
     "scripts": {
-        "_phase:build": "rushx build",
-        "_phase:test": "rushx test",
         "check-types": "tsc --noEmit",
         "build": "vite build",
         "coverage": "nyc report --reporter=text-lcov | coveralls",

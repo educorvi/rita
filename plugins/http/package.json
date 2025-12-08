@@ -9,8 +9,6 @@
         "dist"
     ],
     "scripts": {
-        "_phase:build": "rushx build",
-        "_phase:test": "rushx test",
         "check-types": "tsc --noEmit",
         "test": "vitest run",
         "build": "vite build",

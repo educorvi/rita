@@ -14,8 +14,6 @@
         "bin"
     ],
     "scripts": {
-        "_phase:build": "rushx build",
-        "_phase:test": "rushx test",
         "check-types": "tsc --noEmit",
         "build": "vite build && vite build --config vite.bin.config.ts",
         "prepack": "npm run build",

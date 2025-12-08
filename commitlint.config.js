@@ -1,7 +1,5 @@
 module.exports = {
-    extends: [
-        './common/autoinstallers/rush-commitlint/node_modules/@commitlint/config-conventional/index.js',
-    ],
+    extends: ['@commitlint/config-conventional'],
 
     rules: {
         'footer-max-line-length': [1, 'always', 100],
