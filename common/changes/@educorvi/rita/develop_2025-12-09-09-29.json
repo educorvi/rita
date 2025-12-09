@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@educorvi/rita",
+      "comment": "rename and export ValidationResult type",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@educorvi/rita"
+}
