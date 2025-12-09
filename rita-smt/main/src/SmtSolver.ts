@@ -149,7 +149,7 @@ export default class SmtSolver {
     }
 
     parseFormula(
-        rule: Formula | string | number | Date,
+        rule: Formula | string | number | Date | boolean,
         type: types = types.boolean
     ): SNode {
         if (typeof rule === 'string') {
@@ -165,6 +165,9 @@ export default class SmtSolver {
             } else {
                 return `(- ${formatter.format(Math.abs(rule))})`;
             }
+        }
+        if (typeof rule === 'boolean') {
+            return rule.toString();
         }
         if (rule instanceof Date) {
             return rule.getTime().toString();
