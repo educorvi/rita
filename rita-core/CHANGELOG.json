@@ -2,6 +2,21 @@
     "name": "@educorvi/rita",
     "entries": [
         {
+            "version": "5.5.1",
+            "tag": "@educorvi/rita_v5.5.1",
+            "date": "Tue, 09 Dec 2025 09:36:37 GMT",
+            "comments": {
+                "patch": [
+                    {
+                        "comment": "update description in schema"
+                    },
+                    {
+                        "comment": "rename and export ValidationResult type"
+                    }
+                ]
+            }
+        },
+        {
             "version": "5.5.0",
             "tag": "@educorvi/rita_v5.5.0",
             "date": "Thu, 04 Dec 2025 09:41:23 GMT",

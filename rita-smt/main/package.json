@@ -29,7 +29,7 @@
         "commander": "^14.0.0"
     },
     "devDependencies": {
-        "@educorvi/rita": "workspace:^5.5.0",
+        "@educorvi/rita": "workspace:^5.5.1",
         "@types/command-exists": "^1.2.3",
         "@types/node": "^24.0.10",
         "@types/terminal-kit": "^2.5.7",
@@ -42,6 +42,6 @@
         "vitest": "^2.1.9"
     },
     "peerDependencies": {
-        "@educorvi/rita": "^5.5.0"
+        "@educorvi/rita": "^5.5.1"
     }
 }
