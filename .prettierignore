@@ -1,2 +1,4 @@
 docs
-common
+node_modules
+dist
+.yarn

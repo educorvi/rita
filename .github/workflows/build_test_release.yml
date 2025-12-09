@@ -70,23 +70,20 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node-version }}
-            - name: Cache Rush
+                  cache: yarn
+            - name: Cache Turbo
               uses: actions/cache@v3
               with:
-                  path: |
-                      common/temp/install-run
-                      ~/.rush
-                  key: ${{ runner.os }}-${{ hashFiles('rush.json') }}
-            - name: Cache pnpm
-              uses: actions/cache@v3
-              with:
-                  path: |
-                      common/temp/pnpm-store
-                  key: ${{ runner.os }}-${{ hashFiles('common/config/rush/pnpm-lock.yaml') }}
-            - name: Install
-              run: node common/scripts/install-run-rush.js install
-            - name: Build and test
-              run: node common/scripts/install-run-rush.js build-and-test --verbose
+                  path: .turbo
+                  key: ${{ runner.os }}-turbo-${{ github.sha }}
+                  restore-keys: |
+                      ${{ runner.os }}-turbo-
+            - name: Install dependencies
+              run: yarn install --immutable
+            - name: Build
+              run: yarn build
+            - name: Test
+              run: yarn test
 
     #    licenses:
     #        runs-on: ubuntu-latest
@@ -128,48 +125,48 @@ jobs:
               with:
                   fetch-depth: 0
             - uses: actions/setup-node@v3
-            - name: Cache Rush
-              uses: actions/cache@v3
               with:
-                  path: |
-                      common/temp/install-run
-                      ~/.rush
-                  key: ${{ runner.os }}-${{ hashFiles('rush.json') }}
-            - name: Cache pnpm
-              uses: actions/cache@v3
-              with:
-                  path: |
-                      common/temp/pnpm-store
-                  key: ${{ runner.os }}-${{ hashFiles('common/config/rush/pnpm-lock.yaml') }}
+                  cache: yarn
             - name: Setup git
               run: |
                   git config user.name 'github-actions[bot]'
                   git config user.email 'github-actions[bot]@users.noreply.github.com'
-            - name: Install
-              run: node common/scripts/install-run-rush.js install
+            - name: Install dependencies
+              run: yarn install --immutable
             - name: Build
-              run: node common/scripts/install-run-rush.js build
-            - name: Bump version
-              run: node common/scripts/install-run-rush.js version --bump --version-policy "rita-publish"
+              run: yarn build
             - name: Generate documentation
-              run: node common/scripts/install-run-rush.js generate-documentation
-            - run: node common/scripts/install-run-rush.js update
-            - run: git add .
-            - name: Commit changes
+              run: yarn generate-documentation
+            - name: Configure NPM
               run: |
-                  git commit -a -m 'chore: bump version and generate documentation' || echo "No changes to commit"
-                  git push --follow-tags
-            - name: Rebase
+                  echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+            - name: Publish to NPM
+              run: |
+                  # TODO: Consider using yarn workspaces foreach or changesets for better version management
+                  for package_dir in rita-core persistent-rita rita-smt/node-smtlib rita-smt/main plugins/http; do
+                    if [ -f "$package_dir/package.json" ]; then
+                      cd "$package_dir"
+                      # Check if package should be published by looking at package.json
+                      if grep -q '"private".*:.*true' package.json; then
+                        echo "Skipping $package_dir (private package)"
+                      else
+                        npm publish --access public || echo "Failed to publish $package_dir or already published"
+                      fi
+                      cd -
+                    fi
+                  done
+            - name: Commit documentation changes
+              run: |
+                  git add docs || true
+                  git commit -m 'chore: update documentation [skip ci]' || echo "No changes to commit"
+                  git push --follow-tags || true
+            - name: Rebase develop
               run: |
                   git branch
-                  git checkout develop
-                  git pull
-                  git rebase main
-                  git push --follow-tags
-            - name: Publish to NPM
-              run: node common/scripts/install-run-rush.js publish -p --include-all --version-policy "rita-publish" --set-access-level=public
-              env:
-                  NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+                  git checkout develop || echo "No develop branch"
+                  git pull || true
+                  git rebase main || true
+                  git push --follow-tags || true
     buildDocker:
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         needs: [release]

@@ -41,6 +41,18 @@ The update process is identical, just replace `git clone` with `git pull`
 ## Development
 
 ```bash
+# Install dependencies
+yarn install
+
+# Build all packages
+yarn build
+
+# Run tests
+yarn test
+
 # Generate documentation
-rush generate-documentation
+yarn generate-documentation
+
+# Build specific package
+yarn turbo build --filter=rita-core
 ```
