@@ -10,7 +10,7 @@
             "enum": ["dateCalculation"]
         },
         "operation": {
-            "description": "Add/subtract a time interval to/from a date or subtract two dates to get the interval between them",
+            "description": "Add/subtract a time interval to/from a date or subtract two dates to get the interval between them. If the first date is earlier than the second one, the result will be negative.",
             "type": "string",
             "enum": ["add", "subtract"]
         },

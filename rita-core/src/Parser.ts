@@ -26,7 +26,7 @@ addFormats(ajv);
 /**
  * Results for validateRuleJSON
  */
-interface validationResult {
+export type ValidationResult = {
     /**
      * Indicates, if the rule is valid
      */
@@ -35,12 +35,12 @@ interface validationResult {
      * Array of errors
      */
     errors: Array<any>;
-}
+};
 
 /**
  * Class for all actions related to parsing
  */
-export default class Parser {
+export class Parser {
     /**
      * The validate function used to validate RITA Json
      * @private
@@ -68,7 +68,7 @@ export default class Parser {
      * Check if a given RITA Ruleset is valid
      * @param json the ruleset
      */
-    public validateRuleSetJSON(json: Record<string, any>): validationResult {
+    public validateRuleSetJSON(json: Record<string, any>): ValidationResult {
         if (!this.validate) {
             throw new InternalError('Error compiling schema');
         }

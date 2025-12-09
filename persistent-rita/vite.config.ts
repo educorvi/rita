@@ -8,7 +8,7 @@ export default defineConfig({
         lib: {
             entry: 'src/index.ts',
             name: 'persistent-rita',
-            formats: ['es', 'cjs', 'umd'],
+            formats: ['es', 'cjs'],
         },
         rollupOptions: {
             output: {

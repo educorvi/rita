@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@educorvi/rita",
+      "comment": "update description in schema",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@educorvi/rita"
+}

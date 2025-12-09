@@ -2,7 +2,7 @@
     "name": "@educorvi/rita-plugin-http",
     "version": "1.2.0",
     "description": "A plugin to use http requests in rita",
-    "main": "dist/rita-plugin-http.umd.js",
+    "main": "dist/rita-plugin-http.js",
     "module": "dist/rita-plugin-http.mjs",
     "typings": "dist/index.d.ts",
     "files": [

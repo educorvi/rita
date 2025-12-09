@@ -7,7 +7,7 @@ export default defineConfig({
         lib: {
             entry: 'lib/index.ts',
             name: 'smtlib',
-            formats: ['es', 'cjs', 'umd'],
+            formats: ['es', 'cjs'],
         },
     },
     plugins: [externalizeDeps(), dts()],
