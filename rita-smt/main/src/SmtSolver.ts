@@ -326,6 +326,9 @@ export default class SmtSolver {
             if (typeof argument === 'string') {
                 type = types.string;
             }
+            if (typeof argument === 'boolean') {
+                type = types.boolean;
+            }
         }
         return func(
             this.parseFormula(rule.arguments[0], type),

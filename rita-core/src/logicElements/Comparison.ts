@@ -21,7 +21,9 @@ export class Comparison extends Formula {
     /**
      * The arguments of the comparison
      */
-    public arguments: Array<Atom | number | Date | string | Calculation>;
+    public arguments: Array<
+        Atom | number | Date | string | Calculation | boolean
+    >;
 
     /**
      * Type of the comparison

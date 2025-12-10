@@ -22,7 +22,7 @@ export enum operations {
  *      const jsonArguments = someCalculation.arguments.map(mapParameterToJSONReady);
  */
 export function mapArgumentsToJSONReady(
-    item: Formula | number | Date | string
+    item: Formula | number | Date | string | boolean
 ) {
     if (item instanceof Formula) {
         return item.toJsonReady();
