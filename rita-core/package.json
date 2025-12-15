@@ -39,6 +39,7 @@
   },
   "devDependencies": {
     "@adobe/jsonschema2md": "^8.0.3",
+    "@semantic-release/exec": "^7.1.0",
     "@types/deep-equal": "^1.0.4",
     "@types/luxon": "^3.6.2",
     "@types/madge": "^5.0.3",
@@ -46,6 +47,9 @@
     "madge": "^8.0.0",
     "mkdirp": "^3.0.1",
     "rimraf": "^6.0.1",
+    "semantic-release": "^25.0.2",
+    "semantic-release-monorepo": "^8.0.2",
+    "semantic-release-yarn": "^3.0.2",
     "typedoc": "0.28.7",
     "typescript": "5.8.3",
     "unplugin-dts": "~1.0.0-beta.6",

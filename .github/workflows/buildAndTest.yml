@@ -1,0 +1,88 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Build and Test
+
+on:
+    push:
+        branches: ['main', 'develop']
+    pull_request:
+        branches: ['develop']
+
+jobs:
+    buildAndTest:
+        runs-on: ubuntu-latest
+
+        strategy:
+            matrix:
+                node-version: [20.x, 22.x]
+                # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+        env:
+            # Persistent Rita
+            MYSQL_DATABASE: prita
+            MYSQL_HOST: localhost
+            MYSQL_USER: root
+            MYSQL_PASSWORD: root
+            PSQL_DATABASE: postgres
+            PSQL_HOST: localhost
+            PSQL_USER: postgres
+            PSQL_PASSWORD: postgres
+            # Rita Http
+            PORT: 3000
+            LOGLEVEL: info
+            DB_TYPE: POSTGRES
+            DB_HOST: localhost
+            DB_PORT: 5432
+            DB_USERNAME: postgres
+            DB_PASSWORD: postgres
+            DB_DATABASE: postgres
+        # Service containers to run with `container-job`
+        services:
+            # Label used to access the service container
+            postgres:
+                # Docker Hub image
+                image: postgres
+                # Provide the password for postgres
+                env:
+                    POSTGRES_PASSWORD: postgres
+
+                # Set health checks to wait until postgres has started
+                options: >-
+                    --health-cmd pg_isready
+                    --health-interval 10s
+                    --health-timeout 5s
+                    --health-retries 5
+                ports:
+                    # Maps tcp port 5432 on service container to the host
+                    - 5432:5432
+            mysql:
+                image: mysql:5.7
+                env:
+                    MYSQL_DATABASE: prita
+                    MYSQL_ROOT_PASSWORD: root
+                ports:
+                    - 3306:3306
+                options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+        steps:
+            - uses: actions/checkout@v3
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v3
+              with:
+                  node-version: ${{ matrix.node-version }}
+                  cache: yarn
+            - name: Cache Turbo
+              uses: actions/cache@v3
+              with:
+                  path: .turbo
+                  key: ${{ runner.os }}-turbo-${{ github.sha }}
+                  restore-keys: |
+                      ${{ runner.os }}-turbo-
+            - name: Install dependencies
+              run: yarn install --immutable
+            - name: Build
+              run: yarn build
+            - name: Test
+              run: yarn test
+
+
