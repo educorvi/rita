@@ -1,28 +1,28 @@
 {
-  "name": "rita-monorepo",
-  "version": "1.0.0",
-  "private": true,
-  "workspaces": [
-    "rita-core",
-    "persistent-rita",
-    "rita-smt/main",
-    "rita-smt/node-smtlib",
-    "plugins/http",
-    "rita-http"
-  ],
-  "packageManager": "yarn@4.12.0",
-  "scripts": {
-    "build": "turbo build",
-    "test": "turbo test",
-    "check-types": "turbo check-types",
-    "doc": "turbo doc",
-    "generate-documentation": "turbo doc && cp -r rita-core/docs docs/rita-core && cp -r persistent-rita/docs docs/persistent-rita && cp -r rita-http/docs docs/rita-http",
-    "clean": "turbo clean"
-  },
-  "devDependencies": {
-    "@commitlint/cli": "^19.8.1",
-    "@commitlint/config-conventional": "^19.8.1",
-    "prettier": "^3.4.2",
-    "turbo": "^2.6.2"
-  }
+    "name": "rita-monorepo",
+    "version": "1.0.0",
+    "private": true,
+    "workspaces": [
+        "rita-core",
+        "persistent-rita",
+        "rita-smt/main",
+        "rita-smt/node-smtlib",
+        "plugins/http",
+        "rita-http"
+    ],
+    "packageManager": "yarn@4.12.0",
+    "scripts": {
+        "build": "turbo build check-types",
+        "test": "turbo test",
+        "check-types": "turbo check-types",
+        "doc": "turbo doc",
+        "generate-documentation": "turbo doc && cp -r rita-core/docs docs/rita-core && cp -r persistent-rita/docs docs/persistent-rita && cp -r rita-http/docs docs/rita-http",
+        "clean": "turbo clean"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^19.8.1",
+        "@commitlint/config-conventional": "^19.8.1",
+        "prettier": "^3.4.2",
+        "turbo": "^2.6.2"
+    }
 }
