@@ -15,7 +15,8 @@
     ],
     "scripts": {
         "check-types": "tsc --noEmit",
-        "build": "vite build && vite build --config vite.bin.config.ts",
+        "build:internal": "vite build && vite build --config vite.bin.config.ts",
+        "build": "turbo build:internal check-types",
         "prepack": "npm run build",
         "runbin": "ts-node src/bin.ts",
         "test:manual": "vitest run",

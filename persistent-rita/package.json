@@ -18,7 +18,8 @@
     "scripts": {
         "check-types": "tsc --noEmit",
         "prebuild": "rimraf dist",
-        "build": "vite build",
+        "build:internal": "vite build",
+        "build": "turbo build:internal check-types",
         "doc": "npx typedoc src/index.ts --out docs",
         "prepack": "npm run build",
         "test": "vitest run"

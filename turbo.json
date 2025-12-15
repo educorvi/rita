@@ -1,19 +1,19 @@
 {
   "$schema": "https://turborepo.com/schema.json",
   "tasks": {
-    "build": {
+    "build:internal": {
       "outputs": ["dist/**"],
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build:internal"]
     },
     "check-types": {
-      "dependsOn": ["^check-types"]
+      "dependsOn": ["^check-types", "^build:internal"]
     },
     "test": {
-      "dependsOn": ["build"],
+      "dependsOn": ["build:internal"],
       "outputs": []
     },
     "doc": {
-      "dependsOn": ["build"],
+      "dependsOn": ["build:internal"],
       "outputs": ["docs/**"]
     },
     "clean": {

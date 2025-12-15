@@ -22,7 +22,8 @@
     ],
     "scripts": {
         "check-types": "tsc --noEmit",
-        "build": "npm run clean && vite build",
+        "build:internal": "npm run clean && vite build",
+        "build": "turbo build:internal check-types",
         "clean": "rimraf dist dist_zip",
         "doc": "npm run doc:implementation && npm run doc:schema && git add docs",
         "doc:implementation": "npx typedoc --out docs/implementation src/index.ts",

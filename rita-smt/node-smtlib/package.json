@@ -14,7 +14,8 @@
     ],
     "scripts": {
         "check-types": "tsc --noEmit",
-        "build": "vite build",
+        "build:internal": "vite build",
+        "build": "turbo build:internal check-types",
         "coverage": "nyc report --reporter=text-lcov | coveralls",
         "lint": "eslint --ext .js,.jsx,.ts,.tsx ./lib ./test",
         "prepack": "npm run build",

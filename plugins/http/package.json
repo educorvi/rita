@@ -11,7 +11,8 @@
     "scripts": {
         "check-types": "tsc --noEmit",
         "test": "vitest run",
-        "build": "vite build",
+        "build:internal": "vite build",
+        "build": "turbo build:internal check-types",
         "prepack": "npm run build"
     },
     "repository": {
