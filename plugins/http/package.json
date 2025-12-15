@@ -1,46 +1,46 @@
 {
-    "name": "@educorvi/rita-plugin-http",
-    "version": "1.2.0",
-    "description": "A plugin to use http requests in rita",
-    "main": "dist/rita-plugin-http.js",
-    "module": "dist/rita-plugin-http.mjs",
-    "typings": "dist/index.d.ts",
-    "files": [
-        "dist"
-    ],
-    "scripts": {
-        "check-types": "tsc --noEmit",
-        "test": "vitest run",
-        "build:internal": "vite build",
-        "build": "turbo build:internal check-types",
-        "prepack": "npm run build"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+ssh://git@github.com/educorvi/rita.git"
-    },
-    "author": "Julian Pollinger",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/educorvi/rita/issues"
-    },
-    "homepage": "https://github.com/educorvi/rita/tree/develop/plugins/http#readme",
-    "devDependencies": {
-        "@educorvi/rita": "workspace:^5.5.0",
-        "@types/node": "^24.0.10",
-        "body-parser": "^2.2.0",
-        "express": "^4.21.2",
-        "tslib": "^2.8.1",
-        "typescript": "5.8.3",
-        "unplugin-dts": "~1.0.0-beta.6",
-        "vite": "~7.2.4",
-        "vite-plugin-externalize-deps": "~0.10.0",
-        "vitest": "^2.1.9"
-    },
-    "peerDependencies": {
-        "@educorvi/rita": "^5.5.0"
-    },
-    "dependencies": {
-        "axios": "^1.10.0"
-    }
+  "name": "@educorvi/rita-plugin-http",
+  "version": "1.2.0",
+  "description": "A plugin to use http requests in rita",
+  "main": "dist/rita-plugin-http.js",
+  "module": "dist/rita-plugin-http.mjs",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "check-types": "tsc --noEmit",
+    "test": "vitest run",
+    "build:internal": "vite build",
+    "build": "turbo build:internal check-types",
+    "prepack": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/educorvi/rita.git"
+  },
+  "author": "Julian Pollinger",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/educorvi/rita/issues"
+  },
+  "homepage": "https://github.com/educorvi/rita/tree/develop/plugins/http#readme",
+  "devDependencies": {
+    "@educorvi/rita": "workspace:^5.5.0",
+    "@types/node": "^24.0.10",
+    "body-parser": "^2.2.0",
+    "express": "^5.2.1",
+    "tslib": "^2.8.1",
+    "typescript": "5.8.3",
+    "unplugin-dts": "~1.0.0-beta.6",
+    "vite": "~7.2.4",
+    "vite-plugin-externalize-deps": "~0.10.0",
+    "vitest": "^2.1.9"
+  },
+  "peerDependencies": {
+    "@educorvi/rita": "5.5.0"
+  },
+  "dependencies": {
+    "axios": "^1.10.0"
+  }
 }

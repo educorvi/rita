@@ -1,51 +1,51 @@
 {
-    "name": "@educorvi/smtlib",
-    "version": "1.3.0",
-    "description": "A Javascript wrapper with a Z3-ish API for SMT-LIB 2.6, the language of Satisfiability Modulo Theories solvers",
-    "repository": "https://github.com/educorvi/rita",
-    "license": "MIT",
-    "author": "Julian Pollinger",
-    "main": "dist/smtlib.js",
-    "module": "dist/smtlib.mjs",
-    "types": "dist/index.d.ts",
-    "files": [
-        "dist",
-        "lib"
-    ],
-    "scripts": {
-        "check-types": "tsc --noEmit",
-        "build:internal": "vite build",
-        "build": "turbo build:internal check-types",
-        "coverage": "nyc report --reporter=text-lcov | coveralls",
-        "lint": "eslint --ext .js,.jsx,.ts,.tsx ./lib ./test",
-        "prepack": "npm run build",
-        "test": ">&2 echo \"No tests defined yet!\""
-    },
-    "nyc": {
-        "extends": "@istanbuljs/nyc-config-typescript"
-    },
-    "dependencies": {
-        "byline": "^5.0.0"
-    },
-    "devDependencies": {
-        "@istanbuljs/nyc-config-typescript": "^1.0.2",
-        "@semantic-release/changelog": "^6.0.3",
-        "@semantic-release/git": "^10.0.1",
-        "@types/byline": "^4.2.36",
-        "@types/node": "^24.0.10",
-        "@typescript-eslint/eslint-plugin": "^8.35.1",
-        "@typescript-eslint/parser": "^8.35.1",
-        "coveralls": "^3.1.1",
-        "eslint": "^9.30.1",
-        "nyc": "^17.1.0",
-        "semantic-release": "^24.2.6",
-        "semantic-release-monorepo": "^8.0.2",
-        "source-map-support": "^0.5.21",
-        "ts-node": "^10.9.2",
-        "typedoc": "0.28.7",
-        "typescript": "5.8.3",
-        "unplugin-dts": "~1.0.0-beta.6",
-        "vite": "~7.2.4",
-        "vite-plugin-externalize-deps": "~0.10.0"
-    }
+  "name": "@educorvi/smtlib",
+  "version": "1.3.0",
+  "description": "A Javascript wrapper with a Z3-ish API for SMT-LIB 2.6, the language of Satisfiability Modulo Theories solvers",
+  "repository": "https://github.com/educorvi/rita",
+  "license": "MIT",
+  "author": "Julian Pollinger",
+  "main": "dist/smtlib.js",
+  "module": "dist/smtlib.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "lib"
+  ],
+  "scripts": {
+    "check-types": "tsc --noEmit",
+    "build:internal": "vite build",
+    "build": "turbo build:internal check-types",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./lib ./test",
+    "prepack": "npm run build",
+    "test": ">&2 echo \"No tests defined yet!\""
+  },
+  "nyc": {
+    "extends": "@istanbuljs/nyc-config-typescript"
+  },
+  "dependencies": {
+    "byline": "^5.0.0"
+  },
+  "devDependencies": {
+    "@istanbuljs/nyc-config-typescript": "^1.0.2",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@types/byline": "^4.2.36",
+    "@types/node": "^24.0.10",
+    "@typescript-eslint/eslint-plugin": "^8.35.1",
+    "@typescript-eslint/parser": "^8.35.1",
+    "coveralls": "^3.1.1",
+    "eslint": "^9.30.1",
+    "nyc": "^17.1.0",
+    "semantic-release": "^24.2.6",
+    "semantic-release-monorepo": "^8.0.2",
+    "source-map-support": "^0.5.21",
+    "ts-node": "^10.9.2",
+    "typedoc": "0.28.7",
+    "typescript": "5.8.3",
+    "unplugin-dts": "~1.0.0-beta.6",
+    "vite": "~7.2.4",
+    "vite-plugin-externalize-deps": "~0.10.0"
+  }
 }

@@ -458,11 +458,11 @@ __metadata:
     vite-plugin-externalize-deps: "npm:~0.10.0"
     vitest: "npm:^2.1.9"
   peerDependencies:
-    "@educorvi/rita": ^5.5.0
-    mysql2: ^3.6.5
-    pg: ^8.7.1
-    sqlite3: ^5.0.6
-    typeorm: ^0.3.4
+    "@educorvi/rita": 5.5.0
+    mysql2: ^3.14.1
+    pg: ~8.16.3
+    sqlite3: ^5.1.7
+    typeorm: 0.3.27
   languageName: unknown
   linkType: soft
 
@@ -474,7 +474,7 @@ __metadata:
     "@types/node": "npm:^24.0.10"
     axios: "npm:^1.10.0"
     body-parser: "npm:^2.2.0"
-    express: "npm:^4.21.2"
+    express: "npm:^5.2.1"
     tslib: "npm:^2.8.1"
     typescript: "npm:5.8.3"
     unplugin-dts: "npm:~1.0.0-beta.6"
@@ -482,7 +482,7 @@ __metadata:
     vite-plugin-externalize-deps: "npm:~0.10.0"
     vitest: "npm:^2.1.9"
   peerDependencies:
-    "@educorvi/rita": ^5.5.0
+    "@educorvi/rita": 5.5.0
   languageName: unknown
   linkType: soft
 
@@ -505,7 +505,7 @@ __metadata:
     vite-plugin-externalize-deps: "npm:~0.10.0"
     vitest: "npm:^2.1.9"
   peerDependencies:
-    "@educorvi/rita": ^5.5.0
+    "@educorvi/rita": 5.5.0
   bin:
     rita-smt: bin/rita-smt-bin.js
   languageName: unknown
@@ -6086,7 +6086,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esbuild@npm:^0.27.0":
+"esbuild@npm:^0.27.0, esbuild@npm:~0.27.0":
   version: 0.27.1
   resolution: "esbuild@npm:0.27.1"
   dependencies:
@@ -7228,6 +7228,15 @@ __metadata:
     es-errors: "npm:^1.3.0"
     get-intrinsic: "npm:^1.2.6"
   checksum: 10/a353e3a9595a74720b40fb5bae3ba4a4f826e186e83814d93375182384265676f59e49998b9cdfac4a2225ce95a3d32a68f502a2c5619303987f1c183ab80494
+  languageName: node
+  linkType: hard
+
+"get-tsconfig@npm:^4.7.5":
+  version: 4.13.0
+  resolution: "get-tsconfig@npm:4.13.0"
+  dependencies:
+    resolve-pkg-maps: "npm:^1.0.0"
+  checksum: 10/3603c6da30e312636e4c20461e779114c9126601d1eca70ee4e36e3e3c00e3c21892d2d920027333afa2cc9e20998a436b14abe03a53cde40742581cb0e9ceb2
   languageName: node
   linkType: hard
 
@@ -12480,6 +12489,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"resolve-pkg-maps@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "resolve-pkg-maps@npm:1.0.0"
+  checksum: 10/0763150adf303040c304009231314d1e84c6e5ebfa2d82b7d94e96a6e82bacd1dcc0b58ae257315f3c8adb89a91d8d0f12928241cba2df1680fbe6f60bf99b0e
+  languageName: node
+  linkType: hard
+
 "resolve@npm:^1.0.0, resolve@npm:^1.10.0, resolve@npm:^1.22.10":
   version: 1.22.11
   resolution: "resolve@npm:1.22.11"
@@ -12620,6 +12636,7 @@ __metadata:
     "@commitlint/cli": "npm:^19.8.1"
     "@commitlint/config-conventional": "npm:^19.8.1"
     prettier: "npm:^3.4.2"
+    syncpack: "npm:^14.0.0-alpha.32"
     turbo: "npm:^2.6.2"
   languageName: unknown
   linkType: soft
@@ -13836,6 +13853,98 @@ __metadata:
   languageName: node
   linkType: hard
 
+"syncpack-darwin-arm64@npm:14.0.0-alpha.32":
+  version: 14.0.0-alpha.32
+  resolution: "syncpack-darwin-arm64@npm:14.0.0-alpha.32"
+  conditions: os=darwin & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"syncpack-darwin-x64@npm:14.0.0-alpha.32":
+  version: 14.0.0-alpha.32
+  resolution: "syncpack-darwin-x64@npm:14.0.0-alpha.32"
+  conditions: os=darwin & cpu=x64
+  languageName: node
+  linkType: hard
+
+"syncpack-linux-arm64-musl@npm:14.0.0-alpha.32":
+  version: 14.0.0-alpha.32
+  resolution: "syncpack-linux-arm64-musl@npm:14.0.0-alpha.32"
+  conditions: os=linux & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"syncpack-linux-arm64@npm:14.0.0-alpha.32":
+  version: 14.0.0-alpha.32
+  resolution: "syncpack-linux-arm64@npm:14.0.0-alpha.32"
+  conditions: os=linux & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"syncpack-linux-x64-musl@npm:14.0.0-alpha.32":
+  version: 14.0.0-alpha.32
+  resolution: "syncpack-linux-x64-musl@npm:14.0.0-alpha.32"
+  conditions: os=linux & cpu=x64
+  languageName: node
+  linkType: hard
+
+"syncpack-linux-x64@npm:14.0.0-alpha.32":
+  version: 14.0.0-alpha.32
+  resolution: "syncpack-linux-x64@npm:14.0.0-alpha.32"
+  conditions: os=linux & cpu=x64
+  languageName: node
+  linkType: hard
+
+"syncpack-windows-arm64@npm:14.0.0-alpha.32":
+  version: 14.0.0-alpha.32
+  resolution: "syncpack-windows-arm64@npm:14.0.0-alpha.32"
+  conditions: os=win32 & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"syncpack-windows-x64@npm:14.0.0-alpha.32":
+  version: 14.0.0-alpha.32
+  resolution: "syncpack-windows-x64@npm:14.0.0-alpha.32"
+  conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"syncpack@npm:^14.0.0-alpha.32":
+  version: 14.0.0-alpha.32
+  resolution: "syncpack@npm:14.0.0-alpha.32"
+  dependencies:
+    syncpack-darwin-arm64: "npm:14.0.0-alpha.32"
+    syncpack-darwin-x64: "npm:14.0.0-alpha.32"
+    syncpack-linux-arm64: "npm:14.0.0-alpha.32"
+    syncpack-linux-arm64-musl: "npm:14.0.0-alpha.32"
+    syncpack-linux-x64: "npm:14.0.0-alpha.32"
+    syncpack-linux-x64-musl: "npm:14.0.0-alpha.32"
+    syncpack-windows-arm64: "npm:14.0.0-alpha.32"
+    syncpack-windows-x64: "npm:14.0.0-alpha.32"
+    tsx: "npm:^4.21.0"
+  dependenciesMeta:
+    syncpack-darwin-arm64:
+      optional: true
+    syncpack-darwin-x64:
+      optional: true
+    syncpack-linux-arm64:
+      optional: true
+    syncpack-linux-arm64-musl:
+      optional: true
+    syncpack-linux-x64:
+      optional: true
+    syncpack-linux-x64-musl:
+      optional: true
+    syncpack-windows-arm64:
+      optional: true
+    syncpack-windows-x64:
+      optional: true
+  bin:
+    syncpack: index.cjs
+  checksum: 10/14d519d7b2bfdbb515aa23b3b2aa479aa5d8a81f041fb67593486268768b01a62e1c13d8c9dafb3c30b2560a28c72a48623ebab989b4cc36dfc471a5f19deca3
+  languageName: node
+  linkType: hard
+
 "tapable@npm:^2.2.0":
   version: 2.3.0
   resolution: "tapable@npm:2.3.0"
@@ -14300,6 +14409,22 @@ __metadata:
   bin:
     tsoa: dist/cli.js
   checksum: 10/f6bf3e2b5367425b8abb80e11b9a884a6055ca67b96dba88b19af77c4ec56f569117b074d68d9d0e4d1015d145705e5538204c8a055ab794c51342363251b9b3
+  languageName: node
+  linkType: hard
+
+"tsx@npm:^4.21.0":
+  version: 4.21.0
+  resolution: "tsx@npm:4.21.0"
+  dependencies:
+    esbuild: "npm:~0.27.0"
+    fsevents: "npm:~2.3.3"
+    get-tsconfig: "npm:^4.7.5"
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  bin:
+    tsx: dist/cli.mjs
+  checksum: 10/7afedeff855ba98c47dc28b33d7e8e253c4dc1f791938db402d79c174bdf806b897c1a5f91e5b1259c112520c816f826b4c5d98f0bad7e95b02dec66fedb64d2
   languageName: node
   linkType: hard
 

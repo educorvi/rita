@@ -1,59 +1,59 @@
 {
-    "name": "@educorvi/rita",
-    "version": "5.5.0",
-    "description": "JSON Schema for rules that can be used to evaluate data and a Typescript implementation to evaluate those rules",
-    "bugs": {
-        "url": "https://github.com/educorvi/rita/issues"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/educorvi/rita.git"
-    },
-    "license": "MIT",
-    "author": "Julian Pollinger",
-    "sideEffects": false,
-    "main": "dist/rita.js",
-    "module": "dist/rita.mjs",
-    "typings": "dist/index.d.ts",
-    "files": [
-        "dist",
-        "src",
-        "src/schema"
-    ],
-    "scripts": {
-        "check-types": "tsc --noEmit",
-        "build:internal": "npm run clean && vite build",
-        "build": "turbo build:internal check-types",
-        "clean": "rimraf dist dist_zip",
-        "doc": "npm run doc:implementation && npm run doc:schema && git add docs",
-        "doc:implementation": "npx typedoc --out docs/implementation src/index.ts",
-        "doc:schema": "jsonschema2md -d src/schema -o docs/schema -e json -x -",
-        "prepack": "npm run build",
-        "test": "vitest run"
-    },
-    "dependencies": {
-        "ajv": "^8.17.1",
-        "ajv-formats": "^2.1.1",
-        "luxon": "^3.6.1",
-        "tslib": "^2.8.1"
-    },
-    "devDependencies": {
-        "@adobe/jsonschema2md": "^8.0.3",
-        "@types/deep-equal": "^1.0.4",
-        "@types/luxon": "^3.6.2",
-        "@types/madge": "^5.0.3",
-        "jest-extended": "^6.0.0",
-        "madge": "^8.0.0",
-        "mkdirp": "^3.0.1",
-        "rimraf": "^6.0.1",
-        "typedoc": "0.28.7",
-        "typescript": "5.8.3",
-        "unplugin-dts": "~1.0.0-beta.6",
-        "vite": "~7.2.4",
-        "vite-plugin-externalize-deps": "~0.10.0",
-        "vitest": "^2.1.9"
-    },
-    "engines": {
-        "node": ">=10"
-    }
+  "name": "@educorvi/rita",
+  "version": "5.5.0",
+  "description": "JSON Schema for rules that can be used to evaluate data and a Typescript implementation to evaluate those rules",
+  "bugs": {
+    "url": "https://github.com/educorvi/rita/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/educorvi/rita.git"
+  },
+  "license": "MIT",
+  "author": "Julian Pollinger",
+  "sideEffects": false,
+  "main": "dist/rita.js",
+  "module": "dist/rita.mjs",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src",
+    "src/schema"
+  ],
+  "scripts": {
+    "check-types": "tsc --noEmit",
+    "build:internal": "npm run clean && vite build",
+    "build": "turbo build:internal check-types",
+    "clean": "rimraf dist dist_zip",
+    "doc": "npm run doc:implementation && npm run doc:schema && git add docs",
+    "doc:implementation": "npx typedoc --out docs/implementation src/index.ts",
+    "doc:schema": "jsonschema2md -d src/schema -o docs/schema -e json -x -",
+    "prepack": "npm run build",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^2.1.1",
+    "luxon": "^3.6.1",
+    "tslib": "^2.8.1"
+  },
+  "devDependencies": {
+    "@adobe/jsonschema2md": "^8.0.3",
+    "@types/deep-equal": "^1.0.4",
+    "@types/luxon": "^3.6.2",
+    "@types/madge": "^5.0.3",
+    "jest-extended": "^6.0.0",
+    "madge": "^8.0.0",
+    "mkdirp": "^3.0.1",
+    "rimraf": "^6.0.1",
+    "typedoc": "0.28.7",
+    "typescript": "5.8.3",
+    "unplugin-dts": "~1.0.0-beta.6",
+    "vite": "~7.2.4",
+    "vite-plugin-externalize-deps": "~0.10.0",
+    "vitest": "^2.1.9"
+  },
+  "engines": {
+    "node": ">=10"
+  }
 }
