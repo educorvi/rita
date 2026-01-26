@@ -19,9 +19,7 @@
   "license": "MIT",
   "author": "Julian Pollinger",
   "main": "dist/rita-http.cjs",
-  "bin": {
-    "rita-http": "dist/rita-http.cjs"
-  },
+  "bin": "dist/rita-http.cjs",
   "type": "module",
   "files": [
     "dist"

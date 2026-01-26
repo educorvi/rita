@@ -6,7 +6,7 @@
       "dependsOn": ["^build:internal"]
     },
     "check-types": {
-      "dependsOn": ["^check-types", "^build:internal"]
+      "dependsOn": ["^check-types", "build:internal"]
     },
     "test": {
       "dependsOn": ["build:internal"],
