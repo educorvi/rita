@@ -52,7 +52,7 @@ Calculations involving dates
 
 ## operation
 
-Add/subtract a time interval to/from a date or subtract two dates to get the interval between them
+Add/subtract a time interval to/from a date or subtract two dates to get the interval between them. If the first date is earlier than the second one, the result will be negative.
 
 `operation`
 

@@ -1,6 +1,15 @@
 # Change Log - @educorvi/rita
 
-This log was last generated on Thu, 04 Dec 2025 09:41:23 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Dec 2025 09:36:37 GMT and should not be manually modified.
+
+## 5.5.1
+
+Tue, 09 Dec 2025 09:36:37 GMT
+
+### Patches
+
+-   update description in schema
+-   rename and export ValidationResult type
 
 ## 5.5.0
 
