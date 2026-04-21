@@ -1,4 +1,4 @@
-import { Duration } from 'luxon';
+import { Temporal } from 'temporal-polyfill';
 import { Formula } from './logicElements';
 import {
     HasNoLengthError,
@@ -48,8 +48,8 @@ export function assertNumberOrDate(
 export function assertDuration(
     value: unknown,
     context: Formula
-): asserts value is Duration {
-    if (!Duration.isDuration(value)) {
+): asserts value is Temporal.Duration {
+    if (!(value instanceof Temporal.Duration)) {
         throw new NotDurationError(context, value);
     }
 }

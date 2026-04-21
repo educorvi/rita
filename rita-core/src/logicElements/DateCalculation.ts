@@ -6,7 +6,7 @@ import { Atom } from './Atom';
 import { Calculation, mapArgumentsToJSONReady } from './Calculation';
 import { RulesetError } from '../Errors';
 import { assertNumberOrDate } from '../Assertions';
-import { DateTime, Duration } from 'luxon';
+import { Temporal } from 'temporal-polyfill';
 
 export enum dateOperations {
     add = 'add',
@@ -24,6 +24,19 @@ enum timeUnits {
     months = 'months',
     years = 'years',
 }
+
+/**
+ * Longterm millisecond values for time units (matching luxon's conversionAccuracy: 'longterm').
+ * 1 year = 365.2425 days (Gregorian calendar average)
+ */
+const msPerUnit: Record<timeUnits, number> = {
+    [timeUnits.seconds]: 1_000,
+    [timeUnits.minutes]: 60_000,
+    [timeUnits.hours]: 3_600_000,
+    [timeUnits.days]: 86_400_000,
+    [timeUnits.months]: 2_629_746_000, // 365.2425 / 12 * 86400000
+    [timeUnits.years]: 31_557_600_000, // 365.2425 * 86400000
+};
 
 export class DateCalculation extends Formula {
     /**
@@ -80,47 +93,53 @@ export class DateCalculation extends Formula {
      */
     private dateMath(
         func: (x1: number, x2: number) => number
-    ): (d1: Date | Duration, d2: Date | Duration) => Date | Duration {
+    ): (d1: Date | number, d2: Date | number) => Date | number {
         const operation = this.operation;
 
         const context = this;
 
         return function (
-            d1: Date | Duration,
-            d2: Date | Duration
-        ): Date | Duration {
+            d1: Date | number,
+            d2: Date | number
+        ): Date | number {
             //If arguments are two dates, calculate the result with the milliseconds of the dates
             if (d1 instanceof Date && d2 instanceof Date) {
-                return Duration.fromMillis(func(d1.getTime(), d2.getTime()), {
-                    conversionAccuracy: 'longterm',
-                });
+                return func(d1.getTime(), d2.getTime());
             }
 
-            //If neither arguments are dates, combine the durations by applying the function to their millisecond values
+            //If neither arguments are dates, combine the durations (in ms) by applying the function
             if (!(d1 instanceof Date) && !(d2 instanceof Date)) {
-                return Duration.fromMillis(func(d1.toMillis(), d2.toMillis()), {
-                    conversionAccuracy: 'longterm',
-                });
+                return func(d1, d2);
             }
 
             //If neither of the above returned, we now know one must be a date and one a duration, so let's find out which is which
             let date: Date;
-            let duration: Duration;
+            let durationMs: number;
             if (d1 instanceof Date && !(d2 instanceof Date)) {
                 date = d1;
-                duration = <Duration>d2;
+                durationMs = d2;
             } else {
                 date = <Date>d2;
-                duration = <Duration>d1;
+                durationMs = <number>d1;
             }
 
-            //Add or subtract the duration to/from the date
-            const lDate: DateTime = DateTime.fromJSDate(date);
+            //Add or subtract the duration (in ms) to/from the date using Temporal
+            const instant = Temporal.Instant.fromEpochMilliseconds(
+                date.getTime()
+            );
             switch (operation) {
                 case dateOperations.add:
-                    return lDate.plus(duration).toJSDate();
+                    return new Date(
+                        instant
+                            .add({ milliseconds: durationMs })
+                            .epochMilliseconds
+                    );
                 case dateOperations.subtract:
-                    return lDate.minus(duration).toJSDate();
+                    return new Date(
+                        instant
+                            .subtract({ milliseconds: durationMs })
+                            .epochMilliseconds
+                    );
                 default:
                     throw new RulesetError(
                         'Invalid Operation for Dates',
@@ -155,16 +174,11 @@ export class DateCalculation extends Formula {
             )
         );
 
-        //Map numbers to durations
+        //Map numbers to durations (in milliseconds)
         const tmp = results.map((item) => {
             assertNumberOrDate(item, this);
             if (typeof item === 'number') {
-                return Duration.fromObject(
-                    {
-                        [this.dateCalculationUnit]: item,
-                    },
-                    { conversionAccuracy: 'longterm' }
-                );
+                return item * msPerUnit[this.dateCalculationUnit];
             } else {
                 return item;
             }
@@ -175,7 +189,7 @@ export class DateCalculation extends Formula {
         if (res instanceof Date) {
             return res;
         }
-        return res.as(this.dateResultUnit);
+        return (res as number) / msPerUnit[this.dateResultUnit];
     }
 
     toJsonReady(): Record<string, any> {

@@ -1,5 +1,5 @@
 import { Formula, FormulaResults } from './Formula';
-import { DateTime } from 'luxon';
+import { Temporal } from 'temporal-polyfill';
 import { UndefinedPathError, UsageError } from '../Errors';
 
 /**
@@ -8,11 +8,21 @@ import { UndefinedPathError, UsageError } from '../Errors';
  * @param context the context of the formula
  */
 export function parseDate(val: string, context?: Formula): Date {
-    const testDate = DateTime.fromISO(val).toJSDate();
-    if (!isNaN(testDate.getTime())) {
-        return testDate;
-    } else {
-        throw new UsageError(`Date "${val}" could not be parsed`, context);
+    try {
+        // Try parsing as an Instant (full ISO with offset/Z)
+        return new Date(Temporal.Instant.from(val).epochMilliseconds);
+    } catch {
+        try {
+            // Try parsing as a PlainDate (date only, e.g. "2021-11-12")
+            const plain = Temporal.PlainDate.from(val);
+            return new Date(
+                plain
+                    .toZonedDateTime(Temporal.Now.timeZoneId())
+                    .toInstant().epochMilliseconds
+            );
+        } catch {
+            throw new UsageError(`Date "${val}" could not be parsed`, context);
+        }
     }
 }
 

@@ -1,4 +1,4 @@
-import { DateTime } from 'luxon';
+import { Temporal } from 'temporal-polyfill';
 
 export default {
     $schema: '../../src/schema/schema.json',
@@ -17,7 +17,9 @@ export default {
                             type: 'now',
                         },
                     },
-                    DateTime.fromISO('2022-04-22T13:14:12.122+02:00').toISO(),
+                    Temporal.Instant.from(
+                        '2022-04-22T11:14:12.122Z'
+                    ).toString(),
                 ],
             },
         },

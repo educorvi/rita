@@ -1,6 +1,6 @@
 import { evaluateAll, Parser } from '../../index';
 import { exampleData } from '../assets/exampleData';
-import { DateTime } from 'luxon';
+import { Temporal } from 'temporal-polyfill';
 import modulo from '../assets/modulo.json';
 
 const p = new Parser();
@@ -85,7 +85,10 @@ describe('Numbers', () => {
 });
 
 function formatDate(d: Date): string {
-    return DateTime.fromJSDate(d).toFormat('yyyy-MM-dd');
+    return Temporal.Instant.fromEpochMilliseconds(d.getTime())
+        .toZonedDateTimeISO('UTC')
+        .toPlainDate()
+        .toString();
 }
 
 describe('Dates', () => {

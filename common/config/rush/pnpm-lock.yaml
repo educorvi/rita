@@ -99,9 +99,9 @@ importers:
       ajv-formats:
         specifier: ^2.1.1
         version: 2.1.1(ajv@8.17.1)
-      luxon:
-        specifier: ^3.6.1
-        version: 3.6.1
+      temporal-polyfill:
+        specifier: ^0.3.2
+        version: 0.3.2
       tslib:
         specifier: ^2.8.1
         version: 2.8.1
@@ -112,9 +112,6 @@ importers:
       '@types/deep-equal':
         specifier: ^1.0.4
         version: 1.0.4
-      '@types/luxon':
-        specifier: ^3.6.2
-        version: 3.6.2
       '@types/madge':
         specifier: ^5.0.3
         version: 5.0.3
@@ -2555,10 +2552,6 @@ packages:
       '@types/koa-compose': 3.2.8
       '@types/node': 24.0.10
     dev: false
-
-  /@types/luxon@3.6.2:
-    resolution: {integrity: sha512-R/BdP7OxEMc44l2Ex5lSXHoIXTB2JLNa3y2QISIbr58U/YcsffyQrYW//hZSdrfxrjRZj3GcUoxMPGdO8gSYuw==}
-    dev: true
 
   /@types/madge@5.0.3:
     resolution: {integrity: sha512-NlQJd0qRAoyu+pawTDhLxkW940QT2dqASfwd2g/xEZu2F4Xjwa7TVRSPdbmZwUF1ygvAh0/nepeN7JjwEuOXCA==}
@@ -6590,11 +6583,6 @@ packages:
     resolution: {integrity: sha512-zTU3DaZaF3Rt9rhN3uBMGQD3dD2/vFQqnvZCDv4dl5iOzq2IZQqTxu90r4E5J+nP70J3ilqVCrbho2eWaeW8Ow==}
     dev: true
 
-  /luxon@3.6.1:
-    resolution: {integrity: sha512-tJLxrKJhO2ukZ5z0gyjY1zPh3Rh88Ej9P7jNrZiHMUXHae1yvI2imgOZtL1TO8TW6biMMKfTtAOoEJANgtWBMQ==}
-    engines: {node: '>=12'}
-    dev: false
-
   /madge@8.0.0(typescript@5.8.3):
     resolution: {integrity: sha512-9sSsi3TBPhmkTCIpVQF0SPiChj1L7Rq9kU2KDG1o6v2XH9cCw086MopjVCD+vuoL5v8S77DTbVopTO8OUiQpIw==}
     engines: {node: '>=18'}
@@ -9450,6 +9438,16 @@ packages:
     resolution: {integrity: sha512-nHc6S/bwIilKHNRgK/3jlhDoIHcp45YgyiwcAk46Tr0LfEqGBVpmiAyuiuxeVE44m3mXnEeVhaipLOEWmH+Njw==}
     engines: {node: '>=14.16'}
     dev: true
+
+  /temporal-polyfill@0.3.2:
+    resolution: {integrity: sha512-TzHthD/heRK947GNiSu3Y5gSPpeUDH34+LESnfsq8bqpFhsB79HFBX8+Z834IVX68P3EUyRPZK5bL/1fh437Eg==}
+    dependencies:
+      temporal-spec: 0.3.1
+    dev: false
+
+  /temporal-spec@0.3.1:
+    resolution: {integrity: sha512-B4TUhezh9knfSIMwt7RVggApDRJZo73uZdj8AacL2mZ8RP5KtLianh2MXxL06GN9ESYiIsiuoLQhgVfwe55Yhw==}
+    dev: false
 
   /tempy@1.0.1:
     resolution: {integrity: sha512-biM9brNqxSc04Ee71hzFbryD11nX7VPhQQY32AdDmjFvodsRFz/3ufeoTZ6uYkRFfGo188tENcASNs3vTdsM0w==}
