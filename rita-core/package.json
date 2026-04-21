@@ -41,7 +41,6 @@
     "devDependencies": {
         "@adobe/jsonschema2md": "^8.0.3",
         "@types/deep-equal": "^1.0.4",
-
         "@types/madge": "^5.0.3",
         "jest-extended": "^6.0.0",
         "madge": "^8.0.0",

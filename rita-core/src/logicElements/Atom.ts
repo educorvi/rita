@@ -17,7 +17,7 @@ export function parseDate(val: string, context?: Formula): Date {
             const plain = Temporal.PlainDate.from(val);
             return new Date(
                 plain
-                    .toZonedDateTime(Temporal.Now.timeZoneId())
+                    .toZonedDateTime('UTC')
                     .toInstant().epochMilliseconds
             );
         } catch {
