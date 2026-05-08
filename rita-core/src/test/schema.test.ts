@@ -9,12 +9,12 @@ import rule_qfa from './assets/quantifiers_fa.json';
 import rule_qex from './assets/quantifiers_ex.json';
 import rule_defaultValue from './assets/defaultVal.json';
 import macros from './assets/macros';
-import { DateTime } from 'luxon';
+import dayjs from 'dayjs';
 
 //Prevent timezone error when converting from json and back
 const exampleMath = JSON.parse(JSON.stringify(exampleMathDefault));
 exampleMath.rules[0].rule.arguments[0].arguments[0].arguments[0] =
-    DateTime.fromJSDate(new Date()).toISO();
+    dayjs(new Date()).toISOString();
 
 const schemas = [
     {

@@ -1,5 +1,5 @@
 import { Formula, FormulaResults } from './Formula';
-import { DateTime } from 'luxon';
+import dayjs from 'dayjs';
 import { UndefinedPathError, UsageError } from '../Errors';
 
 /**
@@ -8,7 +8,7 @@ import { UndefinedPathError, UsageError } from '../Errors';
  * @param context the context of the formula
  */
 export function parseDate(val: string, context?: Formula): Date {
-    const testDate = DateTime.fromISO(val).toJSDate();
+    const testDate = dayjs(val).toDate();
     if (!isNaN(testDate.getTime())) {
         return testDate;
     } else {

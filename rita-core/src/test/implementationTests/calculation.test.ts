@@ -1,6 +1,6 @@
 import { evaluateAll, Parser } from '../../index';
 import { exampleData } from '../assets/exampleData';
-import { DateTime } from 'luxon';
+import dayjs from 'dayjs';
 import modulo from '../assets/modulo.json';
 
 const p = new Parser();
@@ -85,7 +85,7 @@ describe('Numbers', () => {
 });
 
 function formatDate(d: Date): string {
-    return DateTime.fromJSDate(d).toFormat('yyyy-MM-dd');
+    return dayjs(d).format('YYYY-MM-DD');
 }
 
 describe('Dates', () => {
