@@ -114,7 +114,7 @@ jobs:
           cache: yarn
           node-version: lts/*
       - run: yarn install --immutable
-      - name: Create .env for persistent-rita
+      - name: Create .env files
         run: |
           cat > packages/persistent-rita/.env << EOF
           MYSQL_DATABASE=${{ env.MYSQL_DATABASE }}
@@ -125,6 +125,17 @@ jobs:
           PSQL_HOST=${{ env.PSQL_HOST }}
           PSQL_USER=${{ env.PSQL_USER }}
           PSQL_PASSWORD=${{ env.PSQL_PASSWORD }}
+          EOF
+
+          cat > applications/rita-http/.env << EOF
+          PORT=${{ env.PORT }}
+          LOGLEVEL=${{ env.LOGLEVEL }}
+          DB_TYPE=${{ env.DB_TYPE }}
+          DB_HOST=${{ env.DB_HOST }}
+          DB_PORT=${{ env.DB_PORT }}
+          DB_USERNAME=${{ env.DB_USERNAME }}
+          DB_PASSWORD=${{ env.DB_PASSWORD }}
+          DB_DATABASE=${{ env.DB_DATABASE }}
           EOF
       - run: yarn run build
       - run: yarn test
