@@ -2,7 +2,13 @@
     "extends": ["//"],
     "tasks": {
         "build:internal": {
-            "outputs": ["dist/**", "generated/**"]
+          "dependsOn": ["build:routes", "^build:internal"]
+        },
+        "check-types": {
+          "dependsOn": ["build:routes", "^check-types"]
+        },
+        "build:routes": {
+          "outputs": ["generated/**"]
         }
     }
 }
