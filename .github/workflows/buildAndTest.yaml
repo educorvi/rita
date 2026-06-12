@@ -26,6 +26,29 @@ jobs:
       matrix:
         node: [ 22, 24 ]
     name: Build on Node ${{ matrix.node }}
+    steps:
+      - uses: actions/checkout@v6
+      - name: Cache turbo build setup
+        uses: actions/cache@v5
+        with:
+          path: .turbo
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-
+      - name: Enable Corepack
+        run: corepack enable
+      - name: Setup node
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.node }}
+          cache: yarn
+      - run: yarn install --immutable
+#      - run: yarn run lint
+      - run: yarn run build
+  test-unit:
+    needs: build
+    runs-on: ubuntu-latest
+    name: Unit Tests
     env:
       # Persistent Rita
       MYSQL_DATABASE: prita
@@ -72,29 +95,6 @@ jobs:
         ports:
           - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-    steps:
-      - uses: actions/checkout@v6
-      - name: Cache turbo build setup
-        uses: actions/cache@v5
-        with:
-          path: .turbo
-          key: ${{ runner.os }}-turbo-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-turbo-
-      - name: Enable Corepack
-        run: corepack enable
-      - name: Setup node
-        uses: actions/setup-node@v6
-        with:
-          node-version: ${{ matrix.node }}
-          cache: yarn
-      - run: yarn install --immutable
-#      - run: yarn run lint
-      - run: yarn run build
-  test-unit:
-    needs: build
-    runs-on: ubuntu-latest
-    name: Unit Tests
     steps:
       - uses: actions/checkout@v6
         with:
