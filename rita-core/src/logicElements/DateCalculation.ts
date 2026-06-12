@@ -6,7 +6,8 @@ import { Atom } from './Atom';
 import { Calculation, mapArgumentsToJSONReady } from './Calculation';
 import { RulesetError } from '../Errors';
 import { assertNumberOrDate } from '../Assertions';
-import dayjs, { type Duration } from 'dayjs';
+import dayjs from 'dayjs';
+import type { Duration } from 'dayjs/plugin/duration';
 import duration from 'dayjs/plugin/duration';
 
 dayjs.extend(duration);

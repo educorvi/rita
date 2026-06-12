@@ -1,5 +1,6 @@
-import dayjs, { type Duration } from 'dayjs';
 import duration from 'dayjs/plugin/duration';
+import type { Duration } from 'dayjs/plugin/duration';
+import dayjs from 'dayjs';
 import { Formula } from './logicElements';
 
 dayjs.extend(duration);
