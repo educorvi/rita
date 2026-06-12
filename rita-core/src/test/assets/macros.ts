@@ -1,4 +1,4 @@
-import { DateTime } from 'luxon';
+import dayjs from 'dayjs';
 
 export default {
     $schema: '../../src/schema/schema.json',
@@ -17,7 +17,7 @@ export default {
                             type: 'now',
                         },
                     },
-                    DateTime.fromISO('2022-04-22T13:14:12.122+02:00').toISO(),
+                    dayjs('2022-04-22T13:14:12.122+02:00').toISOString(),
                 ],
             },
         },

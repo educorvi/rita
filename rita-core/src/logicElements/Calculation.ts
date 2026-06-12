@@ -1,6 +1,6 @@
 import { Atom } from './Atom';
 import { Formula } from './Formula';
-import { DateTime } from 'luxon';
+import dayjs from 'dayjs';
 import { UsageError } from '../Errors';
 import { DateCalculation } from './DateCalculation';
 
@@ -27,7 +27,7 @@ export function mapArgumentsToJSONReady(
     if (item instanceof Formula) {
         return item.toJsonReady();
     } else if (item instanceof Date) {
-        return DateTime.fromJSDate(item).toISO();
+        return dayjs(item).toISOString();
     } else {
         return item;
     }
