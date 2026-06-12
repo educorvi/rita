@@ -22,14 +22,14 @@ jobs:
           key: ${{ runner.os }}-turbo-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-turbo-
+      - name: Enable Corepack
+        run: corepack enable
       - name: Setup node
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           cache: yarn
           cache-dependency-path: yarn.lock
-      - name: Enable Corepack
-        run: corepack enable
       - name: Install dependencies
         run: yarn install --immutable
       - name: Build published artifacts
