@@ -48,7 +48,9 @@ export class Comparison extends Formula {
      * @param allowDifferentTypes Indicates if different types are allowed inside a comparison
      */
     constructor(
-        formulaArguments: Array<Atom | number | Date | string | Calculation>,
+        formulaArguments: Array<
+            Atom | number | Date | string | Calculation | boolean
+        >,
         operation: comparisons,
         dates: boolean = false,
         allowDifferentTypes: boolean = false
