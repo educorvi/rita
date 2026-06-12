@@ -12,10 +12,12 @@ import {
     Rule,
     parseDate,
 } from './logicElements';
-import { schema } from './schema';
 import { UnimplementedError, UsageError } from './Errors';
 import { PluginClass } from './logicElements';
 import { DateCalculation } from './logicElements';
+
+const schemaId =
+    'https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/schema.json';
 
 /**
  * Class for all actions related to parsing
@@ -272,7 +274,7 @@ export class Parser {
      */
     public static toJson(rules: Array<Rule>): string {
         return JSON.stringify({
-            $schema: schema['$id'],
+            $schema: schemaId,
             rules: rules.map((rule) => rule.toJsonReady()),
         });
     }

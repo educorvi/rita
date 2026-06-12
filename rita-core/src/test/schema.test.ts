@@ -83,7 +83,8 @@ describe('Validate Schema against Meta-Schema', () => {
 
 const p = new Parser();
 
-function validateSchema(schema: Record<string, any>, expected = true) {
+async function validateSchema(schema: Record<string, any>, expected = true) {
+    await validator.init();
     const result = validator.validateRuleSetJSON(schema);
     if (result.valid !== expected) {
         console.warn(result.errors);
@@ -104,7 +105,8 @@ describe('Validate Rule examples', () => {
         validateSchema(exampleMath);
     });
 
-    it('Wrong Rule', () => {
+    it('Wrong Rule', async () => {
+        await validator.init();
         const result = validator.validateRuleSetJSON(wrongExampleRule);
         expect(result.valid).toBe(false);
         expect(result.errors).not.toHaveLength(0);

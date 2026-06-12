@@ -19,6 +19,7 @@ export class Validator {
     validate: ValidateFunction | undefined;
 
     async init() {
+        if (this.validate) return;
         this.validate = (await import('./RitaRulesetAjvValidator')).default;
     }
 
