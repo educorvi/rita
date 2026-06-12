@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@educorvi/rita",
+      "comment": "extract validation logic to dedicated Validator class",
+      "type": "major"
+    }
+  ],
+  "packageName": "@educorvi/rita"
+}
