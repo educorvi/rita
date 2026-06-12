@@ -119,7 +119,7 @@ async function getAPIKeyData(defaultName?: string): Promise<APIKeyData> {
 /**
  * Let the user select an API Key
  */
-async function selectKey(): Promise<ApiKey> {
+async function selectKey(): Promise<ApiKey | null> {
     const keys = await configDB.getAllApiKeys();
 
     const options = keys.map((item) => `${item.name} (${item.api_key})`);

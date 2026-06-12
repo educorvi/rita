@@ -1,6 +1,6 @@
 import express from 'express';
-import { UnauthorizedError } from '../Errors';
-import { configDB } from './globals';
+import {UnauthorizedError} from '../Errors';
+import {configDB} from './globals';
 
 /**
  * Function to check users permissions
@@ -9,33 +9,37 @@ import { configDB } from './globals';
  * @param scopes Requested scopes
  */
 export function expressAuthentication(
-    request: express.Request,
-    securityName: string,
-    scopes?: string[]
+  request: express.Request,
+  securityName: string,
+  scopes?: string[]
 ): Promise<any> {
-    return new Promise(async (resolve, reject) => {
-        if (securityName === 'api_key') {
-            let key = await configDB.getApiKey(
-                request.header('X-API-KEY') || '*'
-            );
-            if (!key) {
-                key = await configDB.getApiKey('*');
-            }
-            for (const scope of scopes) {
-                switch (scope) {
-                    case 'view':
-                        if (!key.view) reject(new UnauthorizedError());
-                        break;
-                    case 'manage':
-                        if (!key.manage) reject(new UnauthorizedError());
-                        break;
-                    case 'evaluate':
-                        if (!key.evaluate) reject(new UnauthorizedError());
-                        break;
-                }
-            }
+  return new Promise(async (resolve, reject) => {
+    if (securityName === 'api_key') {
+      let key = await configDB.getApiKey(
+        request.header('X-API-KEY') || '*'
+      );
+      if (!key) {
+        key = await configDB.getApiKey('*');
+      }
+      if (!scopes || !key) {
+        reject(new UnauthorizedError());
+        return;
+      }
+      for (const scope of scopes) {
+        switch (scope) {
+          case 'view':
+            if (!key.view) reject(new UnauthorizedError());
+            break;
+          case 'manage':
+            if (!key.manage) reject(new UnauthorizedError());
+            break;
+          case 'evaluate':
+            if (!key.evaluate) reject(new UnauthorizedError());
+            break;
         }
+      }
+    }
 
-        resolve(null);
-    });
+    resolve(null);
+  });
 }

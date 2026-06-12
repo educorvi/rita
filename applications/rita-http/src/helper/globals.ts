@@ -43,11 +43,11 @@ const type = DB_TYPE?.toLowerCase();
  * Options for database connection read from the environment
  */
 export const db_options: DatabaseConfig = {
-    host: DB_HOST || undefined,
-    port: Number.parseInt(DB_PORT) || undefined,
+    host: DB_HOST || "localhost",
+    port: Number.parseInt(DB_PORT || "0") || undefined,
     username: DB_USERNAME || undefined,
     password: DB_PASSWORD || undefined,
-    database: DB_DATABASE || undefined,
+    database: DB_DATABASE || "db",
 };
 
 /**
@@ -77,17 +77,17 @@ async function initRita() {
                 );
                 return;
         }
-    } catch (e) {
-        dbConnectionError('rita')(e);
-    }
 
-    rita = new PersistentRita(db, logger);
+      rita = new PersistentRita(db, logger);
+    } catch (e) {
+        dbConnectionError('rita')(e as Error);
+    }
 }
 
-function checkDBType(type: string): asserts type is supportedDBTypes {
-    if (!(type === 'mysql' || type === 'sqlite' || type === 'postgres')) {
+function checkDBType(type: string | undefined): asserts type is supportedDBTypes {
+    if (!(type === 'mysql' || type === 'better-sqlite3' || type === 'postgres')) {
         dbConnectionError('config')(
-            new Error('Unknown DB type: ' + type.toUpperCase())
+            new Error('Unknown DB type: ' + type?.toUpperCase())
         );
     }
 }
@@ -97,7 +97,7 @@ function checkDBType(type: string): asserts type is supportedDBTypes {
  */
 async function initConfigDB() {
     if (type === 'sqlite') {
-        db_options.database = DB_SQLITE_PATH;
+        db_options.database = DB_SQLITE_PATH || "db.sqlite";
     }
     checkDBType(type);
     try {
@@ -107,7 +107,7 @@ async function initConfigDB() {
             ...db_options,
         });
     } catch (e) {
-        dbConnectionError('config')(e);
+        dbConnectionError('config')(e as Error);
     }
 
     // Generate public Access key, if it does not exist

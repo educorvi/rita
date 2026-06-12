@@ -28,9 +28,9 @@ export class RootController extends Controller {
             version,
             message:
                 'Welcome to the RITA API. A documentation is available under ./docs.',
-            ritaVersion,
+            ritaVersion: ritaVersion || "unknown",
             plugins: plugins.map((P) => {
-                const p = new P({}, null);
+                const p = new P({}, undefined);
                 return {
                     name: p.getName(),
                     version: p.getVersion(),

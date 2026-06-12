@@ -15,25 +15,13 @@ import { Connect } from 'vite';
  * All the middleware for the express server
  */
 
-/**
- * Log requests.
- * @param req
- * @param res
- * @param next
- */
-function accessLogger(req: Request, res: Response, next: NextFunction) {
-    logger.debug(req.method + ': ' + req.originalUrl);
-    next();
-}
 
 /**
  * Export of every middleware
  */
 export const middleware: Connect.NextHandleFunction[] = [
     bodyParser.urlencoded({ extended: true }),
-    bodyParser.json(),
-    express.static('docs'),
-    accessLogger,
+    bodyParser.json()
 ];
 
 /**

@@ -25,7 +25,6 @@ export default class MySQL extends TypeORM {
             } else {
                 logger.debug('Start new database connection...');
                 new DataSource({
-                    name: 'mysql_connection',
                     type: 'mysql',
                     port: 3306,
                     ...config,

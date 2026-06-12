@@ -4,7 +4,7 @@ import crypto from 'crypto';
 import { logger } from '../CustomLogger';
 import type { DataSourceOptions } from 'typeorm';
 
-export type supportedDBTypes = 'mysql' | 'sqlite' | 'postgres';
+export type supportedDBTypes = 'mysql' | 'better-sqlite3' | 'postgres';
 
 /**
  * DB Adapter for storage of API Keys and boolean settings
@@ -65,7 +65,7 @@ export default class Database {
      * Get a specific API Key
      * @param key
      */
-    getApiKey(key: string): Promise<ApiKey> {
+    getApiKey(key: string): Promise<ApiKey | null> {
         if (!this.connection.isInitialized)
             throw new DatabaseConnectionClosedError();
 
@@ -104,7 +104,7 @@ export default class Database {
      * Gets a boolean setting
      * @param name
      */
-    getBooleanSetting(name: string): Promise<BooleanSetting> {
+    getBooleanSetting(name: string): Promise<BooleanSetting | null> {
         if (!this.connection.isInitialized)
             throw new DatabaseConnectionClosedError();
 

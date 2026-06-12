@@ -25,7 +25,6 @@ export default class Postgres extends TypeORM {
             } else {
                 logger.debug('Start new database connection...');
                 new DataSource({
-                    name: 'postgres_connection',
                     type: 'postgres',
                     port: 5432,
                     ...config,

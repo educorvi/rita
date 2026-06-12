@@ -26,8 +26,7 @@ export default class SQLite extends TypeORM {
             } else {
                 logger.debug('Start new database connection...');
                 new DataSource({
-                    name: 'sqlite_connection',
-                    type: 'sqlite',
+                    type: 'better-sqlite3',
                     database: sqlitePath,
                     entities: [SQLiteModel],
                     synchronize: true,
