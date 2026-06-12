@@ -12,74 +12,26 @@ import {
     Rule,
     parseDate,
 } from './logicElements';
-import Ajv from 'ajv/dist/2019';
-import schemas, { schema } from './schema';
-import { AnyValidateFunction } from 'ajv/dist/types';
-import addFormats from 'ajv-formats';
-import { InternalError, UnimplementedError, UsageError } from './Errors';
-import { PluginClass } from './logicElements/Plugin';
-import { DateCalculation } from './logicElements/DateCalculation';
-
-const ajv = new Ajv({ schemas: schemas });
-addFormats(ajv);
-
-/**
- * Results for validateRuleJSON
- */
-export type ValidationResult = {
-    /**
-     * Indicates, if the rule is valid
-     */
-    valid: boolean;
-    /**
-     * Array of errors
-     */
-    errors: Array<any>;
-};
+import { schema } from './schema';
+import { UnimplementedError, UsageError } from './Errors';
+import { PluginClass } from './logicElements';
+import { DateCalculation } from './logicElements';
 
 /**
  * Class for all actions related to parsing
  */
 export class Parser {
-    /**
-     * The validate function used to validate RITA Json
-     * @private
-     */
-    private readonly validate: AnyValidateFunction<unknown> | undefined;
-
     private readonly plugins: Map<string, PluginClass> = new Map<
         string,
         PluginClass
     >();
 
     constructor(plugins?: Array<PluginClass>) {
-        this.validate = ajv.getSchema(
-            'https://raw.githubusercontent.com/educorvi/rita/main/rita-core/src/schema/schema.json'
-        );
-
         if (plugins) {
             for (const plugin of plugins) {
                 this.plugins.set(new plugin({}, undefined).getName(), plugin);
             }
         }
-    }
-
-    /**
-     * Check if a given RITA Ruleset is valid
-     * @param json the ruleset
-     */
-    public validateRuleSetJSON(json: Record<string, any>): ValidationResult {
-        if (!this.validate) {
-            throw new InternalError('Error compiling schema');
-        }
-        let valid = this.validate(json);
-        if (typeof valid !== 'boolean') {
-            throw new InternalError('Error compiling schema');
-        }
-        return {
-            valid,
-            errors: this.validate.errors || [],
-        };
     }
 
     /**

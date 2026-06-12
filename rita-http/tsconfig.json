@@ -2,6 +2,7 @@
     "compilerOptions": {
         "esModuleInterop": true,
         "target": "ES6",
+        "lib": ["ES2021"],
         "noImplicitAny": true,
         "moduleResolution": "bundler",
         "sourceMap": true,

@@ -3,7 +3,6 @@ import { Comparison, comparisons } from '../../logicElements/Comparison';
 import { evaluateAll, Parser } from '../../index';
 import { UnimplementedError, UsageError } from '../../Errors';
 import { Plugin } from '../../logicElements/Plugin';
-import { Formula } from '../../logicElements/Formula';
 
 const p = new Parser();
 

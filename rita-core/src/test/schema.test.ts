@@ -1,6 +1,6 @@
 import Ajv from 'ajv/dist/2019';
 import addFormats from 'ajv-formats';
-import { Parser } from '../index';
+import { Parser, Validator } from '../index';
 import exampleRule from './assets/example1.json';
 import exampleMathDefault from './assets/exampleMath.json';
 import exampleMathSimple from './assets/mathSimple.json';
@@ -13,8 +13,11 @@ import dayjs from 'dayjs';
 
 //Prevent timezone error when converting from json and back
 const exampleMath = JSON.parse(JSON.stringify(exampleMathDefault));
-exampleMath.rules[0].rule.arguments[0].arguments[0].arguments[0] =
-    dayjs(new Date()).toISOString();
+exampleMath.rules[0].rule.arguments[0].arguments[0].arguments[0] = dayjs(
+    new Date()
+).toISOString();
+
+const validator = new Validator();
 
 const schemas = [
     {
@@ -81,7 +84,7 @@ describe('Validate Schema against Meta-Schema', () => {
 const p = new Parser();
 
 function validateSchema(schema: Record<string, any>, expected = true) {
-    const result = p.validateRuleSetJSON(schema);
+    const result = validator.validateRuleSetJSON(schema);
     if (result.valid !== expected) {
         console.warn(result.errors);
     }
@@ -102,7 +105,7 @@ describe('Validate Rule examples', () => {
     });
 
     it('Wrong Rule', () => {
-        const result = p.validateRuleSetJSON(wrongExampleRule);
+        const result = validator.validateRuleSetJSON(wrongExampleRule);
         expect(result.valid).toBe(false);
         expect(result.errors).not.toHaveLength(0);
     });

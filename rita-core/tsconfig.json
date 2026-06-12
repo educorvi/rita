@@ -29,6 +29,6 @@
         "resolveJsonModule": true,
         "target": "ES6",
         "outDir": "dist",
-        "types": ["vitest/globals"]
+        "types": ["vitest/globals", "@types/node"]
     }
 }
