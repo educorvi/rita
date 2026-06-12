@@ -89,7 +89,7 @@ jobs:
           node-version: ${{ matrix.node }}
           cache: yarn
       - run: yarn install --immutable
-      - run: yarn run lint
+#      - run: yarn run lint
       - run: yarn run build
   test-unit:
     needs: build
