@@ -114,6 +114,18 @@ jobs:
           cache: yarn
           node-version: lts/*
       - run: yarn install --immutable
+      - name: Create .env for persistent-rita
+        run: |
+          cat > packages/persistent-rita/.env << EOF
+          MYSQL_DATABASE=${{ env.MYSQL_DATABASE }}
+          MYSQL_HOST=${{ env.MYSQL_HOST }}
+          MYSQL_USER=${{ env.MYSQL_USER }}
+          MYSQL_PASSWORD=${{ env.MYSQL_PASSWORD }}
+          PSQL_DATABASE=${{ env.PSQL_DATABASE }}
+          PSQL_HOST=${{ env.PSQL_HOST }}
+          PSQL_USER=${{ env.PSQL_USER }}
+          PSQL_PASSWORD=${{ env.PSQL_PASSWORD }}
+          EOF
       - run: yarn run build
       - run: yarn test
 #            - name: Upload report to GitHub Actions Artifacts
