@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import dts from 'unplugin-dts/vite';
 import { externalizeDeps } from 'vite-plugin-externalize-deps';
 import pkg from './package.json';
+import analyzer from 'vite-bundle-analyzer';
 
 export default defineConfig({
     define: {
@@ -16,6 +17,7 @@ export default defineConfig({
     },
     plugins: [
         externalizeDeps(),
-        dts({ entryRoot: 'src', exclude: ['test', 'vite.config.ts'] }),
+        dts({ entryRoot: 'src', exclude: ['**/test/**', 'vite.config.ts'] }),
+        // analyzer()
     ],
 });

@@ -1,15 +1,9 @@
 import { And, Not, Or } from '../../../logicElements/Operators';
-import { Atom } from '../../../logicElements/Atom';
 import { Comparison, comparisons } from '../../../logicElements/Comparison';
 import { Parser } from '../../../index';
 import { ruleTemplate } from '../../assets/exampleData';
 
 const p = new Parser();
-
-// Helper: an atom that evaluates to a boolean stored in data
-function atomBool(key: string) {
-    return new Atom(key);
-}
 
 // Helper: a comparison that always resolves to true
 function alwaysTrue() {

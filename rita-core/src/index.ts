@@ -4,6 +4,8 @@ export * from './Logger';
 export * from './Errors';
 export * from './Parser';
 
+export * from './Validator';
+
 const version = process.env.VERSION;
 
 export { version };
