@@ -1,0 +1,95 @@
+[
+  {
+    "path": "applications/rita-http/dist/rita-http.cjs",
+    "name": "rita-http",
+    "limit": "60 kB",
+    "running": false,
+    "webpack": false
+  },
+  {
+    "path": [
+      "packages/rita-core/dist/rita.mjs",
+      "packages/rita-core/dist/RitaRulesetAjvValidator-*.mjs"
+    ],
+    "name": "@educorvi/rita (ESM)",
+    "limit": "150 kB",
+    "running": false,
+    "webpack": false
+  },
+  {
+    "path": [
+      "packages/rita-core/dist/rita.js",
+      "packages/rita-core/dist/RitaRulesetAjvValidator-*.js"
+    ],
+    "name": "@educorvi/rita (CJS)",
+    "limit": "80 kB",
+    "running": false,
+    "webpack": false
+  },
+  {
+    "path": "packages/persistent-rita/dist/persistent-rita.mjs",
+    "name": "@educorvi/persistent-rita (ESM)",
+    "limit": "20 kB",
+    "running": false,
+    "webpack": false
+  },
+  {
+    "path": "packages/persistent-rita/dist/persistent-rita.js",
+    "name": "@educorvi/persistent-rita (CJS)",
+    "limit": "20 kB",
+    "running": false,
+    "webpack": false
+  },
+  {
+    "path": "packages/plugins/http/dist/rita-plugin-http.mjs",
+    "name": "@educorvi/rita-plugin-http (ESM)",
+    "limit": "5 kB",
+    "running": false,
+    "webpack": false
+  },
+  {
+    "path": "packages/plugins/http/dist/rita-plugin-http.js",
+    "name": "@educorvi/rita-plugin-http (CJS)",
+    "limit": "5 kB",
+    "running": false,
+    "webpack": false
+  },
+  {
+    "path": "packages/rita-smt/main/dist/rita-smt.mjs",
+    "name": "@educorvi/rita-smt (ESM)",
+    "limit": "15 kB",
+    "running": false,
+    "webpack": false
+  },
+  {
+    "path": "packages/rita-smt/main/dist/rita-smt.js",
+    "name": "@educorvi/rita-smt (CJS)",
+    "limit": "15 kB",
+    "running": false,
+    "webpack": false
+  },
+  {
+    "path": [
+      "packages/rita-smt/main/bin/*.js",
+      "packages/rita-smt/main/bin/assets/*.js"
+    ],
+    "name": "@educorvi/rita-smt CLI",
+    "limit": "30 kB",
+    "running": false,
+    "webpack": false
+  },
+  {
+    "path": "packages/rita-smt/node-smtlib/dist/smtlib.mjs",
+    "name": "@educorvi/smtlib (ESM)",
+    "limit": "10 kB",
+    "running": false,
+    "webpack": false
+  },
+  {
+    "path": "packages/rita-smt/node-smtlib/dist/smtlib.js",
+    "name": "@educorvi/smtlib (CJS)",
+    "limit": "10 kB",
+    "running": false,
+    "webpack": false
+  }
+]

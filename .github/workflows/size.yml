@@ -1,0 +1,38 @@
+name: 'size'
+on:
+    pull_request:
+        branches:
+            - main
+            - 'release/*'
+
+permissions:
+    contents: read
+
+jobs:
+    size:
+        runs-on: ubuntu-latest
+        env:
+            CI_JOB_NUMBER: 1
+        steps:
+            - uses: actions/checkout@v6
+            - name: Cache turbo build setup
+              uses: actions/cache@v5
+              with:
+                  path: .turbo
+                  key: ${{ runner.os }}-turbo-${{ github.sha }}
+                  restore-keys: |
+                      ${{ runner.os }}-turbo-
+            - name: Setup node
+              uses: actions/setup-node@v6
+              with:
+                  node-version: lts/*
+                  cache: yarn
+                  cache-dependency-path: yarn.lock
+            - name: Enable Corepack
+              run: corepack enable
+            - name: Install dependencies
+              run: yarn install --immutable
+            - name: Build published artifacts
+              run: yarn turbo build:internal
+            - name: Check size limits
+              run: yarn size-limit

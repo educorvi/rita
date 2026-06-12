@@ -1,0 +1,25 @@
+{
+    "branches": [
+        {
+            "name": "release/latest",
+            "channel": "latest"
+        },
+        {
+            "name": "release/beta",
+            "prerelease": "beta",
+            "channel": "beta"
+        }
+    ],
+    "plugins": [
+        "@semantic-release/commit-analyzer",
+        "@semantic-release/release-notes-generator",
+        "semantic-release-yarn",
+        [
+            "@semantic-release/github",
+            {
+                "assets": [
+                ]
+            }
+        ]
+    ]
+}

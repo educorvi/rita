@@ -1,0 +1,28 @@
+{"kind":"O","text":"Invoking: rushx build \n"}
+{"kind":"E","text":"\u001b[33mYour version of Node.js (24.14.0) has not been tested with this release of Rush. Please consider installing a newer version of the \"@microsoft/rush\" package, or downgrading Node.js.\u001b[39m\n"}
+{"kind":"E","text":"\u001b[33m\u001b[39m\n"}
+{"kind":"O","text":"Found configuration in /home/julian/projects/arbeit/rita/rush.json\n"}
+{"kind":"O","text":"\n"}
+{"kind":"O","text":"\u001b[1mRush Multi-Project Build Tool 5.176.0\u001b[33m\u001b[39m\u001b[22m - Node.js 24.14.0 (LTS)\n"}
+{"kind":"O","text":"> \"vite build && vite build --config vite.bin.config.ts\"\n"}
+{"kind":"O","text":"\n"}
+{"kind":"O","text":"vite v7.3.5 building client environment for production...\n"}
+{"kind":"O","text":"transforming...\n"}
+{"kind":"O","text":"✓ 6 modules transformed.\n"}
+{"kind":"O","text":"rendering chunks...\n"}
+{"kind":"O","text":"\n"}
+{"kind":"O","text":"[unplugin:dts] Start generate declaration files...\n"}
+{"kind":"O","text":"computing gzip size...\n"}
+{"kind":"O","text":"dist/rita-smt.mjs  9.61 kB │ gzip: 2.94 kB\n"}
+{"kind":"O","text":"[unplugin:dts] Declaration files built in 1267ms.\n"}
+{"kind":"O","text":"\n"}
+{"kind":"O","text":"dist/rita-smt.js  7.09 kB │ gzip: 2.46 kB\n"}
+{"kind":"O","text":"✓ built in 1.38s\n"}
+{"kind":"O","text":"vite v7.3.5 building ssr environment for production...\n"}
+{"kind":"O","text":"transforming...\n"}
+{"kind":"O","text":"✓ 8 modules transformed.\n"}
+{"kind":"O","text":"rendering chunks...\n"}
+{"kind":"O","text":"bin/BenchmarkingWorker.js         4.98 kB\n"}
+{"kind":"O","text":"bin/rita-smt-bin.js               6.91 kB\n"}
+{"kind":"O","text":"bin/assets/checkSat-R-OHPJt7.js  12.99 kB\n"}
+{"kind":"O","text":"✓ built in 139ms\n"}

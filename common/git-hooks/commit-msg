@@ -1,6 +1,0 @@
-#!/bin/sh
-
-if [ "$CI" != "true" ]
-then
-  node common/scripts/install-run-rush.js commitlint --edit $1
-fi

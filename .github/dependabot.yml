@@ -1,0 +1,37 @@
+version: 2
+updates:
+    - package-ecosystem: 'npm'
+      directory: '/'
+      schedule:
+          interval: 'weekly'
+      assignees:
+          - 'neferin12'
+      groups:
+          production-dependencies:
+              dependency-type: production
+              update-types:
+                  - patch
+                  - minor
+
+          production-dependencies-major:
+              dependency-type: production
+              update-types:
+                  - major
+
+          dev-dependencies:
+              dependency-type: development
+              update-types:
+                  - patch
+                  - minor
+
+          dev-dependencies-major:
+              dependency-type: development
+              update-types:
+                  - major
+
+    - package-ecosystem: 'github-actions'
+      directory: '/'
+      schedule:
+          interval: 'weekly'
+      assignees:
+          - 'neferin12'
