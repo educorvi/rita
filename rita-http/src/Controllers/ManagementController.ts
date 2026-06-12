@@ -14,7 +14,7 @@ import { NotFoundError, UsageError } from '../Errors';
 import { Response, Security } from 'tsoa';
 import { errorResponse } from './responseTypes';
 import { satisfies as satisfiesVersion, major, minor } from 'semver';
-import { version as ritaVersion } from '@educorvi/rita';
+import { Validator, version as ritaVersion } from '@educorvi/rita';
 
 /**
  * Controller for everything management related
@@ -31,6 +31,11 @@ type ritaBody = {
     version?: string;
     rules: Array<any>;
 };
+
+const validator = new Validator();
+validator.init().then(() => {
+    console.info('Validator initialized');
+});
 
 @Route('rulesets')
 export class RulesetManagementController extends Controller {
@@ -89,7 +94,7 @@ export class RulesetManagementController extends Controller {
                 `Invalid version (${ruleset.version}) of rita! Valid versions are: ${ritaRange}`
             );
 
-        const v = PersistentRita.parser.validateRuleSetJSON(ruleset);
+        const v = validator.validateRuleSetJSON(ruleset);
         if (!v.valid) {
             throw new UsageError(
                 'Invalid Ruleset: ' + JSON.stringify(v.errors)

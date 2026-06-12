@@ -6,7 +6,11 @@ import { Atom } from './Atom';
 import { Calculation, mapArgumentsToJSONReady } from './Calculation';
 import { RulesetError } from '../Errors';
 import { assertNumberOrDate } from '../Assertions';
-import { DateTime, Duration } from 'luxon';
+import dayjs from 'dayjs';
+import type { Duration } from 'dayjs/plugin/duration';
+import duration from 'dayjs/plugin/duration';
+
+dayjs.extend(duration);
 
 export enum dateOperations {
     add = 'add',
@@ -91,36 +95,33 @@ export class DateCalculation extends Formula {
         ): Date | Duration {
             //If arguments are two dates, calculate the result with the milliseconds of the dates
             if (d1 instanceof Date && d2 instanceof Date) {
-                return Duration.fromMillis(func(d1.getTime(), d2.getTime()), {
-                    conversionAccuracy: 'longterm',
-                });
+                return dayjs.duration(func(d1.getTime(), d2.getTime()));
             }
 
             //If neither arguments are dates, combine the durations by applying the function to their millisecond values
             if (!(d1 instanceof Date) && !(d2 instanceof Date)) {
-                return Duration.fromMillis(func(d1.toMillis(), d2.toMillis()), {
-                    conversionAccuracy: 'longterm',
-                });
+                return dayjs.duration(
+                    func(d1.asMilliseconds(), d2.asMilliseconds())
+                );
             }
 
             //If neither of the above returned, we now know one must be a date and one a duration, so let's find out which is which
             let date: Date;
-            let duration: Duration;
+            let dur: Duration;
             if (d1 instanceof Date && !(d2 instanceof Date)) {
                 date = d1;
-                duration = <Duration>d2;
+                dur = d2;
             } else {
                 date = <Date>d2;
-                duration = <Duration>d1;
+                dur = <Duration>d1;
             }
 
             //Add or subtract the duration to/from the date
-            const lDate: DateTime = DateTime.fromJSDate(date);
             switch (operation) {
                 case dateOperations.add:
-                    return lDate.plus(duration).toJSDate();
+                    return dayjs(date).add(dur).toDate();
                 case dateOperations.subtract:
-                    return lDate.minus(duration).toJSDate();
+                    return dayjs(date).subtract(dur).toDate();
                 default:
                     throw new RulesetError(
                         'Invalid Operation for Dates',
@@ -159,12 +160,9 @@ export class DateCalculation extends Formula {
         const tmp = results.map((item) => {
             assertNumberOrDate(item, this);
             if (typeof item === 'number') {
-                return Duration.fromObject(
-                    {
-                        [this.dateCalculationUnit]: item,
-                    },
-                    { conversionAccuracy: 'longterm' }
-                );
+                return dayjs.duration({
+                    [this.dateCalculationUnit]: item,
+                });
             } else {
                 return item;
             }

@@ -1,5 +1,9 @@
-import { Duration } from 'luxon';
+import duration from 'dayjs/plugin/duration';
+import type { Duration } from 'dayjs/plugin/duration';
+import dayjs from 'dayjs';
 import { Formula } from './logicElements';
+
+dayjs.extend(duration);
 import {
     HasNoLengthError,
     NotBooleanError,
@@ -49,7 +53,7 @@ export function assertDuration(
     value: unknown,
     context: Formula
 ): asserts value is Duration {
-    if (!Duration.isDuration(value)) {
+    if (!dayjs.isDuration(value)) {
         throw new NotDurationError(context, value);
     }
 }
