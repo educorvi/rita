@@ -93,16 +93,16 @@ async function validateSchema(schema: Record<string, any>, expected = true) {
 }
 
 describe('Validate Rule examples', () => {
-    it('Example', () => {
-        validateSchema(exampleRule);
+    it('Example', async () => {
+        await validateSchema(exampleRule);
     });
 
-    it('Math Simple', () => {
-        validateSchema(exampleMathSimple);
+    it('Math Simple', async () => {
+        await validateSchema(exampleMathSimple);
     });
 
-    it('Math', () => {
-        validateSchema(exampleMath);
+    it('Math', async () => {
+        await validateSchema(exampleMath);
     });
 
     it('Wrong Rule', async () => {

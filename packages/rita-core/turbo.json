@@ -2,7 +2,7 @@
     "extends": ["//"],
     "tasks": {
         "build:internal": {
-            "outputs": ["dist/**", "src/Validator/RitaRulesetAjvValidator.js"]
+            "outputs": ["dist/**"]
         }
     }
 }
