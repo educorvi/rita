@@ -6,7 +6,8 @@
     "packages/**/*"
   ],
   "scripts": {
-    "build": "turbo check-types build:internal"
+    "build": "turbo check-types build:internal",
+    "test": "turbo test"
   },
   "devDependencies": {
     "@commitlint/cli": "^21.0.2",

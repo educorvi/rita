@@ -85,7 +85,7 @@ async function initRita() {
 }
 
 function checkDBType(type: string | undefined): asserts type is supportedDBTypes {
-    if (!(type === 'mysql' || type === 'better-sqlite3' || type === 'postgres')) {
+    if (!(type === 'mysql' || type === 'sqlite' || type === 'postgres')) {
         dbConnectionError('config')(
             new Error('Unknown DB type: ' + type?.toUpperCase())
         );
@@ -100,10 +100,11 @@ async function initConfigDB() {
         db_options.database = DB_SQLITE_PATH || "db.sqlite";
     }
     checkDBType(type);
+    const localDbType = type.replace('sqlite', 'better-sqlite3') as 'better-sqlite3' | 'mysql' | 'postgres';
     try {
         // noinspection TypeScriptValidateTypes
         configDB = await Database.getDB({
-            type,
+            type: localDbType,
             ...db_options,
         });
     } catch (e) {
