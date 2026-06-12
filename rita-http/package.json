@@ -76,11 +76,11 @@
         "ts-node": "^10.9.2",
         "ts-node-dev": "^2.0.0",
         "typescript": "5.8.3",
-        "vite": "~7.2.4",
+        "vite": "7.3.5",
         "vite-plugin-externalize-deps": "~0.10.0",
         "unplugin-dts": "~1.0.0-beta.6",
         "@rollup/plugin-swc": "~0.4.0",
         "@swc/core": "~1.15.3",
-        "vitest": "^2.1.9"
+        "vitest": "4.1.8"
     }
 }
