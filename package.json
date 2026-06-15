@@ -8,7 +8,11 @@
   "scripts": {
     "build": "turbo check-types build:internal",
     "test": "turbo test",
-    "doc": "turbo doc && cp -r ./packages/rita-core/docs ./docs/rita-core && cp -r ./packages/persistent-rita/docs ./docs/persistent-rita && cp -r ./applications/rita-http/docs ./docs/rita-http"
+    "doc": "turbo doc && cp -r ./packages/rita-core/docs ./docs/rita-core && cp -r ./packages/persistent-rita/docs ./docs/persistent-rita && cp -r ./applications/rita-http/docs ./docs/rita-http",
+    "release": "yarn workspaces foreach --topological-dev -Av --exclude . run semantic-release -e semantic-release-monorepo",
+    "release:dry-run": "yarn workspaces foreach --topological-dev -Av --exclude . run semantic-release --dry-run -e semantic-release-monorepo",
+    "setOldVersions": "yarn workspaces foreach -Apv --exclude . exec $(git rev-parse --show-toplevel)/.github/findAndSetOldVersion.mjs",
+    "size": "size-limit"
   },
   "devDependencies": {
     "@commitlint/cli": "^21.0.2",
