@@ -43,5 +43,5 @@ The update process is identical, just replace `git clone` with `git pull`
 
 ```bash
 # Generate documentation
-rush generate-documentation
+yarn run doc
 ```
