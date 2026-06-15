@@ -24,7 +24,7 @@
     "check-types": "tsc --noEmit",
     "build": "turbo build:internal check-types",
     "build:internal": "vite build",
-    "doc": "npm run doc:implementation && npm run doc:schema && git add docs",
+    "doc": "npm run doc:implementation && npm run doc:schema",
     "doc:implementation": "npx typedoc --out docs/implementation src/index.ts",
     "doc:schema": "jsonschema2md -d src/schema -o docs/schema -e json -x -",
     "prepack": "yarn run build",
