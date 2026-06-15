@@ -39,6 +39,9 @@
     "doc": {
       "outputs": [
         "docs/**"
+      ],
+      "dependsOn": [
+        "^build:internal"
       ]
     }
   }
