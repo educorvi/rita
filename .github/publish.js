@@ -8,7 +8,7 @@ const rootDir = path.resolve(__dirname, '..');
 const releasercPath = path.join(
     rootDir,
     'packages',
-    'vue-json-form',
+    'rita-core',
     '.releaserc.json'
 );
 
