@@ -8,7 +8,8 @@
           "dependsOn": ["build:routes", "^check-types"]
         },
         "build:routes": {
-          "outputs": ["generated/**", "^build:internal"]
+          "dependsOn": ["^build:internal"],
+          "outputs": ["generated/**"]
         }
     }
 }
