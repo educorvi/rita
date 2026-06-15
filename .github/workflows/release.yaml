@@ -1,0 +1,87 @@
+name: Release
+
+on:
+    push:
+        branches:
+            - 'release/*'
+    workflow_dispatch:
+
+permissions:
+    id-token: write # Required for OIDC
+    pages: write
+    contents: write
+    issues: write
+    pull-requests: write
+    packages: write
+
+jobs:
+    release:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v6
+              with:
+                  fetch-depth: 0
+                  fetch-tags: 'true'
+            - name: Cache turbo build setup
+              uses: actions/cache@v5
+              with:
+                  path: .turbo
+                  key: ${{ runner.os }}-turbo-${{ github.sha }}
+                  restore-keys: |
+                      ${{ runner.os }}-turbo-
+            - name: Enable Corepack
+              run: corepack enable
+            - name: Setup NodeJS
+              uses: actions/setup-node@v6
+              with:
+                  cache: 'yarn'
+                  node-version: 'lts/*'
+            - run: yarn install
+            - name: Set old versions
+              run: yarn run setOldVersions
+            - run: yarn run build
+              name: Build all workspaces
+            - run: yarn run release
+              name: Release
+              env:
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+                  #          YARN_NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+                  YARN_NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  YARN_NPM_PUBLISH_REGISTRY: 'https://npm.pkg.github.com'
+    publish-on-npm:
+        needs: release
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v6
+              with:
+                  fetch-depth: 0
+                  fetch-tags: 'true'
+            - name: Cache turbo build setup
+              uses: actions/cache@v5
+              with:
+                  path: .turbo
+                  key: ${{ runner.os }}-turbo-${{ github.sha }}
+                  restore-keys: |
+                      ${{ runner.os }}-turbo-
+            - name: Enable Corepack
+              run: corepack enable
+            - name: Setup NodeJS
+              uses: actions/setup-node@v6
+              with:
+                  cache: 'yarn'
+                  node-version: 'lts/*'
+            - run: yarn install
+            - name: Set old versions
+              run: yarn run setOldVersions
+            - run: yarn run build
+              name: Build all workspaces
+            - run: ./.github/publish.js
+    merge-release-latest:
+        if: github.ref == 'refs/heads/release/latest'
+        needs:
+            - publish-on-npm
+        uses: ./.github/workflows/merge-release-latest.yaml
+        secrets: inherit

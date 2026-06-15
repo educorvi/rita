@@ -1,0 +1,57 @@
+name: Deploy Docs
+
+on:
+    push:
+        branches:
+            - release/latest
+    workflow_dispatch:
+
+permissions:
+    contents: read
+    pages: write
+    id-token: write
+
+concurrency:
+    group: github-pages
+    cancel-in-progress: true
+
+jobs:
+    build-docs:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v6
+
+            - name: Enable Corepack
+              run: corepack enable
+
+            - name: Setup NodeJS
+              uses: actions/setup-node@v6
+              with:
+                  node-version: lts/*
+                  cache: yarn
+
+            - name: Install dependencies
+              run: yarn install --immutable
+
+            - name: Build docs
+              run: yarn doc
+
+            - name: Setup Pages
+              uses: actions/configure-pages@v5
+
+            - name: Upload Pages artifact
+              uses: actions/upload-pages-artifact@v4
+              with:
+                  path: docs
+
+    deploy-docs:
+        needs: build-docs
+        runs-on: ubuntu-latest
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        steps:
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v4

@@ -1,0 +1,15 @@
+{
+    "extends": ["//"],
+    "tasks": {
+        "build:internal": {
+          "dependsOn": ["build:routes", "^build:internal"]
+        },
+        "check-types": {
+          "dependsOn": ["build:routes", "^check-types"]
+        },
+        "build:routes": {
+          "dependsOn": ["^build:internal"],
+          "outputs": ["generated/**"]
+        }
+    }
+}

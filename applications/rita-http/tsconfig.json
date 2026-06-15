@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "target": "ES6",
+    "lib": [
+      "ES2021"
+    ],
+    "noImplicitAny": true,
+    "moduleResolution": "bundler",
+    "sourceMap": true,
+    "outDir": "dist",
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "sourceRoot": "src"
+  },
+  "include": [
+    "src/**/*",
+    "test/**/*"
+  ]
+}

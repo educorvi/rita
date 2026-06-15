@@ -23,7 +23,8 @@ git clone https://github.com/educorvi/rita.git
 cd rita
 
 # Install dependencies and build project
-./setup.sh
+yarn install
+yarn run build
 
 # Open rita-http folder
 cd rita-http

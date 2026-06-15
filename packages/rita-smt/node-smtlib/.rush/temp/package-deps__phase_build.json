@@ -1,0 +1,23 @@
+{
+  "files": {
+    "rita-smt/node-smtlib/.gitignore": "4c2ab54f3bf8cf0b34d31832ed9c527718fe1d9a",
+    "rita-smt/node-smtlib/.npmignore": "030fc7a06b45cc24b7ed170435da1ddbe2b923ff",
+    "rita-smt/node-smtlib/CHANGELOG.json": "23790b4e7d33a14532b500cab157fe1145f1a495",
+    "rita-smt/node-smtlib/CHANGELOG.md": "8fc3a485113e0fa43c85104d8930931bc8f5401e",
+    "rita-smt/node-smtlib/LICENSE": "b23879f043fb06853dcfe07caa1a042727a561c7",
+    "rita-smt/node-smtlib/README.md": "0a8a130b799568f66b081fe8d8d8ced9c820b89d",
+    "rita-smt/node-smtlib/config/rush-project.json": "11b60aa188618851dd3a2edd2da5b855df0f7e3d",
+    "rita-smt/node-smtlib/docs/CHANGELOG.md": "51d394894df444b963a03a648c849c525aab913f",
+    "rita-smt/node-smtlib/lib/base_solver.ts": "260c9fdbc1333daffac04d91f8716dfeb7f42ea0",
+    "rita-smt/node-smtlib/lib/index.ts": "fbea2f0737e660d8764d8ad83a3b3df132234d3c",
+    "rita-smt/node-smtlib/lib/local_cvc.ts": "fde9022bd40baf55655b8bba7f96a038c33466dd",
+    "rita-smt/node-smtlib/lib/local_cvc4.ts": "1525e759f9fc9ce0b61a51a4a6cc5b2ff3ebcdbc",
+    "rita-smt/node-smtlib/lib/local_cvc5.ts": "54d52572765bf9be400203c2397cffd2c2916eca",
+    "rita-smt/node-smtlib/lib/smtlib.ts": "5d244ab83f27cd643995228d771e7727d94bf717",
+    "rita-smt/node-smtlib/package.json": "b05080b0db979d60f61df0f5eec5095572679367",
+    "rita-smt/node-smtlib/test/test.js": "17d1318a51a797208a3e0c287a2df5e2a6a05691",
+    "rita-smt/node-smtlib/tsconfig.json": "583077149eb6ea19f3a1c5fb0827044ca1c8d2e5",
+    "rita-smt/node-smtlib/.rush/temp/shrinkwrap-deps.json": "136dfff09ce3a1b5030e5e9c3f3a205ab3fe361e"
+  },
+  "arguments": "rushx build "
+}

@@ -1,0 +1,36 @@
+name: Merge release/latest into downstream branches
+
+on:
+    workflow_dispatch:
+    workflow_call:
+
+permissions:
+    contents: write
+
+jobs:
+    merge:
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                branch:
+                    - release/beta
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v6
+              with:
+                  fetch-depth: 0
+                  fetch-tags: 'true'
+                  token: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Merge release/latest into ${{ matrix.branch }}
+              run: |
+                  git config user.name "github-actions[bot]"
+                  git config user.email "github-actions[bot]@users.noreply.github.com"
+                  git checkout ${{ matrix.branch }}
+                  if ! git merge origin/release/latest --no-edit; then
+                    echo "::error::Merge conflict detected while merging release/latest into ${{ matrix.branch }}. Please resolve conflicts manually."
+                    git merge --abort
+                    exit 1
+                  fi
+                  git push origin ${{ matrix.branch }}

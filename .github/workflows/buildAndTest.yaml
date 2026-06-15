@@ -1,0 +1,153 @@
+name: Build And Test
+
+on:
+  push:
+    branches:
+      - 'main'
+  pull_request:
+    branches:
+      - 'main'
+      - 'release/*'
+  merge_group:
+    types:
+      - checks_requested
+  workflow_dispatch:
+
+concurrency:
+  group: build-and-test-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  issues: read
+  checks: write
+  pull-requests: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ 22, 24 ]
+    name: Build on Node ${{ matrix.node }}
+    steps:
+      - uses: actions/checkout@v6
+      - name: Cache turbo build setup
+        uses: actions/cache@v5
+        with:
+          path: .turbo
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-
+      - name: Enable Corepack
+        run: corepack enable
+      - name: Setup node
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.node }}
+          cache: yarn
+      - run: yarn install --immutable
+#      - run: yarn run lint
+      - run: yarn run build
+  test-unit:
+    needs: build
+    runs-on: ubuntu-latest
+    name: Unit Tests
+    env:
+      # Persistent Rita
+      MYSQL_DATABASE: prita
+      MYSQL_HOST: localhost
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      PSQL_DATABASE: postgres
+      PSQL_HOST: localhost
+      PSQL_USER: postgres
+      PSQL_PASSWORD: postgres
+      # Rita Http
+      PORT: 3000
+      LOGLEVEL: info
+      DB_TYPE: POSTGRES
+      DB_HOST: localhost
+      DB_PORT: 5432
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+      DB_DATABASE: postgres
+    # Service containers to run with `container-job`
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgres
+        # Provide the password for postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          # Maps tcp port 5432 on service container to the host
+          - 5432:5432
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_DATABASE: prita
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: recursive
+      - name: Cache turbo build setup
+        uses: actions/cache@v5
+        with:
+          path: .turbo
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-
+      - name: Enable Corepack
+        run: corepack enable
+      - name: Setup node
+        uses: actions/setup-node@v6
+        with:
+          cache: yarn
+          node-version: lts/*
+      - run: yarn install --immutable
+      - name: Create .env files
+        run: |
+          cat > packages/persistent-rita/.env << EOF
+          MYSQL_DATABASE=${{ env.MYSQL_DATABASE }}
+          MYSQL_HOST=${{ env.MYSQL_HOST }}
+          MYSQL_USER=${{ env.MYSQL_USER }}
+          MYSQL_PASSWORD=${{ env.MYSQL_PASSWORD }}
+          PSQL_DATABASE=${{ env.PSQL_DATABASE }}
+          PSQL_HOST=${{ env.PSQL_HOST }}
+          PSQL_USER=${{ env.PSQL_USER }}
+          PSQL_PASSWORD=${{ env.PSQL_PASSWORD }}
+          EOF
+
+          cat > applications/rita-http/.env << EOF
+          PORT=${{ env.PORT }}
+          LOGLEVEL=${{ env.LOGLEVEL }}
+          DB_TYPE=${{ env.DB_TYPE }}
+          DB_HOST=${{ env.DB_HOST }}
+          DB_PORT=${{ env.DB_PORT }}
+          DB_USERNAME=${{ env.DB_USERNAME }}
+          DB_PASSWORD=${{ env.DB_PASSWORD }}
+          DB_DATABASE=${{ env.DB_DATABASE }}
+          EOF
+      - run: yarn run build
+      - run: yarn test
+#            - name: Upload report to GitHub Actions Artifacts
+#              if: ${{ !cancelled() }}
+#              uses: actions/upload-artifact@v7
+#              with:
+#                  name: unit-report
+#                  path: |
+#                      ./packages/*/test-results/*.xml
+#                  retention-days: 1
