@@ -3,6 +3,10 @@ venv
 
 blob-report
 
+
+applications/**/docs
+packages/**/docs
+
 ### Node template
 # Logs
 logs

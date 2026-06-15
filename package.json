@@ -7,7 +7,8 @@
   ],
   "scripts": {
     "build": "turbo check-types build:internal",
-    "test": "turbo test"
+    "test": "turbo test",
+    "doc": "turbo doc && cp -r ./packages/rita-core/docs ./docs/rita-core && cp -r ./packages/persistent-rita/docs ./docs/persistent-rita && cp -r ./applications/rita-http/docs ./docs/rita-http"
   },
   "devDependencies": {
     "@commitlint/cli": "^21.0.2",
