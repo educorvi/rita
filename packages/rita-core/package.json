@@ -7,7 +7,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/educorvi/rita.git"
+    "url": "https://github.com/educorvi/rita.git",
+    "directory": "packages/rita-core"
   },
   "license": "MIT",
   "author": "Julian Pollinger",
