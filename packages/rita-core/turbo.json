@@ -1,8 +1,21 @@
 {
-    "extends": ["//"],
-    "tasks": {
-        "build:internal": {
-            "outputs": ["dist/**"]
-        }
+  "extends": [
+    "//"
+  ],
+  "tasks": {
+    "build:internal": {
+      "outputs": [
+        "dist/**"
+      ],
+      "dependsOn": [
+        "^build:internal",
+        "build:validator"
+      ]
+    },
+    "build:validator": {
+      "outputs": [
+        "src/Validator/RitaRulesetAjvValidator.js"
+      ]
     }
+  }
 }
