@@ -510,8 +510,8 @@ __metadata:
     "@semantic-release/exec": "npm:^7.1.0"
     "@swc/core": "npm:~1.15.3"
     better-sqlite3: "npm:^12.10.0"
-    dotenv: "npm:17.2.3"
-    mysql2: "npm:^3.22.4"
+    dotenv: "npm:17.4.2"
+    mysql2: "npm:^3.22.5"
     pg: "npm:~8.21.0"
     reflect-metadata: "npm:^0.2.2"
     rimraf: "npm:^6.1.3"
@@ -530,7 +530,7 @@ __metadata:
   peerDependencies:
     "@educorvi/rita": 5.5.1
     better-sqlite3: ^12.10.0
-    mysql2: ^3.22.4
+    mysql2: ^3.22.5
     pg: ~8.21.0
     typeorm: ^1.0.0
   languageName: unknown
@@ -601,7 +601,7 @@ __metadata:
     "@types/madge": "npm:^5.0.3"
     "@types/node": "npm:^24.0.10"
     "@vitest/coverage-v8": "npm:~4.1.8"
-    ajv: "npm:8.18.0"
+    ajv: "npm:8.20.0"
     ajv-cli: "npm:~5.0.0"
     ajv-formats: "npm:^2.1.1"
     dayjs: "npm:^1.11.20"
@@ -3947,15 +3947,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ajv@npm:8.18.0":
-  version: 8.18.0
-  resolution: "ajv@npm:8.18.0"
+"ajv@npm:8.20.0, ajv@npm:^8.0.0, ajv@npm:^8.11.0, ajv@npm:^8.9.0":
+  version: 8.20.0
+  resolution: "ajv@npm:8.20.0"
   dependencies:
     fast-deep-equal: "npm:^3.1.3"
     fast-uri: "npm:^3.0.1"
     json-schema-traverse: "npm:^1.0.0"
     require-from-string: "npm:^2.0.2"
-  checksum: 10c0/e7517c426173513a07391be951879932bdf3348feaebd2199f5b901c20f99d60db8cd1591502d4d551dc82f594e82a05c4fe1c70139b15b8937f7afeaed9532f
+  checksum: 10c0/5df9a1c8f83863cde1bd3a9ddb426f599718f88e3dc9153616c79fb28e0be455335830d7f21d745576519f057b371352daa31047b6a33d7036fe08777d60cf2a
   languageName: node
   linkType: hard
 
@@ -3968,18 +3968,6 @@ __metadata:
     json-schema-traverse: "npm:^0.4.1"
     uri-js: "npm:^4.2.2"
   checksum: 10c0/67966499dd272ecde1c2e467084411132891523d057487587879d39ac04207f4351b7b2324c83198013967fbfa632c1612adc960114a30770fbe07a0773b32c2
-  languageName: node
-  linkType: hard
-
-"ajv@npm:^8.0.0, ajv@npm:^8.11.0, ajv@npm:^8.9.0":
-  version: 8.20.0
-  resolution: "ajv@npm:8.20.0"
-  dependencies:
-    fast-deep-equal: "npm:^3.1.3"
-    fast-uri: "npm:^3.0.1"
-    json-schema-traverse: "npm:^1.0.0"
-    require-from-string: "npm:^2.0.2"
-  checksum: 10c0/5df9a1c8f83863cde1bd3a9ddb426f599718f88e3dc9153616c79fb28e0be455335830d7f21d745576519f057b371352daa31047b6a33d7036fe08777d60cf2a
   languageName: node
   linkType: hard
 
@@ -5935,10 +5923,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:17.2.3":
-  version: 17.2.3
-  resolution: "dotenv@npm:17.2.3"
-  checksum: 10c0/c884403209f713214a1b64d4d1defa4934c2aa5b0002f5a670ae298a51e3c3ad3ba79dfee2f8df49f01ae74290fcd9acdb1ab1d09c7bfb42b539036108bb2ba0
+"dotenv@npm:17.4.2":
+  version: 17.4.2
+  resolution: "dotenv@npm:17.4.2"
+  checksum: 10c0/164f8e77a646c8446867d5b588d26ea6005c8ea7c5eb41cf926f6113d23f2191355f6e0cfd95ea9bab98394a5b0a3f1e51a8399711b666fe55cc7b0bd745f942
   languageName: node
   linkType: hard
 
@@ -10609,9 +10597,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mysql2@npm:^3.22.4":
-  version: 3.22.4
-  resolution: "mysql2@npm:3.22.4"
+"mysql2@npm:^3.22.5":
+  version: 3.22.5
+  resolution: "mysql2@npm:3.22.5"
   dependencies:
     aws-ssl-profiles: "npm:^1.1.2"
     denque: "npm:^2.1.0"
@@ -10623,7 +10611,7 @@ __metadata:
     sql-escaper: "npm:^1.3.3"
   peerDependencies:
     "@types/node": ">= 8"
-  checksum: 10c0/c07279c05453450442cf1267182f68670436ad5da70ac93a6bffdbc82565bf208be0fd8340ee3f6a6d2742c2470571c40cd757569fa1378604b63f7140f2a7b7
+  checksum: 10c0/531d40ebedb1cb39343ecd2ca557c6f7101f58af6a2734fdb25bf2b714292a38d9fe1aad2737356dd98b0084af260fe8d34c049da8c01094a6493298d013d991
   languageName: node
   linkType: hard
 
@@ -12860,9 +12848,9 @@ __metadata:
     bestzip: "npm:^2.2.1"
     better-sqlite3: "npm:^12.10.0"
     body-parser: "npm:^2.2.0"
-    dotenv: "npm:17.2.3"
+    dotenv: "npm:17.4.2"
     express: "npm:^5.2.1"
-    mysql2: "npm:^3.22.4"
+    mysql2: "npm:^3.22.5"
     pg: "npm:~8.21.0"
     promise.any: "npm:^2.0.6"
     reflect-metadata: "npm:^0.2.2"
