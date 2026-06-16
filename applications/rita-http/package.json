@@ -73,7 +73,7 @@
     "@types/swagger-ui-express": "^4.1.8",
     "@types/terminal-kit": "^2.5.7",
     "axios": "^1.17.0",
-    "bestzip": "^2.2.1",
+    "bestzip": "^3.0.1",
     "semantic-release": "^25.0.3",
     "semantic-release-monorepo": "^8.0.2",
     "semantic-release-yarn": "^3.0.2",
@@ -83,7 +83,7 @@
     "turbo": "^2.9.16",
     "typescript": "~6.0.3",
     "unplugin-dts": "~1.0.0-beta.6",
-    "vite": "7.3.5",
+    "vite": "8.0.16",
     "vite-plugin-externalize-deps": "~0.10.0",
     "vitest": "4.1.8"
   }
