@@ -1,6 +1,6 @@
 # Rule It All _(Rita)_
 
-JSON Schema for rule-based evaluation and an Typescript Implementation to evaluate it
+JSON Schema for rule-based evaluation and a TypeScript Implementation to evaluate it
 
 ## Schema
 
@@ -30,3 +30,4 @@ const result: boolean = ruleSet[0].evaluate(exampleData);
 ## Documentation
 
 The documentation of the schema and the implementation can be found here: [https://educorvi.github.io/rita/rita-core/docs/index.html](https://educorvi.github.io/rita/rita-core/docs/index.html)
+

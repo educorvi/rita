@@ -7,7 +7,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/educorvi/rita.git"
+    "url": "https://github.com/educorvi/rita.git",
+    "directory": "packages/rita-core"
   },
   "license": "MIT",
   "author": "Julian Pollinger",
@@ -24,6 +25,7 @@
     "check-types": "tsc --noEmit",
     "build": "turbo build:internal check-types",
     "build:internal": "vite build",
+    "build:validator": "node ./scripts/build-validator.cjs",
     "doc": "npm run doc:implementation && npm run doc:schema",
     "doc:implementation": "npx typedoc --out docs/implementation src/index.ts",
     "doc:schema": "jsonschema2md -d src/schema -o docs/schema -e json -x -",
