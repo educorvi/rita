@@ -29,7 +29,7 @@
     "@educorvi/rita": "workspace:^",
     "@semantic-release/exec": "^7.1.0",
     "@types/node": "^25.9.1",
-    "body-parser": "^2.2.0",
+    "body-parser": "^2.3.0",
     "express": "^5.2.1",
     "semantic-release": "^25.0.3",
     "semantic-release-monorepo": "^8.0.2",
