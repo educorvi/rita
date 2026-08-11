@@ -46,7 +46,7 @@
     "@types/node": "^24.0.10",
     "@vitest/coverage-v8": "~4.1.8",
     "ajv-cli": "~5.0.0",
-    "jest-extended": "^6.0.0",
+    "jest-extended": "^7.0.0",
     "madge": "^8.0.0",
     "mkdirp": "^3.0.1",
     "rimraf": "^6.1.3",
