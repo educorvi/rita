@@ -45,7 +45,7 @@
     "@educorvi/rita": "workspace:^",
     "@educorvi/rita-plugin-http": "workspace:^",
     "@tsoa/runtime": "^6.6.0",
-    "better-sqlite3": "^12.10.0",
+    "better-sqlite3": "^13.0.3",
     "body-parser": "^2.2.0",
     "dotenv": "17.2.3",
     "express": "^5.2.1",
@@ -56,7 +56,7 @@
     "semver": "^7.8.2",
     "swagger-ui-express": "^5.0.1",
     "terminal-kit": "^3.1.2",
-    "tslog": "^4.9.3",
+    "tslog": "^5.1.0",
     "tsoa": "^6.6.0",
     "typeorm": "^1.0.0"
   },
