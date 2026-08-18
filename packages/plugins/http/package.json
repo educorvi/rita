@@ -28,7 +28,7 @@
   "devDependencies": {
     "@educorvi/rita": "workspace:^",
     "@semantic-release/exec": "^7.1.0",
-    "@types/node": "^25.9.1",
+    "@types/node": "^26.2.0",
     "body-parser": "^2.2.0",
     "express": "^5.2.1",
     "semantic-release": "^25.0.3",
@@ -38,7 +38,7 @@
     "turbo": "^2.9.16",
     "typescript": "~6.0.3",
     "unplugin-dts": "~1.0.0-beta.6",
-    "vite": "7.3.5",
+    "vite": "8.2.1",
     "vite-plugin-externalize-deps": "~0.10.0",
     "vitest": "4.1.8"
   },
